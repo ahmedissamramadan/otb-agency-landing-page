@@ -1,11 +1,10 @@
 /* ==========================================================================
-   OTB Agency — Landing Page Interactive JavaScript Logic
+   OTB Agency (وكالة OTB) — Arabic Interactive JavaScript Logic
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initCalculator();
-  initPortfolioFilters();
   initModal();
 });
 
@@ -21,7 +20,7 @@ function initNavbar() {
   });
 }
 
-/* 2. Interactive ROI / Ad Budget Estimator */
+/* 2. Interactive ROI / Ad Budget Estimator for E-Commerce & Services in EGP/USD */
 function initCalculator() {
   const slider = document.getElementById('budgetSlider');
   const budgetDisplay = document.getElementById('budgetDisplay');
@@ -32,10 +31,10 @@ function initCalculator() {
   const resRevenue = document.getElementById('resRevenue');
 
   const industryMultipliers = {
-    ecommerce: { roas: 4.2, leadRate: 0.125, cpm: 20 },
-    b2b: { roas: 3.5, leadRate: 0.08, cpm: 35 },
-    realestate: { roas: 5.0, leadRate: 0.05, cpm: 40 },
-    education: { roas: 3.8, leadRate: 0.15, cpm: 18 }
+    ecommerce: { roas: 4.2, leadRate: 0.03, cpm: 45 },
+    services: { roas: 3.5, leadRate: 0.02, cpm: 60 },
+    realestate: { roas: 5.0, leadRate: 0.015, cpm: 80 },
+    clinic: { roas: 4.0, leadRate: 0.025, cpm: 50 }
   };
 
   function updateEstimates() {
@@ -43,18 +42,18 @@ function initCalculator() {
     const indKey = industrySelect.value;
     const config = industryMultipliers[indKey] || industryMultipliers.ecommerce;
 
-    // Formatting currency
-    budgetDisplay.textContent = '$' + budget.toLocaleString('en-US');
+    // Formatting EGP currency
+    budgetDisplay.textContent = budget.toLocaleString('ar-EG') + ' ج.م';
 
     // Calculations
     const impressions = Math.round((budget / config.cpm) * 1000);
-    const leads = Math.round(budget * config.leadRate);
+    const leads = Math.round((impressions * config.leadRate) / 10);
     const revenue = Math.round(budget * config.roas);
 
-    // Render results
-    resImpressions.textContent = impressions.toLocaleString('en-US') + '+';
-    resLeads.textContent = leads.toLocaleString('en-US');
-    resRevenue.textContent = '$' + revenue.toLocaleString('en-US');
+    // Render results in Arabic
+    resImpressions.textContent = impressions.toLocaleString('ar-EG') + '+ مشاهدة';
+    resLeads.textContent = leads.toLocaleString('ar-EG') + ' عميل محتمل';
+    resRevenue.textContent = revenue.toLocaleString('ar-EG') + ' ج.م';
   }
 
   slider.addEventListener('input', updateEstimates);
@@ -62,33 +61,7 @@ function initCalculator() {
   updateEstimates();
 }
 
-/* 3. Portfolio Filter Mechanism */
-function initPortfolioFilters() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const filter = btn.getAttribute('data-filter');
-
-      portfolioItems.forEach(item => {
-        const category = item.getAttribute('data-category');
-        if (filter === 'all' || category.includes(filter)) {
-          item.style.display = 'block';
-          item.style.opacity = '1';
-        } else {
-          item.style.display = 'none';
-          item.style.opacity = '0';
-        }
-      });
-    });
-  });
-}
-
-/* 4. Strategy Consultation Modal Form */
+/* 3. Strategy Consultation Modal Form Handler */
 function initModal() {
   const overlay = document.getElementById('modalOverlay');
   const form = document.getElementById('bookingForm');
@@ -109,7 +82,7 @@ function initModal() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('Thank you! Your strategy session request has been submitted to OTB Agency. Our team will contact you shortly.');
+    alert('شكراً لك! تم استلام طلب الجلسة الاستشارية بوكالة OTB Agency بنجاح. سيتواصل معك أحد متخصصي الفريق التسويقي عبر الرقم الموضح فوراً.');
     closeModal();
     form.reset();
   });
