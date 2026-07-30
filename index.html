@@ -34,17 +34,22 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#about">عن OTB</a></li>
-        <li><a href="#services">خدماتنا الاستراتيجية</a></li>
-        <li><a href="#showcase">قصص النجاح والمرئيات</a></li>
-        <li><a href="#contact">التواصل المباشر</a></li>
+        <li><a href="#about" data-i18n="nav_about">عن OTB</a></li>
+        <li><a href="#services" data-i18n="nav_services">خدماتنا الاستراتيجية</a></li>
+        <li><a href="#showcase" data-i18n="nav_showcase">معرض الأعمال</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">التواصل المباشر</a></li>
       </ul>
 
       <div class="nav-actions">
-        <a href="https://www.facebook.com/otbagency5/" target="_blank" rel="noopener" class="btn btn-glass">
+        <!-- Bi-Directional Language Switcher Button -->
+        <button class="btn btn-lang" id="langToggleBtn" onclick="toggleLanguage()">
+          🌐 English
+        </button>
+
+        <a href="https://www.facebook.com/otbagency5/" target="_blank" rel="noopener" class="btn btn-glass" data-i18n="nav_fb">
           📘 الفيسبوك الرسمي (@otbagency5)
         </a>
-        <button class="btn btn-white" onclick="openModal()">
+        <button class="btn btn-white" onclick="openModal()" data-i18n="nav_book">
           احجز جلسة استشارية
         </button>
       </div>
@@ -57,41 +62,41 @@
       <div class="container hero-grid">
         <div class="hero-content">
           <div class="hero-tag">
-            <span></span> Official Agency Vision 2026
+            <span></span> <span data-i18n="hero_tag">Official Agency Vision 2026</span>
           </div>
 
           <p class="hero-motto">WE ARE OTB, THE CITY KINGS</p>
 
-          <h1 class="hero-title">
-            Digital Marketing. <br>
-            <span class="silver-gradient-text">Bold Strategies. Real Results.</span>
+          <h1 class="hero-title" data-i18n="hero_title">
+            التسويق الرقمي. <br>
+            <span class="silver-gradient-text">استراتيجيات جريئة. نتائج حقيقية.</span>
           </h1>
 
-          <p class="hero-description">
-            أكثر من <strong>7 سنوات من وضع العلامات التجارية تحت أضواء النجاح والقيادة</strong>. نحن <strong>OTB Agency</strong> نبتكر قصصاً مرئية واستراتيجيات تسويقية جريئة تخلق فارقاً استثنائياً لعلامتك التجارية.
+          <p class="hero-description" data-i18n="hero_desc">
+            أكثر من <strong>7 سنوات من وضع العلامات التجارية تحت أضواء النجاح والقيادة</strong>. نحن OTB Agency نبتكر قصصاً مرئية واستراتيجيات تسويقية جريئة تخلق فارقاً استثنائياً لعلامتك التجارية.
           </p>
 
           <!-- Contact Info Badge Strip -->
           <div class="contact-info-strip">
             <div class="info-chip">
-              <span>📱 الهاتف / واتساب:</span>
+              <span data-i18n="chip_phone">📱 الهاتف / واتساب:</span>
               <strong>+20 10 08080295</strong>
             </div>
             <div class="info-chip">
-              <span>✉️ البريد الإلكتروني:</span>
+              <span data-i18n="chip_email">✉️ البريد الإلكتروني:</span>
               <strong>otbabency5@gmail.com</strong>
             </div>
             <div class="info-chip">
-              <span>🌐 المنصات:</span>
+              <span data-i18n="chip_handle">🌐 المنصات:</span>
               <strong>@otbagency5</strong>
             </div>
           </div>
 
           <div class="hero-cta">
-            <button class="btn btn-white" onclick="openModal()">
+            <button class="btn btn-white" onclick="openModal()" data-i18n="btn_start">
               🚀 ابدأ مشروعك مع OTB
             </button>
-            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency,%20I'm%20interested%20in%20a%20strategy%20session!" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency,%20I'm%20interested%20in%20a%20strategy%20session!" target="_blank" rel="noopener" class="btn btn-whatsapp" data-i18n="btn_whatsapp">
               💬 محادثة واتساب (+201008080295)
             </a>
           </div>
@@ -100,15 +105,15 @@
           <div class="stats-strip">
             <div class="stat-item">
               <span class="stat-number">+7 YEARS</span>
-              <span class="stat-label">Putting Brands in Spotlight</span>
+              <span class="stat-label" data-i18n="stat_1">خبرة وضع البراندات تحت الأضواء</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">33K+</span>
-              <span class="stat-label">Active Social Followers</span>
+              <span class="stat-label" data-i18n="stat_2">متابع نشط عبر المنصات</span>
             </div>
             <div class="stat-item">
               <span class="stat-number">BOLD</span>
-              <span class="stat-label">Strategies & Proven Results</span>
+              <span class="stat-label" data-i18n="stat_3">استراتيجيات جريئة ونتائج حقيقية</span>
             </div>
           </div>
         </div>
@@ -142,9 +147,9 @@
     <section class="services-section" id="showcase">
       <div class="container">
         <div class="section-header">
-          <span class="section-tag">Visual Craftsmanship</span>
-          <h2 class="section-title">صناعة القصص المرئية <span class="silver-gradient-text">المعبرة عن تفاصيل براندك</span></h2>
-          <p class="section-subtitle">"A visual story crafted to capture the details, craftsmanship, and experience behind specialty coffee, luxury lifestyle, and high-end commercial brands."</p>
+          <span class="section-tag" data-i18n="section_tag_1">Visual Craftsmanship</span>
+          <h2 class="section-title" data-i18n="section_title_1">صناعة القصص المرئية <span class="silver-gradient-text">المعبرة عن تفاصيل براندك</span></h2>
+          <p class="section-subtitle" data-i18n="section_sub_1">"A visual story crafted to capture the details, craftsmanship, and experience behind specialty coffee, luxury lifestyle, and high-end commercial brands."</p>
         </div>
 
         <div class="services-grid">
@@ -152,12 +157,12 @@
           <div class="service-card">
             <span class="service-number">01</span>
             <div class="service-icon">👑</div>
-            <h3 class="service-title">Bold Marketing Strategies</h3>
-            <p class="service-desc">استراتيجيات تسويقية جريئة ومبتكرة ترتكز على دراسة السوق واستقطاب الفئات الأكثر استهدافاً لتصدر السوق.</p>
+            <h3 class="service-title" data-i18n="s1_title">Bold Marketing Strategies</h3>
+            <p class="service-desc" data-i18n="s1_desc">استراتيجيات تسويقية جريئة ومبتكرة ترتكز على دراسة السوق واستقطاب الفئات الأكثر استهدافاً لتصدر السوق.</p>
             <ul class="service-features">
-              <li>تحليل المنافسين والتموضع الفاخر</li>
-              <li>صياغة الرسائل الإعلانية الجريئة</li>
-              <li>قيادة السوق والتميز عن المنافسين</li>
+              <li data-i18n="s1_f1">تحليل المنافسين والتموضع الفاخر</li>
+              <li data-i18n="s1_f2">صياغة الرسائل الإعلانية الجريئة</li>
+              <li data-i18n="s1_f3">قيادة السوق والتميز عن المنافسين</li>
             </ul>
           </div>
 
@@ -165,12 +170,12 @@
           <div class="service-card">
             <span class="service-number">02</span>
             <div class="service-icon">🎥</div>
-            <h3 class="service-title">Visual Storytelling & Reels</h3>
-            <p class="service-desc">تصوير ومونتاج فيديوهات الريلز الإعلانية عالية الجودة التي تبرز دقة الحرفة والتفاصيل الدقيقة لمنتجك.</p>
+            <h3 class="service-title" data-i18n="s2_title">Visual Storytelling & Reels</h3>
+            <p class="service-desc" data-i18n="s2_desc">تصوير ومونتاج فيديوهات الريلز الإعلانية عالية الجودة التي تبرز دقة الحرفة والتفاصيل الدقيقة لمنتجك.</p>
             <ul class="service-features">
-              <li>إنتاج مرئي مخصص للمشروبات والقهوة واللايف ستايل</li>
-              <li>مونتاج وإخراج الريلز الاحترافي (0:22 - 0:45s)</li>
-              <li>خطف انتباه المشاهد من الثواني الأولى</li>
+              <li data-i18n="s2_f1">إنتاج مرئي مخصص للمشروبات والقهوة واللايف ستايل</li>
+              <li data-i18n="s2_f2">مونتاج وإخراج الريلز الاحترافي (0:22 - 0:45s)</li>
+              <li data-i18n="s2_f3">خطف انتباه المشاهد من الثواني الأولى</li>
             </ul>
           </div>
 
@@ -178,12 +183,12 @@
           <div class="service-card">
             <span class="service-number">03</span>
             <div class="service-icon">🎲</div>
-            <h3 class="service-title">3D Isometric Branding Systems</h3>
-            <p class="service-desc">تطوير الهويات البصرية ثلاثية الأبعاد والشعارات الهندسية (3D Isometric Cube Design) التي تميز الوكالة والشركاء.</p>
+            <h3 class="service-title" data-i18n="s3_title">3D Isometric Branding Systems</h3>
+            <p class="service-desc" data-i18n="s3_desc">تطوير الهويات البصرية ثلاثية الأبعاد والشعارات الهندسية (3D Isometric Cube Design) التي تميز الوكالة والشركاء.</p>
             <ul class="service-features">
-              <li>تصميم الشعارات الهندسية ثلاثية الأبعاد</li>
-              <li>أدلة الهوية البصرية الفاخرة</li>
-              <li>التصميم المتوافق مع الشاشات والمطبوعات</li>
+              <li data-i18n="s3_f1">تصميم الشعارات الهندسية ثلاثية الأبعاد</li>
+              <li data-i18n="s3_f2">أدلة الهوية البصرية الفاخرة</li>
+              <li data-i18n="s3_f3">التصميم المتوافق مع الشاشات والمطبوعات</li>
             </ul>
           </div>
         </div>
@@ -195,26 +200,26 @@
       <div class="container">
         <div class="cta-box">
           <p class="motto-english" style="margin-bottom: 0.5rem; font-size: 1.1rem;">WE ARE OTB, THE CITY KINGS</p>
-          <h2>جاهز لوضع علامتك التجارية <span class="silver-gradient-text">تحت أضواء القيادة؟</span></h2>
-          <p>تواصل مع فريق OTB Agency المباشر لتنسيق جلسة عمل واستعراض الاستراتيجية الإعلانية الأنسب لنمو نشاطك.</p>
+          <h2 data-i18n="cta_title">جاهز لوضع علامتك التجارية <span class="silver-gradient-text">تحت أضواء القيادة؟</span></h2>
+          <p data-i18n="cta_desc">تواصل مع فريق OTB Agency المباشر لتنسيق جلسة عمل واستعراض الاستراتيجية الإعلانية الأنسب لنمو نشاطك.</p>
           
           <div style="margin-bottom: 2.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
             <div style="font-size: 1.1rem; color: #FFFFFF;">
-              📱 <strong>الهاتف / واتساب:</strong> +20 10 08080295
+              📱 <strong data-i18n="lbl_phone">الهاتف / واتساب:</strong> +20 10 08080295
             </div>
             <div style="font-size: 1.1rem; color: #FFFFFF;">
-              ✉️ <strong>البريد:</strong> otbabency5@gmail.com
+              ✉️ <strong data-i18n="lbl_email">البريد:</strong> otbabency5@gmail.com
             </div>
             <div style="font-size: 1.1rem; color: #FFFFFF;">
-              🌐 <strong>المعرف الموحد:</strong> otbagency5
+              🌐 <strong data-i18n="lbl_handle">المعرف الموحد:</strong> otbagency5
             </div>
           </div>
 
           <div class="cta-actions">
-            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency,%20I'm%20ready%20to%20start!" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency,%20I'm%20ready%20to%20start!" target="_blank" rel="noopener" class="btn btn-whatsapp" data-i18n="btn_whatsapp">
               💬 محادثة واتساب مباشرة (+20 10 08080295)
             </a>
-            <a href="https://www.facebook.com/otbagency5/" target="_blank" rel="noopener" class="btn btn-glass">
+            <a href="https://www.facebook.com/otbagency5/" target="_blank" rel="noopener" class="btn btn-glass" data-i18n="nav_fb">
               📘 الفيسبوك الرسمي (@otbagency5)
             </a>
           </div>
@@ -227,31 +232,31 @@
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-card">
       <button class="modal-close" onclick="closeModal()">✕</button>
-      <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #FFFFFF; font-family: var(--font-english);">BOOK OTB STRATEGY SESSION</h3>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">أدخل بياناتك وسيتم التواصل معك مباشرة بواسطة فريق OTB Agency.</p>
+      <h3 style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #FFFFFF; font-family: var(--font-english);" data-i18n="modal_title">BOOK OTB STRATEGY SESSION</h3>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;" data-i18n="modal_desc">أدخل بياناتك وسيتم التواصل معك مباشرة بواسطة فريق OTB Agency.</p>
 
       <form id="bookingForm">
         <div class="form-group">
-          <label class="form-label">الاسم / الشركة</label>
-          <input type="text" class="form-input" placeholder="اسمك أو اسم براندك" required>
+          <label class="form-label" data-i18n="form_name">الاسم / الشركة</label>
+          <input type="text" class="form-input" id="inputName" placeholder="اسمك أو اسم براندك" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">رقم التواصل / الواتساب</label>
-          <input type="text" class="form-input" placeholder="+20 10 08080295" required>
+          <label class="form-label" data-i18n="form_phone">رقم التواصل / الواتساب</label>
+          <input type="text" class="form-input" id="inputPhone" placeholder="+20 10 08080295" required>
         </div>
 
         <div class="form-group">
-          <label class="form-label">الخدمة المطلوبة</label>
-          <select class="form-input">
-            <option>Visual Storytelling & Video Reels Production</option>
-            <option>Bold Marketing Strategy & Performance Ads</option>
-            <option>3D Isometric Brand Identity & Logo Design</option>
-            <option>Full Agency Retainer (7+ Years Experience)</option>
+          <label class="form-label" data-i18n="form_service">الخدمة المطلوبة</label>
+          <select class="form-input" id="selectService">
+            <option value="1">Visual Storytelling & Video Reels Production</option>
+            <option value="2">Bold Marketing Strategy & Performance Ads</option>
+            <option value="3">3D Isometric Brand Identity & Logo Design</option>
+            <option value="4">Full Agency Retainer (7+ Years Experience)</option>
           </select>
         </div>
 
-        <button type="submit" class="btn btn-white" style="width: 100%;">أرسل الطلب إلى OTB Agency</button>
+        <button type="submit" class="btn btn-white" style="width: 100%;" data-i18n="form_submit">أرسل الطلب إلى OTB Agency</button>
       </form>
     </div>
   </div>
@@ -270,21 +275,20 @@
               <span class="logo-tag-text">WE ARE THE CITY KINGS</span>
             </div>
           </a>
-          <p>Digital Marketing | Bold strategies | Real results. 7+ years of putting brands in the spotlight.</p>
+          <p data-i18n="footer_bio">Digital Marketing | Bold strategies | Real results. 7+ years of putting brands in the spotlight.</p>
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-heading">Services</h4>
+          <h4 class="footer-heading" data-i18n="footer_h1">Services</h4>
           <ul class="footer-links">
-            <li><a href="#services">Visual Storytelling</a></li>
-            <li><a href="#services">Bold Marketing Strategies</a></li>
-            <li><a href="#services">3D Isometric Branding</a></li>
-            <li><a href="#services">Performance Ads</a></li>
+            <li><a href="#services" data-i18n="s2_title">Visual Storytelling</a></li>
+            <li><a href="#services" data-i18n="s1_title">Bold Marketing Strategies</a></li>
+            <li><a href="#services" data-i18n="s3_title">3D Isometric Branding</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-heading">Social Platforms</h4>
+          <h4 class="footer-heading" data-i18n="footer_h2">Social Platforms</h4>
           <ul class="footer-links">
             <li><a href="https://www.facebook.com/otbagency5/" target="_blank" rel="noopener">Facebook @otbagency5</a></li>
             <li><a href="https://instagram.com/otbagency5" target="_blank" rel="noopener">Instagram @otbagency5</a></li>
@@ -294,7 +298,7 @@
         </div>
 
         <div class="footer-col">
-          <h4 class="footer-heading">Exact Contact Info</h4>
+          <h4 class="footer-heading" data-i18n="footer_h3">Exact Contact Info</h4>
           <ul class="footer-links">
             <li><a href="tel:+201008080295">📱 +20 10 08080295</a></li>
             <li><a href="https://wa.me/201008080295" target="_blank" rel="noopener">💬 WhatsApp Direct</a></li>
@@ -305,7 +309,7 @@
 
       <div class="footer-bottom">
         <p>© 2026 OTB Agency. All rights reserved. "We are OTB, the city Kings".</p>
-        <p>Built with exact authentic brand identity and precision details.</p>
+        <p data-i18n="footer_rights">Built with exact authentic brand identity and bi-directional RTL & LTR precision.</p>
       </div>
     </div>
   </footer>
