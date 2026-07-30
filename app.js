@@ -1,5 +1,6 @@
 /* ==========================================================================
-   OTB Agency — Official PDF Brand Deck i18n & Interactions
+   OTB Agency — Official Luxury Brand Deck System
+   Custom Fonts (Felfel, KO-Okies) + Three.js 3D WebGL Engine + GSAP + Lenis
    ========================================================================== */
 
 let currentLang = 'ar';
@@ -110,10 +111,146 @@ const i18n = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+  initLenis();
   initNavbar();
   initModal();
+  initThreeJsWebGL();
+  initCard3DCube();
+  initGsapAnimations();
   updateLanguageUI();
 });
+
+/* 1. Lenis Smooth Scroll Engine */
+function initLenis() {
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+}
+
+/* 2. Three.js Background 3D Particles WebGL Engine */
+function initThreeJsWebGL() {
+  const canvas = document.getElementById('webgl-hero-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 5;
+
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  // Particles Geometry
+  const particlesCount = 200;
+  const posArray = new Float32Array(particlesCount * 3);
+
+  for (let i = 0; i < particlesCount * 3; i++) {
+    posArray[i] = (Math.random() - 0.5) * 12;
+  }
+
+  const particlesGeometry = new THREE.BufferGeometry();
+  particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+  // Gold Particle Material
+  const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.04,
+    color: 0xC5A059,
+    transparent: true,
+    opacity: 0.65
+  });
+
+  const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+  scene.add(particlesMesh);
+
+  // Mouse Parallax Interaction
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth - 0.5) * 0.5;
+    mouseY = (e.clientY / window.innerHeight - 0.5) * 0.5;
+  });
+
+  // Animation Loop
+  function animate() {
+    requestAnimationFrame(animate);
+    particlesMesh.rotation.y += 0.0015;
+    particlesMesh.rotation.x += 0.0008;
+
+    particlesMesh.position.x += (mouseX - particlesMesh.position.x) * 0.05;
+    particlesMesh.position.y += (-mouseY - particlesMesh.position.y) * 0.05;
+
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  });
+}
+
+/* 3. Three.js Interactive Gold 3D Wireframe Cube inside Hero Card */
+function initCard3DCube() {
+  const container = document.getElementById('card3dContainer');
+  if (!container || typeof THREE === 'undefined') return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+  camera.position.z = 4;
+
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  container.appendChild(renderer.domElement);
+
+  // 3D Isometric Wireframe Cube
+  const geometry = new THREE.BoxGeometry(1.6, 1.6, 1.6);
+  const wireframeGeometry = new THREE.WireframeGeometry(geometry);
+
+  const material = new THREE.LineBasicMaterial({
+    color: 0xC5A059,
+    linewidth: 2
+  });
+
+  const cubeMesh = new THREE.LineSegments(wireframeGeometry, material);
+  cubeMesh.rotation.x = Math.PI / 4;
+  cubeMesh.rotation.y = Math.PI / 4;
+  scene.add(cubeMesh);
+
+  // Ambient Lighting
+  const light = new THREE.DirectionalLight(0xFFFFFF, 1);
+  light.position.set(2, 2, 2).normalize();
+  scene.add(light);
+
+  // Render Loop
+  function animateCube() {
+    requestAnimationFrame(animateCube);
+    cubeMesh.rotation.x += 0.008;
+    cubeMesh.rotation.y += 0.012;
+    renderer.render(scene, camera);
+  }
+  animateCube();
+}
+
+/* 4. GSAP Entrance & Scroll Animations */
+function initGsapAnimations() {
+  if (typeof gsap !== 'undefined') {
+    gsap.from('.hero-headline', { opacity: 0, y: 30, duration: 1, delay: 0.2 });
+    gsap.from('.hero-description', { opacity: 0, y: 20, duration: 1, delay: 0.4 });
+    gsap.from('.hero-cta', { opacity: 0, y: 20, duration: 1, delay: 0.6 });
+    gsap.from('.featured-dark-card', { opacity: 0, scale: 0.95, duration: 1.2, delay: 0.3 });
+  }
+}
 
 /* Toggle Language Function */
 window.toggleLanguage = function() {
@@ -155,7 +292,7 @@ function updateLanguageUI() {
   if (inputPhone) inputPhone.setAttribute('placeholder', dictionary.ph_phone);
 }
 
-/* 1. Navbar Scroll Effect */
+/* Navbar Scroll Effect */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
@@ -167,7 +304,7 @@ function initNavbar() {
   });
 }
 
-/* 2. Strategy Consultation Modal Form Handler */
+/* Strategy Consultation Modal Form Handler */
 function initModal() {
   const overlay = document.getElementById('modalOverlay');
   const form = document.getElementById('bookingForm');

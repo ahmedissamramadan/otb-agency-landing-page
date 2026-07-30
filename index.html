@@ -4,17 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="OTB Agency — We are OTB, the city Kings. Digital Marketing · Bold Strategies · Real Results. 7+ years of putting brands in the spotlight.">
-  <title>OTB Agency | We are OTB, the city Kings — Official Brand Deck Vision</title>
+  <title>OTB Agency | We are OTB, the city Kings — Official Vision & 3D Experience</title>
 
   <!-- Google Fonts: Tajawal, Cairo, Playfair Display, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=Plus+Jakarta+Sans:wght@700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 
+  <!-- Advanced WebGL & Animation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <!-- Three.js 3D WebGL Background Canvas Layer -->
+  <canvas id="webgl-hero-canvas"></canvas>
 
   <!-- Navigation Bar -->
   <header class="navbar" id="navbar">
@@ -50,7 +59,7 @@
   </header>
 
   <main>
-    <!-- Hero Section (Pixel-Perfect Match for Page 1 PDF) -->
+    <!-- Hero Section (Page 1 PDF Match with 3D WebGL Experience) -->
     <section class="hero" id="home">
       <div class="container hero-grid">
         <div class="hero-content">
@@ -68,7 +77,7 @@
           </p>
 
           <div class="hero-cta">
-            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency,%20I'm%20ready%20to%20start!" target="_blank" rel="noopener" class="btn btn-gold-fill" data-i18n="btn_start">
+            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!" target="_blank" rel="noopener" class="btn btn-gold-fill" data-i18n="btn_start">
               ابدأ مشروعك الآن 💬
             </a>
             <a href="#showcase" class="btn btn-outline-dark" data-i18n="btn_work">
@@ -93,9 +102,13 @@
           </div>
         </div>
 
-        <!-- Featured Dark Card (Page 1 PDF) -->
+        <!-- Featured Dark Card (Page 1 PDF with 3D Canvas Box) -->
         <div class="hero-visual">
-          <div class="featured-dark-card">
+          <div class="featured-dark-card" id="heroCard">
+            
+            <!-- 3D Interactive WebGL Wireframe Cube Container -->
+            <div class="canvas-3d-box" id="card3dContainer"></div>
+
             <div class="card-crown-header">
               <span class="crown-icon">👑</span>
               <span class="submotto-gold">WE ARE OTB</span>
