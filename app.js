@@ -1,19 +1,20 @@
 /* ==========================================================================
-   OTB Agency — Interactive Engine & Official Brand Deck Experience
-   Default Language: English (with full Arabic bidirectional switch)
+   OTB Agency — Interactive Engine & Official Digital DNA 2026 Core
+   Source of Truth: OTB Master Knowledge & Digital DNA Archive (2026)
    ========================================================================== */
 
 let currentLang = 'en';
 let isSoundEnabled = true;
 
 /* ==========================================================================
-   BILINGUAL I18N DICTIONARY
+   BILINGUAL I18N DICTIONARY (Derived from Official Digital DNA 2026)
    ========================================================================== */
 const i18n = {
   en: {
     lang_btn: 'العربية',
     nav_home: 'Home',
     nav_services: 'What We Build',
+    nav_benchmark: 'The Franks Proof',
     nav_showcase: 'Showcase',
     nav_manifesto: 'Manifesto',
     nav_calculator: 'ROI Planner',
@@ -21,52 +22,58 @@ const i18n = {
     nav_wa: 'WhatsApp Direct',
 
     hero_title: 'Putting Your Brand Under <br><span class="gold-italic-accent">The Spotlight.</span>',
-    hero_desc: 'Over 7 years of spotlighting extraordinary brands. We create visual stories and bold marketing strategies that deliver real commercial impact — with craft, poise, and tangible results.',
-    btn_work: 'View Our Work',
+    hero_desc: 'Over 7 years of engineering market dominance for Egypt\'s premier FMCG manufacturers, specialty coffee icons, and high-growth brands. We don\'t sell routine posts — we build full-funnel commercial engines that turn products into market leaders.',
+    btn_work: 'View Proven Proof of Work',
 
-    stat_1: 'Years of Experience',
-    stat_2: 'Active Community',
-    stat_3: 'Proven Strategies',
+    stat_1: 'Years Market Mastery',
+    stat_brands: 'Strategic Enterprise Brands',
+    stat_2: 'Organic Community',
+    stat_franks: 'Peak Monthly Scale (Franks)',
 
-    craft_title: 'What We Build For Brands.',
+    clients_tag: 'TRUSTED BY INDUSTRY TITANS & REGIONAL LEADERS',
+
+    bm_title: 'The Transformation of Franks Food Industries',
+    bm_lead: 'Franks owned top-tier manufacturing and extensive physical distribution across Egypt, but ranked #25 in consumer mindshare with an absent digital footprint. OTB deployed its full-funnel growth engine:',
+
+    craft_title: 'What We Build For Enterprise Brands.',
     case_study_link: 'Case Study →',
 
-    c1_title: 'Luxury Visual Storytelling',
-    c1_desc: 'High-end cinematic video production for specialty coffee, lifestyle, and luxury goods that highlights craft and detail — every shot rooted in narrative.',
+    c1_title: 'Luxury Visual Storytelling & Production',
+    c1_desc: 'Cinematic 4K video production for specialty coffee, fine dining, and consumer packaged goods (FMCG). Every shot is engineered with studio lighting, master color grading, and emotional narrative structure.',
     meta_field: 'Vertical',
-    c1_field: 'Coffee · Lifestyle',
+    c1_field: 'F&B · Specialty Coffee · FMCG',
     meta_output: 'Deliverables',
-    c1_output: 'Video · Photography',
-    meta_results: 'Results',
-    c1_results: '+240% Lift · 4.8x ROAS',
-    meta_duration: 'Timeline',
-    c1_duration: 'Per Project',
+    c1_output: 'Cinematic Reels · 4K Stills · Chef Shoots',
+    meta_results: 'Verified Benchmarks',
+    c1_results: '+220K Views · +240% Lift',
+    meta_duration: 'Governance',
+    c1_duration: 'CoreLink Production Track',
 
-    c2_title: 'Market-Leading Strategies',
-    c2_desc: 'Bold marketing strategies engineered to dominate the market and generate genuine business revenue — from brand positioning to full-funnel ad campaigns.',
+    c2_title: 'High-ROAS Performance Marketing',
+    c2_desc: 'Precision-targeted ad campaigns on Meta, TikTok, and Google. Full-funnel TOFU-MOFU-BOFU architecture driving direct sales, delivery orders, and high-ticket B2B distributor contracts.',
     meta_scope: 'Scope',
-    c2_scope: 'Positioning · Campaigns',
+    c2_scope: 'Brand Positioning · Direct Sales',
     meta_channels: 'Channels',
-    c2_channels: 'Social · Performance',
-    c2_results: '3.8x - 5.2x ROAS',
-    c2_duration: 'Timeline',
-    c2_duration: 'Per Objective',
+    c2_channels: 'Meta Ads · TikTok · YouTube',
+    c2_results: '3.8x - 5.2x ROAS Multiplier',
+    c2_duration: 'Scale Target',
+    c2_duration: 'Industrial & Enterprise',
 
-    c3_title: '3D Brand Identity Systems',
-    c3_desc: 'Developing distinctive 3D visual identities and custom logos that embody brand power and distinction — an identity seen, felt, and remembered.',
-    c3_output: 'Identity · 3D Logo',
+    c3_title: '3D Identity & Visual Architecture',
+    c3_desc: 'Developing signature isometric 3D visual systems, packaging CGI renders, and comprehensive Brand Books that command immediate market authority and retail shelf presence.',
+    c3_output: 'Isometric 3D · Packaging · Brand Book',
     meta_system: 'System',
-    c3_system: 'Brand Book Guide',
-    c3_results: '100% Bespoke Craft',
-    c3_duration: 'Timeline',
-    c3_duration: 'Per Scope',
+    c3_system: 'Bespoke Royal Monochrome & Gold',
+    c3_results: '100% Distinctive Identity',
+    c3_duration: 'Format',
+    c3_duration: 'Cross-Platform Guidelines',
 
-    showcase_title: 'Selected Showcase.',
-    showcase_subtag: 'Coming Soon — Spotlighting Projects',
+    showcase_title: 'Documented Proof of Work.',
+    showcase_subtag: 'Real Client Case Studies from Egypt\'s Fastest Scaling Brands',
 
-    manif_title: 'Audacity is a Principle, Not a Slogan.',
-    manif_p1: 'We believe powerful brands are built from a deeper understanding of what truly works. We love being deep in the details, collaborating with lean teams on things that matter.',
-    manif_p2: 'We craft visual stories, strategies, and 3D brand identities — with varying layers of craft, but always with one single objective: making your brand the hero.',
+    manif_title: '"Don\'t Follow the Crowd, We Create the Direction."',
+    manif_p1: 'We believe great brands are never built inside cookie-cutter templates. Founded in 2019, OTB has spent over 7 years in the trenches of the Egyptian market, transforming ambitious manufacturing plants, specialty coffee roasters, and commercial leaders into dominant market authorities.',
+    manif_p2: 'Governed by our 15-Star Executive Management Board and powered by enterprise infrastructure (CoreLink CRM + Manus), we execute with mathematical precision: Strong Product Quality + Real Distribution + Observed Digital Gap + OTB Full-Funnel Engine = Pure Market Dominance.',
 
     calc_tag: 'GROWTH SIMULATOR',
     calc_title: 'Interactive ROI & Growth Simulator',
@@ -85,7 +92,7 @@ const i18n = {
     btn_final_book: '💬 Book Strategy Session',
     btn_final_email: 'Email Us Directly →',
 
-    footer_passion: 'Passion for Brand Craft · Over 7 Years',
+    footer_passion: 'Growth Partner to +11 Enterprise Brands · 7+ Years of Mastery',
 
     modal_title: 'BOOK OTB STRATEGY SESSION',
     modal_desc: 'Submit your contact details and an OTB Agency strategist will reach out immediately to formulate your roadmap.',
@@ -100,6 +107,7 @@ const i18n = {
     lang_btn: 'English',
     nav_home: 'الرئيسية',
     nav_services: 'ما نصنعه',
+    nav_benchmark: 'إنجاز فرانكس',
     nav_showcase: 'معرض الأعمال',
     nav_manifesto: 'الجرأة مبدأ',
     nav_calculator: 'حاسبة النمو',
@@ -107,50 +115,58 @@ const i18n = {
     nav_wa: 'الواتساب المباشر',
 
     hero_title: 'نضع علامتك تحت أضواء <br><span class="gold-italic-accent">القيادة.</span>',
-    hero_desc: 'أكثر من 7 سنوات في وضع العلامات التجارية تحت أضواء النجاح. نبتكر قصصاً مرئية واستراتيجيات تسويقية جريئة تخلق فارقاً استثنائياً لبراندك — بحرفة، وهدوء، ونتائج حقيقية.',
-    btn_work: 'شاهد أعمالنا',
+    hero_desc: 'أكثر من 7 سنوات في قيادة وتنمية كبرى مصانع الأغذية (FMCG) والقهوة المختصة والبراندات الصاعدة في مصر. لا نبيع منشورات نمطية، بل نبني منظومات نمو تجارية متكاملة تحول المنتجات إلى قوى سوقية مهيمنة.',
+    btn_work: 'استعرض سابقة الأعمال المثبتة',
 
-    stat_1: 'سنوات خبرة',
-    stat_2: 'متابع نشط',
-    stat_3: 'استراتيجيات مثبتة',
+    stat_1: 'سنوات قيادة بالسوق',
+    stat_brands: 'براندات استراتيجية مخدومة',
+    stat_2: 'متابع بمجتمعنا العضوي',
+    stat_franks: 'ذروة مبيعات فرانكس الشهرية',
 
-    craft_title: 'ما الذي نصنعه للعلامات.',
+    clients_tag: 'شركاء النجاح وكبرى الكيانات التجارية والصناعية',
+
+    bm_title: 'قصة التحول الاستراتيجي لمصنع فرانكس (Franks)',
+    bm_lead: 'امتلك مصنع فرانكس جودة تصنيع فائقة وشبكة توزيع حقيقية، لكنه عانى من فجوة رقمية وضعته بالمركز 25 سوقياً. تدخلت OTB بمنظومة النمو الشاملة:',
+
+    craft_title: 'ما الذي نصنعه للعلامات والشركات الكبرى.',
     case_study_link: 'دراسة حالة ←',
 
-    c1_title: 'إنتاج مرئي فاخر',
-    c1_desc: 'إنتاج مرئي احترافي للقهوة المختصة، اللايف ستايل، والمنتجات الفاخرة يبرز تفاصيل ودقة الحرفة — كل لقطة مبنية على قصة.',
-    meta_field: 'المجال',
-    c1_field: 'قهوة · لايف ستايل',
+    c1_title: 'الإنتاج المرئي والسينمائي الفاخر',
+    c1_desc: 'إنتاج إعلاني سينمائي بدقة 4K للأغذية والمشروبات (FMCG) والقهوة المختصة. كل لقطة مدروسة بإضاءات استوديو وتصحيح ألوان احترافي وسرد قصصي عاطفي يحرك المبيعات.',
+    meta_field: 'القطاع',
+    c1_field: 'أغذية ومشروبات · قهوة مختصة · سلع استهلاكية',
     meta_output: 'المخرجات',
-    c1_output: 'فيديو · فوتو',
-    meta_results: 'النتائج',
-    c1_results: '+240% تفاعل · 4.8x ROAS',
-    meta_duration: 'المدة',
-    c1_duration: 'حسب المشروع',
+    c1_output: 'إعلانات سينمائية · تصوير فوتوغرافي · وصفات طهاة',
+    meta_results: 'النتائج المحققة',
+    c1_results: '+220K مشاهدة · +240% تفاعل',
+    meta_duration: 'الحوكمة',
+    c1_duration: 'مسار إنتاج CoreLink المعتمد',
 
-    c2_title: 'استراتيجيات تتصدّر السوق',
-    c2_desc: 'استراتيجيات تسويقية جريئة تتصدّر السوق وتحقق نتائج تجارية حقيقية وملموسة لبراندك — من التموضع حتى الحملة.',
+    c2_title: 'إعلانات الأداء الموجهة للتحويل والـ ROAS',
+    c2_desc: 'حملات إعلانية عالية الدقة على Meta و TikTok و YouTube بهيكلية TOFU-MOFU-BOFU لدفع طلبات الدليفري والـ B2B Wholesale وتحقيق أعلى عائد استثماري.',
     meta_scope: 'النطاق',
-    c2_scope: 'تموضع · حملات',
+    c2_scope: 'تموضع العلامة · مبيعات مباشرة',
     meta_channels: 'القنوات',
-    c2_channels: 'سوشيال · أداء',
-    c2_results: '3.8x - 5.2x ROAS',
-    c2_duration: 'حسب الهدف',
+    c2_channels: 'إعلانات Meta · تيك توك · يوتيوب',
+    c2_results: '3.8x - 5.2x مضاعف ROAS',
+    c2_duration: 'الفئة المستهدفة',
+    c2_duration: 'المصانع والكيانات الكبرى',
 
-    c3_title: 'هويات ثلاثية الأبعاد',
-    c3_desc: 'تطوير هويات بصرية ثلاثية الأبعاد مميزة وشعارات مخصصة تعكس قوة وتميز العلامة التجارية — هوية تُرى وتُلمس.',
-    c3_output: 'هوية · شعار 3D',
+    c3_title: 'الهويات البصرية ثلاثية الأبعاد ومنظومات العلامة',
+    c3_desc: 'تطوير هويات بصرية ثلاثية الأبعاد (3D) ورندرات CGI للعبوات ودليل براند متكامل (Brand Book) يفرض هيبة المنتج على رفوف المتاجر والمنصات الرقمية.',
+    c3_output: 'هوية 3D · رندرات عبوات · دليل براند',
     meta_system: 'النظام',
-    c3_system: 'دليل استخدام (Brand Book)',
-    c3_results: '100% تفرد بصري',
-    c3_duration: 'حسب النطاق',
+    c3_system: 'الأسود الملكي والذهبي الإمبراطوري',
+    c3_results: '100% تفرد وتمايز بصري',
+    c3_duration: 'التنسيق',
+    c3_duration: 'إرشادات شاملة للمنصات',
 
-    showcase_title: 'معرض الأعمال.',
-    showcase_subtag: 'قريباً — ضع مشاريعك هنا',
+    showcase_title: 'سابقة الأعمال والنتائج الموثقة.',
+    showcase_subtag: 'نماذج حية وقصص نجاح من أسرع العلامات نمواً في السوق المصري',
 
-    manif_title: 'الُجرأة مبدأ، لا شعار.',
-    manif_p1: 'نؤمن أن العلامات القوية تُبنى من فهم أعمق لما ينجح فعلاً. نحب أن نكون في قلب التفاصيل، نعمل مع فرق صغيرة على أشياء تهّم.',
-    manif_p2: 'نصنع القصص المرئية، الاستراتيجيات، والهويات ثلاثية الأبعاد — بدرجات متفاوتة من الحرفة، لكن دائماً بالهدف نفسه: أن يكون براندك هو البطل.',
+    manif_title: '«لا نتبع القطيع، نحن نصنع الاتجاه.»',
+    manif_p1: 'نؤمن أن البراندات العظيمة لا تُبنى بالقوالب الجاهزة. منذ تأسيسها في 2019، خاضت OTB أكثر من 7 سنوات في قلب السوق المصري، وحولت مصانع الأغذية والقهوة والتجارة إلى قوى مهيمنة تتصدر السوق.',
+    manif_p2: 'بإدارة مجلسنا التنفيذي المكون من 15 كفاءة متخصصة، وبدعم من بنيتنا الرقمية (CoreLink CRM + Manus)، ننفذ معادلتنا الرياضية: جودة تصنيع حقيقية + توزيع فعلي + فجوة رقمية مرصودة + محرك OTB الشامل = الصدارة السوقية المطلقة.',
 
     calc_tag: 'GROWTH SIMULATOR',
     calc_title: 'حاسبة النمو والعائد الاستثماري التفاعلية',
@@ -165,11 +181,11 @@ const i18n = {
     calc_disclaimer: '* هذه التقديرات مبنية على متوسط أداء حملات OTB Agency لعملائنا في نفس القطاع.',
     btn_claim_plan: 'احجز خطتك التسويقية الآن 🚀',
 
-    cta_final_title: 'جاهز تضع علامتك تحت الأضواء؟',
+    cta_final_title: 'جاهز تضع علامتك تحت أضواء القيادة؟',
     btn_final_book: '💬 احجز جلسة استراتيجية',
     btn_final_email: 'راسلنا على البريد ←',
 
-    footer_passion: 'شغف بصناعة العلامات · أكثر من 7 سنوات',
+    footer_passion: 'شريك نمو لأكثر من 11 براند استراتيجي · 7+ سنوات من الريادة',
 
     modal_title: 'BOOK OTB STRATEGY SESSION',
     modal_desc: 'أدخل بياناتك وسيتم التواصل معك مباشرة بواسطة فريق OTB Agency لبناء خطتك الإعلانية.',
@@ -255,7 +271,7 @@ function initCustomCursor() {
   }
   renderRing();
 
-  const interactives = document.querySelectorAll('a, button, .craft-card, .portfolio-spec-card, input, select, textarea');
+  const interactives = document.querySelectorAll('a, button, .craft-card, .portfolio-spec-card, .benchmark-card, input, select, textarea');
   interactives.forEach(el => {
     el.addEventListener('mouseenter', () => {
       ring.style.width = '52px';
@@ -407,7 +423,7 @@ function initRoiCalculator() {
   const industryChips = document.querySelectorAll('#industryChips .calc-chip');
   const channelChips = document.querySelectorAll('#channelChips .calc-chip');
 
-  let currentIndustryFactor = 1.2;
+  let currentIndustryFactor = 1.4;
   let currentChannelFactor = 1.0;
 
   industryChips.forEach(chip => {
@@ -418,7 +434,7 @@ function initRoiCalculator() {
       });
       chip.classList.add('active');
       chip.setAttribute('aria-checked', 'true');
-      currentIndustryFactor = parseFloat(chip.getAttribute('data-factor')) || 1.2;
+      currentIndustryFactor = parseFloat(chip.getAttribute('data-factor')) || 1.4;
       calculateROI();
     });
   });
@@ -450,11 +466,11 @@ function initRoiCalculator() {
       budgetDisplay.innerText = `$${budget.toLocaleString()} / ${suffix}`;
     }
 
-    const estReach = Math.round(budget * 180 * currentIndustryFactor * currentChannelFactor);
-    const minLeads = Math.round((budget / 4.2) * currentIndustryFactor);
-    const maxLeads = Math.round((budget / 2.2) * currentIndustryFactor * currentChannelFactor);
-    const minRoas = (3.2 * (currentIndustryFactor / 1.1)).toFixed(1);
-    const maxRoas = (4.8 * (currentIndustryFactor / 1.1) * (currentChannelFactor === 1.35 ? 1.15 : 1)).toFixed(1);
+    const estReach = Math.round(budget * 200 * currentIndustryFactor * currentChannelFactor);
+    const minLeads = Math.round((budget / 3.8) * currentIndustryFactor);
+    const maxLeads = Math.round((budget / 1.9) * currentIndustryFactor * currentChannelFactor);
+    const minRoas = (3.5 * (currentIndustryFactor / 1.1)).toFixed(1);
+    const maxRoas = (5.2 * (currentIndustryFactor / 1.1) * (currentChannelFactor === 1.35 ? 1.15 : 1)).toFixed(1);
 
     if (reachDisplay) reachDisplay.innerText = `${estReach.toLocaleString()}+`;
     if (leadsDisplay) leadsDisplay.innerText = `${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()} ${leadsSuffix}`;
@@ -535,8 +551,8 @@ function initModal() {
     const budget = document.getElementById('budgetSlider') ? document.getElementById('budgetSlider').value : '1500';
     if (notes) {
       notes.value = currentLang === 'ar' 
-        ? `مهتم بخطة تسويقية بميزانية تقديرية: $${budget}/شهر.`
-        : `Interested in a growth strategy plan with estimated budget: $${budget}/month.`;
+        ? `مهتم بخطة نمو استراتيجية بميزانية تقديرية: $${budget}/شهر.`
+        : `Interested in an enterprise growth roadmap with estimated budget: $${budget}/month.`;
     }
   };
 
@@ -584,7 +600,7 @@ function initModal() {
 
       if (hasError) return;
 
-      const headerText = currentLang === 'ar' ? 'طلب استشارة استراتيجية جديد - OTB Agency' : 'New Strategy Session Request - OTB Agency';
+      const headerText = currentLang === 'ar' ? 'طلب استشارة استراتيجية جديد - OTB Agency' : 'New Strategy Growth Partnership - OTB Agency';
       const text = encodeURIComponent(`*${headerText}*%0A%0A*Name / Company:* ${name}%0A*Phone / WhatsApp:* ${phone}%0A*Service:* ${service}%0A*Notes:* ${notes || 'None'}`);
       const waUrl = `https://wa.me/201008080295?text=${text}`;
 
