@@ -3,28 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="OTB Agency — We are OTB, The City Kings. Strategic Digital Marketing, Luxury Visual Storytelling, 3D Brand Systems & Performance Scaling. 7+ Years of Market Leadership.">
-  <meta name="keywords" content="OTB Agency, Digital Marketing, Visual Storytelling, 3D Branding, Social Media, Growth Strategy, Egypt, Dubai">
-  <title>OTB Agency | We Are OTB · The City Kings — Official Luxury Experience</title>
+  
+  <!-- SEO & Primary Meta Tags -->
+  <title>OTB Agency | We Are OTB · The City Kings — Official Agency Experience</title>
+  <meta name="description" content="وكالة OTB Agency (Out of The Box): إنتاج مرئي سينمائي للقهوة المختصة والمنتجات الفاخرة، إعلانات ممولة عالية العائد، وهويات بصرية ثلاثية الأبعاد. 7+ سنوات من قيادة السوق.">
+  <meta name="keywords" content="OTB Agency, Out of The Box, Digital Marketing, Visual Storytelling, 3D Branding, Coffee Commercials, Social Media Growth, Cairo, Dubai">
+  <meta name="author" content="OTB Agency">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://ahmedissamramadan.github.io/otb-agency-landing-page/">
+
+  <!-- Multilingual SEO hreflang -->
+  <link rel="alternate" hreflang="ar" href="https://ahmedissamramadan.github.io/otb-agency-landing-page/">
+  <link rel="alternate" hreflang="en" href="https://ahmedissamramadan.github.io/otb-agency-landing-page/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://ahmedissamramadan.github.io/otb-agency-landing-page/">
+
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmedissamramadan.github.io/otb-agency-landing-page/">
+  <meta property="og:title" content="OTB Agency | We Are OTB · The City Kings">
+  <meta property="og:description" content="Bold Strategies · Cinematic Visual Storytelling · 3D Brand Systems · Real Commercial Results. 7+ years of market leadership.">
+  <meta property="og:image" content="https://ahmedissamramadan.github.io/otb-agency-landing-page/assets/images/otb_official_showcase.jpg">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="OTB Agency | We Are OTB · The City Kings">
+  <meta name="twitter:description" content="Digital Marketing · Bold Strategies · Real Results. Official Luxury Agency Portfolio.">
+  <meta name="twitter:image" content="https://ahmedissamramadan.github.io/otb-agency-landing-page/assets/images/otb_official_showcase.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/otb_official_logo.jpg">
 
   <!-- Google Fonts: Cairo, Tajawal, Playfair Display, Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Core Libraries: Three.js, GSAP 3.12, Lenis Smooth Scroll -->
+  <!-- Core Animation & Physics Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
 
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AdvertisingAgency",
+    "name": "OTB Agency",
+    "alternateName": "Out of The Box Agency",
+    "url": "https://ahmedissamramadan.github.io/otb-agency-landing-page/",
+    "logo": "https://ahmedissamramadan.github.io/otb-agency-landing-page/assets/images/otb_official_logo.jpg",
+    "image": "https://ahmedissamramadan.github.io/otb-agency-landing-page/assets/images/otb_official_showcase.jpg",
+    "description": "Full-service digital marketing, cinematic visual storytelling, 3D brand systems, and performance advertising agency.",
+    "telephone": "+201008080295",
+    "email": "otbagency5@gmail.com",
+    "sameAs": [
+      "https://www.facebook.com/otbagency5/",
+      "https://instagram.com/otbagency5",
+      "https://tiktok.com/@otbagency5",
+      "https://linkedin.com/company/otbagency"
+    ],
+    "priceRange": "$$$"
+  }
+  </script>
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- Ambient Sound Effect Element (Web Audio API Synthesized) -->
-  <div id="ambient-audio-feedback" aria-hidden="true"></div>
 
   <!-- Background WebGL 3D Particle Constellation Canvas -->
   <canvas id="webgl-hero-canvas" aria-hidden="true"></canvas>
@@ -37,16 +85,16 @@
   <header class="navbar" id="navbar">
     <div class="container nav-wrapper">
       
-      <!-- Brand Logo & Monogram -->
-      <a href="#home" class="logo-brand" aria-label="OTB Agency Home">
+      <!-- Brand Logo (Returns to Top #home) -->
+      <a href="#home" class="logo-brand" aria-label="OTB Agency - Return to Top">
         <div class="logo-img-box">
           <img src="assets/images/otb_official_logo.jpg" alt="OTB Agency Official Logo">
-          <span class="logo-status-pulse" title="Agency Operational & Online"></span>
+          <span class="logo-status-pulse" title="Agency Online & Operational"></span>
         </div>
         <div class="logo-text-group">
           <div class="logo-title-row">
             <span class="logo-title-text">OTB AGENCY</span>
-            <svg class="crown-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <svg class="crown-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
               <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
             </svg>
           </div>
@@ -54,13 +102,14 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links with Dynamic Indicator -->
+      <!-- Desktop Nav Links with Dynamic Active Spy Indicator -->
       <nav class="nav-menu" id="navMenu" aria-label="Primary Navigation">
         <ul class="nav-links">
           <li><a href="#about" class="nav-link" data-i18n="nav_about">عن OTB</a></li>
-          <li><a href="#services" class="nav-link active" data-i18n="nav_services">خدماتنا</a></li>
-          <li><a href="#process" class="nav-link" data-i18n="nav_process">منهجية العمل</a></li>
+          <li><a href="#services" class="nav-link" data-i18n="nav_services">خدماتنا</a></li>
+          <li><a href="#clients" class="nav-link" data-i18n="nav_clients">عملاؤنا</a></li>
           <li><a href="#showcase" class="nav-link" data-i18n="nav_showcase">معرض الأعمال</a></li>
+          <li><a href="#process" class="nav-link" data-i18n="nav_process">منهجية العمل</a></li>
           <li><a href="#calculator" class="nav-link" data-i18n="nav_calculator">حاسبة النمو</a></li>
           <li><a href="#contact" class="nav-link" data-i18n="nav_contact">التواصل</a></li>
         </ul>
@@ -70,7 +119,7 @@
       <div class="nav-actions">
         
         <!-- Tactile Sound Toggle -->
-        <button class="nav-icon-btn" id="soundToggleBtn" aria-label="Toggle Tactile Audio" title="صوت تفاعلي">
+        <button class="nav-icon-btn" id="soundToggleBtn" aria-label="تبديل الصوت التفاعلي" title="صوت تفاعلي">
           <svg class="sound-icon-on" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
           </svg>
@@ -80,23 +129,23 @@
         </button>
 
         <!-- Bi-Directional Language Switcher Button -->
-        <button class="btn btn-lang" id="langToggleBtn" onclick="toggleLanguage()" aria-label="Switch Language">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+        <button class="btn btn-lang" id="langToggleBtn" onclick="toggleLanguage()" aria-label="Switch Language / تبديل اللغة">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
           </svg>
           <span id="langBtnText">English</span>
         </button>
 
         <!-- Direct WhatsApp Action -->
-        <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!%20I%20want%20to%20scale%20my%20brand." target="_blank" rel="noopener" class="btn btn-whatsapp" data-i18n="nav_wa">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!%20I%20want%20to%20scale%20my%20brand." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="تواصل عبر الواتساب المباشر" data-i18n="nav_wa">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
             <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24h.02zm-3.64 3.86c-.2 0-.44.08-.67.33-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.12.16 1.74 2.78 4.3 3.79.61.24 1.09.39 1.46.51.62.2 1.18.17 1.62.1.5-.07 1.53-.62 1.75-1.23.22-.6.22-1.12.15-1.23-.07-.11-.25-.18-.53-.32-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.19.29-.74.91-.91 1.1-.17.19-.34.21-.62.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.68-1.57-1.96-.16-.29-.02-.44.12-.58.13-.13.29-.33.43-.5.14-.17.19-.29.28-.48.1-.19.05-.36-.02-.5-.08-.14-.64-1.55-.88-2.12-.23-.57-.47-.49-.64-.5z"/>
           </svg>
           <span class="btn-wa-text">الواتساب المباشر</span>
         </a>
 
         <!-- Mobile Menu Toggle -->
-        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Menu">
+        <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="فتح القائمة" aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -105,7 +154,31 @@
     </div>
   </header>
 
-  <main>
+  <!-- Mobile Navigation Drawer Overlay -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
+    <div class="drawer-header">
+      <div class="drawer-brand">
+        <span class="logo-title-text">OTB AGENCY 👑</span>
+      </div>
+      <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="إغلاق القائمة">✕</button>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#about" class="drawer-link" data-i18n="nav_about">عن OTB</a></li>
+      <li><a href="#services" class="drawer-link" data-i18n="nav_services">خدماتنا</a></li>
+      <li><a href="#clients" class="drawer-link" data-i18n="nav_clients">عملاؤنا</a></li>
+      <li><a href="#showcase" class="drawer-link" data-i18n="nav_showcase">معرض الأعمال</a></li>
+      <li><a href="#process" class="drawer-link" data-i18n="nav_process">منهجية العمل</a></li>
+      <li><a href="#calculator" class="drawer-link" data-i18n="nav_calculator">حاسبة النمو</a></li>
+      <li><a href="#contact" class="drawer-link" data-i18n="nav_contact">التواصل المباشر</a></li>
+    </ul>
+    <div class="drawer-footer">
+      <a href="https://wa.me/201008080295" target="_blank" rel="noopener" class="btn btn-gold-fill" style="width: 100%;">
+        تحدث مع المستشار عبر واتساب 💬
+      </a>
+    </div>
+  </div>
+
+  <main id="mainContent">
     <!-- ==========================================================================
          HERO SECTION: High-Impact Humanistic Storytelling with Dual WebGL Layer
          ========================================================================== -->
@@ -124,7 +197,8 @@
             تحت <span class="gold-italic-accent">أضواء</span> القيادة
           </h1>
 
-          <p class="hero-sub-en">Bold Strategies · Cinematic Craft · Real Commercial Results.</p>
+          <!-- Proper LTR tag to ensure punctuation and English words render flawlessly -->
+          <p class="hero-sub-en" dir="ltr">Bold Strategies · Cinematic Craft · Real Results.</p>
 
           <p class="hero-description" data-i18n="hero_desc">
             أكثر من 7 سنوات في صياغة هويات بصرية استثنائية، وإنتاج مرئي سينمائي للعلامات الراقية والقهوة المختصة، وإطلاق حملات تسويقية جريئة تُهيمن على السوق وتحقق نمواً استثنائياً.
@@ -133,15 +207,15 @@
           <div class="hero-cta">
             <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!%20I%20want%20to%20start%20my%20project." target="_blank" rel="noopener" class="btn btn-gold-fill" data-i18n="btn_start">
               <span>ابدأ مشروعك الآن</span>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
                 <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-7.85-1.42 1.42L16.86 11H5v2z"/>
               </svg>
             </a>
             
-            <a href="#services" class="btn btn-outline-dark" data-i18n="btn_explore_services">
-              <span>استكشف خدماتنا</span>
-              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+            <a href="#showcase" class="btn btn-outline-dark" data-i18n="btn_work">
+              <span>شاهد أعمالنا</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
               </svg>
             </a>
           </div>
@@ -178,7 +252,7 @@
         <div class="hero-visual">
           <div class="featured-dark-card" id="heroCard">
             
-            <!-- Ambient Glow Behind 3D Object -->
+            <!-- Ambient Radial Glow Behind 3D Object -->
             <div class="card-radial-glow"></div>
 
             <!-- 3D Interactive WebGL Wireframe Container -->
@@ -188,35 +262,35 @@
 
             <div class="card-crown-header">
               <div class="crown-icon-badge">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)" aria-hidden="true">
                   <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
                 </svg>
               </div>
-              <span class="submotto-gold">WE ARE OTB</span>
-              <span class="motto-gold-title">THE CITY KINGS</span>
+              <span class="submotto-gold" dir="ltr">WE ARE OTB</span>
+              <span class="motto-gold-title" dir="ltr">THE CITY KINGS</span>
             </div>
 
             <ul class="card-bullet-list">
               <li data-i18n="card_b1">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-primary)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-primary)" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 <span>إنتاج مرئي سينمائي فاخر للقهوة واللايف ستايل</span>
               </li>
               <li data-i18n="card_b2">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-primary)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-primary)" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 <span>استراتيجيات تسويقية جريئة تتصدّر السوق وتحقق مبيعات حقيقية</span>
               </li>
               <li data-i18n="card_b3">
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-primary)"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="var(--gold-primary)" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
                 <span>هويات بصرية ثلاثية الأبعاد مميزة ومنظومات علامة متكاملة</span>
               </li>
             </ul>
 
             <div class="card-footer-row">
-              <div class="inset-craft-badge">
+              <div class="inset-craft-badge" dir="ltr">
                 <span class="craft-title">Cinematic</span>
                 <span class="craft-sub">STORYTELLING CRAFT</span>
               </div>
-              <button class="btn-card-action" onclick="openModal()" data-i18n="btn_request_audit">
+              <button class="btn-card-action" onclick="openModal()" data-i18n="btn_request_audit" aria-label="طلب جلسة استشارية فورية">
                 جلسة استشارية ⚡
               </button>
             </div>
@@ -226,14 +300,38 @@
     </section>
 
     <!-- ==========================================================================
-         ABOUT & MANIFESTO: The Human Story of Out of The Box
+         TRUSTED BRANDS & CLIENTS TICKER (#clients)
+         ========================================================================== -->
+    <section class="clients-section" id="clients" aria-label="شركاء النجاح والعلامات التجارية">
+      <div class="container">
+        <p class="clients-tag" data-i18n="clients_tag">TRUSTED BY INDUSTRY LEADERS & VISIONARY BRANDS</p>
+        <div class="clients-marquee-wrap">
+          <div class="clients-marquee-track">
+            <span class="client-brand-chip">☕ SPECIALTY COFFEE ROASTERS</span>
+            <span class="client-brand-chip">💎 LUXURY LIFESTYLE & ATELIER</span>
+            <span class="client-brand-chip">🛍️ HIGH-CONVERTING D2C BRANDS</span>
+            <span class="client-brand-chip">🍽️ FINE DINING & HOSPITALITY</span>
+            <span class="client-brand-chip">🏢 TECH & SAAS SCALEUPS</span>
+            <span class="client-brand-chip">🏥 PREMIUM MEDICAL CLINICS</span>
+            <!-- Duplicated for continuous smooth marquee loop -->
+            <span class="client-brand-chip">☕ SPECIALTY COFFEE ROASTERS</span>
+            <span class="client-brand-chip">💎 LUXURY LIFESTYLE & ATELIER</span>
+            <span class="client-brand-chip">🛍️ HIGH-CONVERTING D2C BRANDS</span>
+            <span class="client-brand-chip">🍽️ FINE DINING & HOSPITALITY</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         ABOUT & MANIFESTO: The Human Story of Out of The Box (#about)
          ========================================================================== -->
     <section class="about-section" id="about">
       <div class="container">
         <div class="about-grid">
           <div class="about-media-box">
             <div class="about-img-frame">
-              <img src="assets/images/hero.jpg" alt="OTB Creative Production Team" class="about-main-img" loading="lazy">
+              <img src="assets/images/hero.jpg" alt="فريق الإنتاج الإبداعي لوكالة OTB Agency" class="about-main-img" loading="lazy">
               <div class="about-glass-badge">
                 <span class="badge-gold-number">07+</span>
                 <span class="badge-gold-text" data-i18n="badge_years_exp">سنوات من الإبداع خارج الصندوق</span>
@@ -252,24 +350,24 @@
             <div class="about-features-list">
               <div class="about-feature-item">
                 <div class="feature-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold-primary)">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold-primary)" aria-hidden="true">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
                 </div>
                 <div class="feature-text">
-                  <h4 data-i18n="feat1_title">إتقان سينمائي فائق</h4>
+                  <h3 class="feature-h3" data-i18n="feat1_title">إتقان سينمائي فائق</h3>
                   <p data-i18n="feat1_desc">نروي قصة منتجك بأعلى معايير الإضاءة، الكاميرات الاحترافية، واللونيات السينمائية التي تجعل المشاهد يعيش التجربة.</p>
                 </div>
               </div>
 
               <div class="about-feature-item">
                 <div class="feature-icon-box">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold-primary)">
+                  <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold-primary)" aria-hidden="true">
                     <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
                   </svg>
                 </div>
                 <div class="feature-text">
-                  <h4 data-i18n="feat2_title">استراتيجيات نمو مبنية على الأرقام</h4>
+                  <h3 class="feature-h3" data-i18n="feat2_title">استراتيجيات نمو مبنية على الأرقام</h3>
                   <p data-i18n="feat2_desc">كل فكرة إبداعية نطلقها تدعمها تحليلات دقيقة لمسار العميل ومعدل التحويل (ROAS) لتحقيق أعلى عائد تجاري.</p>
                 </div>
               </div>
@@ -284,7 +382,7 @@
     </section>
 
     <!-- ==========================================================================
-         SERVICES SECTION (#services): Ultra Humanistic 5-Pillar Architecture
+         SERVICES SECTION (#services): Unified 5-Pillar Architecture
          ========================================================================== -->
     <section class="services-section" id="services">
       <div class="container">
@@ -325,7 +423,7 @@
             <div class="service-card-top">
               <span class="service-num">01 / CINEMATIC</span>
               <div class="service-icon-wrap">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)" aria-hidden="true">
                   <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/>
                 </svg>
               </div>
@@ -364,7 +462,7 @@
             <div class="service-card-top">
               <span class="service-num">02 / PERFORMANCE</span>
               <div class="service-icon-wrap">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)" aria-hidden="true">
                   <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
                 </svg>
               </div>
@@ -403,7 +501,7 @@
             <div class="service-card-top">
               <span class="service-num">03 / 3D IDENTITY</span>
               <div class="service-icon-wrap">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)" aria-hidden="true">
                   <path d="M12 1.75L2 6.5v11L12 22.25 22 17.5V6.5L12 1.75zm0 2.38l7.65 3.64-3.41 1.63L8.6 5.76 12 4.13zm-8 4.25l7 3.35v7.54l-7-3.35V8.38zm9 10.89v-7.54l7-3.35v7.54l-7 3.35z"/>
                 </svg>
               </div>
@@ -442,7 +540,7 @@
             <div class="service-card-top">
               <span class="service-num">04 / SOCIAL ECOSYSTEM</span>
               <div class="service-icon-wrap">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)" aria-hidden="true">
                   <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
                 </svg>
               </div>
@@ -481,7 +579,7 @@
             <div class="service-card-top">
               <span class="service-num">05 / SALES INFRASTRUCTURE</span>
               <div class="service-icon-wrap">
-                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)">
+                <svg viewBox="0 0 24 24" width="28" height="28" fill="var(--gold-primary)" aria-hidden="true">
                   <path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.18 1.75-.48 2.54l2.6 1.53c.56-1.24.88-2.62.88-4.07 0-5.18-3.95-9.45-9-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-5.05.5-9 4.76-9 9.95 0 5.52 4.47 10 9.99 10 3.31 0 6.24-1.61 8.04-4.09l-2.54-1.49C16.1 17.72 14.2 19 12 19z"/>
                 </svg>
               </div>
@@ -520,7 +618,89 @@
     </section>
 
     <!-- ==========================================================================
-         METHODOLOGY: The 4-Step Velocity Engine
+         SHOWCASE & PORTFOLIO: Authentic Visuals with Interactive Lightbox & Case Studies (#showcase)
+         ========================================================================== -->
+    <section class="showcase-section" id="showcase">
+      <div class="container">
+        
+        <div class="section-header">
+          <span class="section-tag" data-i18n="showcase_tag">PROVEN PORTFOLIO & CASE STUDIES</span>
+          <h2 class="section-title" data-i18n="showcase_title">معرض الأعمال والقصص الناجحة</h2>
+          <p class="section-subtitle" data-i18n="showcase_sub">نماذج حية من هوياتنا البصرية، حملاتنا الإعلانية، وإنتاجنا السينمائي لشركاء النجاح. انقر على أي مشروع لاستعراض كواليسه ونتائجه.</p>
+        </div>
+
+        <div class="portfolio-grid">
+          
+          <!-- Item 1: Specialty Coffee Commercial -->
+          <div class="portfolio-card" data-title="Specialty Coffee Cinematic Commercial" data-category="Visual Storytelling" data-img="assets/images/otb_official_showcase.jpg" data-metric="+420% Organic Video Reach" data-desc="إنتاج إعلاني سينمائي متكامل لبراند قهوة مختصة ركز على إبراز تفاصيل التحميص واستخلاص الإسبريسو الفاخر بدقة 4K." role="button" tabindex="0" aria-label="عرض تفاصيل مشروع Specialty Coffee">
+            <div class="portfolio-img-box">
+              <img src="assets/images/otb_official_showcase.jpg" alt="إنتاج إعلاني سينمائي لبراند قهوة مختصة" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="overlay-tag">Commercial Video · Specialty Coffee</span>
+                <h3 class="overlay-title">Specialty Coffee Visual Experience</h3>
+                <div class="overlay-metric-badge">✦ عائد ROAS محقق: 4.8x</div>
+                <span class="overlay-action">استعراض كواليس المشروع 🔍</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Arabic Brand Identity -->
+          <div class="portfolio-card" data-title="Arabic Luxury Brand Identity System" data-category="3D & Brand Identity" data-img="assets/images/arabic_portfolio.jpg" data-metric="100% Bespoke Identity" data-desc="تطوير هوية بصرية عربية فاخرة تعكس الأصالة الملكية مع تايبوغرافي مخصص وألوان ذهبية محسوبة." role="button" tabindex="0" aria-label="عرض تفاصيل مشروع Arabic Luxury Brand">
+            <div class="portfolio-img-box">
+              <img src="assets/images/arabic_portfolio.jpg" alt="تصميم هوية بصرية عربية فاخرة لعلامة تجارية" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="overlay-tag">Brand Identity · Visual System</span>
+                <h3 class="overlay-title">هوية بصرية فاخرة متكاملة</h3>
+                <div class="overlay-metric-badge">✦ تميز بصري واعتراف سوقي</div>
+                <span class="overlay-action">استعراض كواليس المشروع 🔍</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Commercial Production & Media -->
+          <div class="portfolio-card" data-title="High-Converting Product Commercial Campaign" data-category="Performance & Video" data-img="assets/images/portfolio1.jpg" data-metric="+3.9x ROAS on Meta Ads" data-desc="حملة تسويقية قائمة على فيديوهات Reels جذابة ونسخ إعلانية خاطفة حققت أعلى معدل تحويل فوري." role="button" tabindex="0" aria-label="عرض تفاصيل مشروع Product Commercial Campaign">
+            <div class="portfolio-img-box">
+              <img src="assets/images/portfolio1.jpg" alt="تصوير منتجات تجارية وحملة إعلانات ممولة" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="overlay-tag">Performance & Media</span>
+                <h3 class="overlay-title">حملة تسويقية وإنتاج منتجات فاخرة</h3>
+                <div class="overlay-metric-badge">✦ مبيعات تجاوزت المستهدف بـ 180%</div>
+                <span class="overlay-action">استعراض كواليس المشروع 🔍</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4: Lifestyle Beverage Production -->
+          <div class="portfolio-card" data-title="Lifestyle Beverage & Hospitality Production" data-category="Cinematic Production" data-img="assets/images/portfolio2.jpg" data-metric="+1.8M Video Impressions" data-desc="إخراج وتصوير لايف ستايل عالمي للمشروبات والمطاعم الراقية ساهم في تصدر الترند المحلي." role="button" tabindex="0" aria-label="عرض تفاصيل مشروع Lifestyle Beverage">
+            <div class="portfolio-img-box">
+              <img src="assets/images/portfolio2.jpg" alt="إنتاج مرئي سينمائي للايف ستايل والمطاعم الفاخرة" loading="lazy">
+              <div class="portfolio-overlay">
+                <span class="overlay-tag">Cinematic Video</span>
+                <h3 class="overlay-title">إخراج وتصوير لايف ستايل عالمي</h3>
+                <div class="overlay-metric-badge">✦ انتشار واسع وجمهور وفي</div>
+                <span class="overlay-action">استعراض كواليس المشروع 🔍</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Direct CTA Repeater after Showcase (Review Point 20) -->
+        <div class="showcase-cta-banner">
+          <div class="showcase-cta-text">
+            <h3>أعجبك ما رأيت؟ دعنا نصنع قصة نجاح علامتك القادمة.</h3>
+            <p>جلسة عمل استراتيجية مجانية نحدد فيها خطة المحتوى والإعلانات المناسبة لبراندك.</p>
+          </div>
+          <button class="btn btn-gold-fill" onclick="openModal()" data-i18n="btn_claim_spotlight">
+            احجز جلستك الاستراتيجية الآن 👑
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         METHODOLOGY: The 4-Step Velocity Engine (#process)
          ========================================================================== -->
     <section class="process-section" id="process">
       <div class="container">
@@ -565,7 +745,7 @@
     </section>
 
     <!-- ==========================================================================
-         INTERACTIVE ROI & GROWTH CALCULATOR: Human-Centered Estimator
+         INTERACTIVE ROI & GROWTH CALCULATOR (#calculator)
          ========================================================================== -->
     <section class="calculator-section" id="calculator">
       <div class="container">
@@ -576,7 +756,7 @@
               <h2 class="calc-title" data-i18n="calc_title">حاسبة النمو والعائد الاستثماري التفاعلية</h2>
               <p class="calc-sub" data-i18n="calc_sub">حدد ميزانيتك ومجال عملك لتستكشف التقدير المتوقع لنمو علامتك التجارية مع استراتيجيات OTB.</p>
             </div>
-            <div class="calc-badge-icon">
+            <div class="calc-badge-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" width="36" height="36" fill="var(--gold-primary)">
                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h1.5v3l2-3h1.7l-2.35 3.53 2.65 4.47h-1.7l-2.1-3.6-1.7 2.6V15H12V5zM7 7h3v2H7V7zm0 4h3v2H7v-2zm10 4h-3v-2h3v2zm0-4h-3V9h3v2z"/>
               </svg>
@@ -590,22 +770,22 @@
               
               <!-- Input 1: Industry Selection -->
               <div class="calc-group">
-                <label class="calc-label" data-i18n="calc_lbl_industry">قطاع علامتك التجارية:</label>
-                <div class="calc-chips" id="industryChips">
-                  <button type="button" class="calc-chip active" data-factor="1.2" data-name="coffee">☕ قهوة ومطاعم فاخرة</button>
-                  <button type="button" class="calc-chip" data-factor="1.4" data-name="ecom">🛍️ تجارة إلكترونية وأزياء</button>
-                  <button type="button" class="calc-chip" data-factor="1.1" data-name="services">🏢 خدمات وأعمال B2B</button>
-                  <button type="button" class="calc-chip" data-factor="1.3" data-name="clinic">🏥 عيادات وتجميل</button>
+                <label class="calc-label" id="industryLabel" data-i18n="calc_lbl_industry">قطاع علامتك التجارية:</label>
+                <div class="calc-chips" id="industryChips" role="radiogroup" aria-labelledby="industryLabel">
+                  <button type="button" class="calc-chip active" data-factor="1.2" data-name="coffee" role="radio" aria-checked="true">☕ قهوة ومطاعم فاخرة</button>
+                  <button type="button" class="calc-chip" data-factor="1.4" data-name="ecom" role="radio" aria-checked="false">🛍️ تجارة إلكترونية وأزياء</button>
+                  <button type="button" class="calc-chip" data-factor="1.1" data-name="services" role="radio" aria-checked="false">🏢 خدمات وأعمال B2B</button>
+                  <button type="button" class="calc-chip" data-factor="1.3" data-name="clinic" role="radio" aria-checked="false">🏥 عيادات وتجميل</button>
                 </div>
               </div>
 
               <!-- Input 2: Monthly Budget Slider -->
               <div class="calc-group">
                 <div class="slider-label-row">
-                  <label class="calc-label" data-i18n="calc_lbl_budget">الميزانية التسويقية الشهرية التقريبية:</label>
+                  <label class="calc-label" for="budgetSlider" data-i18n="calc_lbl_budget">الميزانية التسويقية الشهرية التقريبية:</label>
                   <span class="slider-val-display" id="budgetDisplay">$1,500 / شهر</span>
                 </div>
-                <input type="range" class="calc-slider" id="budgetSlider" min="500" max="10000" step="250" value="1500">
+                <input type="range" class="calc-slider" id="budgetSlider" min="500" max="10000" step="250" value="1500" aria-label="شريط الميزانية التسويقية الشهرية">
                 <div class="slider-hints">
                   <span>$500</span>
                   <span>$5,000</span>
@@ -615,11 +795,11 @@
 
               <!-- Input 3: Target Platform -->
               <div class="calc-group">
-                <label class="calc-label" data-i18n="calc_lbl_channels">المنصة التسويقية المستهدفة:</label>
-                <div class="calc-chips" id="channelChips">
-                  <button type="button" class="calc-chip active" data-channel="meta">Meta (Instagram + Facebook)</button>
-                  <button type="button" class="calc-chip" data-channel="tiktok">TikTok Video Ads</button>
-                  <button type="button" class="calc-chip" data-channel="omni">حملات شاملة Multi-Channel</button>
+                <label class="calc-label" id="channelLabel" data-i18n="calc_lbl_channels">المنصة التسويقية المستهدفة:</label>
+                <div class="calc-chips" id="channelChips" role="radiogroup" aria-labelledby="channelLabel">
+                  <button type="button" class="calc-chip active" data-channel="meta" role="radio" aria-checked="true">Meta (Instagram + Facebook)</button>
+                  <button type="button" class="calc-chip" data-channel="tiktok" role="radio" aria-checked="false">TikTok Video Ads</button>
+                  <button type="button" class="calc-chip" data-channel="omni" role="radio" aria-checked="false">حملات شاملة Multi-Channel</button>
                 </div>
               </div>
 
@@ -661,72 +841,6 @@
     </section>
 
     <!-- ==========================================================================
-         SHOWCASE & PORTFOLIO: Authentic Visuals with Lightbox
-         ========================================================================== -->
-    <section class="showcase-section" id="showcase">
-      <div class="container">
-        
-        <div class="section-header">
-          <span class="section-tag" data-i18n="showcase_tag">PROVEN PORTFOLIO</span>
-          <h2 class="section-title" data-i18n="showcase_title">معرض الأعمال والقصص الناجحة</h2>
-          <p class="section-subtitle" data-i18n="showcase_sub">نماذج حية من هوياتنا البصرية، حملاتنا الإعلانية، وإنتاجنا السينمائي لشركاء النجاح.</p>
-        </div>
-
-        <div class="portfolio-grid">
-          
-          <!-- Item 1: Official Showcase Master -->
-          <div class="portfolio-card" data-title="Specialty Coffee & Cinematic Storytelling" data-category="Visual Video" data-img="assets/images/otb_official_showcase.jpg">
-            <div class="portfolio-img-box">
-              <img src="assets/images/otb_official_showcase.jpg" alt="OTB Official Showcase Specialty Coffee" loading="lazy">
-              <div class="portfolio-overlay">
-                <span class="overlay-tag">Cinematic Commercial</span>
-                <h3 class="overlay-title">Specialty Coffee Visual Experience</h3>
-                <span class="overlay-action">عرض التفاصيل 🔍</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 2: Arabic Portfolio Brand Design -->
-          <div class="portfolio-card" data-title="Arabic Luxury Brand Identity" data-category="3D Identity" data-img="assets/images/arabic_portfolio.jpg">
-            <div class="portfolio-img-box">
-              <img src="assets/images/arabic_portfolio.jpg" alt="Arabic Brand Identity and Showcase" loading="lazy">
-              <div class="portfolio-overlay">
-                <span class="overlay-tag">Brand Identity</span>
-                <h3 class="overlay-title">هوية بصرية فاخرة متكاملة</h3>
-                <span class="overlay-action">عرض التفاصيل 🔍</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 3: Portfolio 1 Project -->
-          <div class="portfolio-card" data-title="Commercial Product Showcase" data-category="Commercial Production" data-img="assets/images/portfolio1.jpg">
-            <div class="portfolio-img-box">
-              <img src="assets/images/portfolio1.jpg" alt="Commercial Product Visual Production" loading="lazy">
-              <div class="portfolio-overlay">
-                <span class="overlay-tag">Performance & Media</span>
-                <h3 class="overlay-title">حملة تسويقية وإنتاج منتجات فاخرة</h3>
-                <span class="overlay-action">عرض التفاصيل 🔍</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Item 4: Portfolio 2 Project -->
-          <div class="portfolio-card" data-title="Lifestyle & Beverage Storytelling" data-category="Visual Storytelling" data-img="assets/images/portfolio2.jpg">
-            <div class="portfolio-img-box">
-              <img src="assets/images/portfolio2.jpg" alt="Lifestyle Beverage Brand Storytelling" loading="lazy">
-              <div class="portfolio-overlay">
-                <span class="overlay-tag">Commercial Video</span>
-                <h3 class="overlay-title">إخراج وتصوير لايف ستايل عالمي</h3>
-                <span class="overlay-action">عرض التفاصيل 🔍</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ==========================================================================
          TESTIMONIALS & REVIEWS: Authentic Human Voices
          ========================================================================== -->
     <section class="testimonials-section" id="testimonials">
@@ -742,14 +856,14 @@
           
           <!-- Testimonial 1 -->
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars" aria-label="تقييم 5 من 5">★★★★★</div>
             <p class="testi-quote" data-i18n="t1_quote">
               "فريق OTB غير مفهومنا عن الإعلانات. تصويرهم للقهوة المختصة كان بمستوى سينمائي عالمي رفع قيمة علامتنا، وحملاتهم الممولة حققت لنا عائد 4.2x من أول شهر!"
             </p>
             <div class="testi-author-row">
               <div class="testi-avatar-box">👑</div>
               <div class="testi-info">
-                <h4 class="testi-name">م. عادل الشريف</h4>
+                <h3 class="testi-name">م. عادل الشريف</h3>
                 <span class="testi-role">مؤسس براند قهوة مختصة</span>
               </div>
             </div>
@@ -757,14 +871,14 @@
 
           <!-- Testimonial 2 -->
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars" aria-label="تقييم 5 من 5">★★★★★</div>
             <p class="testi-quote" data-i18n="t2_quote">
               "الهوية البصرية والفيديوهات ثلاثية الأبعاد اللي صمموها لنا ميزتنا تماماً عن كل المنافسين في السوق. الاحترافية والسرعة في التنفيذ عندهم لا تضاهى."
             </p>
             <div class="testi-author-row">
               <div class="testi-avatar-box">💎</div>
               <div class="testi-info">
-                <h4 class="testi-name">سارة المهدي</h4>
+                <h3 class="testi-name">سارة المهدي</h3>
                 <span class="testi-role">مديرة تسويق براند أزياء ولايف ستايل</span>
               </div>
             </div>
@@ -772,14 +886,14 @@
 
           <!-- Testimonial 3 -->
           <div class="testi-card">
-            <div class="testi-stars">★★★★★</div>
+            <div class="testi-stars" aria-label="تقييم 5 من 5">★★★★★</div>
             <p class="testi-quote" data-i18n="t3_quote">
               "ربط مسارات الواتساب بحملات تيك توك وفيسبوك ضاعف سرعة تحويل العملاء عندنا لأكثر من 3 أضعاف. أفضل استثمار تسويقي قمنا به بلا شك."
             </p>
             <div class="testi-author-row">
               <div class="testi-avatar-box">🚀</div>
               <div class="testi-info">
-                <h4 class="testi-name">كريم يوسف</h4>
+                <h3 class="testi-name">كريم يوسف</h3>
                 <span class="testi-role">رئيس تنفيذي لسلسلة مطاعم راقية</span>
               </div>
             </div>
@@ -790,32 +904,32 @@
     </section>
 
     <!-- ==========================================================================
-         CALL TO ACTION: High-Impact Direct Conversion Banner
+         CALL TO ACTION: High-Impact Direct Conversion Banner (#contact)
          ========================================================================== -->
     <section class="cta-section" id="contact">
       <div class="container">
         <div class="cta-box">
           <div class="cta-crown-wrap">
-            <svg viewBox="0 0 24 24" width="36" height="36" fill="var(--gold-primary)">
+            <svg viewBox="0 0 24 24" width="36" height="36" fill="var(--gold-primary)" aria-hidden="true">
               <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
             </svg>
           </div>
           
-          <p class="gold-tracked-title" style="margin-bottom: 0.75rem;">WE ARE OTB · THE CITY KINGS</p>
+          <p class="gold-tracked-title" dir="ltr" style="margin-bottom: 0.75rem;">WE ARE OTB · THE CITY KINGS</p>
           <h2 data-i18n="cta_title">جاهز لوضع علامتك التجارية <br><span class="gold-text">تحت أضواء القيادة؟</span></h2>
           <p data-i18n="cta_desc">تواصل معنا اليوم لبدء جلسة العمل الاستراتيجية لبناء نمو براندك وصناعة الفارق في سوقك.</p>
           
           <div class="cta-actions">
-            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!%20I%20want%20to%20schedule%20a%20strategy%20session." target="_blank" rel="noopener" class="btn btn-whatsapp">
-              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+            <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!%20I%20want%20to%20schedule%20a%20strategy%20session." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="تواصل فوري عبر تطبيق واتساب">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
                 <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24h.02zm-3.64 3.86c-.2 0-.44.08-.67.33-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.12.16 1.74 2.78 4.3 3.79.61.24 1.09.39 1.46.51.62.2 1.18.17 1.62.1.5-.07 1.53-.62 1.75-1.23.22-.6.22-1.12.15-1.23-.07-.11-.25-.18-.53-.32-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.19.29-.74.91-.91 1.1-.17.19-.34.21-.62.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.68-1.57-1.96-.16-.29-.02-.44.12-.58.13-.13.29-.33.43-.5.14-.17.19-.29.28-.48.1-.19.05-.36-.02-.5-.08-.14-.64-1.55-.88-2.12-.23-.57-.47-.49-.64-.5z"/>
               </svg>
               <span>محادثة واتساب مباشرة (+20 100 808 0295)</span>
             </a>
 
-            <button class="btn btn-gold-fill" onclick="openModal()" data-i18n="btn_modal">
+            <button class="btn btn-gold-fill" onclick="openModal()" data-i18n="btn_modal" aria-label="فتح نموذج حجز جلسة استراتيجية">
               <span>احجز جلسة استراتيجية فورية</span>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
                 <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
               </svg>
             </button>
@@ -832,11 +946,11 @@
   </main>
 
   <!-- ==========================================================================
-       MODAL 1: Strategy Booking Dialog
+       MODAL 1: Strategy Booking Dialog with Input Validation
        ========================================================================== -->
   <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal-card">
-      <button class="modal-close" onclick="closeModal()" aria-label="Close Modal">✕</button>
+      <button class="modal-close" onclick="closeModal()" aria-label="إغلاق النافذة المنبثقة">✕</button>
       
       <div class="modal-header">
         <span class="modal-badge">OTB EXECUTIVE STRATEGY</span>
@@ -848,11 +962,13 @@
         <div class="form-group">
           <label class="form-label" for="inputName" data-i18n="form_name">الاسم / الشركة *</label>
           <input type="text" class="form-input" id="inputName" placeholder="اسمك أو اسم براندك" required autocomplete="name">
+          <span class="field-error-msg" id="nameError" style="display:none;">يرجى إدخال اسمك أو اسم الشركة</span>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="inputPhone" data-i18n="form_phone">رقم التواصل / الواتساب *</label>
           <input type="tel" class="form-input" id="inputPhone" placeholder="+20 100 808 0295" required autocomplete="tel">
+          <span class="field-error-msg" id="phoneError" style="display:none;">يرجى إدخال رقم هاتف أو واتساب صحيح</span>
         </div>
 
         <div class="form-group">
@@ -879,15 +995,24 @@
   </div>
 
   <!-- ==========================================================================
-       MODAL 2: Portfolio Image Lightbox Dialog
+       MODAL 2: Portfolio Case Study & Lightbox Dialog
        ========================================================================== -->
-  <div class="modal-overlay" id="lightboxOverlay" role="dialog" aria-modal="true">
+  <div class="modal-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
     <div class="lightbox-card">
-      <button class="modal-close" onclick="closeLightbox()" aria-label="Close Lightbox">✕</button>
-      <img src="" alt="Showcase Preview" id="lightboxImg" class="lightbox-img">
+      <button class="modal-close" onclick="closeLightbox()" aria-label="إغلاق معاينة العمل">✕</button>
+      <img src="" alt="معاينة العمل" id="lightboxImg" class="lightbox-img">
       <div class="lightbox-caption">
-        <span id="lightboxCategory" class="lightbox-cat"></span>
+        <div class="lightbox-top-meta">
+          <span id="lightboxCategory" class="lightbox-cat"></span>
+          <span id="lightboxMetric" class="lightbox-metric-chip"></span>
+        </div>
         <h3 id="lightboxTitle" class="lightbox-h3"></h3>
+        <p id="lightboxDesc" class="lightbox-p"></p>
+        <div class="lightbox-action-row">
+          <a href="https://wa.me/201008080295?text=Hello%20OTB!%20I%20want%20a%20project%20like%20this%20showcase." target="_blank" rel="noopener" class="btn btn-gold-fill" style="padding: 0.65rem 1.4rem; font-size: 0.92rem;">
+            طلب مشروع مماثل 💬
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -903,7 +1028,7 @@
         <div class="footer-col brand-col">
           <div class="footer-brand-title">
             <span>OTB AGENCY</span>
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold-primary)">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--gold-primary)" aria-hidden="true">
               <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
             </svg>
           </div>
@@ -916,15 +1041,15 @@
           </div>
         </div>
 
-        <!-- Col 2: Services -->
+        <!-- Col 2: Services (Matching exactly the 5 pillars) -->
         <div class="footer-col">
           <h4 class="footer-heading" data-i18n="f_services_title">SERVICES</h4>
           <ul class="footer-links">
             <li><a href="#services">Visual Storytelling</a></li>
             <li><a href="#services">Performance Marketing</a></li>
             <li><a href="#services">3D Brand Systems</a></li>
-            <li><a href="#services">Social Management</a></li>
-            <li><a href="#services">WhatsApp Funnels</a></li>
+            <li><a href="#services">Social Media Growth</a></li>
+            <li><a href="#services">WhatsApp Sales Funnels</a></li>
           </ul>
         </div>
 
@@ -946,16 +1071,16 @@
             <li><a href="tel:+201008080295">📞 +20 100 808 0295</a></li>
             <li><a href="https://wa.me/201008080295" target="_blank" rel="noopener">💬 WhatsApp Direct</a></li>
             <li><a href="mailto:otbagency5@gmail.com">✉️ otbagency5@gmail.com</a></li>
-            <li><span style="color: var(--text-muted); font-size: 0.9rem;">📍 Egypt · Regional Client Hub</span></li>
+            <li><span style="color: var(--text-light-muted); font-size: 0.9rem;">📍 Egypt · Regional Client Hub</span></li>
           </ul>
         </div>
       </div>
 
       <!-- Footer Bottom Bar -->
       <div class="footer-bottom">
-        <span class="footer-bottom-motto">WE ARE OTB · THE CITY KINGS</span>
+        <span class="footer-bottom-motto" dir="ltr">WE ARE OTB · THE CITY KINGS</span>
         <span>© 2026 OTB Agency. All rights reserved. Designed with Human Excellence.</span>
-        <button class="back-to-top-btn" id="backToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="العودة للأعلى">
+        <button class="back-to-top-btn" id="backToTopBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})" aria-label="العودة لأعلى الصفحة" title="العودة للأعلى">
           <span>↑</span>
         </button>
       </div>
@@ -963,8 +1088,8 @@
   </footer>
 
   <!-- Floating Sticky WhatsApp Trigger Button -->
-  <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="Chat on WhatsApp" title="تواصل مباشرة عبر الواتساب">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF">
+  <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="تواصل مباشرة عبر واتساب" title="تواصل مباشرة عبر الواتساب">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF" aria-hidden="true">
       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24h.02zm-3.64 3.86c-.2 0-.44.08-.67.33-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.12.16 1.74 2.78 4.3 3.79.61.24 1.09.39 1.46.51.62.2 1.18.17 1.62.1.5-.07 1.53-.62 1.75-1.23.22-.6.22-1.12.15-1.23-.07-.11-.25-.18-.53-.32-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.19.29-.74.91-.91 1.1-.17.19-.34.21-.62.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.68-1.57-1.96-.16-.29-.02-.44.12-.58.13-.13.29-.33.43-.5.14-.17.19-.29.28-.48.1-.19.05-.36-.02-.5-.08-.14-.64-1.55-.88-2.12-.23-.57-.47-.49-.64-.5z"/>
     </svg>
     <span class="floating-wa-badge">Online</span>

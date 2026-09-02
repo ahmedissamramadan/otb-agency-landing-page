@@ -16,8 +16,9 @@ const i18n = {
     lang_btn: 'English',
     nav_about: 'عن OTB',
     nav_services: 'خدماتنا',
-    nav_process: 'منهجية العمل',
+    nav_clients: 'عملاؤنا',
     nav_showcase: 'معرض الأعمال',
+    nav_process: 'منهجية العمل',
     nav_calculator: 'حاسبة النمو',
     nav_contact: 'التواصل',
     nav_wa: 'الواتساب المباشر',
@@ -26,7 +27,7 @@ const i18n = {
     hero_title: 'نضع علامتك <br>تحت <span class="gold-italic-accent">أضواء</span> القيادة',
     hero_desc: 'أكثر من 7 سنوات في صياغة هويات بصرية استثنائية، وإنتاج مرئي سينمائي للعلامات الراقية والقهوة المختصة، وإطلاق حملات تسويقية جريئة تُهيمن على السوق وتحقق نمواً استثنائياً.',
     btn_start: 'ابدأ مشروعك الآن',
-    btn_explore_services: 'استكشف خدماتنا',
+    btn_work: 'شاهد أعمالنا',
 
     stat_1: 'سنوات قيادة بالسوق',
     stat_2: 'متابع وعميل نشط',
@@ -37,6 +38,8 @@ const i18n = {
     card_b2: 'استراتيجيات تسويقية جريئة تتصدّر السوق وتحقق مبيعات حقيقية',
     card_b3: 'هويات بصرية ثلاثية الأبعاد مميزة ومنظومات علامة متكاملة',
     btn_request_audit: 'جلسة استشارية ⚡',
+
+    clients_tag: 'TRUSTED BY INDUSTRY LEADERS & VISIONARY BRANDS',
 
     about_tag: 'WHO WE ARE',
     about_title: 'نحن لا نصنع إعلانات تقليدية، <br><span class="gold-italic-accent">بل نبني أساطير تجارية</span>',
@@ -106,6 +109,11 @@ const i18n = {
     s5_d4: 'تأهيل العملاء المحتملين تلقائياً (Lead Qualification)',
     s5_metric: 'زمن الاستجابة للعميل',
 
+    showcase_tag: 'PROVEN PORTFOLIO & CASE STUDIES',
+    showcase_title: 'معرض الأعمال والقصص الناجحة',
+    showcase_sub: 'نماذج حية من هوياتنا البصرية، حملاتنا الإعلانية، وإنتاجنا السينمائي لشركاء النجاح. انقر على أي مشروع لاستعراض كواليسه ونتائجه.',
+    btn_claim_spotlight: 'احجز جلستك الاستراتيجية الآن 👑',
+
     process_tag: 'PROVEN EXECUTION FRAMEWORK',
     process_title: 'منهجية OTB لتحقيق الصدارة',
     process_sub: 'طريقة عمل دقيقة ومجربة تضمن لك الانتقال من مجرد التواجد العادي إلى القيادة الحقيقية للسوق.',
@@ -130,10 +138,6 @@ const i18n = {
     calc_res_roas: 'مضاعف العائد المتوقع (ROAS):',
     calc_disclaimer: '* هذه التقديرات مبنية على متوسط أداء حملات OTB Agency لعملائنا في نفس القطاع.',
     btn_claim_plan: 'احجز خطتك التسويقية الآن 🚀',
-
-    showcase_tag: 'PROVEN PORTFOLIO',
-    showcase_title: 'معرض الأعمال والقصص الناجحة',
-    showcase_sub: 'نماذج حية من هوياتنا البصرية، حملاتنا الإعلانية، وإنتاجنا السينمائي لشركاء النجاح.',
 
     testi_tag: 'CLIENT VOICES',
     testi_title: 'ماذا يقول شركاؤنا عن تجربة OTB؟',
@@ -165,8 +169,9 @@ const i18n = {
     lang_btn: 'العربية',
     nav_about: 'About OTB',
     nav_services: 'Services',
-    nav_process: 'Methodology',
+    nav_clients: 'Clients',
     nav_showcase: 'Showcase',
+    nav_process: 'Methodology',
     nav_calculator: 'ROI Planner',
     nav_contact: 'Contact',
     nav_wa: 'WhatsApp Direct',
@@ -175,7 +180,7 @@ const i18n = {
     hero_title: 'Putting Your Brand <br>In The <span class="gold-italic-accent">Spotlight</span> Of Leadership',
     hero_desc: '7+ years of engineering iconic visual identities, high-end cinematic commercials for specialty coffee & lifestyle brands, and market-dominant growth campaigns that drive real commercial scale.',
     btn_start: 'Start Your Project Now',
-    btn_explore_services: 'Explore Our Services',
+    btn_work: 'View Our Work',
 
     stat_1: 'Years Market Mastery',
     stat_2: 'Active Community & Clients',
@@ -186,6 +191,8 @@ const i18n = {
     card_b2: 'Market-leading bold campaigns engineered for pure revenue',
     card_b3: 'Signature 3D isometric branding & custom identity systems',
     btn_request_audit: 'Strategy Audit ⚡',
+
+    clients_tag: 'TRUSTED BY INDUSTRY LEADERS & VISIONARY BRANDS',
 
     about_tag: 'WHO WE ARE',
     about_title: 'We Don\'t Just Run Ads, <br><span class="gold-italic-accent">We Build Market Legends</span>',
@@ -255,6 +262,11 @@ const i18n = {
     s5_d4: 'Automated lead scoring & immediate booking triggers',
     s5_metric: 'Average Lead Response Time',
 
+    showcase_tag: 'PROVEN PORTFOLIO & CASE STUDIES',
+    showcase_title: 'Signature Work & Client Success',
+    showcase_sub: 'Live visual case studies spanning cinematic commercials, 3D brand systems, and performance campaigns. Click any project to inspect behind-the-scenes.',
+    btn_claim_spotlight: 'Claim Your Brand Spotlight 👑',
+
     process_tag: 'PROVEN EXECUTION FRAMEWORK',
     process_title: 'The OTB Velocity Engine',
     process_sub: 'A battle-tested 4-step framework guiding your brand from ordinary presence to undeniable market dominance.',
@@ -279,10 +291,6 @@ const i18n = {
     calc_res_roas: 'Projected Return (ROAS):',
     calc_disclaimer: '* Projections are based on historical benchmarks achieved across client verticals at OTB Agency.',
     btn_claim_plan: 'Lock In Your Strategy Plan 🚀',
-
-    showcase_tag: 'PROVEN PORTFOLIO',
-    showcase_title: 'Signature Work & Client Success',
-    showcase_sub: 'Live visual case studies spanning cinematic commercials, 3D brand systems, and performance campaigns.',
 
     testi_tag: 'CLIENT VOICES',
     testi_title: 'What Founders Say About OTB',
@@ -315,6 +323,7 @@ const i18n = {
    INITIALIZATION LIFECYCLE
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+  checkUrlLanguage();
   initLenis();
   initNavbar();
   initCustomCursor();
@@ -328,6 +337,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initGsapAnimations();
   initCounterObserver();
 });
+
+/* Check if ?lang=en is present in URL */
+function checkUrlLanguage() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const lang = urlParams.get('lang');
+  if (lang === 'en' && currentLang !== 'en') {
+    toggleLanguage(false);
+  }
+}
 
 /* ==========================================================================
    1. LENIS SMOOTH SCROLL ENGINE
@@ -472,16 +490,11 @@ function initThreeJsWebGL() {
   // 350 Golden Ambient Points
   const count = 350;
   const positions = new Float32Array(count * 3);
-  const velocities = new Float32Array(count * 3);
 
   for (let i = 0; i < count * 3; i += 3) {
     positions[i] = (Math.random() - 0.5) * 14;
     positions[i + 1] = (Math.random() - 0.5) * 10;
     positions[i + 2] = (Math.random() - 0.5) * 8;
-
-    velocities[i] = (Math.random() - 0.5) * 0.003;
-    velocities[i + 1] = (Math.random() - 0.5) * 0.003;
-    velocities[i + 2] = (Math.random() - 0.5) * 0.002;
   }
 
   const geometry = new THREE.BufferGeometry();
@@ -510,7 +523,6 @@ function initThreeJsWebGL() {
   function animate() {
     requestAnimationFrame(animate);
 
-    // Inertial camera motion
     currentMouseX += (targetMouseX - currentMouseX) * 0.04;
     currentMouseY += (targetMouseY - currentMouseY) * 0.04;
 
@@ -610,7 +622,6 @@ function initCard3DCube() {
       innerMesh.rotation.x -= velX * 1.5;
       innerMesh.rotation.y -= velY * 1.5;
 
-      // Restoring constant pleasant idle spin
       velX += (0.004 - velX) * 0.05;
       velY += (0.008 - velY) * 0.05;
     }
@@ -636,8 +647,12 @@ function initServicesFilter() {
 
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
+      tabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
 
       const filter = tab.getAttribute('data-filter');
 
@@ -678,8 +693,12 @@ function initRoiCalculator() {
 
   industryChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      industryChips.forEach(c => c.classList.remove('active'));
+      industryChips.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-checked', 'false');
+      });
       chip.classList.add('active');
+      chip.setAttribute('aria-checked', 'true');
       currentIndustryFactor = parseFloat(chip.getAttribute('data-factor')) || 1.2;
       calculateROI();
     });
@@ -687,8 +706,12 @@ function initRoiCalculator() {
 
   channelChips.forEach(chip => {
     chip.addEventListener('click', () => {
-      channelChips.forEach(c => c.classList.remove('active'));
+      channelChips.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-checked', 'false');
+      });
       chip.classList.add('active');
+      chip.setAttribute('aria-checked', 'true');
       const channel = chip.getAttribute('data-channel');
       currentChannelFactor = channel === 'omni' ? 1.35 : (channel === 'tiktok' ? 1.2 : 1.0);
       calculateROI();
@@ -705,7 +728,6 @@ function initRoiCalculator() {
       budgetDisplay.innerText = `$${budget.toLocaleString()} / شهر`;
     }
 
-    // Mathematical projection model
     const estReach = Math.round(budget * 180 * currentIndustryFactor * currentChannelFactor);
     const minLeads = Math.round((budget / 4.2) * currentIndustryFactor);
     const maxLeads = Math.round((budget / 2.2) * currentIndustryFactor * currentChannelFactor);
@@ -721,7 +743,7 @@ function initRoiCalculator() {
 }
 
 /* ==========================================================================
-   8. PORTFOLIO LIGHTBOX ENGINE
+   8. PORTFOLIO CASE STUDY & LIGHTBOX ENGINE
    ========================================================================== */
 function initLightbox() {
   const cards = document.querySelectorAll('.portfolio-card');
@@ -729,18 +751,32 @@ function initLightbox() {
   const img = document.getElementById('lightboxImg');
   const title = document.getElementById('lightboxTitle');
   const cat = document.getElementById('lightboxCategory');
+  const metric = document.getElementById('lightboxMetric');
+  const desc = document.getElementById('lightboxDesc');
 
   cards.forEach(card => {
-    card.addEventListener('click', () => {
+    const openCard = () => {
       const src = card.getAttribute('data-img');
       const cardTitle = card.getAttribute('data-title');
       const cardCat = card.getAttribute('data-category');
+      const cardMetric = card.getAttribute('data-metric');
+      const cardDesc = card.getAttribute('data-desc');
 
       if (img && src) img.src = src;
       if (title && cardTitle) title.innerText = cardTitle;
       if (cat && cardCat) cat.innerText = cardCat;
+      if (metric && cardMetric) metric.innerText = `✦ ${cardMetric}`;
+      if (desc && cardDesc) desc.innerText = cardDesc;
 
       if (overlay) overlay.classList.add('active');
+    };
+
+    card.addEventListener('click', openCard);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openCard();
+      }
     });
   });
 
@@ -756,14 +792,19 @@ function initLightbox() {
 }
 
 /* ==========================================================================
-   9. STRATEGY BOOKING MODAL
+   9. STRATEGY BOOKING MODAL WITH FIELD VALIDATION
    ========================================================================== */
 function initModal() {
   const overlay = document.getElementById('modalOverlay');
   const form = document.getElementById('bookingForm');
+  const nameInput = document.getElementById('inputName');
+  const phoneInput = document.getElementById('inputPhone');
+  const nameError = document.getElementById('nameError');
+  const phoneError = document.getElementById('phoneError');
 
   window.openModal = function() {
     if (overlay) overlay.classList.add('active');
+    setTimeout(() => { if (nameInput) nameInput.focus(); }, 100);
   };
 
   window.openModalWithPlan = function() {
@@ -777,6 +818,8 @@ function initModal() {
 
   window.closeModal = function() {
     if (overlay) overlay.classList.remove('active');
+    if (nameError) nameError.style.display = 'none';
+    if (phoneError) phoneError.style.display = 'none';
   };
 
   if (overlay) {
@@ -785,29 +828,42 @@ function initModal() {
     });
   }
 
+  // Clear errors on input
+  if (nameInput) nameInput.addEventListener('input', () => { if (nameError) nameError.style.display = 'none'; });
+  if (phoneInput) phoneInput.addEventListener('input', () => { if (phoneError) phoneError.style.display = 'none'; });
+
   // Close on Escape key (WCAG)
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeModal();
       closeLightbox();
+      closeMobileDrawer();
     }
   });
 
   if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('inputName').value.trim();
-      const phone = document.getElementById('inputPhone').value.trim();
+      const name = nameInput ? nameInput.value.trim() : '';
+      const phone = phoneInput ? phoneInput.value.trim() : '';
       const service = document.getElementById('selectService').value;
       const notes = document.getElementById('inputNotes').value.trim();
 
-      if (!name || !phone) {
-        alert(currentLang === 'ar' ? 'يرجى كتابة الاسم ورقم الواتساب.' : 'Please enter your name and phone number.');
-        return;
+      let hasError = false;
+
+      if (!name || name.length < 2) {
+        if (nameError) nameError.style.display = 'block';
+        hasError = true;
+      }
+      if (!phone || phone.length < 7) {
+        if (phoneError) phoneError.style.display = 'block';
+        hasError = true;
       }
 
+      if (hasError) return;
+
       // Build WhatsApp payload URL
-      const text = encodeURIComponent(`*طلب جلسة استراتيجية جديدة - OTB Agency*%0A%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*الخدمة:* ${service}%0A*الملاحظات:* ${notes || 'لا يوجد'}`);
+      const text = encodeURIComponent(`*طلب استشارة استراتيجية جديد - OTB Agency*%0A%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*الخدمة:* ${service}%0A*الملاحظات:* ${notes || 'لا يوجد'}`);
       const waUrl = `https://wa.me/201008080295?text=${text}`;
 
       window.open(waUrl, '_blank');
@@ -820,7 +876,7 @@ function initModal() {
 /* ==========================================================================
    10. BILINGUAL LANGUAGE SWITCHER
    ========================================================================== */
-window.toggleLanguage = function() {
+window.toggleLanguage = function(updateUrl = true) {
   currentLang = currentLang === 'ar' ? 'en' : 'ar';
   const html = document.documentElement;
 
@@ -833,6 +889,11 @@ window.toggleLanguage = function() {
   }
 
   updateLanguageUI();
+
+  if (updateUrl && history.replaceState) {
+    const newUrl = currentLang === 'en' ? '?lang=en' : window.location.pathname;
+    history.replaceState(null, '', newUrl + window.location.hash);
+  }
 };
 
 function updateLanguageUI() {
@@ -851,12 +912,16 @@ function updateLanguageUI() {
 }
 
 /* ==========================================================================
-   11. NAVBAR SCROLL EFFECT & ACTIVE SPY
+   11. NAVBAR SCROLL EFFECT & MOBILE DRAWER
    ========================================================================== */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-link');
+  const mobileBtn = document.getElementById('mobileMenuBtn');
+  const drawer = document.getElementById('mobileNavDrawer');
+  const drawerClose = document.getElementById('drawerCloseBtn');
+  const drawerLinks = document.querySelectorAll('.drawer-link');
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) {
@@ -868,7 +933,7 @@ function initNavbar() {
     // Section scroll spy
     let currentId = '';
     sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
+      const sectionTop = section.offsetTop - 140;
       if (window.scrollY >= sectionTop) {
         currentId = section.getAttribute('id');
       }
@@ -882,25 +947,25 @@ function initNavbar() {
     });
   });
 
-  // Mobile menu toggle
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navMenu = document.getElementById('navMenu');
-  if (mobileBtn && navMenu) {
+  // Mobile Drawer toggling
+  if (mobileBtn && drawer) {
     mobileBtn.addEventListener('click', () => {
-      const isVisible = navMenu.style.display === 'block';
-      navMenu.style.display = isVisible ? 'none' : 'block';
-      navMenu.style.position = 'absolute';
-      navMenu.style.top = '100%';
-      navMenu.style.left = '0';
-      navMenu.style.width = '100%';
-      navMenu.style.background = 'rgba(250, 248, 245, 0.98)';
-      navMenu.style.backdropFilter = 'blur(20px)';
-      navMenu.style.padding = '1.5rem';
-      navMenu.style.borderRadius = '16px';
-      navMenu.style.marginTop = '10px';
-      navMenu.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+      drawer.classList.add('active');
+      drawer.setAttribute('aria-hidden', 'false');
+      mobileBtn.setAttribute('aria-expanded', 'true');
     });
   }
+
+  window.closeMobileDrawer = function() {
+    if (drawer) {
+      drawer.classList.remove('active');
+      drawer.setAttribute('aria-hidden', 'true');
+      if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+    }
+  };
+
+  if (drawerClose) drawerClose.addEventListener('click', closeMobileDrawer);
+  drawerLinks.forEach(l => l.addEventListener('click', closeMobileDrawer));
 }
 
 /* ==========================================================================
@@ -932,7 +997,7 @@ function initCounterObserver() {
           const target = parseFloat(counter.getAttribute('data-counter'));
           const isDecimal = counter.getAttribute('data-decimal');
           let current = 0;
-          const step = target / 40;
+          const step = target / 35;
 
           const timer = setInterval(() => {
             current += step;
@@ -942,11 +1007,11 @@ function initCounterObserver() {
             } else {
               counter.innerText = isDecimal ? current.toFixed(1) : Math.floor(current);
             }
-          }, 30);
+          }, 35);
         });
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.3 });
 
   const statsRow = document.querySelector('.stats-counter-row');
   if (statsRow) observer.observe(statsRow);
