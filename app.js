@@ -1,25 +1,24 @@
 /* ==========================================================================
-   OTB Agency — Interactive Engine & Official Digital DNA 2026 Core
-   Source of Truth: OTB Master Knowledge & Digital DNA Archive (2026)
+   OTB Agency — High-Performance Interactive Engine (Digital DNA 2026)
+   Optimized for 120fps smooth performance, 0% idle GPU, and instant responsiveness
    ========================================================================== */
 
 let currentLang = 'en';
 let isSoundEnabled = true;
 
 /* ==========================================================================
-   BILINGUAL I18N DICTIONARY (Derived from Official Digital DNA 2026)
+   BILINGUAL I18N DICTIONARY
    ========================================================================== */
 const i18n = {
   en: {
     lang_btn: 'العربية',
-    nav_home: 'Home',
-    nav_services: 'What We Build',
-    nav_benchmark: 'The Franks Proof',
-    nav_showcase: 'Showcase (20)',
+    nav_services: 'Pillars',
+    nav_benchmark: 'Franks Proof',
+    nav_showcase: 'Showcase',
+    nav_calculator: 'ROI Simulator',
     nav_manifesto: 'Manifesto',
-    nav_calculator: 'ROI Planner',
     nav_contact: 'Contact',
-    nav_wa: 'WhatsApp Direct',
+    nav_cta: 'Book Strategy',
 
     hero_title: 'Putting Your Brand Under <br><span class="gold-italic-accent">The Spotlight.</span>',
     hero_desc: 'Over 7 years of engineering market dominance for Egypt\'s premier FMCG manufacturers, specialty coffee icons, and high-growth brands. We don\'t sell routine posts — we build full-funnel commercial engines that turn products into market leaders.',
@@ -105,14 +104,13 @@ const i18n = {
 
   ar: {
     lang_btn: 'English',
-    nav_home: 'الرئيسية',
-    nav_services: 'ما نصنعه',
+    nav_services: 'المسارات',
     nav_benchmark: 'إنجاز فرانكس',
-    nav_showcase: 'معرض الأعمال (20)',
-    nav_manifesto: 'الجرأة مبدأ',
+    nav_showcase: 'معرض الأعمال',
     nav_calculator: 'حاسبة النمو',
+    nav_manifesto: 'الجرأة مبدأ',
     nav_contact: 'التواصل',
-    nav_wa: 'الواتساب المباشر',
+    nav_cta: 'احجز استشارتك',
 
     hero_title: 'نضع علامتك تحت أضواء <br><span class="gold-italic-accent">القيادة.</span>',
     hero_desc: 'أكثر من 7 سنوات في قيادة وتنمية كبرى مصانع الأغذية (FMCG) والقهوة المختصة والبراندات الصاعدة في مصر. لا نبيع منشورات نمطية، بل نبني منظومات نمو تجارية متكاملة تحول المنتجات إلى قوى سوقية مهيمنة.',
@@ -198,7 +196,7 @@ const i18n = {
 };
 
 /* ==========================================================================
-   GLOBAL LIGHTBOX HELPER (Accessible everywhere)
+   GLOBAL LIGHTBOX HELPER
    ========================================================================== */
 window.openLightboxForImage = function(src, titleText, catText, metricText, descText) {
   const overlay = document.getElementById('lightboxOverlay');
@@ -227,7 +225,6 @@ window.closeLightbox = function() {
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   initCursor();
-  initLenisSmoothScroll();
   initSoundEngine();
   initThreeHero();
   initRoiCalculator();
@@ -235,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initShowcaseFilters();
   initModal();
   initNavbar();
-  initGsapAnimations();
   initCounterObserver();
 
   // Check URL parameter for language
@@ -246,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. MAGNETIC LUXURY CUSTOM CURSOR
+   1. MAGNETIC CUSTOM CURSOR (Hardware-accelerated)
    ========================================================================== */
 function initCursor() {
   const dot = document.getElementById('cursorDot');
@@ -257,51 +253,39 @@ function initCursor() {
   let mouseY = window.innerHeight / 2;
   let ringX = mouseX;
   let ringY = mouseY;
+  let isTicking = false;
 
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
     dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-  });
+    if (!isTicking) {
+      isTicking = true;
+      requestAnimationFrame(renderRing);
+    }
+  }, { passive: true });
 
   function renderRing() {
-    ringX += (mouseX - ringX) * 0.15;
-    ringY += (mouseY - ringY) * 0.15;
+    ringX += (mouseX - ringX) * 0.2;
+    ringY += (mouseY - ringY) * 0.2;
     ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
-    requestAnimationFrame(renderRing);
+    
+    if (Math.abs(mouseX - ringX) > 0.5 || Math.abs(mouseY - ringY) > 0.5) {
+      requestAnimationFrame(renderRing);
+    } else {
+      isTicking = false;
+    }
   }
-  requestAnimationFrame(renderRing);
 
   const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, .portfolio-spec-card, .craft-card, .calc-chip, .hero-monolith-box, .benchmark-media-side, .craft-preview-thumb, .manifesto-media-side');
   interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
-    el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
+    el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'), { passive: true });
+    el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'), { passive: true });
   });
 }
 
 /* ==========================================================================
-   2. LENIS SMOOTH SCROLL
-   ========================================================================== */
-function initLenisSmoothScroll() {
-  if (typeof Lenis !== 'undefined') {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.95
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  }
-}
-
-/* ==========================================================================
-   3. WEB AUDIO SYNTHESIZED SOUND SYSTEM
+   2. WEB AUDIO SYNTHESIZED SOUND SYSTEM
    ========================================================================== */
 let audioCtx = null;
 
@@ -349,7 +333,7 @@ function playSound(type) {
       osc.stop(now + 0.08);
     }
   } catch (e) {
-    // Audio fail safe
+    // Audio safe fallback
   }
 }
 
@@ -371,27 +355,34 @@ function initSoundEngine() {
 
   const clickables = document.querySelectorAll('button, a, .calc-chip, .portfolio-spec-card, .filter-tab-btn');
   clickables.forEach(item => {
-    item.addEventListener('mouseenter', () => playSound('hover'));
-    item.addEventListener('click', () => playSound('click'));
+    item.addEventListener('mouseenter', () => playSound('hover'), { passive: true });
+    item.addEventListener('click', () => playSound('click'), { passive: true });
   });
 }
 
 /* ==========================================================================
-   4. THREE.JS PARTICLE CONSTELLATION
+   3. OPTIMIZED THREE.JS HERO (Pauses when offscreen for 0% idle GPU)
    ========================================================================== */
 function initThreeHero() {
   const canvas = document.getElementById('webgl-hero-canvas');
-  if (!canvas || typeof THREE === 'undefined') return;
+  const heroSection = document.getElementById('home');
+  if (!canvas || typeof THREE === 'undefined' || !heroSection) return;
 
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 1000);
   camera.position.z = 4.5;
 
-  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, powerPreference: 'high-performance' });
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false, powerPreference: 'low-power' });
+  } catch (e) {
+    return; // WebGL not supported
+  }
 
-  const count = 280;
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+
+  const count = 120;
   const positions = new Float32Array(count * 3);
 
   for (let i = 0; i < count * 3; i += 3) {
@@ -404,10 +395,10 @@ function initThreeHero() {
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
   const material = new THREE.PointsMaterial({
-    size: 0.035,
+    size: 0.04,
     color: 0xC5A059,
     transparent: true,
-    opacity: 0.65,
+    opacity: 0.6,
     blending: THREE.AdditiveBlending
   });
 
@@ -416,37 +407,57 @@ function initThreeHero() {
 
   let targetMouseX = 0, targetMouseY = 0;
   let currentMouseX = 0, currentMouseY = 0;
+  let animFrameId = null;
+  let isHeroVisible = true;
 
   window.addEventListener('mousemove', (e) => {
-    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 0.8;
-    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 0.8;
-  });
+    targetMouseX = (e.clientX / window.innerWidth - 0.5) * 0.6;
+    targetMouseY = (e.clientY / window.innerHeight - 0.5) * 0.6;
+  }, { passive: true });
 
-  function animate() {
-    requestAnimationFrame(animate);
+  function renderLoop() {
+    if (!isHeroVisible) return;
 
-    currentMouseX += (targetMouseX - currentMouseX) * 0.04;
-    currentMouseY += (targetMouseY - currentMouseY) * 0.04;
+    currentMouseX += (targetMouseX - currentMouseX) * 0.05;
+    currentMouseY += (targetMouseY - currentMouseY) * 0.05;
 
-    particleSystem.rotation.y += 0.0008;
-    particleSystem.rotation.x += 0.0003;
-
+    particleSystem.rotation.y += 0.0006;
     particleSystem.position.x = currentMouseX;
     particleSystem.position.y = -currentMouseY;
 
     renderer.render(scene, camera);
+    animFrameId = requestAnimationFrame(renderLoop);
   }
-  animate();
+
+  // IntersectionObserver: Pause Three.js completely when scrolled down!
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        isHeroVisible = true;
+        if (!animFrameId) {
+          animFrameId = requestAnimationFrame(renderLoop);
+        }
+      } else {
+        isHeroVisible = false;
+        if (animFrameId) {
+          cancelAnimationFrame(animFrameId);
+          animFrameId = null;
+        }
+      }
+    });
+  }, { threshold: 0.05 });
+
+  heroObserver.observe(heroSection);
 
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
-  });
+  }, { passive: true });
 }
 
 /* ==========================================================================
-   5. INTERACTIVE ROI & GROWTH CALCULATOR
+   4. INTERACTIVE ROI & GROWTH CALCULATOR
    ========================================================================== */
 function initRoiCalculator() {
   const slider = document.getElementById('budgetSlider');
@@ -489,7 +500,7 @@ function initRoiCalculator() {
   });
 
   if (slider) {
-    slider.addEventListener('input', calculateROI);
+    slider.addEventListener('input', calculateROI, { passive: true });
   }
 
   function calculateROI() {
@@ -516,7 +527,7 @@ function initRoiCalculator() {
 }
 
 /* ==========================================================================
-   6. SHOWCASE FILTER TABS & LIGHTBOX
+   5. SHOWCASE FILTER TABS & LIGHTBOX
    ========================================================================== */
 function initShowcaseFilters() {
   const filterBtns = document.querySelectorAll('.filter-tab-btn');
@@ -573,7 +584,7 @@ function initLightbox() {
 }
 
 /* ==========================================================================
-   7. STRATEGY MODAL WITH VALIDATION
+   6. STRATEGY MODAL WITH VALIDATION
    ========================================================================== */
 function initModal() {
   const overlay = document.getElementById('modalOverlay');
@@ -611,8 +622,8 @@ function initModal() {
     });
   }
 
-  if (nameInput) nameInput.addEventListener('input', () => { if (nameError) nameError.style.display = 'none'; });
-  if (phoneInput) phoneInput.addEventListener('input', () => { if (phoneError) phoneError.style.display = 'none'; });
+  if (nameInput) nameInput.addEventListener('input', () => { if (nameError) nameError.style.display = 'none'; }, { passive: true });
+  if (phoneInput) phoneInput.addEventListener('input', () => { if (phoneError) phoneError.style.display = 'none'; }, { passive: true });
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -655,7 +666,7 @@ function initModal() {
 }
 
 /* ==========================================================================
-   8. BILINGUAL LOCALIZATION ENGINE
+   7. BILINGUAL LOCALIZATION ENGINE
    ========================================================================== */
 window.toggleLanguage = function(updateUrl = true) {
   currentLang = currentLang === 'en' ? 'ar' : 'en';
@@ -693,7 +704,7 @@ function updateLanguageUI() {
 }
 
 /* ==========================================================================
-   9. NAVBAR & MOBILE DRAWER
+   8. RESTRUCTURED NAVBAR & MOBILE DRAWER
    ========================================================================== */
 function initNavbar() {
   const navbar = document.getElementById('navbar');
@@ -704,28 +715,39 @@ function initNavbar() {
   const drawerClose = document.getElementById('drawerCloseBtn');
   const drawerLinks = document.querySelectorAll('.drawer-link');
 
+  let lastScrollY = window.scrollY;
+  let scrollTicking = false;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    lastScrollY = window.scrollY;
+    if (!scrollTicking) {
+      window.requestAnimationFrame(() => {
+        if (lastScrollY > 30) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+
+        let currentId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 140;
+          if (lastScrollY >= sectionTop) {
+            currentId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentId}`) {
+            link.classList.add('active');
+          }
+        });
+
+        scrollTicking = false;
+      });
+      scrollTicking = true;
     }
-
-    let currentId = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 140;
-      if (window.scrollY >= sectionTop) {
-        currentId = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${currentId}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+  }, { passive: true });
 
   if (mobileBtn && drawer) {
     mobileBtn.addEventListener('click', () => {
@@ -748,20 +770,7 @@ function initNavbar() {
 }
 
 /* ==========================================================================
-   10. GSAP ENTRANCE ANIMATIONS
-   ========================================================================== */
-function initGsapAnimations() {
-  if (typeof gsap !== 'undefined') {
-    gsap.from('.hero-top-tag', { opacity: 0, y: 15, duration: 0.8, delay: 0.1 });
-    gsap.from('.hero-headline-spec', { opacity: 0, y: 25, duration: 1, delay: 0.25 });
-    gsap.from('.hero-desc-spec', { opacity: 0, y: 20, duration: 0.9, delay: 0.45 });
-    gsap.from('.hero-monolith-box', { opacity: 0, scale: 0.95, y: 30, duration: 1.1, delay: 0.55 });
-    gsap.from('.stats-spec-row', { opacity: 0, y: 30, duration: 1, delay: 0.75 });
-  }
-}
-
-/* ==========================================================================
-   11. STAT COUNTERS OBSERVER
+   9. STAT COUNTERS OBSERVER
    ========================================================================== */
 function initCounterObserver() {
   const counters = document.querySelectorAll('[data-counter]');
@@ -774,7 +783,7 @@ function initCounterObserver() {
         counters.forEach(counter => {
           const target = parseFloat(counter.getAttribute('data-counter'));
           let current = 0;
-          const step = target / 30;
+          const step = target / 25;
 
           const timer = setInterval(() => {
             current += step;
@@ -784,11 +793,11 @@ function initCounterObserver() {
             } else {
               counter.innerText = `+${Math.floor(current)}`;
             }
-          }, 35);
+          }, 30);
         });
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.2 });
 
   const statsRow = document.querySelector('.stats-spec-row');
   if (statsRow) observer.observe(statsRow);

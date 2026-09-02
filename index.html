@@ -34,16 +34,13 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/images/otb_official_logo.jpg">
 
-  <!-- Fonts: KOOkies, Plus Jakarta Sans, Playfair Display, Felfel, Cairo -->
+  <!-- Optimized Font Loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
 
-  <!-- Core Animation & Physics Libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+  <!-- Main High-Performance Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 
   <!-- JSON-LD Structured Data Schema -->
   <script type="application/ld+json">
@@ -55,7 +52,7 @@
     "url": "https://ahmedissamramadan.github.io/otb-agency-landing-page/",
     "logo": "https://ahmedissamramadan.github.io/otb-agency-landing-page/assets/images/otb_official_logo.jpg",
     "image": "https://ahmedissamramadan.github.io/otb-agency-landing-page/Designs/773995749_18181423747413165_4138231920701878094_n.jpg",
-    "description": "Strategic Growth Partner providing cinematic visual storytelling, performance marketing, 3D branding, and e-commerce infrastructure.",
+    "description": "Strategic Growth Partner providing cinematic visual storytelling, performance marketing, 3D branding, and enterprise scale.",
     "telephone": "+201008080295",
     "email": "otbagency5@gmail.com",
     "sameAs": [
@@ -66,33 +63,32 @@
     ]
   }
   </script>
-
-  <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Background WebGL 3D Particle Constellation Canvas -->
+  <!-- Background WebGL Particle Constellation (Auto-pauses offscreen for 0% idle CPU) -->
   <canvas id="webgl-hero-canvas" aria-hidden="true"></canvas>
 
   <!-- Interactive Magnetic Custom Cursor -->
   <div class="custom-cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="custom-cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <!-- Floating Luxury Glass Navigation Bar -->
+  <!-- ==========================================================================
+       RESTRUCTURED LUXURY ISLAND NAVIGATION BAR
+       ========================================================================== -->
   <header class="navbar" id="navbar">
     <div class="container nav-wrapper">
       
-      <!-- Brand Logo (Returns to Top #home) -->
-      <a href="#home" class="logo-brand" aria-label="OTB Agency - Return to Home">
+      <!-- Brand Anchor (Left) -->
+      <a href="#home" class="logo-brand" aria-label="OTB Agency - Home">
         <div class="logo-img-box">
-          <img src="assets/images/otb_official_logo.jpg" alt="OTB Agency Official Logo">
+          <img src="assets/images/otb_official_logo.jpg" alt="OTB Agency Logo" width="38" height="38" loading="eager">
           <span class="logo-status-pulse" title="Agency Online & Operational"></span>
         </div>
         <div class="logo-text-group">
           <div class="logo-title-row">
             <span class="logo-title-text">OTB AGENCY</span>
-            <svg class="crown-svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <svg class="crown-svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
               <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
             </svg>
           </div>
@@ -100,49 +96,45 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
+      <!-- Streamlined Center Navigation Links (5 Core Pillars) -->
       <nav class="nav-menu" id="navMenu" aria-label="Primary Navigation">
         <ul class="nav-links">
-          <li><a href="#home" class="nav-link active" data-i18n="nav_home">Home</a></li>
-          <li><a href="#benchmark" class="nav-link" data-i18n="nav_benchmark">The Franks Proof</a></li>
-          <li><a href="#services" class="nav-link" data-i18n="nav_services">What We Build</a></li>
-          <li><a href="#showcase" class="nav-link" data-i18n="nav_showcase">Showcase (20)</a></li>
+          <li><a href="#services" class="nav-link" data-i18n="nav_services">Pillars</a></li>
+          <li><a href="#benchmark" class="nav-link" data-i18n="nav_benchmark">Franks Proof</a></li>
+          <li><a href="#showcase" class="nav-link" data-i18n="nav_showcase">Showcase</a></li>
+          <li><a href="#calculator" class="nav-link" data-i18n="nav_calculator">ROI Simulator</a></li>
           <li><a href="#manifesto" class="nav-link" data-i18n="nav_manifesto">Manifesto</a></li>
-          <li><a href="#calculator" class="nav-link" data-i18n="nav_calculator">ROI Planner</a></li>
-          <li><a href="#contact" class="nav-link" data-i18n="nav_contact">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- Action Controls -->
+      <!-- Right Action Cluster (Audio, Lang Switcher, CTA & Mobile Hamburger) -->
       <div class="nav-actions">
         
         <!-- Tactile Sound Toggle -->
-        <button class="nav-icon-btn" id="soundToggleBtn" aria-label="Toggle Interactive Sound" title="Sound Effects">
-          <svg class="sound-icon-on" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+        <button class="nav-icon-btn" id="soundToggleBtn" aria-label="Toggle Sound Effects" title="Sound Effects">
+          <svg class="sound-icon-on" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
           </svg>
-          <svg class="sound-icon-off" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="display:none;">
+          <svg class="sound-icon-off" viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="display:none;">
             <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
           </svg>
         </button>
 
-        <!-- Bilingual Switcher -->
-        <button class="btn btn-lang" id="langToggleBtn" onclick="toggleLanguage()" aria-label="Switch to Arabic / التبديل للعربية">
-          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+        <!-- Compact Language Switcher -->
+        <button class="btn btn-lang" id="langToggleBtn" onclick="toggleLanguage()" aria-label="Switch Language">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
           </svg>
           <span id="langBtnText">العربية</span>
         </button>
 
-        <!-- Direct WhatsApp Action -->
-        <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!%20I%20want%20to%20scale%20my%20brand." target="_blank" rel="noopener" class="btn btn-whatsapp" aria-label="Connect via WhatsApp Direct" data-i18n="nav_wa">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
-            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24h.02zm-3.64 3.86c-.2 0-.44.08-.67.33-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.12.16 1.74 2.78 4.3 3.79.61.24 1.09.39 1.46.51.62.2 1.18.17 1.62.1.5-.07 1.53-.62 1.75-1.23.22-.6.22-1.12.15-1.23-.07-.11-.25-.18-.53-.32-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.19.29-.74.91-.91 1.1-.17.19-.34.21-.62.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.68-1.57-1.96-.16-.29-.02-.44.12-.58.13-.13.29-.33.43-.5.14-.17.19-.29.28-.48.1-.19.05-.36-.02-.5-.08-.14-.64-1.55-.88-2.12-.23-.57-.47-.49-.64-.5z"/>
-          </svg>
-          <span class="btn-wa-text">WhatsApp Direct</span>
-        </a>
+        <!-- Primary Strategy CTA Button -->
+        <button class="btn btn-nav-cta" onclick="openModal()" data-i18n="nav_cta">
+          <span>Book Strategy</span>
+          <span class="btn-arrow">→</span>
+        </button>
 
-        <!-- Mobile Menu Toggle -->
+        <!-- Mobile Menu Toggle Button -->
         <button class="mobile-toggle-btn" id="mobileMenuBtn" aria-label="Open Navigation Menu" aria-expanded="false">
           <span></span>
           <span></span>
@@ -155,22 +147,30 @@
   <!-- Mobile Navigation Drawer -->
   <div class="mobile-nav-drawer" id="mobileNavDrawer" aria-hidden="true">
     <div class="drawer-header">
-      <span class="logo-title-text">OTB AGENCY 👑</span>
+      <div class="logo-title-row">
+        <span class="logo-title-text" style="color: #FFFFFF;">OTB AGENCY</span>
+        <span class="gold-text">👑</span>
+      </div>
       <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Navigation Menu">✕</button>
     </div>
     <ul class="drawer-links">
-      <li><a href="#home" class="drawer-link" data-i18n="nav_home">Home</a></li>
-      <li><a href="#benchmark" class="drawer-link" data-i18n="nav_benchmark">The Franks Proof</a></li>
-      <li><a href="#services" class="drawer-link" data-i18n="nav_services">What We Build</a></li>
-      <li><a href="#showcase" class="drawer-link" data-i18n="nav_showcase">Showcase (20)</a></li>
+      <li><a href="#services" class="drawer-link" data-i18n="nav_services">Pillars</a></li>
+      <li><a href="#benchmark" class="drawer-link" data-i18n="nav_benchmark">Franks Proof</a></li>
+      <li><a href="#showcase" class="drawer-link" data-i18n="nav_showcase">Showcase</a></li>
+      <li><a href="#calculator" class="drawer-link" data-i18n="nav_calculator">ROI Simulator</a></li>
       <li><a href="#manifesto" class="drawer-link" data-i18n="nav_manifesto">Manifesto</a></li>
-      <li><a href="#calculator" class="drawer-link" data-i18n="nav_calculator">ROI Planner</a></li>
       <li><a href="#contact" class="drawer-link" data-i18n="nav_contact">Direct Contact</a></li>
     </ul>
     <div class="drawer-footer">
-      <a href="https://wa.me/201008080295" target="_blank" rel="noopener" class="btn btn-gold-fill" style="width: 100%;">
+      <button onclick="openModal(); closeMobileDrawer();" class="btn btn-gold-fill" style="width: 100%;">
         Book Strategy Session 💬
-      </a>
+      </button>
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+        <span style="color: var(--text-light-muted); font-size: 0.85rem;">Cairo · 10th of Ramadan</span>
+        <button onclick="toggleLanguage()" class="btn btn-lang" style="color: #FFFFFF; background: rgba(255,255,255,0.1);">
+          Language / اللغة
+        </button>
+      </div>
     </div>
   </div>
 
@@ -195,20 +195,20 @@
 
         <!-- Featured 3D Monolith Hero Visual (Designs/773995749...) -->
         <div class="hero-monolith-box" onclick="openLightboxForImage('Designs/773995749_18181423747413165_4138231920701878094_n.jpg', 'Earn The Crown · Rule The City', '3D Brand Monolith · 2026', 'OTB Official Monolith', 'Turning ambitious brands into market leaders through strategy, creativity, and performance-driven marketing.')" role="button" tabindex="0" title="Click to expand 3D Monolith Showcase">
-          <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="OTB Agency 3D Chrome Crown Monolith" class="hero-monolith-img" loading="eager">
+          <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="OTB Agency 3D Chrome Crown Monolith" class="hero-monolith-img" fetchpriority="high" decoding="async">
           <div class="hero-monolith-badge">
             <span>👑 EARN THE CROWN · RULE THE CITY</span>
           </div>
         </div>
 
-        <div class="hero-action-spec" style="margin-top: 2.5rem;">
+        <div class="hero-action-spec">
           <a href="#showcase" class="btn-hero-work" data-i18n="btn_work">
             <span>Explore 20 Documented Proofs of Work</span>
             <span class="down-arrow-circle">↓</span>
           </a>
         </div>
 
-        <!-- 4-Item Cumulative Proof of Work Stats Bar (From 365 Days Master Dossier) -->
+        <!-- 4-Item Cumulative Proof of Work Stats Bar -->
         <div class="stats-spec-row">
           
           <div class="stat-spec-item">
@@ -261,7 +261,7 @@
             <span class="client-brand-chip">⚡ SAKR STORE (صقر للأجهزة)</span>
             <span class="client-brand-chip">🌯 SHAWSHI (شاووشي)</span>
             <span class="client-brand-chip">💎 VENEXY JEWELRY & 96</span>
-            <!-- Duplicated loop for smooth infinite marquee -->
+            <!-- Marquee loop -->
             <span class="client-brand-chip">👑 FRANKS FOOD INDUSTRIES (#2 NATIONWIDE)</span>
             <span class="client-brand-chip">☕ MIX COFFEE & MINIMARKET</span>
             <span class="client-brand-chip">🥞 WILSON CREPE</span>
@@ -270,6 +270,138 @@
             <span class="client-brand-chip">🔬 ELAG LABS (معامل علاج)</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         SELECTED CRAFT / 5 CORE PILLARS (Official DNA Spec)
+         ========================================================================== -->
+    <section class="craft-section" id="services">
+      <div class="container">
+        
+        <div class="craft-header-row">
+          <span class="craft-subtag" dir="ltr">S E L E C T E D &nbsp; C R A F T &nbsp; · &nbsp; 5 &nbsp; P I L L A R S</span>
+          <h2 class="craft-section-title" data-i18n="craft_title">What We Build For Enterprise Brands.</h2>
+        </div>
+
+        <div class="craft-cards-stack">
+          
+          <!-- Craft 01: Visual Storytelling & Growth Partner Artwork -->
+          <article class="craft-card" data-category="video">
+            <div class="craft-card-split">
+              <div class="craft-card-content">
+                <span class="craft-code" dir="ltr">V I S U A L &nbsp; S T O R Y T E L L I N G &nbsp; — &nbsp; 0 1</span>
+                <h3 class="craft-card-title" data-i18n="c1_title">Luxury Visual Storytelling & Production</h3>
+                <p class="craft-card-desc" data-i18n="c1_desc">
+                  Cinematic 4K video production for specialty coffee, fine dining, and consumer packaged goods (FMCG). Every shot is engineered with studio lighting, master color grading, and emotional narrative structure.
+                </p>
+                <a href="#showcase" class="craft-case-link" data-i18n="case_study_link">Case Study →</a>
+
+                <div class="craft-meta-grid">
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_field">Vertical</span>
+                    <span class="meta-val" data-i18n="c1_field">F&B · Specialty Coffee · FMCG</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_output">Deliverables</span>
+                    <span class="meta-val" data-i18n="c1_output">Cinematic Reels · 4K Stills · Chef Shoots</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_results">Verified Benchmarks</span>
+                    <span class="meta-val gold" data-i18n="c1_results">+220K Views · +240% Lift</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_duration">Governance</span>
+                    <span class="meta-val" data-i18n="c1_duration">CoreLink Production Track</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Embedded Craft Visual: Growth Partner (Designs/770901395...) -->
+              <div class="craft-preview-thumb" onclick="openLightboxForImage('Designs/770901395_18181423825413165_5651689082737876843_n.jpg', 'A Growth Partner · Full-Funnel Architecture', 'Strategic DNA', 'Identities to Impact', 'Cascading framework: Identities, Strategy, Creation, Production, Vision, Impact, and Growth.')" role="button" tabindex="0">
+                <img src="Designs/770901395_18181423825413165_5651689082737876843_n.jpg" alt="A Growth Partner Framework by OTB" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </article>
+
+          <!-- Craft 02: Performance Marketing & Numbers Reflect Impact Artwork -->
+          <article class="craft-card" data-category="marketing">
+            <div class="craft-card-split">
+              <div class="craft-card-content">
+                <span class="craft-code" dir="ltr">P E R F O R M A N C E &nbsp; G R O W T H &nbsp; — &nbsp; 0 2</span>
+                <h3 class="craft-card-title" data-i18n="c2_title">High-ROAS Performance Marketing</h3>
+                <p class="craft-card-desc" data-i18n="c2_desc">
+                  Precision-targeted ad campaigns on Meta, TikTok, and Google. Full-funnel TOFU-MOFU-BOFU architecture driving direct sales, delivery orders, and high-ticket B2B distributor contracts.
+                </p>
+                <a href="#showcase" class="craft-case-link" data-i18n="case_study_link">Case Study →</a>
+
+                <div class="craft-meta-grid">
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_scope">Scope</span>
+                    <span class="meta-val" data-i18n="c2_scope">Brand Positioning · Direct Sales</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_channels">Channels</span>
+                    <span class="meta-val" data-i18n="c2_channels">Meta Ads · TikTok · YouTube</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_results">Commercial Impact</span>
+                    <span class="meta-val gold" data-i18n="c2_results">3.8x - 5.2x ROAS Multiplier</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_duration">Scale Target</span>
+                    <span class="meta-val" data-i18n="c2_duration">Industrial & Enterprise</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Embedded Craft Visual: Numbers Reflect Impact (Designs/768619542...) -->
+              <div class="craft-preview-thumb" onclick="openLightboxForImage('Designs/768619542_18180639676413165_8749086575801866650_n.jpg', 'Numbers Reflect Impact · Data-Driven ROAS', 'Performance Architecture', '3.8x - 5.2x ROAS', 'Mathematical precision and data tracking radiating commercial impact.')" role="button" tabindex="0">
+                <img src="Designs/768619542_18180639676413165_8749086575801866650_n.jpg" alt="Numbers Reflect Impact by OTB" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </article>
+
+          <!-- Craft 03: 3D Branding & Be Original Artwork -->
+          <article class="craft-card" data-category="branding">
+            <div class="craft-card-split">
+              <div class="craft-card-content">
+                <span class="craft-code" dir="ltr">3 D &nbsp; B R A N D &nbsp; S Y S T E M S &nbsp; — &nbsp; 0 3</span>
+                <h3 class="craft-card-title" data-i18n="c3_title">3D Identity & Visual Architecture</h3>
+                <p class="craft-card-desc" data-i18n="c3_desc">
+                  Developing signature isometric 3D visual systems, packaging CGI renders, and comprehensive Brand Books that command immediate market authority and retail shelf presence.
+                </p>
+                <a href="#showcase" class="craft-case-link" data-i18n="case_study_link">Case Study →</a>
+
+                <div class="craft-meta-grid">
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_output">Deliverables</span>
+                    <span class="meta-val" data-i18n="c3_output">Isometric 3D · Packaging · Brand Book</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_system">System</span>
+                    <span class="meta-val" data-i18n="c3_system">Bespoke Royal Monochrome & Gold</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_results">Market Recognition</span>
+                    <span class="meta-val gold" data-i18n="c3_results">100% Distinctive Identity</span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-lbl" data-i18n="meta_duration">Format</span>
+                    <span class="meta-val" data-i18n="c3_duration">Cross-Platform Guidelines</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Embedded Craft Visual: Be Original (Designs/774104978...) -->
+              <div class="craft-preview-thumb" onclick="openLightboxForImage('Designs/774104978_18181423843413165_6358974655911864736_n.jpg', 'In A World Full Of Copies · Be Original', 'Visual DNA', '100% Bespoke Identity', 'Creating distinctive brand identities that make you unforgettable in crowded markets.')" role="button" tabindex="0">
+                <img src="Designs/774104978_18181423843413165_6358974655911864736_n.jpg" alt="In A World Full Of Copies Be Original by OTB" loading="lazy" decoding="async">
+              </div>
+            </div>
+          </article>
+
+        </div>
+
       </div>
     </section>
 
@@ -334,143 +466,11 @@
 
           <!-- Right Column: Official Campaign Design Asset (Designs/766316041...) -->
           <div class="benchmark-media-side" onclick="openLightboxForImage('Designs/766316041_18180639712413165_4388099764338485378_n.jpg', 'Franks Food Industries Campaign Analytics', 'FMCG Growth Benchmark', '1,007,739 Views · 637K Viewers', 'Official verified campaign asset proving 1,007,739 views, 637,116 unique viewers, and 4,115 interactions for Franks Food Industries.')" role="button" tabindex="0">
-            <img src="Designs/766316041_18180639712413165_4388099764338485378_n.jpg" alt="Official Franks Food Industries Campaign Analytics by OTB" class="bm-asset-img" loading="lazy">
+            <img src="Designs/766316041_18180639712413165_4388099764338485378_n.jpg" alt="Official Franks Food Industries Campaign Analytics by OTB" class="bm-asset-img" loading="lazy" decoding="async">
             <div class="bm-media-caption">
               <span>✦ Official Campaign Proof · 1,007,739 Views</span>
             </div>
           </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         SELECTED CRAFT / 5 CORE PILLARS (Official DNA Spec)
-         ========================================================================== -->
-    <section class="craft-section" id="services">
-      <div class="container">
-        
-        <div class="craft-header-row">
-          <span class="craft-subtag" dir="ltr">S E L E C T E D &nbsp; C R A F T &nbsp; · &nbsp; 5 &nbsp; P I L L A R S</span>
-          <h2 class="craft-section-title" data-i18n="craft_title">What We Build For Enterprise Brands.</h2>
-        </div>
-
-        <div class="craft-cards-stack">
-          
-          <!-- Craft 01: Visual Storytelling & Growth Partner Artwork -->
-          <article class="craft-card" data-category="video">
-            <div class="craft-card-split">
-              <div class="craft-card-content">
-                <span class="craft-code" dir="ltr">V I S U A L &nbsp; S T O R Y T E L L I N G &nbsp; — &nbsp; 0 1</span>
-                <h3 class="craft-card-title" data-i18n="c1_title">Luxury Visual Storytelling & Production</h3>
-                <p class="craft-card-desc" data-i18n="c1_desc">
-                  Cinematic 4K video production for specialty coffee, fine dining, and consumer packaged goods (FMCG). Every shot is engineered with studio lighting, master color grading, and emotional narrative structure.
-                </p>
-                <a href="#showcase" class="craft-case-link" data-i18n="case_study_link">Case Study →</a>
-
-                <div class="craft-meta-grid">
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_field">Vertical</span>
-                    <span class="meta-val" data-i18n="c1_field">F&B · Specialty Coffee · FMCG</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_output">Deliverables</span>
-                    <span class="meta-val" data-i18n="c1_output">Cinematic Reels · 4K Stills · Chef Shoots</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_results">Verified Benchmarks</span>
-                    <span class="meta-val gold" data-i18n="c1_results">+220K Views · +240% Lift</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_duration">Governance</span>
-                    <span class="meta-val" data-i18n="c1_duration">CoreLink Production Track</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Embedded Craft Visual: Growth Partner (Designs/770901395...) -->
-              <div class="craft-preview-thumb" onclick="openLightboxForImage('Designs/770901395_18181423825413165_5651689082737876843_n.jpg', 'A Growth Partner · Full-Funnel Architecture', 'Strategic DNA', 'Identities to Impact', 'Cascading framework: Identities, Strategy, Creation, Production, Vision, Impact, and Growth.')">
-                <img src="Designs/770901395_18181423825413165_5651689082737876843_n.jpg" alt="A Growth Partner Framework by OTB" loading="lazy">
-              </div>
-            </div>
-          </article>
-
-          <!-- Craft 02: Performance Marketing & Numbers Reflect Impact Artwork -->
-          <article class="craft-card" data-category="marketing">
-            <div class="craft-card-split">
-              <div class="craft-card-content">
-                <span class="craft-code" dir="ltr">P E R F O R M A N C E &nbsp; G R O W T H &nbsp; — &nbsp; 0 2</span>
-                <h3 class="craft-card-title" data-i18n="c2_title">High-ROAS Performance Marketing</h3>
-                <p class="craft-card-desc" data-i18n="c2_desc">
-                  Precision-targeted ad campaigns on Meta, TikTok, and Google. Full-funnel TOFU-MOFU-BOFU architecture driving direct sales, delivery orders, and high-ticket B2B distributor contracts.
-                </p>
-                <a href="#showcase" class="craft-case-link" data-i18n="case_study_link">Case Study →</a>
-
-                <div class="craft-meta-grid">
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_scope">Scope</span>
-                    <span class="meta-val" data-i18n="c2_scope">Brand Positioning · Direct Sales</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_channels">Channels</span>
-                    <span class="meta-val" data-i18n="c2_channels">Meta Ads · TikTok · YouTube</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_results">Commercial Impact</span>
-                    <span class="meta-val gold" data-i18n="c2_results">3.8x - 5.2x ROAS Multiplier</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_duration">Scale Target</span>
-                    <span class="meta-val" data-i18n="c2_duration">Industrial & Enterprise</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Embedded Craft Visual: Numbers Reflect Impact (Designs/768619542...) -->
-              <div class="craft-preview-thumb" onclick="openLightboxForImage('Designs/768619542_18180639676413165_8749086575801866650_n.jpg', 'Numbers Reflect Impact · Data-Driven ROAS', 'Performance Architecture', '3.8x - 5.2x ROAS', 'Mathematical precision and data tracking radiating commercial impact.')">
-                <img src="Designs/768619542_18180639676413165_8749086575801866650_n.jpg" alt="Numbers Reflect Impact by OTB" loading="lazy">
-              </div>
-            </div>
-          </article>
-
-          <!-- Craft 03: 3D Branding & Be Original Artwork -->
-          <article class="craft-card" data-category="branding">
-            <div class="craft-card-split">
-              <div class="craft-card-content">
-                <span class="craft-code" dir="ltr">3 D &nbsp; B R A N D &nbsp; S Y S T E M S &nbsp; — &nbsp; 0 3</span>
-                <h3 class="craft-card-title" data-i18n="c3_title">3D Identity & Visual Architecture</h3>
-                <p class="craft-card-desc" data-i18n="c3_desc">
-                  Developing signature isometric 3D visual systems, packaging CGI renders, and comprehensive Brand Books that command immediate market authority and retail shelf presence.
-                </p>
-                <a href="#showcase" class="craft-case-link" data-i18n="case_study_link">Case Study →</a>
-
-                <div class="craft-meta-grid">
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_output">Deliverables</span>
-                    <span class="meta-val" data-i18n="c3_output">Isometric 3D · Packaging · Brand Book</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_system">System</span>
-                    <span class="meta-val" data-i18n="c3_system">Bespoke Royal Monochrome & Gold</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_results">Market Recognition</span>
-                    <span class="meta-val gold" data-i18n="c3_results">100% Distinctive Identity</span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-lbl" data-i18n="meta_duration">Format</span>
-                    <span class="meta-val" data-i18n="c3_duration">Cross-Platform Guidelines</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Embedded Craft Visual: Be Original (Designs/774104978...) -->
-              <div class="craft-preview-thumb" onclick="openLightboxForImage('Designs/774104978_18181423843413165_6358974655911864736_n.jpg', 'In A World Full Of Copies · Be Original', 'Visual DNA', '100% Bespoke Identity', 'Creating distinctive brand identities that make you unforgettable in crowded markets.')">
-                <img src="Designs/774104978_18181423843413165_6358974655911864736_n.jpg" alt="In A World Full Of Copies Be Original by OTB" loading="lazy">
-              </div>
-            </div>
-          </article>
 
         </div>
 
@@ -504,7 +504,7 @@
           <!-- 01: Franks Case Study -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Franks Food Industries — Official Campaign" data-category="FMCG & Performance Scale" data-img="Designs/766316041_18180639712413165_4388099764338485378_n.jpg" data-metric="1,007,739 Views · Rank #2 in Egypt" data-desc="Official campaign proof: 1,007,739 views, 637,116 unique viewers, 3,917 reactions. Propelled Franks from rank #25 to #2 nationwide in Egypt." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/766316041_18180639712413165_4388099764338485378_n.jpg" alt="Franks Food Industries Campaign Analytics by OTB" loading="lazy">
+              <img src="Designs/766316041_18180639712413165_4388099764338485378_n.jpg" alt="Franks Food Industries Campaign Analytics by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">FMCG · Performance Scale</span>
                 <h3 class="spec-h3">Franks Food Industries (1,007,739 Views)</h3>
@@ -516,7 +516,7 @@
           <!-- 02: MIX Coffee -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="MIX Mini Market & Coffee — Viral Culture" data-category="Specialty Coffee & Video" data-img="Designs/766147139_18180639685413165_4131765232703296977_n.jpg" data-metric="880,844 Views · 246K Reach" data-desc="Youth-oriented brand identity and sensory video shoots: 880,844 views, 246,024 reach, 8,923 interactions with 7.7K likes." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/766147139_18180639685413165_4131765232703296977_n.jpg" alt="MIX Coffee & Minimarket by OTB" loading="lazy">
+              <img src="Designs/766147139_18180639685413165_4131765232703296977_n.jpg" alt="MIX Coffee & Minimarket by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Specialty Coffee & F&B</span>
                 <h3 class="spec-h3">MIX Coffee (880,844 Views)</h3>
@@ -528,7 +528,7 @@
           <!-- 03: Wilson Crepe -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Wilson Crepe — Food Cinematography" data-category="F&B Rebranding" data-img="Designs/767001473_18180639715413165_8715964079048196774_n.jpg" data-metric="425,328 Views · 1.2K Likes" data-desc="Rebranding and viral food commercial cinematography: 425,328 views, 1.2K likes, driving immense branch footfall." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/767001473_18180639715413165_8715964079048196774_n.jpg" alt="Wilson Crepe Rebranding by OTB" loading="lazy">
+              <img src="Designs/767001473_18180639715413165_8715964079048196774_n.jpg" alt="Wilson Crepe Rebranding by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">F&B & Cinematography</span>
                 <h3 class="spec-h3">Wilson Crepe (425,328 Views)</h3>
@@ -540,7 +540,7 @@
           <!-- 04: Elag Labs -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Elag Labs (معامل علاج - دقيقة بتفرق)" data-category="Healthcare Strategy" data-img="Designs/767244113_18180639751413165_5540412044765467856_n.jpg" data-metric="620,164 Views · 5,963 Clicks" data-desc="Healthcare authority communication funnel: 620,164 views, 323,434 viewers, 8,396 engagement with 5,963 link clicks." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/767244113_18180639751413165_5540412044765467856_n.jpg" alt="Elag Labs Diagnostics by OTB" loading="lazy">
+              <img src="Designs/767244113_18180639751413165_5540412044765467856_n.jpg" alt="Elag Labs Diagnostics by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Healthcare & Diagnostics</span>
                 <h3 class="spec-h3">Elag Labs (620,164 Views)</h3>
@@ -552,7 +552,7 @@
           <!-- 05: Rancho's EG -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Rancho's EG — High-ROAS Dining" data-category="Performance Marketing" data-img="Designs/768662661_18180639694413165_6985200221443851512_n.jpg" data-metric="181,648 Views · 12.2K Likes" data-desc="High-impact performance ad campaigns: 181,648 views, 63,025 reach, 12,293 interactions with 12.2K likes." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/768662661_18180639694413165_6985200221443851512_n.jpg" alt="Rancho's EG by OTB" loading="lazy">
+              <img src="Designs/768662661_18180639694413165_6985200221443851512_n.jpg" alt="Rancho's EG by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Dining & Performance Ads</span>
                 <h3 class="spec-h3">Rancho's EG (181,648 Views)</h3>
@@ -564,7 +564,7 @@
           <!-- 06: Hadramout Village -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Hadramout Village (قرية حضرموت)" data-category="Heritage Hospitality" data-img="Designs/770068003_18180639733413165_8158099979704459951_n.jpg" data-metric="516,103 Views · 1.2K Likes" data-desc="Traditional heritage hospitality campaign: 516,103 views across Meta platforms, boosting group dining bookings." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/770068003_18180639733413165_8158099979704459951_n.jpg" alt="Hadramout Village by OTB" loading="lazy">
+              <img src="Designs/770068003_18180639733413165_8158099979704459951_n.jpg" alt="Hadramout Village by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Heritage Hospitality</span>
                 <h3 class="spec-h3">Hadramout Village (516,103 Views)</h3>
@@ -576,7 +576,7 @@
           <!-- 07: Sakr Store Electronics -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Sakr Store (صقر للأجهزة الكهربائية)" data-category="Retail & Electronics" data-img="Designs/770678147_18180639724413165_3847874227247530034_n.jpg" data-metric="130.9K Views · 4.1K Reactions" data-desc="Appliance retail and conversion campaigns: 130,900 views, 4.1K likes and reactions, driving seasonal sales spikes." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/770678147_18180639724413165_3847874227247530034_n.jpg" alt="Sakr Store by OTB" loading="lazy">
+              <img src="Designs/770678147_18180639724413165_3847874227247530034_n.jpg" alt="Sakr Store by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Retail & Electronics</span>
                 <h3 class="spec-h3">Sakr Store (130.9K Views)</h3>
@@ -588,7 +588,7 @@
           <!-- 08: Shawshi -->
           <div class="portfolio-spec-card" data-cat="clients" data-title="Shawshi (شاووشي) — Viral Video" data-category="Fast Casual F&B" data-img="Designs/766121616_18180639745413165_6584758527609557579_n.jpg" data-metric="80K Views · 1.6K Likes" data-desc="Fast casual food video strategy generating 80,000 post views, 1,684 likes, and 786 shares." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/766121616_18180639745413165_6584758527609557579_n.jpg" alt="Shawshi by OTB" loading="lazy">
+              <img src="Designs/766121616_18180639745413165_6584758527609557579_n.jpg" alt="Shawshi by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Fast Casual Dining</span>
                 <h3 class="spec-h3">Shawshi (80K Views)</h3>
@@ -600,7 +600,7 @@
           <!-- 09: 365 Days Master Dossier (140M Views) -->
           <div class="portfolio-spec-card" data-cat="dossier" data-title="365 Days of Strategy & Results (140M Views)" data-category="Annual Institutional Audit" data-img="Designs/708877695_976999744963535_4217531631047054795_n.jpg" data-metric="140.0M Views · 763.K Interactions" data-desc="Cumulative annual agency results report demonstrating 140 Million verified views and 763 Thousand interactions across client portfolios." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/708877695_976999744963535_4217531631047054795_n.jpg" alt="365 Days of Strategy & Results by OTB" loading="lazy">
+              <img src="Designs/708877695_976999744963535_4217531631047054795_n.jpg" alt="365 Days of Strategy & Results by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Annual Audit</span>
                 <h3 class="spec-h3">365 Days Master Dossier (140M Views)</h3>
@@ -612,7 +612,7 @@
           <!-- 10: Let The Results Speak -->
           <div class="portfolio-spec-card" data-cat="dossier" data-title="Now, Let The Results Speak" data-category="Multi-Brand Impact" data-img="Designs/710755506_976999858296857_541143945202414062_n.jpg" data-metric="Measurable Impact Across Multiple Brands" data-desc="Official agency vision: Not just for one brand. Not just content. Measurable commercial impact across multiple industries." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/710755506_976999858296857_541143945202414062_n.jpg" alt="Let The Results Speak by OTB" loading="lazy">
+              <img src="Designs/710755506_976999858296857_541143945202414062_n.jpg" alt="Let The Results Speak by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Annual Audit</span>
                 <h3 class="spec-h3">Now, Let The Results Speak</h3>
@@ -624,7 +624,7 @@
           <!-- 11: Vacuum Sealed Portfolio I -->
           <div class="portfolio-spec-card" data-cat="dossier" data-title="Vacuum Sealed Audit Portfolio (16.2M + 14.5M)" data-category="Campaign Proofs" data-img="Designs/710745378_976999764963533_7566941494825932115_n.jpg" data-metric="16.2M + 14.5M + 9.5M Views" data-desc="High-growth account performances: 16.2M views (+60.3% interactions), 14.5M views (+84.5%), 9.5M views (+221%)." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/710745378_976999764963533_7566941494825932115_n.jpg" alt="Vacuum Portfolio by OTB" loading="lazy">
+              <img src="Designs/710745378_976999764963533_7566941494825932115_n.jpg" alt="Vacuum Portfolio by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Campaign Proofs</span>
                 <h3 class="spec-h3">Vacuum Portfolio I (16.2M Views)</h3>
@@ -636,7 +636,7 @@
           <!-- 12: Vacuum Sealed Portfolio II -->
           <div class="portfolio-spec-card" data-cat="dossier" data-title="Vacuum Sealed Audit Portfolio (21.0M + 16.3M)" data-category="Campaign Proofs" data-img="Designs/710746200_976999828296860_1249164974446213549_n.jpg" data-metric="21.0M + 16.3M + 12.0M Views" data-desc="High-scale account deliveries: 21.0M views (100K interactions), 16.3M views (+137.7%), 12.0M views." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/710746200_976999828296860_1249164974446213549_n.jpg" alt="Vacuum Portfolio II by OTB" loading="lazy">
+              <img src="Designs/710746200_976999828296860_1249164974446213549_n.jpg" alt="Vacuum Portfolio II by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Campaign Proofs</span>
                 <h3 class="spec-h3">Vacuum Portfolio II (21.0M Views)</h3>
@@ -648,7 +648,7 @@
           <!-- 13: Ready For Your Turn -->
           <div class="portfolio-spec-card" data-cat="dossier" data-title="Ready For Your Turn · The Next Success Story" data-category="Agency Invitation" data-img="Designs/710746046_976999804963529_6180169439956051711_n.jpg" data-metric="Bespoke Roadmap Formulation" data-desc="Maybe the next success story we present is yours. Ready for your turn with OTB Agency City Kings." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/710746046_976999804963529_6180169439956051711_n.jpg" alt="Ready For Your Turn by OTB" loading="lazy">
+              <img src="Designs/710746046_976999804963529_6180169439956051711_n.jpg" alt="Ready For Your Turn by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Agency Invitation</span>
                 <h3 class="spec-h3">Ready For Your Turn</h3>
@@ -660,7 +660,7 @@
           <!-- 14: Earn The Crown Monolith -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="Earn The Crown · Rule The City" data-category="3D Monolith & Crown" data-img="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" data-metric="CGI Chrome Glass Architecture" data-desc="Ultra-luxury 3D Chrome Glass OTB Monolith crowned in royalty. Turning ambitious brands into market leaders." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="Earn The Crown Rule The City by OTB" loading="lazy">
+              <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="Earn The Crown Rule The City by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">3D Monolith</span>
                 <h3 class="spec-h3">Earn The Crown · Rule The City</h3>
@@ -672,7 +672,7 @@
           <!-- 15: We Create The Direction -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="Don't Follow The Crowd · We Create The Direction" data-category="Manifesto Art" data-img="Designs/775633593_18181423969413165_3832349356905632603_n.jpg" data-metric="Market Leadership Philosophy" data-desc="From branding to performance marketing, we create ideas that lead industries instead of following them." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/775633593_18181423969413165_3832349356905632603_n.jpg" alt="We Create The Direction by OTB" loading="lazy">
+              <img src="Designs/775633593_18181423969413165_3832349356905632603_n.jpg" alt="We Create The Direction by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Manifesto Art</span>
                 <h3 class="spec-h3">We Create The Direction</h3>
@@ -684,7 +684,7 @@
           <!-- 16: A Growth Partner Framework -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="More Than An Agency · A Growth Partner" data-category="Full-Funnel Framework" data-img="Designs/770901395_18181423825413165_5651689082737876843_n.jpg" data-metric="Identities → Strategy → Growth" data-desc="Beyond delivering marketing services, we build lasting partnerships focused on measurable results." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/770901395_18181423825413165_5651689082737876843_n.jpg" alt="A Growth Partner Framework by OTB" loading="lazy">
+              <img src="Designs/770901395_18181423825413165_5651689082737876843_n.jpg" alt="A Growth Partner Framework by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Strategic Framework</span>
                 <h3 class="spec-h3">More Than An Agency</h3>
@@ -696,7 +696,7 @@
           <!-- 17: In A World Full Of Copies Be Original -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="In A World Full Of Copies · Be Original" data-category="Brand Identity" data-img="Designs/774104978_18181423843413165_6358974655911864736_n.jpg" data-metric="Unforgettable Identity Design" data-desc="Stand apart with a brand identity, creative vision, and marketing strategy designed to make you unforgettable." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/774104978_18181423843413165_6358974655911864736_n.jpg" alt="Be Original by OTB" loading="lazy">
+              <img src="Designs/774104978_18181423843413165_6358974655911864736_n.jpg" alt="Be Original by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Brand Identity</span>
                 <h3 class="spec-h3">In A World Of Copies · Be Original</h3>
@@ -708,7 +708,7 @@
           <!-- 18: One Step Closer To The Top -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="Taking Brands One Step Closer To The Top" data-category="Creative Art Direction" data-img="Designs/774197444_18181423480413165_3198741529429087066_n.jpg" data-metric="Brutalist Ascending Light" data-desc="Fearless creativity. Unshakable trust. Real influence. Every project is a promise and we always deliver beyond expectations." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/774197444_18181423480413165_3198741529429087066_n.jpg" alt="Taking Brands To The Top by OTB" loading="lazy">
+              <img src="Designs/774197444_18181423480413165_3198741529429087066_n.jpg" alt="Taking Brands To The Top by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Art Direction</span>
                 <h3 class="spec-h3">One Step Closer To The Top</h3>
@@ -720,7 +720,7 @@
           <!-- 19: Think Beyond Limits -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="Think Beyond Limits" data-category="Creative Vision" data-img="Designs/773981872_18181423939413165_8303453529914472565_n.jpg" data-metric="Bold Strategic Solutions" data-desc="We challenge ordinary thinking with bold strategies, creative solutions, and marketing that pushes brands beyond expectations." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/773981872_18181423939413165_8303453529914472565_n.jpg" alt="Think Beyond Limits by OTB" loading="lazy">
+              <img src="Designs/773981872_18181423939413165_8303453529914472565_n.jpg" alt="Think Beyond Limits by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Creative Vision</span>
                 <h3 class="spec-h3">Think Beyond Limits</h3>
@@ -732,56 +732,13 @@
           <!-- 20: Numbers Reflect Impact -->
           <div class="portfolio-spec-card" data-cat="manifesto" data-title="Numbers Reflect Impact" data-category="Performance Architecture" data-img="Designs/768619542_18180639676413165_8749086575801866650_n.jpg" data-metric="Data-Driven Transformation" data-desc="3D Isometric glass OTB cube radiating data numbers upward into the dark. Data-driven growth architecture." role="button" tabindex="0">
             <div class="portfolio-aspect-box">
-              <img src="Designs/768619542_18180639676413165_8749086575801866650_n.jpg" alt="Numbers Reflect Impact by OTB" loading="lazy">
+              <img src="Designs/768619542_18180639676413165_8749086575801866650_n.jpg" alt="Numbers Reflect Impact by OTB" loading="lazy" decoding="async">
               <div class="portfolio-spec-overlay">
                 <span class="spec-cat">Performance Architecture</span>
                 <h3 class="spec-h3">Numbers Reflect Impact</h3>
                 <span class="spec-hint">View Artwork 🔍</span>
               </div>
             </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ==========================================================================
-         FEATURED DARK MANIFESTO (Official DNA Statement)
-         ========================================================================== -->
-    <section class="manifesto-section" id="manifesto">
-      <div class="container">
-        
-        <div class="manifesto-dark-card-split">
-          
-          <div class="manifesto-content-side">
-            <p class="manifesto-top-tag" dir="ltr">W E &nbsp; A R E &nbsp; O T B &nbsp; · &nbsp; T H E &nbsp; C I T Y &nbsp; K I N G S</p>
-
-            <h2 class="manifesto-headline" data-i18n="manif_title">
-              "Don't Follow the Crowd, We Create the Direction."
-            </h2>
-
-            <div class="manifesto-body-text">
-              <p data-i18n="manif_p1">
-                We believe great brands are never built inside cookie-cutter templates. Founded in 2019, OTB has spent over 7 years in the trenches of the Egyptian market, transforming ambitious manufacturing plants, specialty coffee roasters, and commercial leaders into dominant market authorities.
-              </p>
-              <p data-i18n="manif_p2">
-                Governed by our 15-Star Executive Management Board and powered by enterprise infrastructure (<strong>CoreLink CRM + Manus</strong>), we execute with mathematical precision: <em>Strong Product Quality + Real Distribution + Observed Digital Gap + OTB Full-Funnel Engine = Pure Market Dominance</em>.
-              </p>
-            </div>
-
-            <div class="manifesto-contact-line" dir="ltr">
-              <a href="mailto:otbagency5@gmail.com">otbagency5@gmail.com</a>
-              <span class="sep-dot">·</span>
-              <a href="https://wa.me/201008080295" target="_blank" rel="noopener">WhatsApp +20 100 808 0295</a>
-              <span class="sep-dot">·</span>
-              <span>Cairo · 10th of Ramadan · 6th of October</span>
-            </div>
-          </div>
-
-          <!-- Manifesto Artwork Embed (Designs/775633593...) -->
-          <div class="manifesto-media-side" onclick="openLightboxForImage('Designs/775633593_18181423969413165_3832349356905632603_n.jpg', 'We Create The Direction · Manifesto', 'Core Philosophy', 'City Kings 👑', 'From branding to performance marketing, we create ideas that lead industries instead of following them.')" role="button" tabindex="0">
-            <img src="Designs/775633593_18181423969413165_3832349356905632603_n.jpg" alt="We Create The Direction by OTB" class="manif-img-fluid" loading="lazy">
           </div>
 
         </div>
@@ -802,7 +759,7 @@
               <p class="calc-sub" data-i18n="calc_sub">Configure your budget and industry to preview projected reach, customer leads, and ROAS with OTB.</p>
             </div>
             <div class="calc-badge-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="36" height="36" fill="var(--gold-primary)">
+              <svg viewBox="0 0 24 24" width="32" height="32" fill="var(--gold-primary)">
                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 2h1.5v3l2-3h1.7l-2.35 3.53 2.65 4.47h-1.7l-2.1-3.6-1.7 2.6V15H12V5zM7 7h3v2H7V7zm0 4h3v2H7v-2zm10 4h-3v-2h3v2zm0-4h-3V9h3v2z"/>
               </svg>
             </div>
@@ -876,6 +833,49 @@
 
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         FEATURED DARK MANIFESTO (Official DNA Statement)
+         ========================================================================== -->
+    <section class="manifesto-section" id="manifesto">
+      <div class="container">
+        
+        <div class="manifesto-dark-card-split">
+          
+          <div class="manifesto-content-side">
+            <p class="manifesto-top-tag" dir="ltr">W E &nbsp; A R E &nbsp; O T B &nbsp; · &nbsp; T H E &nbsp; C I T Y &nbsp; K I N G S</p>
+
+            <h2 class="manifesto-headline" data-i18n="manif_title">
+              "Don't Follow the Crowd, We Create the Direction."
+            </h2>
+
+            <div class="manifesto-body-text">
+              <p data-i18n="manif_p1">
+                We believe great brands are never built inside cookie-cutter templates. Founded in 2019, OTB has spent over 7 years in the trenches of the Egyptian market, transforming ambitious manufacturing plants, specialty coffee roasters, and commercial leaders into dominant market authorities.
+              </p>
+              <p data-i18n="manif_p2">
+                Governed by our 15-Star Executive Management Board and powered by enterprise infrastructure (<strong>CoreLink CRM + Manus</strong>), we execute with mathematical precision: <em>Strong Product Quality + Real Distribution + Observed Digital Gap + OTB Full-Funnel Engine = Pure Market Dominance</em>.
+              </p>
+            </div>
+
+            <div class="manifesto-contact-line" dir="ltr">
+              <a href="mailto:otbagency5@gmail.com">otbagency5@gmail.com</a>
+              <span class="sep-dot">·</span>
+              <a href="https://wa.me/201008080295" target="_blank" rel="noopener">WhatsApp +20 100 808 0295</a>
+              <span class="sep-dot">·</span>
+              <span>Cairo · 10th of Ramadan · 6th of October</span>
+            </div>
+          </div>
+
+          <!-- Manifesto Artwork Embed (Designs/775633593...) -->
+          <div class="manifesto-media-side" onclick="openLightboxForImage('Designs/775633593_18181423969413165_3832349356905632603_n.jpg', 'We Create The Direction · Manifesto', 'Core Philosophy', 'City Kings 👑', 'From branding to performance marketing, we create ideas that lead industries instead of following them.')" role="button" tabindex="0">
+            <img src="Designs/775633593_18181423969413165_3832349356905632603_n.jpg" alt="We Create The Direction by OTB" class="manif-img-fluid" loading="lazy" decoding="async">
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -992,7 +992,7 @@
     <div class="lightbox-card">
       <button class="modal-close" onclick="closeLightbox()" aria-label="Close Showcase Preview">✕</button>
       <div class="lightbox-aspect-container">
-        <img src="" alt="Project Showcase" id="lightboxImg" class="lightbox-img">
+        <img src="" alt="Project Showcase" id="lightboxImg" class="lightbox-img" decoding="async">
       </div>
       <div class="lightbox-caption">
         <div class="lightbox-top-meta">
@@ -1012,13 +1012,14 @@
 
   <!-- Floating Sticky WhatsApp Trigger Button -->
   <a href="https://wa.me/201008080295?text=Hello%20OTB%20Agency!" target="_blank" rel="noopener" class="floating-wa-btn" aria-label="Connect via WhatsApp" title="WhatsApp Direct">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="#FFFFFF" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="#FFFFFF" aria-hidden="true">
       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.196 8.196 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.24-8.24h.02zm-3.64 3.86c-.2 0-.44.08-.67.33-.23.25-.88.86-.88 2.1s.9 2.44 1.02 2.61c.12.16 1.74 2.78 4.3 3.79.61.24 1.09.39 1.46.51.62.2 1.18.17 1.62.1.5-.07 1.53-.62 1.75-1.23.22-.6.22-1.12.15-1.23-.07-.11-.25-.18-.53-.32-.28-.14-1.66-.82-1.92-.91-.26-.1-.45-.14-.64.14-.19.29-.74.91-.91 1.1-.17.19-.34.21-.62.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.4-1.68-1.57-1.96-.16-.29-.02-.44.12-.58.13-.13.29-.33.43-.5.14-.17.19-.29.28-.48.1-.19.05-.36-.02-.5-.08-.14-.64-1.55-.88-2.12-.23-.57-.47-.49-.64-.5z"/>
     </svg>
     <span class="floating-wa-badge">Online</span>
   </a>
 
-  <!-- Main JavaScript Engine -->
-  <script src="app.js"></script>
+  <!-- Deferred High-Performance Interactive Engine Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="app.js" defer></script>
 </body>
 </html>
