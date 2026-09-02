@@ -1,8 +1,8 @@
 /* ==========================================================================
-   OTB Agency — Official Luxury Editorial Brand Deck Theme
+   OTB Agency — Official Luxury Editorial Brand Deck Theme (English Primary)
    Authentic Design System matching Official PDF Specification (2026)
-   Colors: Clean Warm Cream (#FAF8F5), Obsidian Black (#0B0B0C), Champagne Gold (#C5A059)
-   Fonts: Felfel, KOOkies, Cairo, Playfair Display, Plus Jakarta Sans
+   Colors: Warm Cream (#FAF8F5), Obsidian Black (#0D0D0F), Champagne Gold (#C5A059)
+   Fonts: KOOkies, Plus Jakarta Sans, Playfair Display, Felfel, Cairo
    ========================================================================== */
 
 /* Local Custom Fonts */
@@ -67,10 +67,10 @@
   --border-gold-subtle: rgba(197, 160, 89, 0.2);
 
   /* Fonts */
+  --font-english-title: 'KOOkies', 'Plus Jakarta Sans', sans-serif;
+  --font-english-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-arabic-title: 'Felfel', 'Cairo', 'Tajawal', sans-serif;
   --font-arabic-body: 'Cairo', 'Tajawal', sans-serif;
-  --font-english-title: 'KOOkies', 'Plus Jakarta Sans', sans-serif;
-  --font-english-body: 'Plus Jakarta Sans', sans-serif;
   --font-serif-gold: 'Playfair Display', Georgia, serif;
 
   /* Radius & Transitions */
@@ -104,16 +104,18 @@ html {
   scroll-behavior: smooth;
 }
 
-html[dir="rtl"] {
-  direction: rtl;
-  text-align: right;
-  font-family: var(--font-arabic-body);
-}
-
+/* Primary English (LTR) */
 html[dir="ltr"] {
   direction: ltr;
   text-align: left;
   font-family: var(--font-english-body);
+}
+
+/* Secondary Arabic (RTL) */
+html[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+  font-family: var(--font-arabic-body);
 }
 
 body {
@@ -197,14 +199,14 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 
-html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 {
-  font-family: var(--font-arabic-title);
-  letter-spacing: -0.015em;
-}
-
 html[dir="ltr"] h1, html[dir="ltr"] h2, html[dir="ltr"] h3 {
   font-family: var(--font-english-title);
   letter-spacing: -0.025em;
+}
+
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3 {
+  font-family: var(--font-arabic-title);
+  letter-spacing: -0.015em;
 }
 
 .gold-text {
@@ -218,7 +220,7 @@ html[dir="ltr"] h1, html[dir="ltr"] h2, html[dir="ltr"] h3 {
   font-weight: 700;
 }
 
-/* Interactive Buttons */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -579,7 +581,7 @@ html[dir="ltr"] h1, html[dir="ltr"] h2, html[dir="ltr"] h3 {
   transform: translateY(4px);
 }
 
-/* Page 1 Stats Row (Exact PDF Spec) */
+/* Page 1 Stats Row */
 .stats-spec-row {
   display: flex;
   justify-content: space-around;
@@ -705,7 +707,7 @@ html[dir="ltr"] h1, html[dir="ltr"] h2, html[dir="ltr"] h3 {
   color: var(--gold-primary);
 }
 
-/* 4-Quadrant Metadata Grid (Exact PDF Spec) */
+/* 4-Quadrant Metadata Grid */
 .craft-meta-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1148,8 +1150,8 @@ html[dir="ltr"] h1, html[dir="ltr"] h2, html[dir="ltr"] h3 {
 }
 
 .modal-overlay.active .modal-card { transform: scale(1); }
-html[dir="rtl"] .modal-card { direction: rtl; text-align: right; }
 html[dir="ltr"] .modal-card { direction: ltr; text-align: left; }
+html[dir="rtl"] .modal-card { direction: rtl; text-align: right; }
 
 .modal-close {
   position: absolute;
@@ -1165,8 +1167,8 @@ html[dir="ltr"] .modal-card { direction: ltr; text-align: left; }
   justify-content: center;
   cursor: pointer;
 }
-html[dir="rtl"] .modal-close { left: 1.5rem; }
 html[dir="ltr"] .modal-close { right: 1.5rem; }
+html[dir="rtl"] .modal-close { left: 1.5rem; }
 .modal-close:hover { background: var(--gold-primary); color: #FFFFFF; }
 
 .modal-header { margin-bottom: 2rem; }
@@ -1218,7 +1220,7 @@ html[dir="ltr"] .modal-close { right: 1.5rem; }
 .floating-wa-btn {
   position: fixed;
   bottom: 2rem;
-  left: 2rem;
+  right: 2rem;
   background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
   width: 58px;
   height: 58px;
@@ -1231,7 +1233,7 @@ html[dir="ltr"] .modal-close { right: 1.5rem; }
   text-decoration: none;
   transition: var(--tr-spring);
 }
-html[dir="ltr"] .floating-wa-btn { left: auto; right: 2rem; }
+html[dir="rtl"] .floating-wa-btn { right: auto; left: 2rem; }
 .floating-wa-btn:hover { transform: scale(1.1); }
 .floating-wa-badge {
   position: absolute;

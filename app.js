@@ -1,14 +1,101 @@
 /* ==========================================================================
    OTB Agency — Interactive Engine & Official Brand Deck Experience
+   Default Language: English (with full Arabic bidirectional switch)
    ========================================================================== */
 
-let currentLang = 'ar';
+let currentLang = 'en';
 let isSoundEnabled = true;
 
 /* ==========================================================================
-   BILINGUAL I18N DICTIONARY (Matching Official PDF Brand Deck)
+   BILINGUAL I18N DICTIONARY
    ========================================================================== */
 const i18n = {
+  en: {
+    lang_btn: 'العربية',
+    nav_home: 'Home',
+    nav_services: 'What We Build',
+    nav_showcase: 'Showcase',
+    nav_manifesto: 'Manifesto',
+    nav_calculator: 'ROI Planner',
+    nav_contact: 'Contact',
+    nav_wa: 'WhatsApp Direct',
+
+    hero_title: 'Putting Your Brand Under <br><span class="gold-italic-accent">The Spotlight.</span>',
+    hero_desc: 'Over 7 years of spotlighting extraordinary brands. We create visual stories and bold marketing strategies that deliver real commercial impact — with craft, poise, and tangible results.',
+    btn_work: 'View Our Work',
+
+    stat_1: 'Years of Experience',
+    stat_2: 'Active Community',
+    stat_3: 'Proven Strategies',
+
+    craft_title: 'What We Build For Brands.',
+    case_study_link: 'Case Study →',
+
+    c1_title: 'Luxury Visual Storytelling',
+    c1_desc: 'High-end cinematic video production for specialty coffee, lifestyle, and luxury goods that highlights craft and detail — every shot rooted in narrative.',
+    meta_field: 'Vertical',
+    c1_field: 'Coffee · Lifestyle',
+    meta_output: 'Deliverables',
+    c1_output: 'Video · Photography',
+    meta_results: 'Results',
+    c1_results: '+240% Lift · 4.8x ROAS',
+    meta_duration: 'Timeline',
+    c1_duration: 'Per Project',
+
+    c2_title: 'Market-Leading Strategies',
+    c2_desc: 'Bold marketing strategies engineered to dominate the market and generate genuine business revenue — from brand positioning to full-funnel ad campaigns.',
+    meta_scope: 'Scope',
+    c2_scope: 'Positioning · Campaigns',
+    meta_channels: 'Channels',
+    c2_channels: 'Social · Performance',
+    c2_results: '3.8x - 5.2x ROAS',
+    c2_duration: 'Timeline',
+    c2_duration: 'Per Objective',
+
+    c3_title: '3D Brand Identity Systems',
+    c3_desc: 'Developing distinctive 3D visual identities and custom logos that embody brand power and distinction — an identity seen, felt, and remembered.',
+    c3_output: 'Identity · 3D Logo',
+    meta_system: 'System',
+    c3_system: 'Brand Book Guide',
+    c3_results: '100% Bespoke Craft',
+    c3_duration: 'Timeline',
+    c3_duration: 'Per Scope',
+
+    showcase_title: 'Selected Showcase.',
+    showcase_subtag: 'Coming Soon — Spotlighting Projects',
+
+    manif_title: 'Audacity is a Principle, Not a Slogan.',
+    manif_p1: 'We believe powerful brands are built from a deeper understanding of what truly works. We love being deep in the details, collaborating with lean teams on things that matter.',
+    manif_p2: 'We craft visual stories, strategies, and 3D brand identities — with varying layers of craft, but always with one single objective: making your brand the hero.',
+
+    calc_tag: 'GROWTH SIMULATOR',
+    calc_title: 'Interactive ROI & Growth Simulator',
+    calc_sub: 'Configure your budget and industry to preview projected reach, customer leads, and ROAS with OTB.',
+    calc_lbl_industry: 'Your Brand Vertical:',
+    calc_lbl_budget: 'Estimated Monthly Marketing Budget:',
+    calc_lbl_channels: 'Target Marketing Channel:',
+    calc_res_tag: 'PROJECTION ESTIMATE',
+    calc_res_views: 'Projected Target Reach:',
+    calc_res_leads: 'Estimated Qualified Leads:',
+    calc_res_roas: 'Projected Return (ROAS):',
+    calc_disclaimer: '* Projections are based on historical benchmarks achieved across client verticals at OTB Agency.',
+    btn_claim_plan: 'Lock In Your Strategy Plan 🚀',
+
+    cta_final_title: 'Ready To Put Your Brand in the Spotlight?',
+    btn_final_book: '💬 Book Strategy Session',
+    btn_final_email: 'Email Us Directly →',
+
+    footer_passion: 'Passion for Brand Craft · Over 7 Years',
+
+    modal_title: 'BOOK OTB STRATEGY SESSION',
+    modal_desc: 'Submit your contact details and an OTB Agency strategist will reach out immediately to formulate your roadmap.',
+    form_name: 'Full Name / Company *',
+    form_phone: 'WhatsApp / Phone Number *',
+    form_service: 'Interested Service Pillar:',
+    form_notes: 'Brand Links or Goals (Optional):',
+    form_submit: 'Confirm & Send Request to OTB Agency 💬'
+  },
+
   ar: {
     lang_btn: 'English',
     nav_home: 'الرئيسية',
@@ -91,92 +178,6 @@ const i18n = {
     form_service: 'الخدمة المطلوبة:',
     form_notes: 'ملاحظات أو أهداف البراند (اختياري):',
     form_submit: 'تأكيد وإرسال الطلب إلى OTB Agency 💬'
-  },
-
-  en: {
-    lang_btn: 'العربية',
-    nav_home: 'Home',
-    nav_services: 'What We Build',
-    nav_showcase: 'Showcase',
-    nav_manifesto: 'Manifesto',
-    nav_calculator: 'ROI Planner',
-    nav_contact: 'Contact',
-    nav_wa: 'WhatsApp Direct',
-
-    hero_title: 'Putting Your Brand Under <br><span class="gold-italic-accent">The Spotlight.</span>',
-    hero_desc: 'Over 7 years of spotlighting extraordinary brands. We create visual stories and bold marketing strategies that deliver real commercial impact — with craft, poise, and tangible results.',
-    btn_work: 'View Our Work',
-
-    stat_1: 'Years of Experience',
-    stat_2: 'Active Community',
-    stat_3: 'Proven Strategies',
-
-    craft_title: 'What We Build For Brands.',
-    case_study_link: 'Case Study ←',
-
-    c1_title: 'Visual Storytelling',
-    c1_desc: 'High-end visual production for specialty coffee, lifestyle, and luxury goods that highlights craft and detail — every shot rooted in narrative.',
-    meta_field: 'Vertical',
-    c1_field: 'Coffee · Lifestyle',
-    meta_output: 'Deliverables',
-    c1_output: 'Video · Photo',
-    meta_results: 'Results',
-    c1_results: '+240% Lift · 4.8x ROAS',
-    meta_duration: 'Timeline',
-    c1_duration: 'Per Project',
-
-    c2_title: 'Market-Leading Strategies',
-    c2_desc: 'Bold marketing strategies engineered to dominate the market and generate genuine business revenue — from positioning to campaign launch.',
-    meta_scope: 'Scope',
-    c2_scope: 'Positioning · Campaigns',
-    meta_channels: 'Channels',
-    c2_channels: 'Social · Performance',
-    c2_results: '3.8x - 5.2x ROAS',
-    c2_duration: 'Timeline',
-    c2_duration: 'Per Goal',
-
-    c3_title: '3D Branding & Systems',
-    c3_desc: 'Developing distinctive 3D visual identities and custom logos that embody brand power and distinction — an identity seen and felt.',
-    c3_output: 'Identity · 3D Logo',
-    meta_system: 'System',
-    c3_system: 'Brand Book Guide',
-    c3_results: '100% Bespoke Craft',
-    c3_duration: 'Timeline',
-    c3_duration: 'Per Scope',
-
-    showcase_title: 'Selected Showcase.',
-    showcase_subtag: 'Coming Soon — Spotlighting Projects',
-
-    manif_title: 'Audacity is a Principle, Not a Slogan.',
-    manif_p1: 'We believe powerful brands are built from a deeper understanding of what truly works. We love being deep in the details, collaborating with lean teams on things that matter.',
-    manif_p2: 'We craft visual stories, strategies, and 3D brand identities — with varying layers of craft, but always with one single objective: making your brand the hero.',
-
-    calc_tag: 'GROWTH SIMULATOR',
-    calc_title: 'Interactive ROI & Growth Simulator',
-    calc_sub: 'Configure your budget and industry to preview projected reach, customer leads, and ROAS with OTB.',
-    calc_lbl_industry: 'Your Brand Vertical:',
-    calc_lbl_budget: 'Estimated Monthly Marketing Budget:',
-    calc_lbl_channels: 'Target Marketing Channel:',
-    calc_res_tag: 'PROJECTION ESTIMATE',
-    calc_res_views: 'Projected Target Reach:',
-    calc_res_leads: 'Estimated Qualified Leads:',
-    calc_res_roas: 'Projected Return (ROAS):',
-    calc_disclaimer: '* Projections are based on historical benchmarks achieved across client verticals at OTB Agency.',
-    btn_claim_plan: 'Lock In Your Strategy Plan 🚀',
-
-    cta_final_title: 'Ready To Put Your Brand in the Spotlight?',
-    btn_final_book: '💬 Book Strategy Session',
-    btn_final_email: 'Email Us Directly ←',
-
-    footer_passion: 'Passion for Brand Craft · 7+ Years',
-
-    modal_title: 'BOOK OTB STRATEGY SESSION',
-    modal_desc: 'Submit your contact details and an OTB Agency strategist will reach out immediately to formulate your roadmap.',
-    form_name: 'Full Name / Company *',
-    form_phone: 'WhatsApp / Phone Number *',
-    form_service: 'Interested Service Pillar:',
-    form_notes: 'Brand Links or Goals (Optional):',
-    form_submit: 'Confirm Request to OTB Agency 💬'
   }
 };
 
@@ -200,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function checkUrlLanguage() {
   const urlParams = new URLSearchParams(window.location.search);
   const lang = urlParams.get('lang');
-  if (lang === 'en' && currentLang !== 'en') {
+  if (lang === 'ar' && currentLang !== 'ar') {
     toggleLanguage(false);
   }
 }
@@ -270,7 +271,7 @@ function initCustomCursor() {
 }
 
 /* ==========================================================================
-   3. SYNTHESIZED TACTILE AUDIO (Web Audio API)
+   3. SYNTHESIZED TACTILE AUDIO
    ========================================================================== */
 let audioCtx = null;
 function initTactileAudio() {
@@ -442,8 +443,11 @@ function initRoiCalculator() {
 
   function calculateROI() {
     const budget = parseInt(slider.value, 10);
+    const suffix = currentLang === 'ar' ? 'شهر' : 'month';
+    const leadsSuffix = currentLang === 'ar' ? 'عميل' : 'leads';
+
     if (budgetDisplay) {
-      budgetDisplay.innerText = `$${budget.toLocaleString()} / شهر`;
+      budgetDisplay.innerText = `$${budget.toLocaleString()} / ${suffix}`;
     }
 
     const estReach = Math.round(budget * 180 * currentIndustryFactor * currentChannelFactor);
@@ -453,7 +457,7 @@ function initRoiCalculator() {
     const maxRoas = (4.8 * (currentIndustryFactor / 1.1) * (currentChannelFactor === 1.35 ? 1.15 : 1)).toFixed(1);
 
     if (reachDisplay) reachDisplay.innerText = `${estReach.toLocaleString()}+`;
-    if (leadsDisplay) leadsDisplay.innerText = `${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()} عميل`;
+    if (leadsDisplay) leadsDisplay.innerText = `${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()} ${leadsSuffix}`;
     if (roasDisplay) roasDisplay.innerText = `${minRoas}x - ${maxRoas}x`;
   }
 
@@ -530,7 +534,9 @@ function initModal() {
     const notes = document.getElementById('inputNotes');
     const budget = document.getElementById('budgetSlider') ? document.getElementById('budgetSlider').value : '1500';
     if (notes) {
-      notes.value = `مهتم بخطة تسويقية بميزانية تقديرية: $${budget}/شهر.`;
+      notes.value = currentLang === 'ar' 
+        ? `مهتم بخطة تسويقية بميزانية تقديرية: $${budget}/شهر.`
+        : `Interested in a growth strategy plan with estimated budget: $${budget}/month.`;
     }
   };
 
@@ -578,7 +584,8 @@ function initModal() {
 
       if (hasError) return;
 
-      const text = encodeURIComponent(`*طلب استشارة استراتيجية جديد - OTB Agency*%0A%0A*الاسم:* ${name}%0A*الهاتف:* ${phone}%0A*الخدمة:* ${service}%0A*الملاحظات:* ${notes || 'لا يوجد'}`);
+      const headerText = currentLang === 'ar' ? 'طلب استشارة استراتيجية جديد - OTB Agency' : 'New Strategy Session Request - OTB Agency';
+      const text = encodeURIComponent(`*${headerText}*%0A%0A*Name / Company:* ${name}%0A*Phone / WhatsApp:* ${phone}%0A*Service:* ${service}%0A*Notes:* ${notes || 'None'}`);
       const waUrl = `https://wa.me/201008080295?text=${text}`;
 
       window.open(waUrl, '_blank');
@@ -592,21 +599,21 @@ function initModal() {
    8. BILINGUAL LOCALIZATION ENGINE
    ========================================================================== */
 window.toggleLanguage = function(updateUrl = true) {
-  currentLang = currentLang === 'ar' ? 'en' : 'ar';
+  currentLang = currentLang === 'en' ? 'ar' : 'en';
   const html = document.documentElement;
 
-  if (currentLang === 'ar') {
-    html.setAttribute('dir', 'rtl');
-    html.setAttribute('lang', 'ar');
-  } else {
+  if (currentLang === 'en') {
     html.setAttribute('dir', 'ltr');
     html.setAttribute('lang', 'en');
+  } else {
+    html.setAttribute('dir', 'rtl');
+    html.setAttribute('lang', 'ar');
   }
 
   updateLanguageUI();
 
   if (updateUrl && history.replaceState) {
-    const newUrl = currentLang === 'en' ? '?lang=en' : window.location.pathname;
+    const newUrl = currentLang === 'ar' ? '?lang=ar' : window.location.pathname;
     history.replaceState(null, '', newUrl + window.location.hash);
   }
 };
