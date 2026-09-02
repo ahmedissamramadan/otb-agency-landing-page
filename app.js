@@ -396,9 +396,9 @@ function initThreeHero() {
 
   const material = new THREE.PointsMaterial({
     size: 0.04,
-    color: 0xC5A059,
+    color: 0xFFFFFF,
     transparent: true,
-    opacity: 0.6,
+    opacity: 0.75,
     blending: THREE.AdditiveBlending
   });
 
