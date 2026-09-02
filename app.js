@@ -15,7 +15,7 @@ const i18n = {
     nav_home: 'Home',
     nav_services: 'What We Build',
     nav_benchmark: 'The Franks Proof',
-    nav_showcase: 'Showcase',
+    nav_showcase: 'Showcase (20)',
     nav_manifesto: 'Manifesto',
     nav_calculator: 'ROI Planner',
     nav_contact: 'Contact',
@@ -23,11 +23,11 @@ const i18n = {
 
     hero_title: 'Putting Your Brand Under <br><span class="gold-italic-accent">The Spotlight.</span>',
     hero_desc: 'Over 7 years of engineering market dominance for Egypt\'s premier FMCG manufacturers, specialty coffee icons, and high-growth brands. We don\'t sell routine posts — we build full-funnel commercial engines that turn products into market leaders.',
-    btn_work: 'View Proven Proof of Work',
+    btn_work: 'Explore 20 Documented Proofs of Work',
 
     stat_1: 'Years Market Mastery',
-    stat_brands: 'Strategic Enterprise Brands',
-    stat_2: 'Organic Community',
+    stat_views: 'Annual Verified Views',
+    stat_interactions: 'Annual Engagements',
     stat_franks: 'Peak Monthly Scale (Franks)',
 
     clients_tag: 'TRUSTED BY INDUSTRY TITANS & REGIONAL LEADERS',
@@ -68,8 +68,8 @@ const i18n = {
     c3_duration: 'Format',
     c3_duration: 'Cross-Platform Guidelines',
 
-    showcase_title: 'Documented Proof of Work.',
-    showcase_subtag: 'Real Client Case Studies from Egypt\'s Fastest Scaling Brands',
+    showcase_title: 'Documented Proof of Work (20 Designs)',
+    showcase_subtag: 'Real Client Case Studies & Official Creative Works',
 
     manif_title: '"Don\'t Follow the Crowd, We Create the Direction."',
     manif_p1: 'We believe great brands are never built inside cookie-cutter templates. Founded in 2019, OTB has spent over 7 years in the trenches of the Egyptian market, transforming ambitious manufacturing plants, specialty coffee roasters, and commercial leaders into dominant market authorities.',
@@ -92,7 +92,7 @@ const i18n = {
     btn_final_book: '💬 Book Strategy Session',
     btn_final_email: 'Email Us Directly →',
 
-    footer_passion: 'Growth Partner to +11 Enterprise Brands · 7+ Years of Mastery',
+    footer_passion: 'Growth Partner to +11 Enterprise Brands · 140M+ Annual Views · 7+ Years',
 
     modal_title: 'BOOK OTB STRATEGY SESSION',
     modal_desc: 'Submit your contact details and an OTB Agency strategist will reach out immediately to formulate your roadmap.',
@@ -108,7 +108,7 @@ const i18n = {
     nav_home: 'الرئيسية',
     nav_services: 'ما نصنعه',
     nav_benchmark: 'إنجاز فرانكس',
-    nav_showcase: 'معرض الأعمال',
+    nav_showcase: 'معرض الأعمال (20)',
     nav_manifesto: 'الجرأة مبدأ',
     nav_calculator: 'حاسبة النمو',
     nav_contact: 'التواصل',
@@ -116,11 +116,11 @@ const i18n = {
 
     hero_title: 'نضع علامتك تحت أضواء <br><span class="gold-italic-accent">القيادة.</span>',
     hero_desc: 'أكثر من 7 سنوات في قيادة وتنمية كبرى مصانع الأغذية (FMCG) والقهوة المختصة والبراندات الصاعدة في مصر. لا نبيع منشورات نمطية، بل نبني منظومات نمو تجارية متكاملة تحول المنتجات إلى قوى سوقية مهيمنة.',
-    btn_work: 'استعرض سابقة الأعمال المثبتة',
+    btn_work: 'استعرض 20 سابقة أعمال وتصميم رسمي',
 
     stat_1: 'سنوات قيادة بالسوق',
-    stat_brands: 'براندات استراتيجية مخدومة',
-    stat_2: 'متابع بمجتمعنا العضوي',
+    stat_views: 'مشاهدة سنوية موثقة',
+    stat_interactions: 'تفاعل سنوي مثبت',
     stat_franks: 'ذروة مبيعات فرانكس الشهرية',
 
     clients_tag: 'شركاء النجاح وكبرى الكيانات التجارية والصناعية',
@@ -148,104 +148,107 @@ const i18n = {
     c2_scope: 'تموضع العلامة · مبيعات مباشرة',
     meta_channels: 'القنوات',
     c2_channels: 'إعلانات Meta · تيك توك · يوتيوب',
-    c2_results: '3.8x - 5.2x مضاعف ROAS',
-    c2_duration: 'الفئة المستهدفة',
-    c2_duration: 'المصانع والكيانات الكبرى',
+    c2_results: 'عائد إعلاني 3.8x - 5.2x ROAS',
+    c2_duration: 'الهدف التوسعي',
+    c2_duration: 'القطاع الصناعي والتجاري',
 
-    c3_title: 'الهويات البصرية ثلاثية الأبعاد ومنظومات العلامة',
-    c3_desc: 'تطوير هويات بصرية ثلاثية الأبعاد (3D) ورندرات CGI للعبوات ودليل براند متكامل (Brand Book) يفرض هيبة المنتج على رفوف المتاجر والمنصات الرقمية.',
-    c3_output: 'هوية 3D · رندرات عبوات · دليل براند',
+    c3_title: 'أنظمة الهوية البصرية ثلاثية الأبعاد (3D)',
+    c3_desc: 'ابتكار أنظمة بصرية ثلاثية الأبعاد بتكوينات Isometric ورندرات CGI لعبوات المنتجات مع كتيب إرشادات شامل يفرض هيبة فورية على رفوف التجزئة والمنافذ.',
+    c3_output: 'أنظمة ثلاثية الأبعاد · رندرات عبوات · دليل هوية',
     meta_system: 'النظام',
-    c3_system: 'الأسود الملكي والذهبي الإمبراطوري',
-    c3_results: '100% تفرد وتمايز بصري',
-    c3_duration: 'التنسيق',
+    c3_system: 'المونوكروم الملكي المطعم بالذهب',
+    c3_results: 'تميّز بصري بنسبة 100%',
+    c3_duration: 'الصيغة',
     c3_duration: 'إرشادات شاملة للمنصات',
 
-    showcase_title: 'سابقة الأعمال والنتائج الموثقة.',
-    showcase_subtag: 'نماذج حية وقصص نجاح من أسرع العلامات نمواً في السوق المصري',
+    showcase_title: 'معرض الأعمال المثبتة (20 تصميماً رسمياً)',
+    showcase_subtag: 'دراسات حالة حقيقية وتصميمات الحملات الرسمية لعملاء OTB',
 
-    manif_title: '«لا نتبع القطيع، نحن نصنع الاتجاه.»',
-    manif_p1: 'نؤمن أن البراندات العظيمة لا تُبنى بالقوالب الجاهزة. منذ تأسيسها في 2019، خاضت OTB أكثر من 7 سنوات في قلب السوق المصري، وحولت مصانع الأغذية والقهوة والتجارة إلى قوى مهيمنة تتصدر السوق.',
-    manif_p2: 'بإدارة مجلسنا التنفيذي المكون من 15 كفاءة متخصصة، وبدعم من بنيتنا الرقمية (CoreLink CRM + Manus)، ننفذ معادلتنا الرياضية: جودة تصنيع حقيقية + توزيع فعلي + فجوة رقمية مرصودة + محرك OTB الشامل = الصدارة السوقية المطلقة.',
+    manif_title: '"لا نتبع القطيع، بل نصنع الاتجاه."',
+    manif_p1: 'نؤمن أن العلامات الاستثنائية لا تُبنى داخل قوالب مكررة. منذ تأسيسنا عام 2019، قضينا أكثر من 7 سنوات نقود صعود كبرى مصانع الأغذية ومحامص القهوة والكيانات التجارية من الظل إلى صدارة السوق.',
+    manif_p2: 'نعمل بقيادة مجلس الإدارة التنفيذي المكون من 15 نجمة، ومدعومين ببنية تحتية رقمية (CoreLink CRM + Manus)، لنطبق معادلتنا الحاسمة: جودة منتج حقيقية + توزيع فعلي + فجوة رقمية ملحوظة + محرك OTB التسويقي = هيمنة سوقية مطلقة.',
 
-    calc_tag: 'GROWTH SIMULATOR',
-    calc_title: 'حاسبة النمو والعائد الاستثماري التفاعلية',
-    calc_sub: 'حدد ميزانيتك ومجال عملك لتستكشف التقدير المتوقع لنمو علامتك التجارية مع استراتيجيات OTB.',
+    calc_tag: 'محاكي النمو الاستراتيجي',
+    calc_title: 'حاسبة العائد والنمو التفاعلية',
+    calc_sub: 'حدد ميزانيتك وقطاعك لمعاينة التقديرات المحققة للمشاهدات، والعملاء المحتملين، ومضاعف العائد مع OTB.',
     calc_lbl_industry: 'قطاع علامتك التجارية:',
-    calc_lbl_budget: 'الميزانية التسويقية الشهرية التقريبية:',
-    calc_lbl_channels: 'المنصة التسويقية المستهدفة:',
-    calc_res_tag: 'PROJECTION ESTIMATE',
-    calc_res_views: 'المشاهدات والوصول المستهدف:',
-    calc_res_leads: 'العملاء المحتملين المتوقعين:',
-    calc_res_roas: 'مضاعف العائد المتوقع (ROAS):',
-    calc_disclaimer: '* هذه التقديرات مبنية على متوسط أداء حملات OTB Agency لعملائنا في نفس القطاع.',
-    btn_claim_plan: 'احجز خطتك التسويقية الآن 🚀',
+    calc_lbl_budget: 'الميزانية التسويقية الشهرية التقديرية:',
+    calc_lbl_channels: 'القناة الإعلانية المستهدفة:',
+    calc_res_tag: 'تقديرات النمو المحتمل',
+    calc_res_views: 'الوصول التقديري المتوقع:',
+    calc_res_leads: 'العملاء المحتملين المؤهلين:',
+    calc_res_roas: 'العائد الاستثماري المتوقع (ROAS):',
+    calc_disclaimer: '* تستند التقديرات إلى المعايير القياسية الفعلية المحققة عبر قطاعات عملاء OTB Agency.',
+    btn_claim_plan: 'احجز خطتك الاستراتيجية الآن 🚀',
 
-    cta_final_title: 'جاهز تضع علامتك تحت أضواء القيادة؟',
-    btn_final_book: '💬 احجز جلسة استراتيجية',
-    btn_final_email: 'راسلنا على البريد ←',
+    cta_final_title: 'هل أنت مستعد لوضع علامتك تحت أضواء القيادة؟',
+    btn_final_book: '💬 احجز جلستك الاستراتيجية',
+    btn_final_email: 'راسلنا مباشرة عبر الإيميل ←',
 
-    footer_passion: 'شريك نمو لأكثر من 11 براند استراتيجي · 7+ سنوات من الريادة',
+    footer_passion: 'شريك النمو لأكثر من 11 براند استراتيجي · 140M+ مشاهدة سنوية · 7+ سنوات',
 
-    modal_title: 'BOOK OTB STRATEGY SESSION',
-    modal_desc: 'أدخل بياناتك وسيتم التواصل معك مباشرة بواسطة فريق OTB Agency لبناء خطتك الإعلانية.',
-    form_name: 'الاسم / الشركة *',
-    form_phone: 'رقم التواصل / الواتساب *',
-    form_service: 'الخدمة المطلوبة:',
-    form_notes: 'ملاحظات أو أهداف البراند (اختياري):',
+    modal_title: 'حجز جلسة استراتيجية مع OTB',
+    modal_desc: 'سجل بيانات التواصل وسيقوم مستشارو النمو في OTB بالتواصل معك فوراً لوضع خارطة طريق علامتك.',
+    form_name: 'الاسم بالكامل / اسم الشركة *',
+    form_phone: 'رقم الواتساب / الهاتف *',
+    form_service: 'مسار الخدمة المطلوب:',
+    form_notes: 'روابط العلامة أو أهداف النمو (اختياري):',
     form_submit: 'تأكيد وإرسال الطلب إلى OTB Agency 💬'
   }
 };
 
 /* ==========================================================================
-   INITIALIZATION LIFECYCLE
+   GLOBAL LIGHTBOX HELPER (Accessible everywhere)
+   ========================================================================== */
+window.openLightboxForImage = function(src, titleText, catText, metricText, descText) {
+  const overlay = document.getElementById('lightboxOverlay');
+  const img = document.getElementById('lightboxImg');
+  const title = document.getElementById('lightboxTitle');
+  const cat = document.getElementById('lightboxCategory');
+  const metric = document.getElementById('lightboxMetric');
+  const desc = document.getElementById('lightboxDesc');
+
+  if (img && src) img.src = src;
+  if (title && titleText) title.innerText = titleText;
+  if (cat && catText) cat.innerText = catText;
+  if (metric && metricText) metric.innerText = metricText.startsWith('✦') ? metricText : `✦ ${metricText}`;
+  if (desc && descText) desc.innerText = descText;
+
+  if (overlay) overlay.classList.add('active');
+};
+
+window.closeLightbox = function() {
+  const overlay = document.getElementById('lightboxOverlay');
+  if (overlay) overlay.classList.remove('active');
+};
+
+/* ==========================================================================
+   DOM INITIALIZATION
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-  checkUrlLanguage();
-  initLenis();
-  initNavbar();
-  initCustomCursor();
-  initTactileAudio();
-  initThreeJsWebGL();
+  initCursor();
+  initLenisSmoothScroll();
+  initSoundEngine();
+  initThreeHero();
   initRoiCalculator();
   initLightbox();
+  initShowcaseFilters();
   initModal();
+  initNavbar();
   initGsapAnimations();
   initCounterObserver();
-});
 
-function checkUrlLanguage() {
+  // Check URL parameter for language
   const urlParams = new URLSearchParams(window.location.search);
-  const lang = urlParams.get('lang');
-  if (lang === 'ar' && currentLang !== 'ar') {
+  if (urlParams.get('lang') === 'ar') {
     toggleLanguage(false);
   }
-}
+});
 
 /* ==========================================================================
-   1. LENIS SMOOTH SCROLL
+   1. MAGNETIC LUXURY CUSTOM CURSOR
    ========================================================================== */
-function initLenis() {
-  if (typeof Lenis !== 'undefined') {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      smoothTouch: false
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-  }
-}
-
-/* ==========================================================================
-   2. MAGNETIC CUSTOM CURSOR
-   ========================================================================== */
-function initCustomCursor() {
+function initCursor() {
   const dot = document.getElementById('cursorDot');
   const ring = document.getElementById('cursorRing');
   if (!dot || !ring) return;
@@ -258,93 +261,125 @@ function initCustomCursor() {
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
+    dot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
   });
 
   function renderRing() {
-    ringX += (mouseX - ringX) * 0.18;
-    ringY += (mouseY - ringY) * 0.18;
-    ring.style.left = `${ringX}px`;
-    ring.style.top = `${ringY}px`;
+    ringX += (mouseX - ringX) * 0.15;
+    ringY += (mouseY - ringY) * 0.15;
+    ring.style.transform = `translate(${ringX}px, ${ringY}px)`;
     requestAnimationFrame(renderRing);
   }
-  renderRing();
+  requestAnimationFrame(renderRing);
 
-  const interactives = document.querySelectorAll('a, button, .craft-card, .portfolio-spec-card, .benchmark-card, input, select, textarea');
-  interactives.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      ring.style.width = '52px';
-      ring.style.height = '52px';
-      ring.style.backgroundColor = 'rgba(197, 160, 89, 0.12)';
-    });
-    el.addEventListener('mouseleave', () => {
-      ring.style.width = '36px';
-      ring.style.height = '36px';
-      ring.style.backgroundColor = 'rgba(197, 160, 89, 0.05)';
-    });
+  const interactiveElements = document.querySelectorAll('a, button, input, textarea, select, .portfolio-spec-card, .craft-card, .calc-chip, .hero-monolith-box, .benchmark-media-side, .craft-preview-thumb, .manifesto-media-side');
+  interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => ring.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => ring.classList.remove('cursor-hover'));
   });
 }
 
 /* ==========================================================================
-   3. SYNTHESIZED TACTILE AUDIO
+   2. LENIS SMOOTH SCROLL
+   ========================================================================== */
+function initLenisSmoothScroll() {
+  if (typeof Lenis !== 'undefined') {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.95
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }
+}
+
+/* ==========================================================================
+   3. WEB AUDIO SYNTHESIZED SOUND SYSTEM
    ========================================================================== */
 let audioCtx = null;
-function initTactileAudio() {
-  const soundBtn = document.getElementById('soundToggleBtn');
-  if (!soundBtn) return;
 
-  soundBtn.addEventListener('click', () => {
-    isSoundEnabled = !isSoundEnabled;
-    const iconOn = soundBtn.querySelector('.sound-icon-on');
-    const iconOff = soundBtn.querySelector('.sound-icon-off');
-    
-    if (iconOn && iconOff) {
-      iconOn.style.display = isSoundEnabled ? 'block' : 'none';
-      iconOff.style.display = isSoundEnabled ? 'none' : 'block';
+function getAudioContext() {
+  if (!audioCtx) {
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    if (AudioContext) {
+      audioCtx = new AudioContext();
     }
-
-    if (isSoundEnabled) playMicroSound(880, 0.04);
-  });
-
-  document.querySelectorAll('.btn, .btn-hero-work, .btn-dark-pill, .btn-outline-pill, .calc-chip, .modal-close').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (isSoundEnabled) playMicroSound(580, 0.03);
-    });
-  });
+  }
+  if (audioCtx && audioCtx.state === 'suspended') {
+    audioCtx.resume();
+  }
+  return audioCtx;
 }
 
-function playMicroSound(freq = 600, duration = 0.04) {
+function playSound(type) {
+  if (!isSoundEnabled) return;
   try {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
+    const ctx = getAudioContext();
+    if (!ctx) return;
 
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(freq / 2, audioCtx.currentTime + duration);
-
-    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
     osc.connect(gain);
-    gain.connect(audioCtx.destination);
+    gain.connect(ctx.destination);
 
-    osc.start();
-    osc.stop(audioCtx.currentTime + duration);
-  } catch (err) {}
+    const now = ctx.currentTime;
+
+    if (type === 'hover') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(420, now);
+      osc.frequency.exponentialRampToValueAtTime(540, now + 0.04);
+      gain.gain.setValueAtTime(0.015, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+      osc.start(now);
+      osc.stop(now + 0.04);
+    } else if (type === 'click') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(620, now);
+      osc.frequency.exponentialRampToValueAtTime(220, now + 0.08);
+      gain.gain.setValueAtTime(0.04, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    }
+  } catch (e) {
+    // Audio fail safe
+  }
+}
+
+function initSoundEngine() {
+  const soundBtn = document.getElementById('soundToggleBtn');
+  const iconOn = soundBtn ? soundBtn.querySelector('.sound-icon-on') : null;
+  const iconOff = soundBtn ? soundBtn.querySelector('.sound-icon-off') : null;
+
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      isSoundEnabled = !isSoundEnabled;
+      if (iconOn && iconOff) {
+        iconOn.style.display = isSoundEnabled ? 'block' : 'none';
+        iconOff.style.display = isSoundEnabled ? 'none' : 'block';
+      }
+      if (isSoundEnabled) playSound('click');
+    });
+  }
+
+  const clickables = document.querySelectorAll('button, a, .calc-chip, .portfolio-spec-card, .filter-tab-btn');
+  clickables.forEach(item => {
+    item.addEventListener('mouseenter', () => playSound('hover'));
+    item.addEventListener('click', () => playSound('click'));
+  });
 }
 
 /* ==========================================================================
-   4. THREE.JS BACKGROUND PARTICLES
+   4. THREE.JS PARTICLE CONSTELLATION
    ========================================================================== */
-function initThreeJsWebGL() {
+function initThreeHero() {
   const canvas = document.getElementById('webgl-hero-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
@@ -356,7 +391,7 @@ function initThreeJsWebGL() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  const count = 300;
+  const count = 280;
   const positions = new Float32Array(count * 3);
 
   for (let i = 0; i < count * 3; i += 3) {
@@ -481,16 +516,34 @@ function initRoiCalculator() {
 }
 
 /* ==========================================================================
-   6. LIGHTBOX & CASE STUDY MODAL
+   6. SHOWCASE FILTER TABS & LIGHTBOX
    ========================================================================== */
+function initShowcaseFilters() {
+  const filterBtns = document.querySelectorAll('.filter-tab-btn');
+  const cards = document.querySelectorAll('.portfolio-spec-card');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+}
+
 function initLightbox() {
   const cards = document.querySelectorAll('.portfolio-spec-card');
   const overlay = document.getElementById('lightboxOverlay');
-  const img = document.getElementById('lightboxImg');
-  const title = document.getElementById('lightboxTitle');
-  const cat = document.getElementById('lightboxCategory');
-  const metric = document.getElementById('lightboxMetric');
-  const desc = document.getElementById('lightboxDesc');
 
   cards.forEach(card => {
     const openCard = () => {
@@ -500,13 +553,7 @@ function initLightbox() {
       const cardMetric = card.getAttribute('data-metric');
       const cardDesc = card.getAttribute('data-desc');
 
-      if (img && src) img.src = src;
-      if (title && cardTitle) title.innerText = cardTitle;
-      if (cat && cardCat) cat.innerText = cardCat;
-      if (metric && cardMetric) metric.innerText = `✦ ${cardMetric}`;
-      if (desc && cardDesc) desc.innerText = cardDesc;
-
-      if (overlay) overlay.classList.add('active');
+      window.openLightboxForImage(src, cardTitle, cardCat, cardMetric, cardDesc);
     };
 
     card.addEventListener('click', openCard);
@@ -518,13 +565,9 @@ function initLightbox() {
     });
   });
 
-  window.closeLightbox = function() {
-    if (overlay) overlay.classList.remove('active');
-  };
-
   if (overlay) {
     overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeLightbox();
+      if (e.target === overlay) window.closeLightbox();
     });
   }
 }
@@ -546,7 +589,7 @@ function initModal() {
   };
 
   window.openModalWithPlan = function() {
-    openModal();
+    window.openModal();
     const notes = document.getElementById('inputNotes');
     const budget = document.getElementById('budgetSlider') ? document.getElementById('budgetSlider').value : '1500';
     if (notes) {
@@ -564,7 +607,7 @@ function initModal() {
 
   if (overlay) {
     overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) closeModal();
+      if (e.target === overlay) window.closeModal();
     });
   }
 
@@ -573,9 +616,9 @@ function initModal() {
 
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeModal();
-      closeLightbox();
-      closeMobileDrawer();
+      window.closeModal();
+      window.closeLightbox();
+      window.closeMobileDrawer();
     }
   });
 
@@ -605,7 +648,7 @@ function initModal() {
       const waUrl = `https://wa.me/201008080295?text=${text}`;
 
       window.open(waUrl, '_blank');
-      closeModal();
+      window.closeModal();
       form.reset();
     });
   }
@@ -700,8 +743,8 @@ function initNavbar() {
     }
   };
 
-  if (drawerClose) drawerClose.addEventListener('click', closeMobileDrawer);
-  drawerLinks.forEach(l => l.addEventListener('click', closeMobileDrawer));
+  if (drawerClose) drawerClose.addEventListener('click', window.closeMobileDrawer);
+  drawerLinks.forEach(l => l.addEventListener('click', window.closeMobileDrawer));
 }
 
 /* ==========================================================================
@@ -712,7 +755,7 @@ function initGsapAnimations() {
     gsap.from('.hero-top-tag', { opacity: 0, y: 15, duration: 0.8, delay: 0.1 });
     gsap.from('.hero-headline-spec', { opacity: 0, y: 25, duration: 1, delay: 0.25 });
     gsap.from('.hero-desc-spec', { opacity: 0, y: 20, duration: 0.9, delay: 0.45 });
-    gsap.from('.hero-action-spec', { opacity: 0, y: 20, duration: 0.9, delay: 0.6 });
+    gsap.from('.hero-monolith-box', { opacity: 0, scale: 0.95, y: 30, duration: 1.1, delay: 0.55 });
     gsap.from('.stats-spec-row', { opacity: 0, y: 30, duration: 1, delay: 0.75 });
   }
 }
