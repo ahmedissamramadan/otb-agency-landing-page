@@ -626,6 +626,26 @@
     if (elConv) elConv.innerHTML = `<bdi>${convRate}%</bdi>`;
     if (elTop) elTop.innerText = topService;
     if (badgeCount) badgeCount.innerText = totalLeads;
+
+    // Update dynamic status counts on filter options
+    const counts = { all: totalLeads, new: 0, contacted: 0, strategy_session: 0, closed_won: 0, archived: 0 };
+    leadsData.forEach(l => {
+      if (counts[l.status] !== undefined) counts[l.status]++;
+    });
+
+    const optAll = document.querySelector('#filterLeadStatus option[value="all"]');
+    const optNew = document.querySelector('#filterLeadStatus option[value="new"]');
+    const optCont = document.querySelector('#filterLeadStatus option[value="contacted"]');
+    const optStrat = document.querySelector('#filterLeadStatus option[value="strategy_session"]');
+    const optClosed = document.querySelector('#filterLeadStatus option[value="closed_won"]');
+    const optArch = document.querySelector('#filterLeadStatus option[value="archived"]');
+
+    if (optAll) optAll.innerText = `${I18N[currentLang].filter_all_status} (${counts.all})`;
+    if (optNew) optNew.innerText = `${I18N[currentLang].st_opt_new} (${counts.new})`;
+    if (optCont) optCont.innerText = `${I18N[currentLang].st_opt_contacted} (${counts.contacted})`;
+    if (optStrat) optStrat.innerText = `${I18N[currentLang].st_opt_strategy} (${counts.strategy_session})`;
+    if (optClosed) optClosed.innerText = `${I18N[currentLang].st_opt_closed} (${counts.closed_won})`;
+    if (optArch) optArch.innerText = `${I18N[currentLang].st_opt_archived} (${counts.archived})`;
   }
 
   /* 2. CRM Leads */
@@ -633,13 +653,16 @@
     const tbody = document.getElementById('leadsTableBody');
     if (!tbody) return;
 
-    const query = (document.getElementById('searchLeadsInput')?.value || '').toLowerCase();
+    const query = (document.getElementById('searchLeadsInput')?.value || '').toLowerCase().trim();
     const filterStatus = document.getElementById('filterLeadStatus')?.value || 'all';
 
     const filtered = leadsData.filter(lead => {
-      const matchQuery =
+      const srvName = (getServiceTitle(lead.service) || '').toLowerCase();
+      const matchQuery = !query ||
         (lead.name || '').toLowerCase().includes(query) ||
         (lead.phone || '').toLowerCase().includes(query) ||
+        (lead.service || '').toLowerCase().includes(query) ||
+        srvName.includes(query) ||
         (lead.notes || '').toLowerCase().includes(query);
       const matchStatus = filterStatus === 'all' || lead.status === filterStatus;
       return matchQuery && matchStatus;
@@ -672,7 +695,10 @@
       return `
         <tr>
           <td>
-            <strong style="color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(lead.name)}</strong>
+            <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+              <strong style="color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(lead.name)}</strong>
+              ${lead.status === 'new' ? `<span class="badge-status new" style="font-size: 0.68rem; padding: 0.15rem 0.45rem;">${currentLang === 'ar' ? 'طلب جديد ⚡' : 'NEW ⚡'}</span>` : ''}
+            </div>
             ${lead.notes ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(lead.notes)}">${escapeHtml(lead.notes)}</div>` : ''}
           </td>
           <td>
@@ -701,6 +727,9 @@
               <a href="${waUrl}" target="_blank" rel="noopener" class="btn-icon-action whatsapp" title="${currentLang === 'ar' ? 'محادثة واتساب مخصصة فورية' : 'Direct WhatsApp Chat'}">
                 💬
               </a>
+              <button class="btn-icon-action" onclick="window.copyLeadGreeting('${lead.id}')" title="${currentLang === 'ar' ? 'نسخ رسالة الترحيب للحافظة' : 'Copy Greeting to Clipboard'}">
+                📋
+              </button>
               <button class="btn-icon-action danger" onclick="window.deleteLead('${lead.id}')" title="${currentLang === 'ar' ? 'حذف هذا السجل' : 'Delete Lead'}">
                 🗑️
               </button>
@@ -937,6 +966,41 @@
       showToast(currentLang === 'ar' ? 'تم حذف السجل بنجاح' : 'Lead deleted successfully');
     }
   };
+
+  window.copyLeadGreeting = function (leadId) {
+    const lead = leadsData.find(l => l.id === leadId);
+    if (!lead) return;
+    const serviceName = getServiceTitle(lead.service);
+    const greeting = currentLang === 'ar'
+      ? `السلام عليكم أستاذ(ة) ${lead.name}، تحياتنا من وكالة OTB Agency (The City Kings). بخصوص طلبكم لجلسة التخطيط الاستراتيجي لمسار (${serviceName})، يسعدنا التنسيق معكم لتحديد الموعد الأنسب لمناقشة خارطة طريق نمو علامتكم التجارية.`
+      : `Hello ${lead.name}! This is OTB Agency Executive Team regarding your strategy roadmap request for (${serviceName}). We are ready to schedule your session.`;
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(greeting).then(() => {
+        showToast(currentLang === 'ar' ? 'تم نسخ رسالة الترحيب المخصصة إلى الحافظة بنجاح 📋' : 'Greeting copied to clipboard 📋');
+      }).catch(() => {
+        fallbackCopyText(greeting);
+      });
+    } else {
+      fallbackCopyText(greeting);
+    }
+  };
+
+  function fallbackCopyText(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showToast(currentLang === 'ar' ? 'تم نسخ رسالة الترحيب المخصصة إلى الحافظة بنجاح 📋' : 'Greeting copied to clipboard 📋');
+    } catch (e) {
+      showToast(currentLang === 'ar' ? 'تعذر النسخ التلقائي' : 'Copy failed');
+    }
+    document.body.removeChild(ta);
+  }
 
   window.openAddLeadModal = function () {
     const modal = document.getElementById('addLeadModal');

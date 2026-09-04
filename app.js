@@ -210,6 +210,17 @@ window.openLightboxForImage = function(src, titleText, catText, metricText, desc
   if (metric && metricText) metric.innerText = metricText.startsWith('✦') ? metricText : `✦ ${metricText}`;
   if (desc && descText) desc.innerText = descText;
 
+  // Contextual WhatsApp link for active case study
+  const waBtn = document.querySelector('.lightbox-action-row a');
+  if (waBtn) {
+    const targetPhone = window.customTargetPhone || '201008080295';
+    const waMsg = currentLang === 'ar'
+      ? `السلام عليكم OTB Agency، أرغب في مناقشة استراتيجية وحملة لعلامتي التجارية مماثلة لسابقة الأعمال: (${titleText || 'معرض الأعمال'}).`
+      : `Hello OTB Agency! I would like to discuss an enterprise growth strategy similar to: (${titleText || 'Showcase Case'}).`;
+    waBtn.href = `https://wa.me/${targetPhone}?text=${encodeURIComponent(waMsg)}`;
+    waBtn.innerText = currentLang === 'ar' ? 'طلب استراتيجية مماثلة 💬' : 'Request Similar Strategy 💬';
+  }
+
   if (overlay) overlay.classList.add('active');
 };
 
@@ -231,6 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initModal();
   initNavbar();
   initCounterObserver();
+  syncFromAdminStorage();
 
   // Check URL parameter for language
   const urlParams = new URLSearchParams(window.location.search);
@@ -806,9 +818,11 @@ function initNavbar() {
 }
 
 /* ==========================================================================
-   9. STAT COUNTERS OBSERVER
+   9. STAT COUNTERS OBSERVER (Physics Easing)
    ========================================================================== */
 function initCounterObserver() {
+  const statsRow = document.querySelector('.stats-spec-row');
+  if (!statsRow) return;
   const counters = document.querySelectorAll('[data-counter]');
   let started = false;
 
@@ -818,23 +832,84 @@ function initCounterObserver() {
         started = true;
         counters.forEach(counter => {
           const target = parseFloat(counter.getAttribute('data-counter'));
+          const hasPlus = (counter.textContent || '').includes('+');
           let current = 0;
-          const step = target / 25;
+          const duration = 1200;
+          const frameDuration = 1000 / 60;
+          const totalFrames = Math.round(duration / frameDuration);
+          let frame = 0;
 
           const timer = setInterval(() => {
-            current += step;
-            if (current >= target) {
-              counter.innerText = `+${Math.round(target)}`;
+            frame++;
+            const progress = frame / totalFrames;
+            const easeProgress = progress * (2 - progress); // easeOutQuad
+            current = Math.round(easeProgress * target);
+
+            if (frame >= totalFrames) {
+              counter.innerText = (hasPlus ? '+' : '') + target;
               clearInterval(timer);
             } else {
-              counter.innerText = `+${Math.floor(current)}`;
+              counter.innerText = (hasPlus ? '+' : '') + current;
             }
-          }, 30);
+          }, frameDuration);
         });
       }
     });
   }, { threshold: 0.2 });
 
-  const statsRow = document.querySelector('.stats-spec-row');
-  if (statsRow) observer.observe(statsRow);
+  observer.observe(statsRow);
+}
+
+/* ==========================================================================
+   10. EXECUTIVE BI-DIRECTIONAL STORAGE SYNC
+   ========================================================================== */
+function syncFromAdminStorage() {
+  try {
+    // 1. Sync Contact Details
+    const storedContent = localStorage.getItem('otb_content_config');
+    if (storedContent) {
+      const content = JSON.parse(storedContent);
+      if (content.contact && content.contact.phone) {
+        const cleanPhone = content.contact.phone.replace(/[^\d+]/g, '').replace(/^\+/, '');
+        if (cleanPhone) {
+          window.customTargetPhone = cleanPhone;
+          const floatWa = document.querySelector('.floating-wa-btn');
+          if (floatWa) {
+            floatWa.href = `https://wa.me/${cleanPhone}?text=${encodeURIComponent('Hello OTB Agency!')}`;
+          }
+        }
+      }
+      if (content.contact && content.contact.email) {
+        const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
+        emailLinks.forEach(l => {
+          l.href = `mailto:${content.contact.email}`;
+        });
+      }
+    }
+
+    // 2. Sync ROI Multipliers
+    const storedRoi = localStorage.getItem('otb_roi_config');
+    if (storedRoi) {
+      const roi = JSON.parse(storedRoi);
+      if (roi.industries) {
+        Object.keys(roi.industries).forEach(key => {
+          const chip = document.querySelector(`#industryChips .calc-chip[data-name="${key}"]`);
+          if (chip && roi.industries[key].factor) {
+            chip.setAttribute('data-factor', roi.industries[key].factor);
+          }
+        });
+        if (window.recalcRoi) window.recalcRoi();
+      }
+    }
+
+    // 3. Executive Portal Shortcut: Cmd/Ctrl + Shift + O
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && (e.key === 'O' || e.key === 'o' || e.key === 'خ')) {
+        e.preventDefault();
+        window.location.href = 'dashboard.html';
+      }
+    });
+  } catch (err) {
+    console.debug('Storage sync notice:', err);
+  }
 }
