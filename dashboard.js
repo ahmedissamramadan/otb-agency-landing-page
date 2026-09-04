@@ -161,7 +161,7 @@
       m_lead_ph_name: 'مثال: مصانع فرانكس الغذائية',
       m_lead_lbl_phone: 'رقم الهاتف / الواتساب الرسمي *',
       m_lead_lbl_service: 'مسار النمو المطلوب',
-      m_lead_lbl_budget: 'الميزانية الشهرية المقترحة ($)',
+      m_lead_lbl_budget: 'الميزانية الشهرية المقترحة (ج.م)',
       m_lead_lbl_notes: 'ملاحظات العميل وأهداف التوسع',
       m_lead_ph_notes: 'أدخل تفاصيل التوسع وحجم العمل المطلوب...',
       m_lead_btn_submit: 'اعتماد وإدراج الطلب في المنظومة ✓',
@@ -317,7 +317,7 @@
       m_lead_ph_name: 'e.g. Franks Food Industries',
       m_lead_lbl_phone: 'Official Phone / WhatsApp *',
       m_lead_lbl_service: 'Target Growth Pillar',
-      m_lead_lbl_budget: 'Estimated Monthly Budget ($)',
+      m_lead_lbl_budget: 'Estimated Monthly Budget (EGP)',
       m_lead_lbl_notes: 'Client Notes & Growth Objectives',
       m_lead_ph_notes: 'Provide scale goals and scope requirements...',
       m_lead_btn_submit: 'Confirm & Enlist Lead ✓',
@@ -599,7 +599,7 @@
 
     let pipelineVal = 0;
     leadsData.forEach(l => {
-      pipelineVal += parseInt(l.budget || 1500, 10);
+      pipelineVal += parseInt(l.budget || 50000, 10);
     });
 
     const servicesCount = {};
@@ -620,8 +620,9 @@
     const elTop = document.getElementById('ovTopService');
     const badgeCount = document.getElementById('crmBadgeCount');
 
+    const currLabel = currentLang === 'ar' ? 'ج.م' : 'EGP';
     if (elTotal) elTotal.innerText = totalLeads;
-    if (elPipe) elPipe.innerHTML = `<bdi>$${pipelineVal.toLocaleString()}</bdi>`;
+    if (elPipe) elPipe.innerHTML = `<bdi>${pipelineVal.toLocaleString()} ${currLabel}</bdi>`;
     if (elConv) elConv.innerHTML = `<bdi>${convRate}%</bdi>`;
     if (elTop) elTop.innerText = topService;
     if (badgeCount) badgeCount.innerText = totalLeads;
@@ -681,7 +682,7 @@
             <span style="font-size: 0.84rem; color: var(--text-secondary);">${serviceName}</span>
           </td>
           <td>
-            <strong style="color: var(--accent-gold-bright);"><bdi>$${(lead.budget || 1500).toLocaleString()}</bdi></strong>
+            <strong style="color: var(--accent-gold-bright);"><bdi>${(lead.budget || 50000).toLocaleString()} ${currentLang === 'ar' ? 'ج.م' : 'EGP'}</bdi></strong>
           </td>
           <td>
             <span style="font-size: 0.8rem; color: var(--text-muted);"><bdi>${formattedDate}</bdi></span>
@@ -783,8 +784,8 @@
             <input type="number" step="0.05" class="param-input" id="roi_factor_${key}" value="${item.factor}" dir="ltr" onchange="window.updateRoiParam('${key}', 'factor', this.value)">
           </div>
           <div class="param-row">
-            <span class="param-label">${currentLang === 'ar' ? 'تكلفة اكتساب العميل التقديرية ($):' : 'Est. Cost per Lead ($):'}</span>
-            <input type="number" step="0.1" class="param-input" id="roi_cost_${key}" value="${item.lead_cost || 3.0}" dir="ltr" onchange="window.updateRoiParam('${key}', 'lead_cost', this.value)">
+            <span class="param-label">${currentLang === 'ar' ? 'تكلفة اكتساب العميل التقديرية (ج.م):' : 'Est. Cost per Lead (EGP):'}</span>
+            <input type="number" step="5" class="param-input" id="roi_cost_${key}" value="${item.lead_cost || 75}" dir="ltr" onchange="window.updateRoiParam('${key}', 'lead_cost', this.value)">
           </div>
         </div>
       `;
@@ -795,18 +796,19 @@
 
   function calcLiveRoi() {
     const slider = document.getElementById('adminRoiSlider');
-    const budgetVal = slider ? parseInt(slider.value, 10) : 2500;
+    const budgetVal = slider ? parseInt(slider.value, 10) : 50000;
     const elBudget = document.getElementById('adminRoiBudgetDisplay');
     const elReach = document.getElementById('adminRoiReachDisplay');
     const elLeads = document.getElementById('adminRoiLeadsDisplay');
     const elRoas = document.getElementById('adminRoiRoasDisplay');
 
-    if (elBudget) elBudget.innerHTML = `<bdi>$${budgetVal.toLocaleString()}</bdi>`;
+    const currLabel = currentLang === 'ar' ? 'ج.م' : 'EGP';
+    if (elBudget) elBudget.innerHTML = `<bdi>${budgetVal.toLocaleString()} ${currLabel}</bdi>`;
 
     const factor = roiConfig?.industries?.fmcg?.factor || 1.25;
-    const estReach = Math.round(budgetVal * 200 * factor);
-    const minLeads = Math.round((budgetVal / 3.8) * factor);
-    const maxLeads = Math.round((budgetVal / 1.9) * factor);
+    const estReach = Math.round(budgetVal * 15 * factor);
+    const minLeads = Math.round((budgetVal / 110) * factor);
+    const maxLeads = Math.round((budgetVal / 55) * factor);
     const minRoas = (3.5 * (factor / 1.1)).toFixed(1);
     const maxRoas = (5.2 * (factor / 1.1)).toFixed(1);
 
@@ -951,7 +953,7 @@
     const name = document.getElementById('addLeadName').value.trim();
     const phone = document.getElementById('addLeadPhone').value.trim();
     const service = document.getElementById('addLeadService').value;
-    const budget = parseInt(document.getElementById('addLeadBudget').value, 10) || 2500;
+    const budget = parseInt(document.getElementById('addLeadBudget').value, 10) || 50000;
     const notes = document.getElementById('addLeadNotes').value.trim();
 
     if (!name || !phone) {
@@ -988,9 +990,9 @@
 
     let csvContent = '\uFEFF';
     if (currentLang === 'ar') {
-      csvContent += 'المعرف,اسم_العميل_والشركة,رقم_الهاتف_والواتساب,مسار_الخدمة,الميزانية_الشهرية_دولار,حالة_الطلب,ملاحظات_التوسع,تاريخ_التسجيل\n';
+      csvContent += 'المعرف,اسم_العميل_والشركة,رقم_الهاتف_والواتساب,مسار_الخدمة,الميزانية_الشهرية_ج_م,حالة_الطلب,ملاحظات_التوسع,تاريخ_التسجيل\n';
     } else {
-      csvContent += 'ID,Name_Company,Phone_WhatsApp,Service_Pillar,Budget_USD,Lead_Status,Notes,Created_At\n';
+      csvContent += 'ID,Name_Company,Phone_WhatsApp,Service_Pillar,Budget_EGP,Lead_Status,Notes,Created_At\n';
     }
 
     leadsData.forEach(l => {

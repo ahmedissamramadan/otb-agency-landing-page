@@ -1,11 +1,13 @@
 {
   "system": {
     "version": "2.6.0",
-    "updated_at": "2026-09-04T23:15:00Z",
+    "updated_at": "2026-09-05T02:35:00Z",
     "agency_name": "OTB Agency",
     "agency_full_name": "OTB Agency — The City Kings",
     "motto": "Putting Your Brand Under The Spotlight",
-    "motto_ar": "نضع علامتك التجارية تحت الأضواء",
+    "motto_ar": "نضع علامتك التجارية تحت أضواء الريادة",
+    "currency": "EGP",
+    "currency_symbol_ar": "ج.م",
     "pin": "2026"
   },
   "metrics": {
@@ -27,60 +29,60 @@
   },
   "roi_multipliers": {
     "industries": {
-      "fmcg": { "name_en": "FMCG / Food Manufacturing", "name_ar": "مصانع الأغذية والمنتجات الاستهلاكية", "factor": 1.25, "lead_cost": 2.8 },
-      "coffee": { "name_en": "Specialty Coffee & Fine Dining", "name_ar": "الكافيهات المختصة والمطاعم الفاخرة", "factor": 1.15, "lead_cost": 3.4 },
-      "ecom": { "name_en": "E-Commerce & Retail", "name_ar": "التجارة الإلكترونية والتجزئة", "factor": 1.40, "lead_cost": 2.2 },
-      "medical": { "name_en": "Medical & Healthcare", "name_ar": "القطاع الطبي والعيادات", "factor": 1.10, "lead_cost": 4.5 }
+      "fmcg": { "name_en": "FMCG / Food Manufacturing", "name_ar": "مصانع الأغذية والمنتجات الاستهلاكية", "factor": 1.25, "lead_cost": 75 },
+      "coffee": { "name_en": "Specialty Coffee & Fine Dining", "name_ar": "الكافيهات المختصة والمطاعم الفاخرة", "factor": 1.15, "lead_cost": 95 },
+      "ecom": { "name_en": "E-Commerce & Retail", "name_ar": "التجارة الإلكترونية والتجزئة", "factor": 1.40, "lead_cost": 60 },
+      "medical": { "name_en": "Medical & Healthcare", "name_ar": "القطاع الطبي والعيادات والمعامل", "factor": 1.10, "lead_cost": 120 }
     },
     "channels": {
       "meta": { "name_en": "Meta Ads (IG & FB)", "name_ar": "إعلانات ميتا (إنستغرام وفيسبوك)", "factor": 1.0 },
       "tiktok": { "name_en": "TikTok Ads", "name_ar": "إعلانات تيك توك", "factor": 1.15 },
       "omni": { "name_en": "Full Funnel Omnichannel", "name_ar": "منظومة قنوات متكاملة (Omnichannel)", "factor": 1.35 }
     },
-    "budget_tiers": [500, 1000, 1500, 2500, 5000, 10000]
+    "budget_tiers": [20000, 35000, 50000, 75000, 100000, 150000, 250000, 500000]
   },
   "initial_leads": [
     {
       "id": "lead_101",
-      "name": "Franks Food Industries (م. عاصم النجار)",
+      "name": "مصانع فرانكس للصناعات الغذائية (م. عاصم النجار)",
       "phone": "+201001234567",
       "service": "all",
-      "service_label": "Enterprise Full-Funnel Growth Partnership",
-      "budget": 5000,
-      "notes": "Expansion campaign across Delta & Upper Egypt for newly launched premium sauces line.",
+      "service_label": "شراكة نمو تجارية شاملة",
+      "budget": 150000,
+      "notes": "حملة التوسع في الدلتا والصعيد لخط الصوصات والمنتجات الجديدة الممتازة.",
       "status": "strategy_session",
       "created_at": "2026-09-03T14:20:00Z"
     },
     {
       "id": "lead_102",
-      "name": "MIX Coffee Mart (د. كريم فوزي)",
+      "name": "ميكس كوفي مارت (د. كريم فوزي)",
       "phone": "+201123456789",
       "service": "video",
-      "service_label": "Luxury Visual Storytelling & Production",
-      "budget": 2500,
-      "notes": "Needs 12 cinematic 4K reels for specialty single-origin beans and new branch opening.",
+      "service_label": "إنتاج إعلاني وسرد سينمائي فاخر",
+      "budget": 75000,
+      "notes": "طلب 12 فيديو سينمائي 4K للحبوب المختصة وافتتاح الفرع الجديد بالتجمع.",
       "status": "contacted",
       "created_at": "2026-09-04T09:15:00Z"
     },
     {
       "id": "lead_103",
-      "name": "Wilson Crepe & Waffle (أ. أحمد توفيق)",
+      "name": "سلسلة ويلسون كريب ووافل (أ. أحمد توفيق)",
       "phone": "+201234567890",
       "service": "marketing",
-      "service_label": "High-ROAS Performance Marketing",
-      "budget": 1800,
-      "notes": "Targeting local delivery radius in Nasr City & New Cairo with high-ROAS offer ads.",
+      "service_label": "إعلانات أداء ومبيعات عالية العائد",
+      "budget": 45000,
+      "notes": "استهداف نطاق توصيل فروع مدينة نصر والقاهرة الجديدة بعروض قوية.",
       "status": "new",
       "created_at": "2026-09-04T18:45:00Z"
     },
     {
       "id": "lead_104",
-      "name": "3elag Labs & Polyclinics (معامل علاج)",
+      "name": "معامل علاج والعيادات التخصصية",
       "phone": "+201098765432",
       "service": "branding",
-      "service_label": "3D Identity & Visual Systems",
-      "budget": 3500,
-      "notes": "Full visual identity redesign and medical patient awareness campaign.",
+      "service_label": "هوية تجارية وأنظمة بصرية ثلاثية الأبعاد",
+      "budget": 90000,
+      "notes": "تطوير شامل للهوية البصرية وحملة توعية للمرضى وتجديد الفروع.",
       "status": "closed_won",
       "created_at": "2026-09-01T11:00:00Z"
     }
@@ -311,10 +313,10 @@
     "total_tasks_monitored": 78,
     "review_queue": 4,
     "high_priority_actions": [
-      { "id": "task_01", "title": "Deploy Franks Ramadan Campaign Assets", "assignee": "Production Track", "status": "Ready", "priority": "High" },
-      { "id": "task_02", "title": "Launch Mission 01 Outreach (10th of Ramadan & 6th of October)", "assignee": "Growth Engine", "status": "In Progress", "priority": "High" },
-      { "id": "task_03", "title": "Deliver Printable Portfolio (Aya & Rawan)", "assignee": "Creative Studio", "status": "Design Phase", "priority": "Medium" },
-      { "id": "task_04", "title": "Sync OTB Growth Academy Visual Identity", "assignee": "Dev & UI", "status": "Planned", "priority": "Medium" }
+      { "id": "task_01", "title": "إطلاق مواد وتصميمات حملة رمضان لمصانع فرانكس", "assignee": "مسار الإنتاج المرئي", "status": "جاهز للإطلاق", "priority": "عاجلة جداً" },
+      { "id": "task_02", "title": "انطلاق حملة استقطاب مصانع العاشر من رمضان وأكتوبر (Mission 01)", "assignee": "محرك النمو وتطوير الأعمال", "status": "قيد التنفيذ", "priority": "قصوى" },
+      { "id": "task_03", "title": "إخراج وتجهيز البورتفوليو المطبوع المعتمد (آية وروان)", "assignee": "استوديو التصميم الإبداعي", "status": "مرحلة الإخراج الفني", "priority": "متوسطة" },
+      { "id": "task_04", "title": "مواءمة الهوية البصرية لأكاديمية OTB Growth كودياً", "assignee": "فريق التطوير والواجهات", "status": "مجدول للتنفيذ", "priority": "متوسطة" }
     ]
   }
 }

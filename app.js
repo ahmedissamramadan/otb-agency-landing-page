@@ -503,24 +503,26 @@ function initRoiCalculator() {
 
   function calculateROI() {
     const budget = parseInt(slider.value, 10);
-    const suffix = currentLang === 'ar' ? 'شهر' : 'month';
-    const leadsSuffix = currentLang === 'ar' ? 'عميل' : 'leads';
+    const suffix = currentLang === 'ar' ? 'شهرياً' : 'month';
+    const currency = currentLang === 'ar' ? 'ج.م' : 'EGP';
+    const leadsSuffix = currentLang === 'ar' ? 'عميل مؤهل' : 'leads';
 
     if (budgetDisplay) {
-      budgetDisplay.innerText = `$${budget.toLocaleString()} / ${suffix}`;
+      budgetDisplay.innerHTML = `<bdi>${budget.toLocaleString()} ${currency} / ${suffix}</bdi>`;
     }
 
-    const estReach = Math.round(budget * 200 * currentIndustryFactor * currentChannelFactor);
-    const minLeads = Math.round((budget / 3.8) * currentIndustryFactor);
-    const maxLeads = Math.round((budget / 1.9) * currentIndustryFactor * currentChannelFactor);
+    const estReach = Math.round(budget * 15 * currentIndustryFactor * currentChannelFactor);
+    const minLeads = Math.round((budget / 110) * currentIndustryFactor);
+    const maxLeads = Math.round((budget / 55) * currentIndustryFactor * currentChannelFactor);
     const minRoas = (3.5 * (currentIndustryFactor / 1.1)).toFixed(1);
     const maxRoas = (5.2 * (currentIndustryFactor / 1.1) * (currentChannelFactor === 1.35 ? 1.15 : 1)).toFixed(1);
 
-    if (reachDisplay) reachDisplay.innerText = `${estReach.toLocaleString()}+`;
-    if (leadsDisplay) leadsDisplay.innerText = `${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()} ${leadsSuffix}`;
-    if (roasDisplay) roasDisplay.innerText = `${minRoas}x - ${maxRoas}x`;
+    if (reachDisplay) reachDisplay.innerHTML = `<bdi>${estReach.toLocaleString()}+</bdi>`;
+    if (leadsDisplay) leadsDisplay.innerHTML = `<bdi>${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()} ${leadsSuffix}</bdi>`;
+    if (roasDisplay) roasDisplay.innerHTML = `<bdi>${minRoas}x - ${maxRoas}x</bdi>`;
   }
 
+  window.recalcRoi = calculateROI;
   calculateROI();
 }
 
@@ -600,11 +602,13 @@ function initModal() {
   window.openModalWithPlan = function() {
     window.openModal();
     const notes = document.getElementById('inputNotes');
-    const budget = document.getElementById('budgetSlider') ? document.getElementById('budgetSlider').value : '1500';
+    const budget = document.getElementById('budgetSlider') ? parseInt(document.getElementById('budgetSlider').value, 10) : 50000;
+    const currLabel = currentLang === 'ar' ? 'ج.م' : 'EGP';
+    const period = currentLang === 'ar' ? 'شهرياً' : 'month';
     if (notes) {
       notes.value = currentLang === 'ar' 
-        ? `مهتم بخطة نمو استراتيجية بميزانية تقديرية: $${budget}/شهر.`
-        : `Interested in an enterprise growth roadmap with estimated budget: $${budget}/month.`;
+        ? `طلب استشارة استراتيجية لميزانية تسويقية تقديرية: ${budget.toLocaleString()} ${currLabel} / ${period}.`
+        : `Interested in an enterprise growth roadmap with estimated budget: ${budget.toLocaleString()} ${currLabel} / ${period}.`;
     }
   };
 
@@ -655,7 +659,7 @@ function initModal() {
       // Save lead to local CRM storage
       try {
         const existingLeads = JSON.parse(localStorage.getItem('otb_leads') || '[]');
-        const budgetVal = document.getElementById('budgetSlider') ? parseInt(document.getElementById('budgetSlider').value, 10) : 2500;
+        const budgetVal = document.getElementById('budgetSlider') ? parseInt(document.getElementById('budgetSlider').value, 10) : 50000;
         const newLead = {
           id: 'lead_' + Date.now(),
           name: name,
@@ -672,8 +676,10 @@ function initModal() {
         console.warn('Could not save lead locally:', err);
       }
 
+      const budgetVal = document.getElementById('budgetSlider') ? parseInt(document.getElementById('budgetSlider').value, 10) : 50000;
+      const currLabel = currentLang === 'ar' ? 'ج.م' : 'EGP';
       const headerText = currentLang === 'ar' ? 'طلب استشارة استراتيجية جديد - OTB Agency' : 'New Strategy Growth Partnership - OTB Agency';
-      const text = encodeURIComponent(`*${headerText}*%0A%0A*Name / Company:* ${name}%0A*Phone / WhatsApp:* ${phone}%0A*Service:* ${service}%0A*Notes:* ${notes || 'None'}`);
+      const text = encodeURIComponent(`*${headerText}*%0A%0A*Name / Company:* ${name}%0A*Phone / WhatsApp:* ${phone}%0A*Service:* ${service}%0A*Estimated Budget:* ${budgetVal.toLocaleString()} ${currLabel}%0A*Notes:* ${notes || 'None'}`);
       const waUrl = `https://wa.me/201008080295?text=${text}`;
 
       window.open(waUrl, '_blank');
@@ -719,6 +725,18 @@ function updateLanguageUI() {
 
   const langText = document.getElementById('langBtnText');
   if (langText) langText.innerText = dictionary.lang_btn;
+
+  const hintMin = document.getElementById('hintMin');
+  const hintMid = document.getElementById('hintMid');
+  const hintMax = document.getElementById('hintMax');
+  const currLabel = currentLang === 'ar' ? 'ج.م' : 'EGP';
+  if (hintMin) hintMin.innerHTML = `<bdi>20,000 ${currLabel}</bdi>`;
+  if (hintMid) hintMid.innerHTML = `<bdi>150,000 ${currLabel}</bdi>`;
+  if (hintMax) hintMax.innerHTML = `<bdi>500,000+ ${currLabel}</bdi>`;
+
+  if (window.recalcRoi) {
+    window.recalcRoi();
+  }
 }
 
 /* ==========================================================================

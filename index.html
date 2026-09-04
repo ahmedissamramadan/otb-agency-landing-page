@@ -781,13 +781,13 @@
               <div class="calc-group">
                 <div class="slider-label-row">
                   <label class="calc-label" for="budgetSlider" data-i18n="calc_lbl_budget">Estimated Monthly Marketing Budget:</label>
-                  <span class="slider-val-display" id="budgetDisplay">$1,500 / month</span>
+                  <span class="slider-val-display" id="budgetDisplay"><bdi>50,000 ج.م / شهرياً</bdi></span>
                 </div>
-                <input type="range" class="calc-slider" id="budgetSlider" min="500" max="10000" step="250" value="1500" aria-label="Monthly Marketing Budget Slider">
+                <input type="range" class="calc-slider" id="budgetSlider" min="20000" max="500000" step="5000" value="50000" aria-label="Monthly Marketing Budget Slider">
                 <div class="slider-hints">
-                  <span>$500</span>
-                  <span>$5,000</span>
-                  <span>$10,000+</span>
+                  <span id="hintMin"><bdi>20,000 ج.م</bdi></span>
+                  <span id="hintMid"><bdi>150,000 ج.م</bdi></span>
+                  <span id="hintMax"><bdi>500,000+ ج.م</bdi></span>
                 </div>
               </div>
 
@@ -808,17 +808,17 @@
                 
                 <div class="calc-res-item">
                   <span class="res-label" data-i18n="calc_res_views">Projected Target Reach:</span>
-                  <span class="res-number" id="calcReach">280,000+</span>
+                  <span class="res-number" id="calcReach"><bdi>1,050,000+</bdi></span>
                 </div>
 
                 <div class="calc-res-item">
                   <span class="res-label" data-i18n="calc_res_leads">Estimated Qualified Leads:</span>
-                  <span class="res-number" id="calcLeads">450 - 750 leads</span>
+                  <span class="res-number" id="calcLeads"><bdi>636 - 1,273 عميل مؤهل</bdi></span>
                 </div>
 
                 <div class="calc-res-item highlight">
                   <span class="res-label" data-i18n="calc_res_roas">Projected Return (ROAS):</span>
-                  <span class="res-number gold" id="calcRoas">3.8x - 4.6x</span>
+                  <span class="res-number gold" id="calcRoas"><bdi>4.5x - 6.6x</bdi></span>
                 </div>
 
                 <p class="calc-disclaimer" data-i18n="calc_disclaimer">
