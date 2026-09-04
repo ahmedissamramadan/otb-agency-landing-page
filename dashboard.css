@@ -1170,3 +1170,76 @@ body::before {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   PERFECT RTL & ARABIC TYPOGRAPHY ENHANCEMENTS (Digital DNA 2026)
+   ========================================================================== */
+[dir="rtl"] {
+  font-family: "Cairo", "Tajawal", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  letter-spacing: 0 !important;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}
+
+[dir="rtl"] .top-nav,
+[dir="rtl"] .section-intro-row,
+[dir="rtl"] .luxe-panel-header,
+[dir="rtl"] .modal-sheet-header,
+[dir="rtl"] .param-row,
+[dir="rtl"] .roi-param-header,
+[dir="rtl"] .stat-top-row {
+  direction: rtl;
+}
+
+[dir="rtl"] .luxe-table th,
+[dir="rtl"] .luxe-table td {
+  text-align: right !important;
+}
+
+[dir="rtl"] .search-input,
+[dir="rtl"] .select-filter,
+[dir="rtl"] .form-input-luxe,
+[dir="rtl"] .form-textarea-luxe {
+  text-align: right;
+  direction: rtl;
+}
+
+[dir="rtl"] .search-input[dir="ltr"],
+[dir="rtl"] .form-input-luxe[dir="ltr"],
+[dir="rtl"] .param-input {
+  text-align: left;
+  direction: ltr;
+}
+
+[dir="rtl"] .table-action-row {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .stat-meta {
+  flex-direction: row;
+}
+
+[dir="rtl"] .btn-nav-action {
+  flex-direction: row;
+}
+
+[dir="rtl"] .badge-status {
+  flex-direction: row;
+}
+
+[dir="rtl"] bdi,
+[dir="rtl"] [dir="ltr"] {
+  unicode-bidi: isolate;
+  direction: ltr;
+  display: inline-block;
+}
+
+[dir="rtl"] .showcase-footer {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .tab-btn {
+  letter-spacing: 0;
+}

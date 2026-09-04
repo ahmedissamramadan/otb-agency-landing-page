@@ -30,142 +30,320 @@
   const DEFAULT_PIN = '2026';
 
   /* ==========================================================================
-     DICTIONARY & LOCALIZATION
+     DICTIONARY & LOCALIZATION (ARABIC & ENGLISH)
      ========================================================================== */
   const I18N = {
     ar: {
+      // Header & Navigation
       app_title: 'غرفة العمليات التنفيذية',
-      app_subtitle: 'منظومة الإدارة المتكاملة · OTB Agency 2026',
-      status_live: 'مباشر / حي',
-      btn_view_site: 'معاينة الموقع الحي ↗',
-      btn_sync: 'مزامنة وحفظ ⚡',
-      btn_logout: 'قفل النظام 🔒',
-      tab_overview: '📊 مؤشرات الأداء',
+      status_live: 'مباشر وفي وضع التشغيل',
+      brand_subtitle: 'ملوك المدينة · نظام الإدارة المؤسسي 2026',
+      btn_view_site: 'معاينة الواجهة الرسمية ↗',
+      btn_sync: 'مزامنة وحفظ التعديلات ⚡',
+      btn_logout: 'قفل المنظومة 🔒',
+      tab_overview: '📊 نبض العمليات',
       tab_leads: '📥 الحجوزات والـ CRM',
-      tab_showcase: '🎨 معرض الأعمال CMS',
-      tab_roi: '⚙️ محاكي العائد ROI',
-      tab_content: '🌐 المحتوى والـ SEO',
+      tab_showcase: '🎨 سوابق الأعمال CMS',
+      tab_roi: '⚙️ محاكي العائد والنمو',
+      tab_content: '🌐 الهوية والمحتوى والـ SEO',
       tab_corelink: '⚡ عمليات CoreLink',
 
-      // Overview
-      ov_title: 'نبض العمليات والمؤشرات الحيوية',
-      ov_desc: 'نظرة شمولية فورية على طلبات العملاء الجدد، ميزانيات الحملات المحتملة، ومؤشرات التوسع الرقمي.',
-      kpi_total_leads: 'إجمالي طلبات الاستراتيجية',
-      kpi_pipeline_val: 'القيمة التقديرية للحملات',
-      kpi_conv_rate: 'معدل التحويل (Closed)',
-      kpi_top_vertical: 'القطاع الأكثر طلباً',
-      kpi_verified_views: 'المشاهدات الموثقة سنوياً',
-      kpi_active_clients: 'العلامات المعتمدة بالشريط',
+      // Security Gate
+      pin_title: 'غرفة عمليات OTB التنفيذية',
+      app_subtitle: 'منظومة الإدارة المتكاملة · OTB Agency 2026',
+      pin_clear: 'مسح',
+      pin_backspace: '⌫ حذف',
+      pin_error_hint: 'رمز المرور غير صحيح (الرمز الافتراضي: 2026)',
 
-      // CRM
-      crm_title: 'إدارة طلبات جلسات الاستراتيجية (Executive CRM)',
-      crm_desc: 'متابعة كافة العملاء والشركات التي سجلت عبر نموذج الاستراتيجية مع زر محادثة واتساب فوري بنقرة واحدة.',
+      // Tab 1: Overview
+      ov_title: 'نبض العمليات والمؤشرات الاستراتيجية',
+      ov_desc: 'رصد حي وشامل لطلبات الشراكة الجديدة، وتوقعات ميزانيات التوسع، ومؤشرات الأداء التشغيلي الموثقة.',
+      btn_add_lead_top: '+ تسجيل طلب استراتيجية يدوي',
+      kpi_total_leads: 'إجمالي طلبات الاستراتيجية',
+      kpi_leads_meta: '↑ 100% عملاء مؤهلون للشراكة',
+      kpi_pipeline_val: 'قيمة الميزانيات التقديرية',
+      kpi_pipe_meta: 'ميزانيات حملات تسويقية شهرية',
+      kpi_conv_rate: 'معدل إبرام الشراكات',
+      kpi_conv_meta: 'عقود وشراكات مكتملة التعاقد',
+      kpi_top_vertical: 'المسار الأكثر طلباً',
+      top_service_default: 'منظومة النمو الشاملة',
+      kpi_vertical_meta: 'الأغذية والكافيهات والسلع الاستهلاكية',
+
+      // Benchmark Panel
+      bm_card_title: 'دراسة التحول المؤسسي لمصانع فرانكس الغذائية (معيار فرانكس الذهبي)',
+      bm_badge: 'قفزة تاريخية من المرتبة 25 إلى المركز الثاني وطنياً',
+      bm_lbl_sales: 'عائد المبيعات المتولد',
+      bm_val_sales: '+30 مليون جنيه مصري',
+      bm_sub_sales: 'خلال 90 يوماً من إطلاق المنظومة',
+      bm_lbl_reach: 'الوصول الجماهيري الفريد',
+      bm_val_reach: '3.8+ مليون مستهلك',
+      bm_sub_reach: 'تغطية شاملة لكافة محافظات مصر',
+      bm_lbl_growth: 'معدل النمو الشهري الصافي',
+      bm_val_growth: '+101,000 متابع',
+      bm_sub_growth: 'مستهلكون ذوو قدرة شرائية عالية',
+      bm_lbl_views: 'المشاهدات الموثقة للحملة',
+      bm_val_views: '1,007,739 مشاهدة',
+      bm_sub_views: 'معتمدة من سجلات Meta Business',
+
+      // Tab 2: Strategy CRM
+      crm_title: 'منظومة إدارة علاقات العملاء وطلبات الشراكة (Executive CRM)',
+      crm_desc: 'متابعة لحظية لكافة الكيانات والشركات المتقدمة بطلب جلسة استراتيجية، مع إمكانية التواصل الفوري عبر واتساب بنقرة واحدة.',
       btn_add_lead: '+ إضافة عميل يدوياً',
       btn_export_csv: 'تصدير لملف Excel/CSV 📥',
-      search_placeholder: 'بحث بالاسم، الشركة، أو الهاتف...',
+      search_placeholder: 'ابحث باسم العميل، الكيان التجاري، أو الهاتف...',
       filter_all_status: 'كافة الحالات',
-      th_client: 'العميل / الشركة',
-      th_contact: 'الهاتف / واتساب',
-      th_service: 'الخدمة المطلوبة',
+      st_opt_new: 'طلب جديد',
+      st_opt_contacted: 'تم التواصل الأولي',
+      st_opt_strategy: 'جلسة استراتيجية جارية',
+      st_opt_closed: 'شراكة متعاقدة (ناجحة)',
+      st_opt_archived: 'مؤرشف',
+
+      th_client: 'الجهة / العميل',
+      th_contact: 'بيانات الاتصال',
+      th_service: 'مسار النمو المطلوب',
       th_budget: 'الميزانية التقديرية',
-      th_date: 'تاريخ الطلب',
-      th_status: 'حالة العميل',
-      th_actions: 'إجراءات سريعة',
-      st_new: 'جديد (New)',
-      st_contacted: 'تم التواصل (Contacted)',
-      st_strategy: 'جلسة استراتيجية (Strategy)',
-      st_closed_won: 'تم التعاقد (Closed Won)',
-      st_archived: 'مؤرشف (Archived)',
+      th_date: 'تاريخ التسجيل',
+      th_status: 'موقف الطلب',
+      th_actions: 'إجراءات فورية',
 
-      // Showcase
-      sc_title: 'نظام إدارة معرض الأعمال والتوثيق (Showcase CMS)',
-      sc_desc: 'إدارة وتعديل الـ 20 عملاً موثقاً ودراسات الحالة الحقيقية التي تظهر في الواجهة الرئيسية للموقع.',
-      btn_add_proof: '+ إضافة عمل موثق جديد',
-      filter_all_cats: 'كافة التصنيفات',
-      cat_clients: 'حالات العملاء (Clients)',
-      cat_dossier: 'سجلات التدقيق (Audit Dossiers)',
-      cat_manifesto: 'أعمال المانيفيستو (Manifesto)',
+      st_new: 'طلب جديد',
+      st_contacted: 'تم التواصل الأولي',
+      st_strategy: 'جلسة استراتيجية جارية',
+      st_closed_won: 'شراكة متعاقدة (ناجحة)',
+      st_archived: 'مؤرشف',
 
-      // ROI
-      roi_title: 'محرك ضبط ومضاعفات محاكي النمو (ROI Engine)',
-      roi_desc: 'تعديل المعاملات الرياضية ومضاعفات الوصول والعملاء المتوقعين لكل قطاع وسوق.',
+      // Tab 3: Showcase CMS
+      sc_title: 'نظام إدارة وتوثيق سوابق الأعمال (Showcase CMS)',
+      sc_desc: 'إدارة وتحديث دراسات الحالة الموثقة وسجلات التدقيق الرسمية المعروضة على الواجهة الحية للموقع.',
+      btn_add_proof: '+ إضافة سابقة أعمال جديدة',
+      filter_all_cats: 'كافة سوابق الأعمال',
+      cat_clients: 'شراكات وحالات العملاء',
+      cat_dossier: 'سجلات التدقيق والأداء السنوي',
+      cat_manifesto: 'لوحات وبيان الهوية (المانيفستو)',
+
+      // Tab 4: ROI Simulator
+      roi_title: 'محرك معايرة محاكي النمو والعائد (ROI Engine)',
+      roi_desc: 'ضبط المعاملات الرياضية ونسب الوصول والعملاء المستهدفين لكل قطاع وسوق، مع اختبار فوري حي للمعادلات.',
       btn_save_roi: 'حفظ مضاعفات المحاكي ✓',
+      roi_col_left_title: 'معاملات ومضاعفات القطاعات التجارية',
+      roi_col_right_title: 'المعاينة الحية الفورية للمعادلات',
+      roi_preview_badge: 'معاينة واختبار فوري للمعادلات',
+      roi_budget_label: 'ميزانية الحملة التسويقية الشهرية:',
+      roi_lbl_reach: 'الوصول الجماهيري المستهدف',
+      roi_lbl_leads: 'العملاء المحتملون المؤهلون',
+      roi_lbl_roas: 'العائد الإعلاني المتوقع (ROAS)',
+      roi_disclaimer: '* هذه النتائج تُحسب بصورة آلية متوافقة مع خوارزميات محاكي OTB وتنعكس فوراً للزوار في صفحة الهبوط.',
 
-      // Content & SEO
-      cnt_title: 'محرر النصوص الرسمية وبيانات التواصل',
-      cnt_desc: 'تعديل شعارات الموقع الرسمية، العناوين الرئيسية، وبيانات الاتصال والواتساب.',
-      btn_save_content: 'حفظ النصوص والميتا ✓',
+      // Tab 5: Content & SEO
+      cnt_title: 'إدارة الهوية النصية وبيانات الاتصال والـ SEO',
+      cnt_desc: 'تحديث النصوص والشعارات الاستراتيجية والبيانات المعتمدة للمنظومة باللغتين.',
+      btn_save_content: 'حفظ النصوص والبيانات ✓',
+      lbl_motto_en: 'شعار الهوية باللغة الإنجليزية:',
+      lbl_motto_ar: 'شعار الهوية باللغة العربية:',
+      lbl_phone: 'رقم الهاتف والواتساب المعتمد:',
+      lbl_email: 'البريد الإلكتروني المؤسسي:',
+      lbl_views: 'إجمالي المشاهدات السنوية الموثقة:',
+      lbl_engage: 'إجمالي التفاعلات السنوية المثبتة:',
 
-      // CoreLink
-      cl_title: 'مركز مراقبة العمليات والنسخ الاحتياطي',
-      cl_desc: 'متابعة مهام منظومة CoreLink وتصدير واستيراد قاعدة بيانات المنظومة بالكامل بصيغة JSON.',
+      // Tab 6: CoreLink Ops
+      cl_title: 'غرفة عمليات CoreLink والنسخ الاحتياطي الشامل',
+      cl_desc: 'متابعة حية للمسارات التشغيلية للوكالة، مع أدوات متقدمة لتصدير واستيراد قاعدة بيانات المنظومة بالكامل.',
       btn_export_json: 'تصدير النسخة الاحتياطية الكاملة (JSON) 💾',
       btn_import_json: 'استيراد نسخة احتياطية 📤',
-      btn_reset_dna: 'استعادة إعدادات DNA 2026 الأصلية ↺'
+      btn_reset_dna: 'استعادة إعدادات DNA 2026 الأصلية ↺',
+      cl_tasks_header: 'المسار التنفيذي لمهام CoreLink العاجلة',
+      cl_maint_header: 'صيانة المنظومة واستعادة الإعدادات الأصلية',
+      cl_maint_desc: 'يمكنك إعادة تهيئة كافة محتويات لوحة التحكم والموقع المباشر إلى النسخة الموثقة الأصلية (OTB Digital DNA 2026) في أي وقت بنقرة واحدة لضمان أعلى معايير الجودة والاستقرار.',
+
+      // Modals
+      m_lead_title: '+ تسجيل طلب جلسة استراتيجية جديد',
+      m_lead_lbl_name: 'اسم المسؤول / اسم الكيان التجاري *',
+      m_lead_ph_name: 'مثال: مصانع فرانكس الغذائية',
+      m_lead_lbl_phone: 'رقم الهاتف / الواتساب الرسمي *',
+      m_lead_lbl_service: 'مسار النمو المطلوب',
+      m_lead_lbl_budget: 'الميزانية الشهرية المقترحة ($)',
+      m_lead_lbl_notes: 'ملاحظات العميل وأهداف التوسع',
+      m_lead_ph_notes: 'أدخل تفاصيل التوسع وحجم العمل المطلوب...',
+      m_lead_btn_submit: 'اعتماد وإدراج الطلب في المنظومة ✓',
+
+      m_edit_sc_title: '✏️ تعديل سابقة أعمال موثقة',
+      m_edit_lbl_title_en: 'عنوان العمل باللغة الإنجليزية:',
+      m_edit_lbl_title_ar: 'عنوان العمل باللغة العربية:',
+      m_edit_lbl_cat: 'القسم التابع له في المعرض:',
+      m_edit_lbl_subcat: 'التصنيف الفرعي:',
+      m_edit_lbl_metric: 'المؤشر المحقق المعتمد (Metric Pill):',
+      m_edit_lbl_img: 'مسار الصورة المعروضة (Image Asset Path):',
+      m_edit_lbl_desc: 'الوصف والتحليل الرقمي للمشروع:',
+      m_edit_btn_save: 'تأكيد وحفظ التعديلات ✓',
+
+      m_add_sc_title: '+ إضافة سابقة أعمال جديدة للمعرض',
+      m_add_lbl_title: 'اسم المشروع / العنوان الرئيسي *',
+      m_add_ph_title: 'مثال: حملة صيدليات العزبي الرمضانية',
+      m_add_lbl_cat: 'القسم التابع له في المعرض *',
+      m_add_lbl_subcat: 'التصنيف الفرعي للمشروع',
+      m_add_ph_subcat: 'مثال: الرعاية الصحية وتوسع المبيعات',
+      m_add_lbl_metric: 'المؤشر المحقق الموثق *',
+      m_add_ph_metric: 'مثال: 1.2M مشاهدة · عائد 4.8x ROAS',
+      m_add_lbl_img: 'مسار الصورة في مجلد Designs (أو رابط خارجي)',
+      m_add_lbl_desc: 'الوصف التحليلي وأرقام النمو المحققة',
+      m_add_ph_desc: 'أدخل ملخص استراتيجية الحملة والنتائج...',
+      m_add_btn_save: 'إدراج سابقة الأعمال فوراً في المعرض ✓'
     },
     en: {
+      // Header & Navigation
       app_title: 'Executive Command Center',
-      app_subtitle: 'Full-Stack Management System · OTB Agency 2026',
       status_live: 'LIVE / PRODUCTION',
-      btn_view_site: 'View Live Site ↗',
-      btn_sync: 'Sync & Save ⚡',
+      brand_subtitle: 'The City Kings · Operating System 2026',
+      btn_view_site: 'View Official Site ↗',
+      btn_sync: 'Sync & Save Changes ⚡',
       btn_logout: 'Lock System 🔒',
-      tab_overview: '📊 Overview',
+      tab_overview: '📊 Overview Pulse',
       tab_leads: '📥 Strategy CRM',
       tab_showcase: '🎨 Showcase CMS',
       tab_roi: '⚙️ ROI Simulator',
-      tab_content: '🌐 Content & SEO',
+      tab_content: '🌐 Identity & SEO',
       tab_corelink: '⚡ CoreLink Ops',
 
-      ov_title: 'Operational Pulse & Performance KPIs',
-      ov_desc: 'High-altitude live telemetry on incoming strategy leads, estimated pipeline budgets, and commercial reach.',
-      kpi_total_leads: 'Total Strategy Bookings',
-      kpi_pipeline_val: 'Estimated Pipeline Value',
-      kpi_conv_rate: 'Conversion Rate (Closed)',
-      kpi_top_vertical: 'Top In-Demand Vertical',
-      kpi_verified_views: 'Annual Verified Views',
-      kpi_active_clients: 'Marquee Client Brands',
+      // Security Gate
+      pin_title: 'OTB Command Center',
+      app_subtitle: 'Full-Stack Management System · OTB Agency 2026',
+      pin_clear: 'Clear',
+      pin_backspace: '⌫ Delete',
+      pin_error_hint: 'Invalid passcode (Default PIN: 2026)',
 
+      // Tab 1: Overview
+      ov_title: 'Operational Pulse & Strategic Metrics',
+      ov_desc: 'High-altitude live telemetry on incoming strategy leads, estimated pipeline budgets, and commercial reach.',
+      btn_add_lead_top: '+ Manual Strategy Booking',
+      kpi_total_leads: 'Total Strategy Bookings',
+      kpi_leads_meta: '↑ 100% Qualified Enterprise Leads',
+      kpi_pipeline_val: 'Estimated Pipeline Value',
+      kpi_pipe_meta: 'Monthly marketing ad budgets',
+      kpi_conv_rate: 'Closed Partnership Rate',
+      kpi_conv_meta: 'Fully executed commercial contracts',
+      kpi_top_vertical: 'Top In-Demand Pillar',
+      top_service_default: 'Full-Funnel Growth',
+      kpi_vertical_meta: 'FMCG, Dining & Specialty Coffee',
+
+      // Benchmark Panel
+      bm_card_title: 'Franks Food Industries Transformation (Golden Benchmark)',
+      bm_badge: 'Historic Leap from Rank #25 to #2 Nationwide',
+      bm_lbl_sales: 'Generated Sales Revenue',
+      bm_val_sales: '+30M EGP Commercial Impact',
+      bm_sub_sales: 'Within 90 days of engine launch',
+      bm_lbl_reach: 'Unique Audience Reach',
+      bm_val_reach: '3.8M+ Verified Consumers',
+      bm_sub_reach: 'Nationwide coverage across Egypt',
+      bm_lbl_growth: 'Net Monthly Follower Scale',
+      bm_val_growth: '+101,000 High-Intent Followers',
+      bm_sub_growth: 'High-purchasing-power consumer base',
+      bm_lbl_views: 'Verified Campaign Views',
+      bm_val_views: '1,007,739 Film Views',
+      bm_sub_views: 'Meta Business Suite Certified',
+
+      // Tab 2: Strategy CRM
       crm_title: 'Strategy Bookings Management (Executive CRM)',
       crm_desc: 'Track and manage every enterprise lead from the strategy form with 1-click personalized WhatsApp dispatch.',
       btn_add_lead: '+ Add Lead Manually',
       btn_export_csv: 'Export to Excel/CSV 📥',
       search_placeholder: 'Search name, company, or phone...',
       filter_all_status: 'All Statuses',
+      st_opt_new: 'New Request',
+      st_opt_contacted: 'Initial Contact Made',
+      st_opt_strategy: 'In Strategy Session',
+      st_opt_closed: 'Closed Won (Contracted)',
+      st_opt_archived: 'Archived',
+
       th_client: 'Client / Company',
       th_contact: 'Phone / WhatsApp',
       th_service: 'Requested Pillar',
       th_budget: 'Est. Budget',
-      th_date: 'Submitted Date',
+      th_date: 'Submission Date',
       th_status: 'Lead Status',
       th_actions: 'Quick Actions',
-      st_new: 'New',
-      st_contacted: 'Contacted',
-      st_strategy: 'Strategy Session',
-      st_closed_won: 'Closed Won',
+
+      st_new: 'New Request',
+      st_contacted: 'Initial Contact Made',
+      st_strategy: 'In Strategy Session',
+      st_closed_won: 'Closed Won (Contracted)',
       st_archived: 'Archived',
 
+      // Tab 3: Showcase CMS
       sc_title: 'Showcase CMS & Verification Records',
       sc_desc: 'Control and edit the 20 documented works and verified benchmark case studies showcased on the live site.',
       btn_add_proof: '+ Add New Proof Card',
-      filter_all_cats: 'All Categories',
+      filter_all_cats: 'All Proof Categories',
       cat_clients: 'Client Cases',
       cat_dossier: 'Audit Dossiers',
       cat_manifesto: 'Manifesto Art',
 
+      // Tab 4: ROI Simulator
       roi_title: 'Growth Simulator Engine & Multipliers',
       roi_desc: 'Calibrate mathematical factors, reach multipliers, and projected lead acquisition costs per vertical.',
-      btn_save_roi: 'Save Simulator Multipliers ✓',
+      btn_save_roi: 'Save Multipliers ✓',
+      roi_col_left_title: 'Commercial Vertical Multipliers',
+      roi_col_right_title: 'Real-Time Formula Preview',
+      roi_preview_badge: 'Real-Time Interactive Test',
+      roi_budget_label: 'Estimated Monthly Marketing Budget:',
+      roi_lbl_reach: 'Target Projected Reach',
+      roi_lbl_leads: 'Estimated Qualified Leads',
+      roi_lbl_roas: 'Projected Return (ROAS)',
+      roi_disclaimer: '* Projections are calculated algorithmically based on OTB verified benchmarks and dynamically reflect on the live site.',
 
+      // Tab 5: Content & SEO
       cnt_title: 'Brand Copywriting, Metadata & Contacts',
       cnt_desc: 'Manage authoritative slogans, hero headlines, meta tags, and official WhatsApp contact numbers.',
       btn_save_content: 'Save Copy & Metadata ✓',
+      lbl_motto_en: 'Brand Motto (English):',
+      lbl_motto_ar: 'Brand Motto (Arabic):',
+      lbl_phone: 'Official WhatsApp / Phone:',
+      lbl_email: 'Executive Corporate Email:',
+      lbl_views: 'Annual Verified Views:',
+      lbl_engage: 'Annual Verified Engagements:',
 
+      // Tab 6: CoreLink Ops
       cl_title: 'CoreLink Operations & Complete Backup Engine',
       cl_desc: 'Monitor sprint tasks and export/import full system configuration as standard JSON.',
       btn_export_json: 'Export Master Backup (JSON) 💾',
       btn_import_json: 'Import Backup 📤',
-      btn_reset_dna: 'Reset to Verified DNA 2026 ↺'
+      btn_reset_dna: 'Reset to Verified DNA 2026 ↺',
+      cl_tasks_header: 'CoreLink High-Priority Operational Track',
+      cl_maint_header: 'System Maintenance & Integrity Restore',
+      cl_maint_desc: 'Restore full Command Center and live landing page configuration to the verified OTB Digital DNA 2026 baseline at any time with a single click.',
+
+      // Modals
+      m_lead_title: '+ Record New Strategy Booking',
+      m_lead_lbl_name: 'Full Name / Enterprise Name *',
+      m_lead_ph_name: 'e.g. Franks Food Industries',
+      m_lead_lbl_phone: 'Official Phone / WhatsApp *',
+      m_lead_lbl_service: 'Target Growth Pillar',
+      m_lead_lbl_budget: 'Estimated Monthly Budget ($)',
+      m_lead_lbl_notes: 'Client Notes & Growth Objectives',
+      m_lead_ph_notes: 'Provide scale goals and scope requirements...',
+      m_lead_btn_submit: 'Confirm & Enlist Lead ✓',
+
+      m_edit_sc_title: '✏️ Edit Showcase Proof Item',
+      m_edit_lbl_title_en: 'Project Title (English):',
+      m_edit_lbl_title_ar: 'Project Title (Arabic):',
+      m_edit_lbl_cat: 'Showcase Grid Section:',
+      m_edit_lbl_subcat: 'Sub-Category Vertical:',
+      m_edit_lbl_metric: 'Verified Metric Pill:',
+      m_edit_lbl_img: 'Image Asset Path:',
+      m_edit_lbl_desc: 'Project Strategic Analysis:',
+      m_edit_btn_save: 'Confirm & Save Changes ✓',
+
+      m_add_sc_title: '+ Add New Proof Card to Showcase',
+      m_add_lbl_title: 'Project Name / Main Headline *',
+      m_add_ph_title: 'e.g. El-Ezaby Pharmacies Campaign',
+      m_add_lbl_cat: 'Showcase Grid Section *',
+      m_add_lbl_subcat: 'Sub-Category Vertical',
+      m_add_ph_subcat: 'e.g. Healthcare & Commercial Growth',
+      m_add_lbl_metric: 'Verified Metric Pill *',
+      m_add_ph_metric: 'e.g. 1.2M Views · 4.8x ROAS',
+      m_add_lbl_img: 'Image Path in Designs folder',
+      m_add_lbl_desc: 'Performance Analysis & Verified Numbers',
+      m_add_ph_desc: 'Summarize campaign strategy and results...',
+      m_add_btn_save: 'Publish Proof Card to Showcase ✓'
     }
   };
 
@@ -190,7 +368,6 @@
     const keys = document.querySelectorAll('.pin-key');
     const errorHint = document.getElementById('pinErrorHint');
 
-    // Check existing session
     if (sessionStorage.getItem(STORAGE_KEYS.SESSION) === 'active') {
       overlay.classList.add('hidden');
     }
@@ -211,7 +388,7 @@
       if (currentPin === savedPin || currentPin === DEFAULT_PIN) {
         sessionStorage.setItem(STORAGE_KEYS.SESSION, 'active');
         overlay.classList.add('hidden');
-        showToast(currentLang === 'ar' ? 'تم الدخول بنجاح إلى غرفة العمليات' : 'Executive Command Center Unlocked');
+        showToast(currentLang === 'ar' ? 'تم الدخول بنجاح إلى غرفة العمليات التنفيذية' : 'Executive Command Center Unlocked');
         currentPin = '';
         updateDots();
       } else {
@@ -248,7 +425,6 @@
       });
     });
 
-    // Keyboard support
     window.addEventListener('keydown', (e) => {
       if (!overlay.classList.contains('hidden')) {
         if (e.key >= '0' && e.key <= '9' && currentPin.length < 4) {
@@ -265,7 +441,6 @@
       }
     });
 
-    // Logout
     const logoutBtn = document.getElementById('btnLogout');
     if (logoutBtn) {
       logoutBtn.addEventListener('click', () => {
@@ -282,31 +457,18 @@
      ========================================================================== */
   async function loadInitialData() {
     try {
-      // 1. Leads
       const storedLeads = localStorage.getItem(STORAGE_KEYS.LEADS);
-      if (storedLeads) {
-        leadsData = JSON.parse(storedLeads);
-      }
+      if (storedLeads) leadsData = JSON.parse(storedLeads);
 
-      // 2. Showcase
       const storedShowcase = localStorage.getItem(STORAGE_KEYS.SHOWCASE);
-      if (storedShowcase) {
-        showcaseData = JSON.parse(storedShowcase);
-      }
+      if (storedShowcase) showcaseData = JSON.parse(storedShowcase);
 
-      // 3. ROI
       const storedRoi = localStorage.getItem(STORAGE_KEYS.ROI);
-      if (storedRoi) {
-        roiConfig = JSON.parse(storedRoi);
-      }
+      if (storedRoi) roiConfig = JSON.parse(storedRoi);
 
-      // 4. Content
       const storedContent = localStorage.getItem(STORAGE_KEYS.CONTENT);
-      if (storedContent) {
-        contentConfig = JSON.parse(storedContent);
-      }
+      if (storedContent) contentConfig = JSON.parse(storedContent);
 
-      // If any core data is missing, fetch from default_dna_config.json
       if (!storedLeads || !storedShowcase || !storedRoi || !storedContent) {
         const resp = await fetch('data/default_dna_config.json');
         if (resp.ok) {
@@ -340,7 +502,7 @@
   }
 
   /* ==========================================================================
-     LANGUAGE & DIRECTION
+     LANGUAGE & DIRECTION ENGINE
      ========================================================================== */
   function setupLanguage() {
     const langBtn = document.getElementById('btnLangToggle');
@@ -366,6 +528,8 @@
       const key = el.getAttribute('data-i18n');
       if (dict[key]) {
         if (el.tagName === 'INPUT' && el.getAttribute('placeholder')) {
+          el.setAttribute('placeholder', dict[key]);
+        } else if (el.tagName === 'TEXTAREA' && el.getAttribute('placeholder')) {
           el.setAttribute('placeholder', dict[key]);
         } else {
           el.innerHTML = dict[key];
@@ -410,7 +574,6 @@
       }
     });
 
-    // If switching to ROI tab, trigger preview calculation
     if (tabId === 'roi') {
       calcLiveRoi();
     }
@@ -439,14 +602,17 @@
       pipelineVal += parseInt(l.budget || 1500, 10);
     });
 
-    // Top vertical
     const servicesCount = {};
     leadsData.forEach(l => {
       servicesCount[l.service] = (servicesCount[l.service] || 0) + 1;
     });
-    let topService = 'Full-Funnel';
-    if (servicesCount['video'] > (servicesCount['all'] || 0)) topService = 'Visual Production';
-    if (servicesCount['marketing'] > (servicesCount['all'] || 0)) topService = 'Performance Ads';
+    let topService = currentLang === 'ar' ? 'منظومة النمو الشاملة' : 'Full-Funnel Growth';
+    if (servicesCount['video'] > (servicesCount['all'] || 0)) {
+      topService = currentLang === 'ar' ? 'الإنتاج السينمائي الفاخر' : 'Visual Production';
+    }
+    if (servicesCount['marketing'] > (servicesCount['all'] || 0)) {
+      topService = currentLang === 'ar' ? 'إعلانات الأداء والمبيعات' : 'Performance Marketing';
+    }
 
     const elTotal = document.getElementById('ovTotalLeads');
     const elPipe = document.getElementById('ovPipelineVal');
@@ -455,8 +621,8 @@
     const badgeCount = document.getElementById('crmBadgeCount');
 
     if (elTotal) elTotal.innerText = totalLeads;
-    if (elPipe) elPipe.innerText = `$${pipelineVal.toLocaleString()}`;
-    if (elConv) elConv.innerText = `${convRate}%`;
+    if (elPipe) elPipe.innerHTML = `<bdi>$${pipelineVal.toLocaleString()}</bdi>`;
+    if (elConv) elConv.innerHTML = `<bdi>${convRate}%</bdi>`;
     if (elTop) elTop.innerText = topService;
     if (badgeCount) badgeCount.innerText = totalLeads;
   }
@@ -482,7 +648,7 @@
       tbody.innerHTML = `
         <tr>
           <td colspan="7" style="text-align: center; padding: 2.5rem; color: var(--text-muted);">
-            ${currentLang === 'ar' ? 'لا توجد طلبات مطابقة للبحث أو الفلتر المحدد.' : 'No strategy requests match the selected search or filter.'}
+            ${currentLang === 'ar' ? 'لا توجد طلبات شراكة مطابقة للبحث أو الفلتر المحدد.' : 'No strategy requests match the selected search or filter.'}
           </td>
         </tr>
       `;
@@ -490,13 +656,15 @@
     }
 
     tbody.innerHTML = filtered.map(lead => {
-      const formattedDate = lead.created_at ? new Date(lead.created_at).toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Recently';
+      const formattedDate = lead.created_at ? new Date(lead.created_at).toLocaleDateString(currentLang === 'ar' ? 'ar-EG' : 'en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }) : (currentLang === 'ar' ? 'مؤخراً' : 'Recently');
       const cleanPhone = (lead.phone || '').replace(/[^\d+]/g, '');
       const waPhone = cleanPhone.startsWith('+') ? cleanPhone.substring(1) : (cleanPhone.startsWith('0') ? '2' + cleanPhone : cleanPhone);
 
+      const serviceName = getServiceTitle(lead.service);
+
       const greeting = currentLang === 'ar'
-        ? `أهلاً بك ${lead.name} في وكالة OTB Agency (The City Kings). بخصوص طلبك لجلسة الاستراتيجية لخدمة (${lead.service_label || lead.service})، يسعدنا تحديد موعد الجلسة التنفيذية.`
-        : `Hello ${lead.name}! This is OTB Agency Executive Team regarding your strategy roadmap request for (${lead.service_label || lead.service}). We are ready to schedule your session.`;
+        ? `السلام عليكم أستاذ(ة) ${lead.name}، تحياتنا من وكالة OTB Agency (The City Kings). بخصوص طلبكم لجلسة التخطيط الاستراتيجي لمسار (${serviceName})، يسعدنا التنسيق معكم لتحديد الموعد الأنسب لمناقشة خارطة طريق نمو علامتكم التجارية.`
+        : `Hello ${lead.name}! This is OTB Agency Executive Team regarding your strategy roadmap request for (${serviceName}). We are ready to schedule your session.`;
 
       const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(greeting)}`;
 
@@ -504,22 +672,22 @@
         <tr>
           <td>
             <strong style="color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(lead.name)}</strong>
-            ${lead.notes ? `<div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem; max-width: 260px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(lead.notes)}">${escapeHtml(lead.notes)}</div>` : ''}
+            ${lead.notes ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(lead.notes)}">${escapeHtml(lead.notes)}</div>` : ''}
           </td>
           <td>
-            <span style="font-family: monospace; color: var(--accent-gold);">${escapeHtml(lead.phone)}</span>
+            <span style="font-family: monospace; color: var(--accent-gold); display: inline-block;" dir="ltr"><bdi>${escapeHtml(lead.phone)}</bdi></span>
           </td>
           <td>
-            <span style="font-size: 0.82rem; color: var(--text-secondary);">${getServiceTitle(lead.service)}</span>
+            <span style="font-size: 0.84rem; color: var(--text-secondary);">${serviceName}</span>
           </td>
           <td>
-            <strong style="color: var(--accent-gold-bright);">$${(lead.budget || 1500).toLocaleString()}</strong>
+            <strong style="color: var(--accent-gold-bright);"><bdi>$${(lead.budget || 1500).toLocaleString()}</bdi></strong>
           </td>
           <td>
-            <span style="font-size: 0.78rem; color: var(--text-muted);">${formattedDate}</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted);"><bdi>${formattedDate}</bdi></span>
           </td>
           <td>
-            <select class="select-filter" style="font-size: 0.78rem; padding: 0.25rem 0.6rem;" onchange="window.updateLeadStatus('${lead.id}', this.value)">
+            <select class="select-filter" style="font-size: 0.8rem; padding: 0.3rem 0.65rem;" onchange="window.updateLeadStatus('${lead.id}', this.value)">
               <option value="new" ${lead.status === 'new' ? 'selected' : ''}>${I18N[currentLang].st_new}</option>
               <option value="contacted" ${lead.status === 'contacted' ? 'selected' : ''}>${I18N[currentLang].st_contacted}</option>
               <option value="strategy_session" ${lead.status === 'strategy_session' ? 'selected' : ''}>${I18N[currentLang].st_strategy}</option>
@@ -529,10 +697,10 @@
           </td>
           <td>
             <div class="table-action-row">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-icon-action whatsapp" title="${currentLang === 'ar' ? 'محادثة واتساب مخصصة' : 'Direct WhatsApp Chat'}">
+              <a href="${waUrl}" target="_blank" rel="noopener" class="btn-icon-action whatsapp" title="${currentLang === 'ar' ? 'محادثة واتساب مخصصة فورية' : 'Direct WhatsApp Chat'}">
                 💬
               </a>
-              <button class="btn-icon-action danger" onclick="window.deleteLead('${lead.id}')" title="${currentLang === 'ar' ? 'حذف الطلب' : 'Delete Lead'}">
+              <button class="btn-icon-action danger" onclick="window.deleteLead('${lead.id}')" title="${currentLang === 'ar' ? 'حذف هذا السجل' : 'Delete Lead'}">
                 🗑️
               </button>
             </div>
@@ -543,10 +711,10 @@
   }
 
   function getServiceTitle(srv) {
-    if (srv === 'video') return currentLang === 'ar' ? 'إنتاج فيديو سينمائي' : 'Visual Production';
-    if (srv === 'marketing') return currentLang === 'ar' ? 'إعلانات أداء ومبيعات' : 'Performance Marketing';
-    if (srv === 'branding') return currentLang === 'ar' ? 'هوية ثلاثية الأبعاد' : '3D Branding';
-    return currentLang === 'ar' ? 'شراكة نمو شاملة' : 'Full-Funnel Growth';
+    if (srv === 'video') return currentLang === 'ar' ? 'إنتاج إعلاني وسرد سينمائي فاخر' : 'Luxury Visual Production';
+    if (srv === 'marketing') return currentLang === 'ar' ? 'إعلانات أداء ومبيعات عالية العائد' : 'High-ROAS Performance Marketing';
+    if (srv === 'branding') return currentLang === 'ar' ? 'هوية تجارية وتصميم ثلاثي الأبعاد' : '3D Identity & Visual Systems';
+    return currentLang === 'ar' ? 'شراكة نمو تجارية شاملة' : 'Enterprise Full-Funnel Growth';
   }
 
   /* 3. Showcase CMS */
@@ -572,15 +740,15 @@
           </div>
           <div class="showcase-body">
             <h4 class="showcase-card-title">${escapeHtml(title)}</h4>
-            <div class="showcase-metric-pill">📈 ${escapeHtml(item.metric)}</div>
+            <div class="showcase-metric-pill">📈 <bdi>${escapeHtml(item.metric)}</bdi></div>
             <p class="showcase-card-desc">${escapeHtml(item.desc)}</p>
             <div class="showcase-footer">
-              <span style="font-size: 0.72rem; color: var(--text-muted); font-family: monospace;">ID: ${item.id}</span>
-              <div style="display: flex; gap: 0.4rem;">
-                <button class="btn-nav-action" style="padding: 0.35rem 0.75rem; font-size: 0.78rem;" onclick="window.openEditShowcaseModal('${item.id}')">
+              <span style="font-size: 0.74rem; color: var(--text-muted); font-family: monospace;">${currentLang === 'ar' ? 'المُعرّف:' : 'ID:'} <bdi dir="ltr">${item.id}</bdi></span>
+              <div style="display: flex; gap: 0.45rem;">
+                <button class="btn-nav-action" style="padding: 0.35rem 0.8rem; font-size: 0.8rem;" onclick="window.openEditShowcaseModal('${item.id}')">
                   ✏️ ${currentLang === 'ar' ? 'تعديل' : 'Edit'}
                 </button>
-                <button class="btn-icon-action danger" style="width: 28px; height: 28px;" onclick="window.deleteShowcaseItem('${item.id}')">
+                <button class="btn-icon-action danger" style="width: 30px; height: 30px;" onclick="window.deleteShowcaseItem('${item.id}')" title="${currentLang === 'ar' ? 'حذف من المعرض' : 'Delete'}">
                   ✕
                 </button>
               </div>
@@ -608,15 +776,15 @@
         <div class="roi-param-card">
           <div class="roi-param-header">
             <span class="param-title">${escapeHtml(name)}</span>
-            <span class="param-badge">${key.toUpperCase()}</span>
+            <span class="param-badge" dir="ltr"><bdi>${key.toUpperCase()}</bdi></span>
           </div>
           <div class="param-row">
-            <span class="param-label">${currentLang === 'ar' ? 'مضاعف الوصول (Multiplier):' : 'Reach Multiplier:'}</span>
-            <input type="number" step="0.05" class="param-input" id="roi_factor_${key}" value="${item.factor}" onchange="window.updateRoiParam('${key}', 'factor', this.value)">
+            <span class="param-label">${currentLang === 'ar' ? 'مضاعف الوصول الجماهيري:' : 'Target Reach Multiplier:'}</span>
+            <input type="number" step="0.05" class="param-input" id="roi_factor_${key}" value="${item.factor}" dir="ltr" onchange="window.updateRoiParam('${key}', 'factor', this.value)">
           </div>
           <div class="param-row">
-            <span class="param-label">${currentLang === 'ar' ? 'متوسط تكلفة العميل التقديرية ($):' : 'Est. Cost per Lead ($):'}</span>
-            <input type="number" step="0.1" class="param-input" id="roi_cost_${key}" value="${item.lead_cost || 3.0}" onchange="window.updateRoiParam('${key}', 'lead_cost', this.value)">
+            <span class="param-label">${currentLang === 'ar' ? 'تكلفة اكتساب العميل التقديرية ($):' : 'Est. Cost per Lead ($):'}</span>
+            <input type="number" step="0.1" class="param-input" id="roi_cost_${key}" value="${item.lead_cost || 3.0}" dir="ltr" onchange="window.updateRoiParam('${key}', 'lead_cost', this.value)">
           </div>
         </div>
       `;
@@ -633,9 +801,8 @@
     const elLeads = document.getElementById('adminRoiLeadsDisplay');
     const elRoas = document.getElementById('adminRoiRoasDisplay');
 
-    if (elBudget) elBudget.innerText = `$${budgetVal.toLocaleString()}`;
+    if (elBudget) elBudget.innerHTML = `<bdi>$${budgetVal.toLocaleString()}</bdi>`;
 
-    // Calculation based on current FMCG factor
     const factor = roiConfig?.industries?.fmcg?.factor || 1.25;
     const estReach = Math.round(budgetVal * 200 * factor);
     const minLeads = Math.round((budgetVal / 3.8) * factor);
@@ -643,9 +810,9 @@
     const minRoas = (3.5 * (factor / 1.1)).toFixed(1);
     const maxRoas = (5.2 * (factor / 1.1)).toFixed(1);
 
-    if (elReach) elReach.innerText = `${estReach.toLocaleString()}+`;
-    if (elLeads) elLeads.innerText = `${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()}`;
-    if (elRoas) elRoas.innerText = `${minRoas}x - ${maxRoas}x`;
+    if (elReach) elReach.innerHTML = `<bdi>${estReach.toLocaleString()}+</bdi>`;
+    if (elLeads) elLeads.innerHTML = `<bdi>${minLeads.toLocaleString()} - ${maxLeads.toLocaleString()}</bdi>`;
+    if (elRoas) elRoas.innerHTML = `<bdi>${minRoas}x - ${maxRoas}x</bdi>`;
   }
 
   /* 5. Content & SEO Settings */
@@ -672,22 +839,29 @@
     const container = document.getElementById('corelinkTasksList');
     if (!container) return;
 
-    const tasks = configData?.corelink_operations?.high_priority_actions || [
+    const tasks = currentLang === 'ar' ? [
+      { id: 't1', title: 'إطلاق مواد وتصميمات حملة رمضان لمصانع فرانكس', assignee: 'مسار الإنتاج المرئي', status: 'جاهز للإطلاق', priority: 'عاجلة جداً' },
+      { id: 't2', title: 'انطلاق حملة استقطاب مصانع العاشر من رمضان وأكتوبر (Mission 01)', assignee: 'محرك النمو وتطوير الأعمال', status: 'قيد التنفيذ', priority: 'قصوى' },
+      { id: 't3', title: 'إخراج وتجهيز البورتفوليو المطبوع المعتمد (آية وروان)', assignee: 'استوديو التصميم الإبداعي', status: 'مرحلة الإخراج الفني', priority: 'متوسطة' },
+      { id: 't4', title: 'مواءمة الهوية البصرية لأكاديمية OTB Growth كودياً', assignee: 'فريق التطوير والواجهات', status: 'مجدول للتنفيذ', priority: 'متوسطة' }
+    ] : [
       { id: 't1', title: 'Deploy Franks Ramadan Campaign Assets', assignee: 'Production Track', status: 'Ready', priority: 'High' },
       { id: 't2', title: 'Launch Mission 01 Outreach (10th of Ramadan)', assignee: 'Growth Engine', status: 'In Progress', priority: 'High' },
-      { id: 't3', title: 'Deliver Printable Portfolio (Aya & Rawan)', assignee: 'Creative Studio', status: 'Design Phase', priority: 'Medium' }
+      { id: 't3', title: 'Deliver Printable Portfolio (Aya & Rawan)', assignee: 'Creative Studio', status: 'Design Phase', priority: 'Medium' },
+      { id: 't4', title: 'Sync OTB Growth Academy Visual Identity', assignee: 'Dev & UI', status: 'Planned', priority: 'Medium' }
     ];
 
     container.innerHTML = tasks.map(t => {
+      const isReady = t.status === 'Ready' || t.status === 'جاهز للإطلاق';
       return `
         <div style="background: var(--bg-surface-elevated); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1rem 1.25rem; margin-bottom: 0.85rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.85rem;">
           <div>
-            <strong style="color: var(--text-primary); font-size: 0.92rem;">${escapeHtml(t.title)}</strong>
-            <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.2rem;">Assignee: <span style="color: var(--accent-gold);">${escapeHtml(t.assignee)}</span></div>
+            <strong style="color: var(--text-primary); font-size: 0.94rem;">${escapeHtml(t.title)}</strong>
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.25rem;">${currentLang === 'ar' ? 'المسؤول:' : 'Assignee:'} <span style="color: var(--accent-gold);">${escapeHtml(t.assignee)}</span></div>
           </div>
           <div style="display: flex; align-items: center; gap: 0.6rem;">
-            <span class="badge-status ${t.status === 'Ready' ? 'closed_won' : 'contacted'}">${escapeHtml(t.status)}</span>
-            <span style="font-size: 0.72rem; color: var(--text-secondary); background: rgba(255,255,255,0.05); padding: 0.2rem 0.5rem; border-radius: 4px;">${escapeHtml(t.priority)}</span>
+            <span class="badge-status ${isReady ? 'closed_won' : 'contacted'}">${escapeHtml(t.status)}</span>
+            <span style="font-size: 0.74rem; color: var(--text-secondary); background: rgba(255,255,255,0.06); padding: 0.25rem 0.55rem; border-radius: 4px;">${escapeHtml(t.priority)}</span>
           </div>
         </div>
       `;
@@ -698,78 +872,67 @@
      GLOBAL ACTIONS & EVENT LISTENERS
      ========================================================================== */
   function setupEventListeners() {
-    // CRM Search & Filter
     document.getElementById('searchLeadsInput')?.addEventListener('input', renderCRM, { passive: true });
     document.getElementById('filterLeadStatus')?.addEventListener('change', renderCRM);
     document.getElementById('filterShowcaseCat')?.addEventListener('change', renderShowcase);
 
-    // Live ROI Slider
     document.getElementById('adminRoiSlider')?.addEventListener('input', calcLiveRoi, { passive: true });
 
-    // Global Sync Button
     document.getElementById('btnSyncAll')?.addEventListener('click', () => {
       saveAllState();
-      showToast(currentLang === 'ar' ? 'تمت مزامنة وحفظ كافة البيانات بنجاح ⚡' : 'All Data Synced & Saved to Local System ⚡');
+      showToast(currentLang === 'ar' ? 'تمت مزامنة وحفظ كافة البيانات بنجاح ⚡' : 'All Data Synced & Saved ⚡');
     });
 
-    // CRM Export CSV
     document.getElementById('btnExportCsv')?.addEventListener('click', exportLeadsCsv);
 
-    // Save ROI Button
     document.getElementById('btnSaveRoi')?.addEventListener('click', () => {
       localStorage.setItem(STORAGE_KEYS.ROI, JSON.stringify(roiConfig));
-      showToast(currentLang === 'ar' ? 'تم حفظ معايير محاكي العائد بنجاح ✓' : 'ROI Multipliers Saved Successfully ✓');
+      showToast(currentLang === 'ar' ? 'تم حفظ مضاعفات محاكي النمو بنجاح ✓' : 'ROI Multipliers Saved Successfully ✓');
     });
 
-    // Save Content Button
     document.getElementById('btnSaveContent')?.addEventListener('click', saveContentForm);
 
-    // Export JSON Backup
     document.getElementById('btnExportMasterJson')?.addEventListener('click', exportFullJsonBackup);
 
-    // Import JSON Backup
     document.getElementById('btnTriggerImport')?.addEventListener('click', () => {
       document.getElementById('importFileInput')?.click();
     });
 
     document.getElementById('importFileInput')?.addEventListener('change', handleImportFile);
 
-    // Reset DNA 2026
     document.getElementById('btnResetDna')?.addEventListener('click', resetToDna2026);
   }
 
-  /* Save all State */
   function saveAllState() {
     localStorage.setItem(STORAGE_KEYS.LEADS, JSON.stringify(leadsData));
     localStorage.setItem(STORAGE_KEYS.SHOWCASE, JSON.stringify(showcaseData));
     localStorage.setItem(STORAGE_KEYS.ROI, JSON.stringify(roiConfig));
     localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
 
-    // Dispatch custom event for real-time tab sync
     window.dispatchEvent(new CustomEvent('otb_data_updated', {
       detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig }
     }));
   }
 
-  /* CRM Actions */
   window.updateLeadStatus = function (leadId, newStatus) {
     const lead = leadsData.find(l => l.id === leadId);
     if (lead) {
       lead.status = newStatus;
       saveAllState();
       renderOverview();
-      showToast(currentLang === 'ar' ? `تم تحديث حالة العميل إلى: ${newStatus}` : `Lead status updated to: ${newStatus}`);
+      const statusTitle = I18N[currentLang][`st_${newStatus}`] || newStatus;
+      showToast(currentLang === 'ar' ? `تم تحديث حالة الطلب إلى: ${statusTitle}` : `Lead status updated to: ${statusTitle}`);
     }
   };
 
   window.deleteLead = function (leadId) {
-    const confirmMsg = currentLang === 'ar' ? 'هل أنت متأكد من حذف هذا العميل من السجل؟' : 'Are you sure you want to delete this lead?';
+    const confirmMsg = currentLang === 'ar' ? 'هل أنت متأكد من حذف هذا السجل نهائياً من قاعدة البيانات؟' : 'Are you sure you want to permanently delete this lead?';
     if (confirm(confirmMsg)) {
       leadsData = leadsData.filter(l => l.id !== leadId);
       saveAllState();
       renderOverview();
       renderCRM();
-      showToast(currentLang === 'ar' ? 'تم حذف العميل بنجاح' : 'Lead deleted successfully');
+      showToast(currentLang === 'ar' ? 'تم حذف السجل بنجاح' : 'Lead deleted successfully');
     }
   };
 
@@ -792,7 +955,7 @@
     const notes = document.getElementById('addLeadNotes').value.trim();
 
     if (!name || !phone) {
-      alert(currentLang === 'ar' ? 'يرجى إدخال الاسم ورقم الهاتف' : 'Please provide name and phone');
+      alert(currentLang === 'ar' ? 'يرجى إدخال اسم العميل ورقم الهاتف الرسمي' : 'Please provide name and phone');
       return;
     }
 
@@ -814,27 +977,30 @@
     renderCRM();
     window.closeAddLeadModal();
     document.getElementById('addLeadForm').reset();
-    showToast(currentLang === 'ar' ? 'تمت إضافة العميل الجديد بنجاح ✓' : 'New Lead Added Successfully ✓');
+    showToast(currentLang === 'ar' ? 'تم تسجيل وإدراج العميل الجديد في المنظومة بنجاح ✓' : 'New Lead Added Successfully ✓');
   };
 
-  /* CSV Export */
   function exportLeadsCsv() {
     if (leadsData.length === 0) {
-      alert(currentLang === 'ar' ? 'لا توجد بيانات عملاء للتصدير' : 'No leads to export');
+      alert(currentLang === 'ar' ? 'لا توجد بيانات عملاء مسجلة حالياً للتصدير' : 'No leads to export');
       return;
     }
 
-    let csvContent = '\uFEFF'; // BOM for UTF-8 Excel Arabic compatibility
-    csvContent += 'ID,Name,Phone,Service,Budget_USD,Status,Notes,Created_At\n';
+    let csvContent = '\uFEFF';
+    if (currentLang === 'ar') {
+      csvContent += 'المعرف,اسم_العميل_والشركة,رقم_الهاتف_والواتساب,مسار_الخدمة,الميزانية_الشهرية_دولار,حالة_الطلب,ملاحظات_التوسع,تاريخ_التسجيل\n';
+    } else {
+      csvContent += 'ID,Name_Company,Phone_WhatsApp,Service_Pillar,Budget_USD,Lead_Status,Notes,Created_At\n';
+    }
 
     leadsData.forEach(l => {
       const row = [
         `"${l.id}"`,
         `"${(l.name || '').replace(/"/g, '""')}"`,
         `"${(l.phone || '').replace(/"/g, '""')}"`,
-        `"${(l.service || '').replace(/"/g, '""')}"`,
+        `"${(getServiceTitle(l.service) || l.service).replace(/"/g, '""')}"`,
         `"${l.budget || 0}"`,
-        `"${l.status || 'new'}"`,
+        `"${(I18N[currentLang][`st_${l.status}`] || l.status).replace(/"/g, '""')}"`,
         `"${(l.notes || '').replace(/"/g, '""')}"`,
         `"${l.created_at || ''}"`
       ];
@@ -849,10 +1015,9 @@
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-    showToast(currentLang === 'ar' ? 'تم تنزيل ملف الإكسيل بنجاح 📥' : 'Leads CSV downloaded successfully 📥');
+    showToast(currentLang === 'ar' ? 'تم تنزيل ملف الإكسيل بالعربية بنجاح 📥' : 'Leads CSV downloaded successfully 📥');
   }
 
-  /* Showcase CMS Actions */
   window.openEditShowcaseModal = function (itemId) {
     const item = showcaseData.find(sc => sc.id === itemId);
     if (!item) return;
@@ -861,7 +1026,7 @@
     document.getElementById('editScTitle').value = item.title;
     document.getElementById('editScTitleAr').value = item.title_ar || item.title;
     document.getElementById('editScCat').value = item.cat;
-    document.getElementById('editScCategory').value = item.category;
+    document.getElementById('editScCategory').value = currentLang === 'ar' ? (item.category_ar || item.category) : item.category;
     document.getElementById('editScMetric').value = item.metric;
     document.getElementById('editScImg').value = item.img;
     document.getElementById('editScDesc').value = item.desc;
@@ -890,17 +1055,17 @@
       saveAllState();
       renderShowcase();
       window.closeEditShowcaseModal();
-      showToast(currentLang === 'ar' ? 'تم تحديث العمل في المعرض بنجاح ✓' : 'Showcase item updated ✓');
+      showToast(currentLang === 'ar' ? 'تم حفظ وتحديث سابقة الأعمال بنجاح ✓' : 'Showcase item updated ✓');
     }
   };
 
   window.deleteShowcaseItem = function (itemId) {
-    const confirmMsg = currentLang === 'ar' ? 'هل أنت متأكد من حذف هذا العمل من المعرض؟' : 'Delete this item from showcase?';
+    const confirmMsg = currentLang === 'ar' ? 'هل أنت متأكد من رغبتك في حذف هذا المشروع من المعرض؟' : 'Delete this item from showcase?';
     if (confirm(confirmMsg)) {
       showcaseData = showcaseData.filter(sc => sc.id !== itemId);
       saveAllState();
       renderShowcase();
-      showToast(currentLang === 'ar' ? 'تم حذف العنصر من المعرض' : 'Showcase item deleted');
+      showToast(currentLang === 'ar' ? 'تم حذف العنصر من المعرض بنجاح' : 'Showcase item deleted');
     }
   };
 
@@ -922,7 +1087,7 @@
     const desc = document.getElementById('addProofDesc').value.trim();
 
     if (!title || !metric) {
-      alert('Please provide title and metric');
+      alert(currentLang === 'ar' ? 'يرجى إدخال اسم المشروع والمؤشر المحقق' : 'Please provide title and metric');
       return;
     }
 
@@ -943,10 +1108,9 @@
     renderShowcase();
     window.closeAddProofModal();
     document.getElementById('addProofForm').reset();
-    showToast(currentLang === 'ar' ? 'تمت إضافة العمل الموثق الجديد للمعرض ✓' : 'New proof item added to showcase ✓');
+    showToast(currentLang === 'ar' ? 'تم إدراج سابقة الأعمال الجديدة في المعرض بنجاح ✓' : 'New proof item added to showcase ✓');
   };
 
-  /* ROI Updates */
   window.updateRoiParam = function (key, prop, val) {
     if (roiConfig && roiConfig.industries && roiConfig.industries[key]) {
       roiConfig.industries[key][prop] = parseFloat(val);
@@ -954,7 +1118,6 @@
     }
   };
 
-  /* Content Updates */
   function saveContentForm() {
     contentConfig = {
       motto: document.getElementById('inputContentMotto')?.value.trim(),
@@ -969,10 +1132,9 @@
       }
     };
     saveAllState();
-    showToast(currentLang === 'ar' ? 'تم حفظ النصوص وبيانات الاتصال بنجاح ✓' : 'Copy and contact details saved ✓');
+    showToast(currentLang === 'ar' ? 'تم حفظ شعارات الهوية وبيانات التواصل بنجاح ✓' : 'Copy and contact details saved ✓');
   }
 
-  /* Full Backup & Import */
   function exportFullJsonBackup() {
     const fullBackup = {
       system: {
@@ -993,7 +1155,7 @@
     document.body.appendChild(dlAnchor);
     dlAnchor.click();
     document.body.removeChild(dlAnchor);
-    showToast(currentLang === 'ar' ? 'تم تصدير النسخة الاحتياطية الشاملة 💾' : 'Full Backup Exported 💾');
+    showToast(currentLang === 'ar' ? 'تم تصدير النسخة الاحتياطية الشاملة للمنظومة 💾' : 'Full Backup Exported 💾');
   }
 
   function handleImportFile(e) {
@@ -1013,14 +1175,14 @@
         renderAll();
         showToast(currentLang === 'ar' ? 'تم استيراد وتطبيق النسخة الاحتياطية بنجاح ✓' : 'Backup imported successfully ✓');
       } catch (err) {
-        alert('Invalid JSON file');
+        alert(currentLang === 'ar' ? 'الملف المحدد غير صالح أو غير متوافق' : 'Invalid JSON file');
       }
     };
     reader.readAsText(file);
   }
 
   async function resetToDna2026() {
-    const confirmMsg = currentLang === 'ar' ? 'هل ترغب بالتأكيد في استعادة كافة بيانات وإعدادات OTB DNA 2026 الأصلية؟' : 'Reset all configuration to verified OTB DNA 2026?';
+    const confirmMsg = currentLang === 'ar' ? 'هل ترغب بالتأكيد في استعادة كافة بيانات وإعدادات OTB DNA 2026 الأصلية المعتمدة؟' : 'Reset all configuration to verified OTB DNA 2026?';
     if (confirm(confirmMsg)) {
       try {
         const resp = await fetch('data/default_dna_config.json');
@@ -1045,7 +1207,6 @@
     }
   }
 
-  /* Utility Toast */
   function showToast(msg) {
     let container = document.getElementById('toastContainer');
     if (!container) {
@@ -1080,7 +1241,6 @@
       .replace(/'/g, '&#039;');
   }
 
-  // Self-bootstrap on DOMContentLoaded
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
