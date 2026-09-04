@@ -654,6 +654,26 @@ function initModal() {
 
       if (hasError) return;
 
+      // Save lead to local CRM storage
+      try {
+        const existingLeads = JSON.parse(localStorage.getItem('otb_leads') || '[]');
+        const budgetVal = document.getElementById('budgetSlider') ? parseInt(document.getElementById('budgetSlider').value, 10) : 2500;
+        const newLead = {
+          id: 'lead_' + Date.now(),
+          name: name,
+          phone: phone,
+          service: service,
+          budget: budgetVal,
+          notes: notes || '',
+          status: 'new',
+          created_at: new Date().toISOString()
+        };
+        existingLeads.unshift(newLead);
+        localStorage.setItem('otb_leads', JSON.stringify(existingLeads));
+      } catch (err) {
+        console.warn('Could not save lead locally:', err);
+      }
+
       const headerText = currentLang === 'ar' ? 'طلب استشارة استراتيجية جديد - OTB Agency' : 'New Strategy Growth Partnership - OTB Agency';
       const text = encodeURIComponent(`*${headerText}*%0A%0A*Name / Company:* ${name}%0A*Phone / WhatsApp:* ${phone}%0A*Service:* ${service}%0A*Notes:* ${notes || 'None'}`);
       const waUrl = `https://wa.me/201008080295?text=${text}`;

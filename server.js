@@ -10,11 +10,14 @@ const MIME_TYPES = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.png': 'image/png',
-  '.json': 'application/json'
+  '.svg': 'image/svg+xml',
+  '.json': 'application/json',
+  '.woff2': 'font/woff2'
 };
 
 const server = http.createServer((req, res) => {
-  let filePath = path.join(__dirname, req.url === '/' ? 'index.html' : req.url);
+  const urlPath = req.url.split('?')[0];
+  let filePath = path.join(__dirname, urlPath === '/' ? 'index.html' : urlPath);
   let ext = path.extname(filePath);
   let contentType = MIME_TYPES[ext] || 'application/octet-stream';
 

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTB Executive Command Center — غرفة العمليات التنفيذية</title>
+  <meta name="description" content="OTB Agency Executive Command Center, CRM & CMS. Control leads, showcase portfolio, and growth metrics.">
+  <link rel="icon" href="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. SECURITY PIN GATE MODAL (Obsidian Security Lock)
+       ========================================================================== -->
+  <div class="pin-gate-overlay" id="pinGateOverlay">
+    <div class="pin-card">
+      <div class="pin-logo-box">👑</div>
+      <h2 class="pin-title">OTB COMMAND CENTER</h2>
+      <p class="pin-subtitle" data-i18n="app_subtitle">منظومة الإدارة المتكاملة · OTB Agency 2026</p>
+      
+      <div class="pin-display">
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+        <div class="pin-dot"></div>
+      </div>
+
+      <div class="pin-keypad">
+        <button class="pin-key" data-val="1">1</button>
+        <button class="pin-key" data-val="2">2</button>
+        <button class="pin-key" data-val="3">3</button>
+        <button class="pin-key" data-val="4">4</button>
+        <button class="pin-key" data-val="5">5</button>
+        <button class="pin-key" data-val="6">6</button>
+        <button class="pin-key" data-val="7">7</button>
+        <button class="pin-key" data-val="8">8</button>
+        <button class="pin-key" data-val="9">9</button>
+        <button class="pin-key special" data-val="clear">C</button>
+        <button class="pin-key" data-val="0">0</button>
+        <button class="pin-key special" data-val="backspace">⌫</button>
+      </div>
+
+      <div class="pin-error-hint" id="pinErrorHint">رمز الدخول غير صحيح (رمز المرور الافتراضي: 2026)</div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       2. COMMAND CENTER APP CONTAINER
+       ========================================================================== -->
+  <div class="app-container">
+    
+    <!-- Top Header Bar -->
+    <header class="top-nav">
+      <div class="nav-brand-group">
+        <div class="brand-badge-cube">OTB</div>
+        <div class="brand-info-col">
+          <div class="brand-title">
+            <span data-i18n="app_title">غرفة العمليات التنفيذية</span>
+            <span class="status-pill-live" data-i18n="status_live">مباشر / حي</span>
+          </div>
+          <span class="brand-subtitle">The City Kings · Operating System 2026</span>
+        </div>
+      </div>
+
+      <div class="nav-actions-group">
+        <button class="btn-nav-action" id="btnLangToggle">🌐 English (LTR)</button>
+        <a href="index.html" target="_blank" rel="noopener" class="btn-nav-action" data-i18n="btn_view_site">معاينة الموقع الحي ↗</a>
+        <button class="btn-nav-action primary" id="btnSyncAll" data-i18n="btn_sync">مزامنة وحفظ ⚡</button>
+        <button class="btn-nav-action" id="btnLogout" data-i18n="btn_logout" title="Lock Dashboard">قفل النظام 🔒</button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="tabs-header-wrapper">
+      <nav class="tabs-nav" aria-label="Dashboard Tabs">
+        <button class="tab-btn active" data-tab="overview" data-i18n="tab_overview">
+          📊 مؤشرات الأداء
+        </button>
+        <button class="tab-btn" data-tab="leads">
+          <span data-i18n="tab_leads">📥 الحجوزات والـ CRM</span>
+          <span class="tab-badge" id="crmBadgeCount">4</span>
+        </button>
+        <button class="tab-btn" data-tab="showcase" data-i18n="tab_showcase">
+          🎨 معرض الأعمال CMS
+        </button>
+        <button class="tab-btn" data-tab="roi" data-i18n="tab_roi">
+          ⚙️ محاكي العائد ROI
+        </button>
+        <button class="tab-btn" data-tab="content" data-i18n="tab_content">
+          🌐 المحتوى والـ SEO
+        </button>
+        <button class="tab-btn" data-tab="corelink" data-i18n="tab_corelink">
+          ⚡ عمليات CoreLink
+        </button>
+      </nav>
+    </div>
+
+    <!-- Main Viewport -->
+    <main class="main-viewport">
+
+      <!-- ==========================================================================
+           TAB 1: OVERVIEW & OPERATIONAL PULSE
+           ========================================================================== -->
+      <section class="tab-content active" id="tab-overview">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="ov_title">نبض العمليات والمؤشرات الحيوية</h1>
+            <p class="section-desc" data-i18n="ov_desc">نظرة شمولية فورية على طلبات العملاء الجدد، ميزانيات الحملات المحتملة، ومؤشرات التوسع الرقمي.</p>
+          </div>
+          <div>
+            <button class="btn-nav-action primary" onclick="window.openAddLeadModal()">+ إضافة حجز استراتيجية</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label" data-i18n="kpi_total_leads">إجمالي طلبات الاستراتيجية</span>
+              <span class="stat-icon">📥</span>
+            </div>
+            <div class="stat-value" id="ovTotalLeads">4</div>
+            <div class="stat-meta up">↑ 100% مؤهلون للشراكة</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label" data-i18n="kpi_pipeline_val">القيمة التقديرية للحملات</span>
+              <span class="stat-icon">💰</span>
+            </div>
+            <div class="stat-value" id="ovPipelineVal">$12,800</div>
+            <div class="stat-meta up">ميزانيات إعلانات شهرية مقدرة</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label" data-i18n="kpi_conv_rate">معدل التحويل (Closed)</span>
+              <span class="stat-icon">🎯</span>
+            </div>
+            <div class="stat-value" id="ovConvRate">25%</div>
+            <div class="stat-meta">شراكات مبرمة رسمياً</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label" data-i18n="kpi_top_vertical">القطاع الأكثر طلباً</span>
+              <span class="stat-icon">🏭</span>
+            </div>
+            <div class="stat-value" id="ovTopService" style="font-size: 1.45rem;">Full-Funnel</div>
+            <div class="stat-meta">الأغذية & الكافيهات المتخصصة</div>
+          </div>
+        </div>
+
+        <!-- Franks Benchmark Spotlight Panel -->
+        <div class="luxe-panel" style="border-color: var(--border-gold); background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(35,28,10,0.3) 100%);">
+          <div class="luxe-panel-header">
+            <div class="luxe-panel-title">
+              <span>👑</span>
+              <span>دراسة تحول مصانع فرانكس الغذائية (Franks Golden Benchmark)</span>
+            </div>
+            <span class="status-pill-live">من المرتبة 25 إلى 2 على مستوى الجمهورية</span>
+          </div>
+          <div style="padding: 1.75rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;">
+            <div>
+              <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary);">عائد المبيعات المتولد</span>
+              <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--accent-gold-bright);">+30M EGP</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">خلال 90 يوماً من إطلاق الحملة</p>
+            </div>
+            <div>
+              <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary);">الوصول الفريد الموثق</span>
+              <h3 style="font-size: 1.8rem; font-weight: 800; color: #fff;">3.8M+ Reach</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">مستهلك في كافة محافظات مصر</p>
+            </div>
+            <div>
+              <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary);">معدل النمو الشهري</span>
+              <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--accent-success);">+101,000</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">متابع عالي القيمة الشرائية</p>
+            </div>
+            <div>
+              <span style="font-size: 0.78rem; text-transform: uppercase; color: var(--text-secondary);">المشاهدات الموثقة للفيلم</span>
+              <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--accent-gold);">1,007,739</h3>
+              <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">معتمد من Meta Business Suite</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 2: STRATEGY CRM & LEADS
+           ========================================================================== -->
+      <section class="tab-content" id="tab-leads">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="crm_title">إدارة طلبات جلسات الاستراتيجية (Executive CRM)</h1>
+            <p class="section-desc" data-i18n="crm_desc">متابعة كافة العملاء والشركات التي سجلت عبر نموذج الاستراتيجية مع زر محادثة واتساب فوري بنقرة واحدة.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn-nav-action" id="btnExportCsv" data-i18n="btn_export_csv">تصدير لملف Excel/CSV 📥</button>
+            <button class="btn-nav-action primary" onclick="window.openAddLeadModal()" data-i18n="btn_add_lead">+ إضافة عميل يدوياً</button>
+          </div>
+        </div>
+
+        <div class="luxe-panel">
+          <div class="luxe-panel-header">
+            <div class="filter-group">
+              <input type="text" id="searchLeadsInput" class="search-input" placeholder="بحث بالاسم، الشركة، أو الهاتف..." data-i18n="search_placeholder">
+              <select id="filterLeadStatus" class="select-filter">
+                <option value="all" data-i18n="filter_all_status">كافة الحالات</option>
+                <option value="new">جديد (New)</option>
+                <option value="contacted">تم التواصل (Contacted)</option>
+                <option value="strategy_session">جلسة استراتيجية (Strategy)</option>
+                <option value="closed_won">تم التعاقد (Closed Won)</option>
+                <option value="archived">مؤرشف (Archived)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="luxe-table">
+              <thead>
+                <tr>
+                  <th data-i18n="th_client">العميل / الشركة</th>
+                  <th data-i18n="th_contact">الهاتف / واتساب</th>
+                  <th data-i18n="th_service">الخدمة المطلوبة</th>
+                  <th data-i18n="th_budget">الميزانية التقديرية</th>
+                  <th data-i18n="th_date">تاريخ الطلب</th>
+                  <th data-i18n="th_status">حالة العميل</th>
+                  <th data-i18n="th_actions">إجراءات سريعة</th>
+                </tr>
+              </thead>
+              <tbody id="leadsTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 3: SHOWCASE CMS
+           ========================================================================== -->
+      <section class="tab-content" id="tab-showcase">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="sc_title">نظام إدارة معرض الأعمال والتوثيق (Showcase CMS)</h1>
+            <p class="section-desc" data-i18n="sc_desc">إدارة وتعديل الـ 20 عملاً موثقاً ودراسات الحالة الحقيقية التي تظهر في الواجهة الرئيسية للموقع.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem;">
+            <select id="filterShowcaseCat" class="select-filter">
+              <option value="all" data-i18n="filter_all_cats">كافة التصنيفات</option>
+              <option value="clients" data-i18n="cat_clients">حالات العملاء (Clients)</option>
+              <option value="dossier" data-i18n="cat_dossier">سجلات التدقيق (Audit Dossiers)</option>
+              <option value="manifesto" data-i18n="cat_manifesto">أعمال المانيفيستو (Manifesto)</option>
+            </select>
+            <button class="btn-nav-action primary" onclick="window.openAddProofModal()" data-i18n="btn_add_proof">+ إضافة عمل موثق جديد</button>
+          </div>
+        </div>
+
+        <div class="showcase-grid" id="showcaseGrid">
+          <!-- Injected via JavaScript -->
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 4: ROI SIMULATOR ENGINE
+           ========================================================================== -->
+      <section class="tab-content" id="tab-roi">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="roi_title">محرك ضبط ومضاعفات محاكي النمو (ROI Engine)</h1>
+            <p class="section-desc" data-i18n="roi_desc">تعديل المعاملات الرياضية ومضاعفات الوصول والعملاء المتوقعين لكل قطاع وسوق مع تجربة المعاينة الحية فوراً.</p>
+          </div>
+          <div>
+            <button class="btn-nav-action primary" id="btnSaveRoi" data-i18n="btn_save_roi">حفظ مضاعفات المحاكي ✓</button>
+          </div>
+        </div>
+
+        <div class="roi-editor-grid">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+              معاملات ومضاعفات القطاعات (Vertical Multipliers)
+            </h3>
+            <div id="roiParamsContainer">
+              <!-- Injected via JavaScript -->
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+              المعاينة الحية الفورية (Live Simulation Preview)
+            </h3>
+            <div class="live-roi-preview">
+              <span class="preview-badge">Live Interactive Test</span>
+              <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <span style="font-size: 0.88rem; color: var(--text-secondary);">ميزانية الحملة المقترحة:</span>
+                <strong id="adminRoiBudgetDisplay" style="font-size: 1.6rem; color: var(--accent-gold-bright);">$2,500</strong>
+              </div>
+
+              <div class="preview-slider-wrap">
+                <input type="range" min="500" max="10000" step="250" value="2500" class="luxe-range-slider" id="adminRoiSlider">
+              </div>
+
+              <div class="preview-metrics-3col">
+                <div class="metric-box-preview">
+                  <div class="metric-box-val" id="adminRoiReachDisplay">625,000+</div>
+                  <div class="metric-box-lbl">الوصول التقديري المتوقع</div>
+                </div>
+                <div class="metric-box-preview">
+                  <div class="metric-box-val" id="adminRoiLeadsDisplay">822 - 1,645</div>
+                  <div class="metric-box-lbl">العملاء المحتملين المتوقعين</div>
+                </div>
+                <div class="metric-box-preview">
+                  <div class="metric-box-val" id="adminRoiRoasDisplay">4.0x - 5.9x</div>
+                  <div class="metric-box-lbl">مضاعف العائد المقدر (ROAS)</div>
+                </div>
+              </div>
+
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 1.25rem; line-height: 1.4;">
+                * هذه النتائج تُحسب تلقائياً وفقاً للمعادلات المعتمدة في OTB Agency وتنعكس فوراً في صفحة الهبوط للزائرين.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 5: CONTENT, I18N & SEO
+           ========================================================================== -->
+      <section class="tab-content" id="tab-content">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="cnt_title">محرر النصوص الرسمية وبيانات التواصل</h1>
+            <p class="section-desc" data-i18n="cnt_desc">تعديل شعارات الموقع الرسمية، العناوين الرئيسية، وبيانات الاتصال والواتساب.</p>
+          </div>
+          <div>
+            <button class="btn-nav-action primary" id="btnSaveContent" data-i18n="btn_save_content">حفظ النصوص والميتا ✓</button>
+          </div>
+        </div>
+
+        <div class="luxe-panel" style="padding: 2rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">شعار الهوية الإنجليزي (Brand Motto - EN):</label>
+              <input type="text" class="form-input-luxe" id="inputContentMotto">
+            </div>
+
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">شعار الهوية العربي (Brand Motto - AR):</label>
+              <input type="text" class="form-input-luxe" id="inputContentMottoAr">
+            </div>
+
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">رقم الهاتف والواتساب الرسمي:</label>
+              <input type="text" class="form-input-luxe" id="inputContentPhone">
+            </div>
+
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">البريد الإلكتروني الرسمي:</label>
+              <input type="email" class="form-input-luxe" id="inputContentEmail">
+            </div>
+
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">إجمالي المشاهدات السنوية الموثقة:</label>
+              <input type="text" class="form-input-luxe" id="inputMetricViews">
+            </div>
+
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">إجمالي التفاعلات السنوية الموثقة:</label>
+              <input type="text" class="form-input-luxe" id="inputMetricEngage">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           TAB 6: CORELINK OPERATIONS & BACKUP
+           ========================================================================== -->
+      <section class="tab-content" id="tab-corelink">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="cl_title">مركز مراقبة العمليات والنسخ الاحتياطي</h1>
+            <p class="section-desc" data-i18n="cl_desc">متابعة مهام منظومة CoreLink وتصدير واستيراد قاعدة بيانات المنظومة بالكامل بصيغة JSON.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn-nav-action" id="btnTriggerImport" data-i18n="btn_import_json">استيراد نسخة احتياطية 📤</button>
+            <input type="file" id="importFileInput" accept=".json" style="display: none;">
+            <button class="btn-nav-action primary" id="btnExportMasterJson" data-i18n="btn_export_json">تصدير النسخة الاحتياطية الكاملة (JSON) 💾</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+              المسار التنفيذي لمهام CoreLink العاجلة
+            </h3>
+            <div id="corelinkTasksList">
+              <!-- Injected via JavaScript -->
+            </div>
+          </div>
+
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+              صيانة النظام واستعادة الإعدادات
+            </h3>
+            <div class="luxe-panel" style="padding: 1.5rem;">
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                يمكنك إعادة تهيئة كافة محتويات لوحة التحكم والموقع المباشر إلى النسخة الموثقة الأصلية (OTB Digital DNA 2026) في أي وقت بنقرة واحدة.
+              </p>
+              <button class="btn-nav-action" id="btnResetDna" style="color: var(--accent-danger); border-color: rgba(239, 68, 68, 0.3);" data-i18n="btn_reset_dna">
+                استعادة إعدادات DNA 2026 الأصلية ↺
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: ADD LEAD MANUALLY
+       ========================================================================== -->
+  <div class="admin-modal-overlay" id="addLeadModal">
+    <div class="admin-modal-sheet">
+      <div class="modal-sheet-header">
+        <h3 class="modal-sheet-title">+ إضافة حجز استراتيجية جديد للـ CRM</h3>
+        <button class="btn-close-modal" onclick="window.closeAddLeadModal()">✕</button>
+      </div>
+      <form id="addLeadForm" onsubmit="window.submitAddLeadForm(event)">
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">اسم العميل / اسم الشركة *</label>
+          <input type="text" class="form-input-luxe" id="addLeadName" required placeholder="مثال: مصانع فرانكس الغذائية">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">رقم الهاتف / الواتساب *</label>
+          <input type="tel" class="form-input-luxe" id="addLeadPhone" required placeholder="+20 100 000 0000">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">الخدمة المطلوبة</label>
+          <select class="form-input-luxe" id="addLeadService">
+            <option value="all">Enterprise Full-Funnel Growth Partnership</option>
+            <option value="video">Luxury Visual Storytelling & Production</option>
+            <option value="marketing">High-ROAS Performance Marketing</option>
+            <option value="branding">3D Identity & Visual Systems</option>
+          </select>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">الميزانية الشهرية المقترحة ($)</label>
+          <input type="number" class="form-input-luxe" id="addLeadBudget" value="2500" step="500">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">ملاحظات العميل أو أهدافه التسويقية</label>
+          <textarea class="form-input-luxe form-textarea-luxe" id="addLeadNotes" placeholder="تفاصيل الحملة والتوسع المطلوب..."></textarea>
+        </div>
+        <button type="submit" class="btn-nav-action primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+          حفظ وإدراج العميل في المنظومة ✓
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: EDIT SHOWCASE ITEM
+       ========================================================================== -->
+  <div class="admin-modal-overlay" id="editShowcaseModal">
+    <div class="admin-modal-sheet">
+      <div class="modal-sheet-header">
+        <h3 class="modal-sheet-title">✏️ تعديل عمل في المعرض (Showcase CMS)</h3>
+        <button class="btn-close-modal" onclick="window.closeEditShowcaseModal()">✕</button>
+      </div>
+      <form id="editShowcaseForm" onsubmit="window.submitEditShowcaseForm(event)">
+        <input type="hidden" id="editScId">
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">عنوان العمل (EN):</label>
+          <input type="text" class="form-input-luxe" id="editScTitle" required>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">عنوان العمل (العربية):</label>
+          <input type="text" class="form-input-luxe" id="editScTitleAr">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">قسم العرض (Tab Filter):</label>
+          <select class="form-input-luxe" id="editScCat">
+            <option value="clients">Client Cases (حالات العملاء)</option>
+            <option value="dossier">Audit Dossiers (سجلات التدقيق)</option>
+            <option value="manifesto">Manifesto Art (البيان التأسيسي)</option>
+          </select>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">التصنيف الفرعي:</label>
+          <input type="text" class="form-input-luxe" id="editScCategory" required>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">شريحة المؤشر الموثق (Metric Pill):</label>
+          <input type="text" class="form-input-luxe" id="editScMetric" required>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">مسار الصورة (Image Asset Path):</label>
+          <input type="text" class="form-input-luxe" id="editScImg" required>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">الوصف التحليلي:</label>
+          <textarea class="form-input-luxe form-textarea-luxe" id="editScDesc" required></textarea>
+        </div>
+        <button type="submit" class="btn-nav-action primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+          تأكيد وحفظ التعديلات ✓
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL: ADD NEW PROOF ITEM
+       ========================================================================== -->
+  <div class="admin-modal-overlay" id="addProofModal">
+    <div class="admin-modal-sheet">
+      <div class="modal-sheet-header">
+        <h3 class="modal-sheet-title">+ إضافة عمل موثق جديد إلى المعرض</h3>
+        <button class="btn-close-modal" onclick="window.closeAddProofModal()">✕</button>
+      </div>
+      <form id="addProofForm" onsubmit="window.submitAddProofForm(event)">
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">اسم المشروع / العنوان *</label>
+          <input type="text" class="form-input-luxe" id="addProofTitle" required placeholder="مثال: El-Ezaby Pharmacies Campaign">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">التصنيف الرئيسي *</label>
+          <select class="form-input-luxe" id="addProofCat">
+            <option value="clients">Client Cases (حالات العملاء)</option>
+            <option value="dossier">Audit Dossiers (سجلات التدقيق)</option>
+            <option value="manifesto">Manifesto Art (البيان التأسيسي)</option>
+          </select>
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">التصنيف الفرعي</label>
+          <input type="text" class="form-input-luxe" id="addProofCategory" required placeholder="مثال: Medical & FMCG Scale">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">المؤشر المحقق الموثق *</label>
+          <input type="text" class="form-input-luxe" id="addProofMetric" required placeholder="مثال: 1.2M Views · 4.8x ROAS">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">مسار الصورة في مجلد Designs (أو رابط خارجي)</label>
+          <input type="text" class="form-input-luxe" id="addProofImg" placeholder="Designs/773995749_18181423747413165_4138231920701878094_n.jpg">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">الوصف التفصيلي للعمل والنتائج</label>
+          <textarea class="form-input-luxe form-textarea-luxe" id="addProofDesc" placeholder="تفاصيل الحملة والنمو المحقق بالأرقام..."></textarea>
+        </div>
+        <button type="submit" class="btn-nav-action primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+          إضافة العمل فوراً لمعرض الأعمال ✓
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

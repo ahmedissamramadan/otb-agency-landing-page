@@ -1,0 +1,320 @@
+{
+  "system": {
+    "version": "2.6.0",
+    "updated_at": "2026-09-04T23:15:00Z",
+    "agency_name": "OTB Agency",
+    "agency_full_name": "OTB Agency — The City Kings",
+    "motto": "Putting Your Brand Under The Spotlight",
+    "motto_ar": "نضع علامتك التجارية تحت الأضواء",
+    "pin": "2026"
+  },
+  "metrics": {
+    "years_mastery": "7+",
+    "annual_views": "140M+",
+    "annual_engagements": "18.5M+",
+    "peak_monthly_scale": "+101K",
+    "franks_growth": "30M EGP",
+    "franks_reach": "3.8M+"
+  },
+  "contact": {
+    "phone": "+20 10 08080295",
+    "whatsapp_raw": "201008080295",
+    "email": "otbabency5@gmail.com",
+    "facebook": "https://www.facebook.com/otbagency5/",
+    "instagram": "https://www.instagram.com/otbagency5/",
+    "address_en": "Cairo & 10th of Ramadan / 6th of October Industrial Zones, Egypt",
+    "address_ar": "القاهرة ومناطق العاشر من رمضان والسادس من أكتوبر الصناعية، مصر"
+  },
+  "roi_multipliers": {
+    "industries": {
+      "fmcg": { "name_en": "FMCG / Food Manufacturing", "name_ar": "مصانع الأغذية والمنتجات الاستهلاكية", "factor": 1.25, "lead_cost": 2.8 },
+      "coffee": { "name_en": "Specialty Coffee & Fine Dining", "name_ar": "الكافيهات المختصة والمطاعم الفاخرة", "factor": 1.15, "lead_cost": 3.4 },
+      "ecom": { "name_en": "E-Commerce & Retail", "name_ar": "التجارة الإلكترونية والتجزئة", "factor": 1.40, "lead_cost": 2.2 },
+      "medical": { "name_en": "Medical & Healthcare", "name_ar": "القطاع الطبي والعيادات", "factor": 1.10, "lead_cost": 4.5 }
+    },
+    "channels": {
+      "meta": { "name_en": "Meta Ads (IG & FB)", "name_ar": "إعلانات ميتا (إنستغرام وفيسبوك)", "factor": 1.0 },
+      "tiktok": { "name_en": "TikTok Ads", "name_ar": "إعلانات تيك توك", "factor": 1.15 },
+      "omni": { "name_en": "Full Funnel Omnichannel", "name_ar": "منظومة قنوات متكاملة (Omnichannel)", "factor": 1.35 }
+    },
+    "budget_tiers": [500, 1000, 1500, 2500, 5000, 10000]
+  },
+  "initial_leads": [
+    {
+      "id": "lead_101",
+      "name": "Franks Food Industries (م. عاصم النجار)",
+      "phone": "+201001234567",
+      "service": "all",
+      "service_label": "Enterprise Full-Funnel Growth Partnership",
+      "budget": 5000,
+      "notes": "Expansion campaign across Delta & Upper Egypt for newly launched premium sauces line.",
+      "status": "strategy_session",
+      "created_at": "2026-09-03T14:20:00Z"
+    },
+    {
+      "id": "lead_102",
+      "name": "MIX Coffee Mart (د. كريم فوزي)",
+      "phone": "+201123456789",
+      "service": "video",
+      "service_label": "Luxury Visual Storytelling & Production",
+      "budget": 2500,
+      "notes": "Needs 12 cinematic 4K reels for specialty single-origin beans and new branch opening.",
+      "status": "contacted",
+      "created_at": "2026-09-04T09:15:00Z"
+    },
+    {
+      "id": "lead_103",
+      "name": "Wilson Crepe & Waffle (أ. أحمد توفيق)",
+      "phone": "+201234567890",
+      "service": "marketing",
+      "service_label": "High-ROAS Performance Marketing",
+      "budget": 1800,
+      "notes": "Targeting local delivery radius in Nasr City & New Cairo with high-ROAS offer ads.",
+      "status": "new",
+      "created_at": "2026-09-04T18:45:00Z"
+    },
+    {
+      "id": "lead_104",
+      "name": "3elag Labs & Polyclinics (معامل علاج)",
+      "phone": "+201098765432",
+      "service": "branding",
+      "service_label": "3D Identity & Visual Systems",
+      "budget": 3500,
+      "notes": "Full visual identity redesign and medical patient awareness campaign.",
+      "status": "closed_won",
+      "created_at": "2026-09-01T11:00:00Z"
+    }
+  ],
+  "showcase_items": [
+    {
+      "id": "sc_01",
+      "cat": "clients",
+      "title": "Franks Food Industries — Official Campaign",
+      "title_ar": "مصانع فرانكس للصناعات الغذائية — الحملة الرسمية",
+      "category": "FMCG & Performance Scale",
+      "category_ar": "الأغذية والتوسع التجاري",
+      "img": "Designs/766316041_18180639712413165_4388099764338485378_n.jpg",
+      "metric": "1,007,739 Views · Rank #2 in Egypt",
+      "desc": "Official campaign proof: 1,007,739 views, 637,116 unique viewers, 3,917 reactions. Propelled Franks from rank #25 to #2 nationwide in Egypt."
+    },
+    {
+      "id": "sc_02",
+      "cat": "clients",
+      "title": "MIX Coffee & Minimarket (880K Views)",
+      "title_ar": "ميكس كوفي وميني ماركت (880 ألف مشاهدة)",
+      "category": "Specialty Coffee & Retail",
+      "category_ar": "الكافيهات المختصة والتجزئة",
+      "img": "Designs/766147139_18180639685413165_4131765232703296977_n.jpg",
+      "metric": "880,844 Views · 20.3K Engagements",
+      "desc": "Luxury cinematic commercial campaign: 880,844 views, 345,550 reach, 20,336 interactions, and 12.3K likes for Egypt's leading coffee bar."
+    },
+    {
+      "id": "sc_03",
+      "cat": "clients",
+      "title": "Rancho's EG — High-ROAS Dining",
+      "title_ar": "رانشوز مصر — حملة تسويق أداء عالية العائد",
+      "category": "Dining & Performance Ads",
+      "category_ar": "المطاعم وإعلانات الأداء",
+      "img": "Designs/768662661_18180639694413165_6985200221443851512_n.jpg",
+      "metric": "181,648 Views · 12.2K Likes",
+      "desc": "High-impact performance ad campaigns: 181,648 views, 63,025 reach, 12,293 interactions with 12.2K likes."
+    },
+    {
+      "id": "sc_04",
+      "cat": "clients",
+      "title": "Hadramout Village (قرية حضرموت)",
+      "title_ar": "قرية حضرموت للضيافة التراثية",
+      "category": "Heritage Hospitality",
+      "category_ar": "الضيافة التراثية",
+      "img": "Designs/770068003_18180639733413165_8158099979704459951_n.jpg",
+      "metric": "516,103 Views · 1.2K Likes",
+      "desc": "Traditional heritage hospitality campaign: 516,103 views across Meta platforms, boosting group dining bookings."
+    },
+    {
+      "id": "sc_05",
+      "cat": "clients",
+      "title": "Wilson Crepe & Waffle",
+      "title_ar": "ويلسون كريب ووافل",
+      "category": "Casual Dining Growth",
+      "category_ar": "المطاعم السريعة والنمو",
+      "img": "Designs/770678147_18180639724413165_3847874227247530034_n.jpg",
+      "metric": "159,773 Views · 3.3K Engagements",
+      "desc": "Viral visual reels strategy: 159,773 views, 67,610 reach, 3,369 reactions, and 2,905 likes."
+    },
+    {
+      "id": "sc_06",
+      "cat": "clients",
+      "title": "Shawshi (شاووشي) — Viral Video",
+      "title_ar": "شاووشي — حملة فيديو واسعة الانتشار",
+      "category": "Fast Casual F&B",
+      "category_ar": "المأكولات السريعة",
+      "img": "Designs/766121616_18180639745413165_6584758527609557579_n.jpg",
+      "metric": "80K Views · 1.6K Likes",
+      "desc": "Fast casual food video strategy generating 80,000 post views, 1,684 likes, and 786 shares."
+    },
+    {
+      "id": "sc_07",
+      "cat": "clients",
+      "title": "Sakr Store (صقر ستور)",
+      "title_ar": "صقر ستور للملابس الراقية",
+      "category": "Apparel & Retail",
+      "category_ar": "الأزياء والتجزئة",
+      "img": "Designs/767001473_18180639715413165_8715964079048196774_n.jpg",
+      "metric": "50K Views · High-Intent Reach",
+      "desc": "Lifestyle apparel campaign generating over 50,000 post views and driving direct foot traffic."
+    },
+    {
+      "id": "sc_08",
+      "cat": "clients",
+      "title": "3elag Labs & Polyclinics (معامل علاج)",
+      "title_ar": "معامل علاج والعيادات التخصصية",
+      "category": "Healthcare & Diagnostics",
+      "category_ar": "الرعاية الصحية والتشخيص",
+      "img": "Designs/767244113_18180639751413165_5540412044765467856_n.jpg",
+      "metric": "9.9K Views · Trust Campaign",
+      "desc": "Premium healthcare trust-building video campaign delivering verified brand authority."
+    },
+    {
+      "id": "sc_09",
+      "cat": "dossier",
+      "title": "Vacuum Sealed Audit Portfolio (16.2M + 14.5M)",
+      "title_ar": "ملف التدقيق السنوي الموثق (16.2 مليون + 14.5 مليون)",
+      "category": "Campaign Proofs",
+      "category_ar": "سجلات التدقيق والحملات",
+      "img": "Designs/710745378_976999764963533_7566941494825932115_n.jpg",
+      "metric": "16.2M + 14.5M + 9.5M Views",
+      "desc": "High-growth account performances: 16.2M views (+60.3% interactions), 14.5M views (+84.5%), 9.5M views (+221%)."
+    },
+    {
+      "id": "sc_10",
+      "cat": "dossier",
+      "title": "Annual Audit Record — 22.8M Reach",
+      "title_ar": "سجل التدقيق السنوي — 22.8 مليون وصول",
+      "category": "Verified Client Proofs",
+      "category_ar": "إثباتات العملاء المعتمدة",
+      "img": "Designs/708877695_976999744963535_4217531631047054795_n.jpg",
+      "metric": "22.8M Reach · 274% Growth",
+      "desc": "Meta Business Manager certified audit report: 22.8M verified reach, 1.4M interactions, 274% expansion."
+    },
+    {
+      "id": "sc_11",
+      "cat": "dossier",
+      "title": "Growth Track — 8.6M Accounts Reached",
+      "title_ar": "مسار النمو — 8.6 مليون حساب فريد",
+      "category": "Meta Verified Stats",
+      "category_ar": "إحصائيات ميتا المعتمدة",
+      "img": "Designs/710746046_976999804963529_6180169439956051711_n.jpg",
+      "metric": "8,655,959 Reach · 557K Interactions",
+      "desc": "Meta Business Suite verified insights showing 8,655,959 accounts reached and 557,750 engagements."
+    },
+    {
+      "id": "sc_12",
+      "cat": "dossier",
+      "title": "90-Day Sprint — 7.5M Views Benchmark",
+      "title_ar": "سبرنت 90 يوماً — معيار 7.5 مليون مشاهدة",
+      "category": "Verified Growth Sprint",
+      "category_ar": "سبرنت النمو المعتمد",
+      "img": "Designs/710746200_976999828296860_1249164974446213549_n.jpg",
+      "metric": "7,543,624 Views · +302% Velocity",
+      "desc": "Comprehensive Meta growth dashboard: 7,543,624 content views, 247,028 net interactions over 90 days."
+    },
+    {
+      "id": "sc_13",
+      "cat": "dossier",
+      "title": "Annual Executive Dossier (10.9M Views)",
+      "title_ar": "الملف التنفيذي السنوي (10.9 مليون مشاهدة)",
+      "category": "Executive Reporting",
+      "category_ar": "التقارير التنفيذية",
+      "img": "Designs/710755506_976999858296857_541143945202414062_n.jpg",
+      "metric": "10,958,111 Views · 3.8M Reach",
+      "desc": "Year-end performance dossier: 10,958,111 total views, 3,842,109 accounts reached, and 763,220 interactions."
+    },
+    {
+      "id": "sc_14",
+      "cat": "manifesto",
+      "title": "Don't Follow The Crowd · We Create The Direction",
+      "title_ar": "لا تتبع الحشود · نحن من نصنع الاتجاه",
+      "category": "Manifesto Art",
+      "category_ar": "فن البيان التأسيسي",
+      "img": "Designs/775633593_18181423969413165_3832349356905632603_n.jpg",
+      "metric": "Market Leadership Philosophy",
+      "desc": "From branding to performance marketing, we create ideas that lead industries instead of following them."
+    },
+    {
+      "id": "sc_15",
+      "cat": "manifesto",
+      "title": "Earn The Crown · Rule The City",
+      "title_ar": "استحق التاج · حكم المدينة",
+      "category": "Brand Monolith Art",
+      "category_ar": "فن المونوليث المؤسسي",
+      "img": "Designs/773995749_18181423747413165_4138231920701878094_n.jpg",
+      "metric": "The City Kings 👑",
+      "desc": "Official Monolith Art: OTB is the strategic crown that elevates ambitious commercial brands into market rulers."
+    },
+    {
+      "id": "sc_16",
+      "cat": "manifesto",
+      "title": "In A World Full Of Copies · Be Original",
+      "title_ar": "في عالم مليء بالنُسخ · كن الأصل",
+      "category": "Brand Identity",
+      "category_ar": "الهوية التجارية",
+      "img": "Designs/774104978_18181423843413165_6358974655911864736_n.jpg",
+      "metric": "Unforgettable Identity Design",
+      "desc": "Stand apart with a brand identity, creative vision, and marketing strategy designed to make you unforgettable."
+    },
+    {
+      "id": "sc_17",
+      "cat": "manifesto",
+      "title": "Step In · Stand Out",
+      "title_ar": "ادخل الحلبة · وتميز بلا منازع",
+      "category": "Creative Direction",
+      "category_ar": "التوجيه الإبداعي",
+      "img": "Designs/770901395_18181423825413165_5651689082737876843_n.jpg",
+      "metric": "Category Dominance",
+      "desc": "Gold isometric crown artwork signifying our commitment to make our partner brands dominate every category."
+    },
+    {
+      "id": "sc_18",
+      "cat": "manifesto",
+      "title": "Numbers Reflect Impact",
+      "title_ar": "الأرقام تعكس الأثر الحقيقي",
+      "category": "Performance Architecture",
+      "category_ar": "هندسة الأداء والأرقام",
+      "img": "Designs/768619542_18180639676413165_8749086575801866650_n.jpg",
+      "metric": "Data-Driven Transformation",
+      "desc": "3D Isometric glass OTB cube radiating data numbers upward into the dark. Data-driven growth architecture."
+    },
+    {
+      "id": "sc_19",
+      "cat": "manifesto",
+      "title": "Creative Spark Meets Precision Engineering",
+      "title_ar": "الشرارة الإبداعية تلتقي بالهندسة الدقيقة",
+      "category": "Studio Innovation",
+      "category_ar": "ابتكار الاستوديو",
+      "img": "Designs/773981872_18181423939413165_8303453529914472565_n.jpg",
+      "metric": "Precision Execution",
+      "desc": "Merging fearless creative concepts with rigorous media buying algorithms for relentless commercial growth."
+    },
+    {
+      "id": "sc_20",
+      "cat": "manifesto",
+      "title": "The Golden Horizon — 2026 & Beyond",
+      "title_ar": "الأفق الذهبي — 2026 وما بعدها",
+      "category": "Future Roadmap",
+      "category_ar": "خارطة طريق المستقبل",
+      "img": "Designs/774197444_18181423480413165_3198741529429087066_n.jpg",
+      "metric": "Next-Gen Commercial Scale",
+      "desc": "Empowering FMCG and high-growth brands to expand beyond local borders into regional market authorities."
+    }
+  ],
+  "corelink_operations": {
+    "total_tasks_monitored": 78,
+    "review_queue": 4,
+    "high_priority_actions": [
+      { "id": "task_01", "title": "Deploy Franks Ramadan Campaign Assets", "assignee": "Production Track", "status": "Ready", "priority": "High" },
+      { "id": "task_02", "title": "Launch Mission 01 Outreach (10th of Ramadan & 6th of October)", "assignee": "Growth Engine", "status": "In Progress", "priority": "High" },
+      { "id": "task_03", "title": "Deliver Printable Portfolio (Aya & Rawan)", "assignee": "Creative Studio", "status": "Design Phase", "priority": "Medium" },
+      { "id": "task_04", "title": "Sync OTB Growth Academy Visual Identity", "assignee": "Dev & UI", "status": "Planned", "priority": "Medium" }
+    ]
+  }
+}
