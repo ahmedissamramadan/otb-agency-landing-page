@@ -358,6 +358,14 @@ function init3DMonolith() {
     inner.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
     box.style.setProperty('--glare-opacity', '0');
   });
+
+  // Accessible keyboard activation
+  box.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      box.click();
+    }
+  });
 }
 
 /* ==========================================================================

@@ -75,7 +75,7 @@
   --font-arabic-title: 'Felfel', 'Cairo', 'Tajawal', sans-serif;
   --font-arabic-body: 'Cairo', 'Tajawal', sans-serif;
   --font-serif-white: 'Playfair Display', Georgia, serif;
-  --font-mono: 'IBM Plex Mono', 'SF Mono', Monaco, Consolas, monospace;
+  --font-mono: 'IBM Plex Mono', 'SF Mono', Monaco, Consolas, 'Cairo', monospace;
 
   /* Radius & Transitions */
   --radius-xs: 8px;
@@ -139,6 +139,19 @@ html[dir="rtl"] {
   direction: rtl;
   text-align: right;
   font-family: var(--font-arabic-body);
+}
+
+/* Arabic Typography Disciplines: Prevent Letter Separation in Arabic Script */
+html[dir="rtl"] [data-i18n],
+html[dir="rtl"] .clients-tag,
+html[dir="rtl"] .calc-tag,
+html[dir="rtl"] .calc-res-tag {
+  letter-spacing: normal !important;
+}
+
+html[dir="rtl"] .font-mono:not([dir="ltr"]) {
+  font-family: var(--font-arabic-body), var(--font-mono) !important;
+  letter-spacing: normal !important;
 }
 
 /* Typography Utilities */
@@ -219,14 +232,7 @@ body {
   background-attachment: fixed;
 }
 
-/* Performance Offscreen Content Visibility */
-.showcase-section,
-.benchmark-section,
-.calculator-section,
-.manifesto-section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 700px;
-}
+/* Smooth Continuous Layout Integrity (No content-visibility shifts during Lenis smooth scroll) */
 
 :focus-visible {
   outline: 2px solid var(--accent-white);
@@ -683,7 +689,7 @@ html[dir="rtl"] .btn-nav-cta:hover .btn-arrow {
   position: relative;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 25px 50px -10px rgba(0, 0, 0, 0.85);
-  cursor: grab;
+  cursor: pointer;
   background: var(--bg-dark-card);
   perspective: 1200px;
   transform-style: preserve-3d;
@@ -696,7 +702,7 @@ html[dir="rtl"] .btn-nav-cta:hover .btn-arrow {
 }
 
 .hero-monolith-box:active {
-  cursor: grabbing;
+  cursor: pointer;
 }
 
 .hero-monolith-inner {
