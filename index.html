@@ -66,6 +66,32 @@
 </head>
 <body>
 
+  <!-- ==========================================================================
+       CINEMATIC PRELOADER & CURTAIN REVEAL (Longeblack Aesthetic)
+       ========================================================================== -->
+  <aside class="luxury-preloader" id="luxuryPreloader" aria-label="Site Loading">
+    <div class="preloader-curtain">
+      <div class="preloader-content">
+        <div class="preloader-brand-row">
+          <div class="preloader-logo-wrap">
+            <img src="assets/images/otb_official_logo.jpg" alt="OTB Logo" class="preloader-logo-img">
+          </div>
+          <svg class="preloader-crown-svg" viewBox="0 0 24 24" width="24" height="24" fill="#FFFFFF" aria-hidden="true">
+            <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+          </svg>
+        </div>
+        <h2 class="preloader-title font-mono" data-i18n="preloader_motto">WE ARE OTB · THE CITY KINGS</h2>
+        <div class="preloader-progress-wrap font-mono" dir="ltr">
+          <span class="preloader-telemetry">INITIALIZING DIGITAL DNA · CAIRO NODE</span>
+          <div class="preloader-bar-outer">
+            <div class="preloader-bar-inner" id="preloaderBar"></div>
+          </div>
+          <span class="preloader-counter" id="preloaderCounter">0%</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
   <!-- Background WebGL Particle Constellation (Auto-pauses offscreen for 0% idle CPU) -->
   <canvas id="webgl-hero-canvas" aria-hidden="true"></canvas>
 
@@ -255,6 +281,30 @@
     </section>
 
     <!-- ==========================================================================
+         INFINITE KINETIC TYPOGRAPHY RIBBON (Longeblack Aesthetic Ticker)
+         ========================================================================== -->
+    <div class="kinetic-ticker-wrap" aria-hidden="true">
+      <div class="kinetic-ticker-track">
+        <span class="ticker-phrase font-mono" data-i18n="ticker_1">DON'T FOLLOW THE CROWD, WE CREATE THE DIRECTION</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_2">EARN THE CROWN · RULE THE CITY</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_3">FULL-FUNNEL COMMERCIAL ENGINES</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_4">140M+ ANNUAL VERIFIED IMPACT</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_1">DON'T FOLLOW THE CROWD, WE CREATE THE DIRECTION</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_2">EARN THE CROWN · RULE THE CITY</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_3">FULL-FUNNEL COMMERCIAL ENGINES</span>
+        <span class="ticker-divider">//</span>
+        <span class="ticker-phrase font-mono" data-i18n="ticker_4">140M+ ANNUAL VERIFIED IMPACT</span>
+        <span class="ticker-divider">//</span>
+      </div>
+    </div>
+
+    <!-- ==========================================================================
          AUTHENTIC CLIENT MARQUEE (Documented DNA Brands)
          ========================================================================== -->
     <section class="clients-section" id="clients" aria-label="Official Client Portfolio">
@@ -289,6 +339,13 @@
     <section class="craft-section" id="services">
       <div class="container">
         
+        <!-- Editorial Divider 01: Strategic Craft -->
+        <div class="editorial-divider-bar font-mono">
+          <span class="divider-left" data-i18n="div_1_left">© STRATEGIC CRAFT</span>
+          <span class="divider-center" dir="ltr">(OTB® — 2019)</span>
+          <span class="divider-right" data-i18n="div_1_right">ENTERPRISE ARCHITECTURE</span>
+        </div>
+
         <div class="craft-header-row reveal-on-scroll">
           <span class="craft-subtag font-mono" dir="ltr">S E L E C T E D &nbsp; C R A F T &nbsp; · &nbsp; 5 &nbsp; P I L L A R S</span>
           <h2 class="craft-section-title" data-i18n="craft_title">What We Build For Enterprise Brands.</h2>
@@ -421,6 +478,13 @@
     <section class="benchmark-section" id="benchmark">
       <div class="container">
         
+        <!-- Editorial Divider 02: Golden Benchmark Proof -->
+        <div class="editorial-divider-bar font-mono">
+          <span class="divider-left" data-i18n="div_2_left">© GOLDEN BENCHMARK</span>
+          <span class="divider-center" dir="ltr">(FRANKS PROOF — 2026)</span>
+          <span class="divider-right" data-i18n="div_2_right">#25 TO #2 MARKET DOMINANCE</span>
+        </div>
+
         <div class="benchmark-card-split reveal-on-scroll">
           
           <!-- Left Column: Context & Execution -->
@@ -493,6 +557,13 @@
     <section class="showcase-section" id="showcase">
       <div class="container">
         
+        <!-- Editorial Divider 03: Proof of Work -->
+        <div class="editorial-divider-bar font-mono">
+          <span class="divider-left" data-i18n="div_3_left">© PROOF OF WORK</span>
+          <span class="divider-center" dir="ltr">(20 VERIFIED DESIGNS)</span>
+          <span class="divider-right" data-i18n="div_3_right">DOCUMENTED AUTHORITY</span>
+        </div>
+
         <div class="showcase-header-spec reveal-on-scroll">
           <div>
             <span class="showcase-subtag-spec" data-i18n="showcase_subtag">Real Client Case Studies & Official Creative Works</span>
@@ -521,6 +592,10 @@
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">FRANKS™</span>
+              <span class="pm-year" dir="ltr">2026</span>
+            </div>
           </div>
 
           <!-- 02: MIX Coffee -->
@@ -532,6 +607,10 @@
                 <h3 class="spec-h3">MIX Coffee (880,844 Views)</h3>
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">MIX COFFEE™</span>
+              <span class="pm-year" dir="ltr">2026</span>
             </div>
           </div>
 
@@ -545,6 +624,10 @@
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">WILSON CREPE™</span>
+              <span class="pm-year" dir="ltr">2025</span>
+            </div>
           </div>
 
           <!-- 04: Elag Labs -->
@@ -556,6 +639,10 @@
                 <h3 class="spec-h3">Elag Labs (620,164 Views)</h3>
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">ELAG LABS™</span>
+              <span class="pm-year" dir="ltr">2025</span>
             </div>
           </div>
 
@@ -569,6 +656,10 @@
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">RANCHO'S™</span>
+              <span class="pm-year" dir="ltr">2025</span>
+            </div>
           </div>
 
           <!-- 06: Hadramout Village -->
@@ -580,6 +671,10 @@
                 <h3 class="spec-h3">Hadramout Village (516,103 Views)</h3>
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">HADRAMOUT™</span>
+              <span class="pm-year" dir="ltr">2025</span>
             </div>
           </div>
 
@@ -593,6 +688,10 @@
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">SAKR STORE™</span>
+              <span class="pm-year" dir="ltr">2025</span>
+            </div>
           </div>
 
           <!-- 08: Shawshi -->
@@ -604,6 +703,10 @@
                 <h3 class="spec-h3">Shawshi (80K Views)</h3>
                 <span class="spec-hint">View Case Study & Stats 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">SHAWSHI™</span>
+              <span class="pm-year" dir="ltr">2024</span>
             </div>
           </div>
 
@@ -617,6 +720,10 @@
                 <span class="spec-hint">View Audit Dossier 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">OTB DOSSIER™</span>
+              <span class="pm-year" dir="ltr">2026</span>
+            </div>
           </div>
 
           <!-- 10: Let The Results Speak -->
@@ -628,6 +735,10 @@
                 <h3 class="spec-h3">Now, Let The Results Speak</h3>
                 <span class="spec-hint">View Audit Dossier 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">OTB AUDIT™</span>
+              <span class="pm-year" dir="ltr">2026</span>
             </div>
           </div>
 
@@ -641,6 +752,10 @@
                 <span class="spec-hint">View Audit Dossier 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">GROWTH SCALE™</span>
+              <span class="pm-year" dir="ltr">2025</span>
+            </div>
           </div>
 
           <!-- 12: Vacuum Sealed Portfolio II -->
@@ -652,6 +767,10 @@
                 <h3 class="spec-h3">Vacuum Portfolio II (21.0M Views)</h3>
                 <span class="spec-hint">View Audit Dossier 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">HIGH VOLUME™</span>
+              <span class="pm-year" dir="ltr">2025</span>
             </div>
           </div>
 
@@ -665,6 +784,10 @@
                 <span class="spec-hint">View Invitation 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">SUCCESS STORY™</span>
+              <span class="pm-year" dir="ltr">2026</span>
+            </div>
           </div>
 
           <!-- 14: Earn The Crown Monolith -->
@@ -676,6 +799,10 @@
                 <h3 class="spec-h3">Earn The Crown · Rule The City</h3>
                 <span class="spec-hint">View 3D Artwork 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">3D MONOLITH™</span>
+              <span class="pm-year" dir="ltr">2026</span>
             </div>
           </div>
 
@@ -689,6 +816,10 @@
                 <span class="spec-hint">View Artwork 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">MANIFESTO™</span>
+              <span class="pm-year" dir="ltr">2026</span>
+            </div>
           </div>
 
           <!-- 16: A Growth Partner Framework -->
@@ -700,6 +831,10 @@
                 <h3 class="spec-h3">More Than An Agency</h3>
                 <span class="spec-hint">View Framework 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">GROWTH PARTNER™</span>
+              <span class="pm-year" dir="ltr">2025</span>
             </div>
           </div>
 
@@ -713,6 +848,10 @@
                 <span class="spec-hint">View Artwork 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">BE ORIGINAL™</span>
+              <span class="pm-year" dir="ltr">2025</span>
+            </div>
           </div>
 
           <!-- 18: One Step Closer To The Top -->
@@ -724,6 +863,10 @@
                 <h3 class="spec-h3">One Step Closer To The Top</h3>
                 <span class="spec-hint">View Artwork 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">TO THE TOP™</span>
+              <span class="pm-year" dir="ltr">2025</span>
             </div>
           </div>
 
@@ -737,6 +880,10 @@
                 <span class="spec-hint">View Artwork 🔍</span>
               </div>
             </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">BEYOND LIMITS™</span>
+              <span class="pm-year" dir="ltr">2025</span>
+            </div>
           </div>
 
           <!-- 20: Numbers Reflect Impact -->
@@ -748,6 +895,10 @@
                 <h3 class="spec-h3">Numbers Reflect Impact</h3>
                 <span class="spec-hint">View Artwork 🔍</span>
               </div>
+            </div>
+            <div class="portfolio-meta-footer font-mono">
+              <span class="pm-client">DATA ARCH™</span>
+              <span class="pm-year" dir="ltr">2026</span>
             </div>
           </div>
 
@@ -761,6 +912,14 @@
          ========================================================================== -->
     <section class="calculator-section" id="calculator">
       <div class="container">
+        
+        <!-- Editorial Divider 04: Growth Simulator -->
+        <div class="editorial-divider-bar font-mono">
+          <span class="divider-left" data-i18n="div_4_left">© GROWTH SIMULATOR</span>
+          <span class="divider-center" dir="ltr">(MATHEMATICAL MODEL)</span>
+          <span class="divider-right" data-i18n="div_4_right">EGYPTIAN POUNDS CALIBRATED</span>
+        </div>
+
         <div class="calculator-card reveal-on-scroll">
           <div class="calc-header-row">
             <div>
@@ -890,6 +1049,103 @@
     </section>
 
     <!-- ==========================================================================
+         BEHIND-THE-SCENES & PRODUCTION FILMSTRIP (Longeblack Aesthetic)
+         ========================================================================== -->
+    <section class="bts-section" id="btsFilmstrip">
+      <div class="container">
+        
+        <!-- Editorial Divider 05: Field Execution -->
+        <div class="editorial-divider-bar font-mono" style="margin-bottom: 2.5rem;">
+          <span class="divider-left" data-i18n="bts_tag">FIELD EXECUTION & PRODUCTION</span>
+          <span class="divider-center" dir="ltr">(STUDIO & SETS)</span>
+          <span class="divider-right" dir="ltr">OTB CAIRO STAGE 01</span>
+        </div>
+
+        <div class="bts-header-spec reveal-on-scroll">
+          <h2 class="bts-title font-mono" data-i18n="bts_title">Engineered in Cairo. Dominating the Region.</h2>
+          <p class="bts-sub" data-i18n="bts_sub">From 4K multi-camera studio sets and food styling to full-funnel ad operations, every commercial is crafted with military precision.</p>
+        </div>
+
+        <div class="bts-filmstrip-container">
+          <div class="bts-filmstrip-track">
+            
+            <div class="bts-card">
+              <div class="bts-img-box">
+                <img src="assets/images/arabic_portfolio.jpg" alt="Commercial Food Styling and Cinematography" loading="lazy">
+                <div class="bts-overlay font-mono">
+                  <span class="bts-tag-pill">SET 01 · FOOD STYLING</span>
+                  <span class="bts-res" dir="ltr">4K PRORES 422 HQ</span>
+                </div>
+              </div>
+              <div class="bts-card-meta font-mono">
+                <span class="bts-card-title">Sensory Food Commercials</span>
+                <span class="bts-card-loc" dir="ltr">Cairo Studio A</span>
+              </div>
+            </div>
+
+            <div class="bts-card">
+              <div class="bts-img-box">
+                <img src="assets/images/portfolio1.jpg" alt="Multi-Camera Studio Production" loading="lazy">
+                <div class="bts-overlay font-mono">
+                  <span class="bts-tag-pill">SET 02 · CAM RIG</span>
+                  <span class="bts-res" dir="ltr">RED DIGITAL CINEMA</span>
+                </div>
+              </div>
+              <div class="bts-card-meta font-mono">
+                <span class="bts-card-title">Commercial Film Direction</span>
+                <span class="bts-card-loc" dir="ltr">Stage 02</span>
+              </div>
+            </div>
+
+            <div class="bts-card">
+              <div class="bts-img-box">
+                <img src="assets/images/portfolio2.jpg" alt="Color Grading & Post-Production" loading="lazy">
+                <div class="bts-overlay font-mono">
+                  <span class="bts-tag-pill">SET 03 · COLOR SUITE</span>
+                  <span class="bts-res" dir="ltr">DAVINCI RESOLVE COLOR</span>
+                </div>
+              </div>
+              <div class="bts-card-meta font-mono">
+                <span class="bts-card-title">Aces Color Pipeline</span>
+                <span class="bts-card-loc" dir="ltr">Color Suite</span>
+              </div>
+            </div>
+
+            <div class="bts-card">
+              <div class="bts-img-box">
+                <img src="assets/images/otb_official_showcase.jpg" alt="Brand Identity & Packaging Architecture" loading="lazy">
+                <div class="bts-overlay font-mono">
+                  <span class="bts-tag-pill">SET 04 · PACKAGING</span>
+                  <span class="bts-res" dir="ltr">PHYSICAL PROTOTYPES</span>
+                </div>
+              </div>
+              <div class="bts-card-meta font-mono">
+                <span class="bts-card-title">FMCG Identity Architecture</span>
+                <span class="bts-card-loc" dir="ltr">Design Lab</span>
+              </div>
+            </div>
+
+            <div class="bts-card">
+              <div class="bts-img-box">
+                <img src="assets/images/hero.jpg" alt="Executive Strategy & Performance War Room" loading="lazy">
+                <div class="bts-overlay font-mono">
+                  <span class="bts-tag-pill">SET 05 · WAR ROOM</span>
+                  <span class="bts-res" dir="ltr">CORELINK CRM LIVE</span>
+                </div>
+              </div>
+              <div class="bts-card-meta font-mono">
+                <span class="bts-card-title">Performance War Room</span>
+                <span class="bts-card-loc" dir="ltr">Executive Board</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
          FINAL CTA & DIRECT ACTION (#contact)
          ========================================================================== -->
     <section class="cta-final-section" id="contact">
@@ -920,18 +1176,49 @@
   <footer class="footer-spec">
     <div class="container">
       
-      <!-- Top Row: Social Links & Passion Tag -->
-      <div class="footer-spec-row">
-        <div class="footer-social-links" dir="ltr">
+      <!-- Mission Paragraph -->
+      <div class="footer-mission-wrap">
+        <p class="footer-mission-text font-mono" data-i18n="footer_mission">
+          OTB Agency is a full-funnel commercial growth firm headquartered in Cairo. Over 7 years of engineering market dominance for Egypt's premier FMCG manufacturers, specialty coffee icons, and high-growth brands. Governed by disciplined operational management and powered by CoreLink infrastructure, we build brands that dominate their category.
+        </p>
+      </div>
+
+      <!-- Footer Nav Grid -->
+      <div class="footer-nav-grid font-mono">
+        <div class="footer-nav-col">
+          <span class="footer-col-title">NAVIGATION</span>
+          <a href="#home">Top / Inception</a>
+          <a href="#services">Strategic Craft</a>
+          <a href="#benchmark">Golden Benchmark</a>
+          <a href="#showcase">Proof of Work (20)</a>
+          <a href="#calculator">Growth Simulator</a>
+          <a href="#manifesto">The Manifesto</a>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title">SYSTEMS</span>
+          <a href="dashboard.html">CoreLink Command</a>
+          <a href="#calculator">Budget Calibrator</a>
+          <a href="https://wa.me/201008080295" target="_blank" rel="noopener">WhatsApp Operations</a>
+        </div>
+        <div class="footer-nav-col">
+          <span class="footer-col-title">OFFICIAL CHANNELS</span>
           <a href="https://linkedin.com/company/otbagency" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://www.facebook.com/otbagency5/" target="_blank" rel="noopener">Facebook (@otbagency5)</a>
           <a href="https://tiktok.com/@otbagency5" target="_blank" rel="noopener">TikTok (@otbagency5)</a>
           <a href="https://instagram.com/otbagency5" target="_blank" rel="noopener">Instagram (@otbagency5)</a>
         </div>
-
-        <div class="footer-passion-tag" data-i18n="footer_passion">
-          Growth Partner to +11 Enterprise Brands · 140M+ Annual Views · 7+ Years
+        <div class="footer-nav-col">
+          <span class="footer-col-title">LOCATION & REGISTRY</span>
+          <span>Cairo, Egypt</span>
+          <span>10th of Ramadan City</span>
+          <span>6th of October City</span>
+          <span>© 2019 — 2026 OTB Agency</span>
         </div>
+      </div>
+
+      <!-- Giant Footer Wordmark (Longeblack Aesthetic) -->
+      <div class="giant-footer-wordmark font-mono" dir="ltr" aria-hidden="true">
+        OTB AGENCY
       </div>
 
       <!-- Bottom Row: Copyright & Page 7 Crown Motto -->
@@ -1035,5 +1322,7 @@
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="app.js" defer></script>
+  <!-- Floating Back-to-Top Button -->
+  <button class="back-to-top-btn font-mono" id="backToTopBtn" aria-label="Back to Top">↑</button>
 </body>
 </html>

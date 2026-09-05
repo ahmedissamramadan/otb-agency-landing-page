@@ -99,7 +99,26 @@ const i18n = {
     form_phone: 'WhatsApp / Phone Number *',
     form_service: 'Interested Service Pillar:',
     form_notes: 'Brand Links or Goals (Optional):',
-    form_submit: 'Confirm & Send Request to OTB Agency 💬'
+    form_submit: 'Confirm & Send Request to OTB Agency 💬',
+
+    /* Longeblack Enterprise Powerhouse Keys */
+    preloader_motto: 'WE ARE OTB · THE CITY KINGS',
+    ticker_1: "DON'T FOLLOW THE CROWD, WE CREATE THE DIRECTION",
+    ticker_2: 'EARN THE CROWN · RULE THE CITY',
+    ticker_3: 'FULL-FUNNEL COMMERCIAL ENGINES',
+    ticker_4: '140M+ ANNUAL VERIFIED IMPACT',
+    div_1_left: '© STRATEGIC CRAFT',
+    div_1_right: 'ENTERPRISE ARCHITECTURE',
+    div_2_left: '© GOLDEN BENCHMARK',
+    div_2_right: '#25 TO #2 MARKET DOMINANCE',
+    div_3_left: '© PROOF OF WORK',
+    div_3_right: 'DOCUMENTED AUTHORITY',
+    div_4_left: '© GROWTH SIMULATOR',
+    div_4_right: 'EGYPTIAN POUNDS CALIBRATED',
+    bts_tag: 'FIELD EXECUTION & PRODUCTION',
+    bts_title: 'Engineered in Cairo. Dominating the Region.',
+    bts_sub: 'From 4K multi-camera studio sets and food styling to full-funnel ad operations, every commercial is crafted with military precision.',
+    footer_mission: "OTB Agency is a full-funnel commercial growth firm headquartered in Cairo. Over 7 years of engineering market dominance for Egypt's premier FMCG manufacturers, specialty coffee icons, and high-growth brands. Governed by disciplined operational management and powered by CoreLink infrastructure, we build brands that dominate their category."
   },
 
   ar: {
@@ -189,7 +208,26 @@ const i18n = {
     form_phone: 'رقم الواتساب / الهاتف الرسمي *',
     form_service: 'مسار النمو المطلوب:',
     form_notes: 'روابط العلامة أو أهداف التوسع (اختياري):',
-    form_submit: 'تأكيد وإرسال الطلب إلى OTB Agency 💬'
+    form_submit: 'تأكيد وإرسال الطلب إلى OTB Agency 💬',
+
+    /* Longeblack Enterprise Powerhouse Keys */
+    preloader_motto: 'نحن OTB · ملوك المدينة 👑',
+    ticker_1: 'لا نتبع الحشود، بل نصنع الاتجاه',
+    ticker_2: 'ارتدِ التاج · احكم المدينة',
+    ticker_3: 'محركات نمو تجارية متكاملة',
+    ticker_4: '140+ مليون مشاهدة سنوية موثقة',
+    div_1_left: '© المسارات الاستراتيجية',
+    div_1_right: 'هندسة نمو المؤسسات',
+    div_2_left: '© البرهان القياسي الذهبي',
+    div_2_right: 'صعود من #25 إلى #2 في مصر',
+    div_3_left: '© سجل الأعمال الموثقة',
+    div_3_right: 'هيبة وسلطة سوقية حقيقية',
+    div_4_left: '© محاكي النمو الاستراتيجي',
+    div_4_right: 'معاير بالجنيه المصري (EGP)',
+    bts_tag: 'التنفيذ الميداني وكواليس الإنتاج',
+    bts_title: 'صُنعت في القاهرة. تقود المنطقة.',
+    bts_sub: 'من استوديوهات التصوير السينمائي بدقة 4K وهندسة الأغذية إلى غرف إدارة الحملات، كل إعلان يُصنع بدقة هندسية صارمة.',
+    footer_mission: 'وكالة OTB هي منظومة هندسية للنمو التجاري المتكامل تتخذ من القاهرة مقراً لها. على مدار أكثر من 7 سنوات في قيادة وتنمية كبرى مصانع الأغذية (FMCG) والقهوة المختصة والعلامات الصاعدة في مصر. نعمل بحوكمة تشغيلية رصينة وبنية تحتية متقدمة عبر CoreLink، لنصنع علامات تجارية تهيمن على قطاعاتها.'
   }
 };
 
@@ -235,6 +273,7 @@ window.closeLightbox = function() {
    DOM INITIALIZATION
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initLenisScroll();
   init3DMonolith();
   initScrollReveal();
@@ -246,6 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initShowcaseFilters();
   initModal();
   initNavbar();
+  initBackToTop();
   initCounterObserver();
   syncFromAdminStorage();
 
@@ -255,6 +295,69 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLanguage(false);
   }
 });
+
+/* ==========================================================================
+   0. CINEMATIC PRELOADER & CURTAIN REVEAL ENGINE
+   ========================================================================== */
+function initPreloader() {
+  const preloader = document.getElementById('luxuryPreloader');
+  if (!preloader) return;
+
+  const bar = document.getElementById('preloaderBar');
+  const counter = document.getElementById('preloaderCounter');
+  if (window.lenis) window.lenis.stop();
+
+  let count = 0;
+  const duration = 1100; // 1.1 seconds luxury intro
+  const interval = 20;
+  const step = 100 / (duration / interval);
+
+  const timer = setInterval(() => {
+    count += step;
+    if (count >= 100) {
+      count = 100;
+      clearInterval(timer);
+      if (counter) counter.textContent = '100%';
+      if (bar) bar.style.width = '100%';
+
+      setTimeout(() => {
+        preloader.classList.add('curtain-up');
+        if (window.lenis) window.lenis.start();
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 900);
+      }, 200);
+    } else {
+      const rounded = Math.floor(count);
+      if (counter) counter.textContent = `${rounded}%`;
+      if (bar) bar.style.width = `${rounded}%`;
+    }
+  }, interval);
+}
+
+/* ==========================================================================
+   0.1 FLOATING BACK-TO-TOP ENGINE (Inertia Scroll Physics)
+   ========================================================================== */
+function initBackToTop() {
+  const btn = document.getElementById('backToTopBtn');
+  if (!btn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    if (window.lenis) {
+      window.lenis.scrollTo(0, { duration: 1.2 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+}
 
 /* ==========================================================================
    A. LENIS SMOOTH SCROLL ENGINE (Momentum & Inertia Physics)

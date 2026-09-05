@@ -1808,3 +1808,550 @@ html[dir="rtl"] .floating-wa-btn { right: auto; left: 1.8rem; }
     transition: none !important;
   }
 }
+
+
+/* ==========================================================================
+   1. CINEMATIC PRELOADER & CURTAIN REVEAL (Longeblack Standard)
+   ========================================================================== */
+.luxury-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #050505;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.85s cubic-bezier(0.85, 0, 0.15, 1);
+  will-change: transform;
+}
+
+.luxury-preloader.curtain-up {
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.preloader-curtain {
+  width: 100%;
+  max-width: 680px;
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.preloader-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.preloader-logo-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.preloader-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preloader-crown-svg {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  animation: crownPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes crownPulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  100% { transform: scale(1.08); opacity: 1; filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.8)); }
+}
+
+.preloader-title {
+  font-size: 1.15rem;
+  color: #FFFFFF;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+}
+
+.preloader-progress-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.preloader-telemetry {
+  font-size: 0.68rem;
+  letter-spacing: 2px;
+  color: #71717A;
+  text-transform: uppercase;
+}
+
+.preloader-bar-outer {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.preloader-bar-inner {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #71717A, #FFFFFF, #D4AF37);
+  transition: width 0.05s linear;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+.preloader-counter {
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   2. INFINITE KINETIC TYPOGRAPHY TICKER (Longeblack Architectural Marquee)
+   ========================================================================== */
+.kinetic-ticker-wrap {
+  width: 100%;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 1.1rem 0;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.kinetic-ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5rem;
+  animation: kineticMarquee 28s linear infinite;
+  will-change: transform;
+}
+
+.kinetic-ticker-wrap:hover .kinetic-ticker-track {
+  animation-play-state: paused;
+}
+
+.ticker-phrase {
+  font-size: 0.88rem;
+  color: #E4E4E7;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+.ticker-divider {
+  color: #52525B;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+@keyframes kineticMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+html[dir="rtl"] .kinetic-ticker-track {
+  animation: kineticMarqueeRtl 28s linear infinite;
+}
+
+@keyframes kineticMarqueeRtl {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+/* ==========================================================================
+   3. BESPOKE EDITORIAL METADATA DIVIDER BARS (Longeblack Spec)
+   ========================================================================== */
+.editorial-divider-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 0.85rem 0;
+  margin-bottom: 3rem;
+  font-size: 0.72rem;
+  letter-spacing: 2px;
+  color: #A1A1AA;
+  text-transform: uppercase;
+}
+
+.editorial-divider-bar .divider-left {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.editorial-divider-bar .divider-center {
+  color: #71717A;
+}
+
+.editorial-divider-bar .divider-right {
+  color: #A1A1AA;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .editorial-divider-bar .divider-center { display: none; }
+  .editorial-divider-bar { font-size: 0.65rem; letter-spacing: 1px; }
+}
+
+/* ==========================================================================
+   4. SHOWCASE METADATA FOOTER (Card Technical Specs)
+   ========================================================================== */
+.portfolio-meta-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.1rem;
+  background: #09090B;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: #71717A;
+  transition: var(--tr-fast);
+}
+
+.portfolio-spec-card:hover .portfolio-meta-footer {
+  background: #111113;
+  color: #FFFFFF;
+}
+
+.portfolio-meta-footer .pm-client {
+  color: #E4E4E7;
+  font-weight: 600;
+}
+
+.portfolio-meta-footer .pm-year {
+  color: #A1A1AA;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   5. BEHIND-THE-SCENES & STUDIO FILMSTRIP (Longeblack Aesthetic)
+   ========================================================================== */
+.bts-section {
+  padding: 8rem 0;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.bts-header-spec {
+  margin-bottom: 3.5rem;
+}
+
+.bts-title {
+  font-size: 2.8rem;
+  color: #FFFFFF;
+  margin-bottom: 1.2rem;
+  letter-spacing: -0.5px;
+}
+
+.bts-sub {
+  font-size: 1.15rem;
+  color: #A1A1AA;
+  max-width: 760px;
+  line-height: 1.8;
+}
+
+.bts-filmstrip-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 1.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.bts-filmstrip-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.bts-filmstrip-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+.bts-filmstrip-track {
+  display: flex;
+  gap: 1.8rem;
+  min-width: min-content;
+}
+
+.bts-card {
+  width: 360px;
+  flex-shrink: 0;
+  background: #09090B;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--tr-smooth);
+}
+
+.bts-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 255, 255, 0.06);
+}
+
+.bts-img-box {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+}
+
+.bts-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(85%) contrast(110%);
+}
+
+.bts-card:hover .bts-img-box img {
+  transform: scale(1.06);
+  filter: grayscale(0%) contrast(100%);
+}
+
+.bts-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.bts-tag-pill {
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  color: #FFFFFF;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.35rem 0.65rem;
+  border-radius: var(--radius-full);
+  align-self: flex-start;
+}
+
+.bts-res {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: #D4AF37;
+  align-self: flex-end;
+}
+
+.bts-card-meta {
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  letter-spacing: 1.2px;
+  background: #09090B;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bts-card-title {
+  color: #E4E4E7;
+  font-weight: 600;
+}
+
+.bts-card-loc {
+  color: #71717A;
+}
+
+/* ==========================================================================
+   6. GIANT FOOTER WORDMARK & STRUCTURED NAVIGATION (Longeblack Monumental)
+   ========================================================================== */
+.footer-mission-wrap {
+  margin-bottom: 3.5rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-mission-text {
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: #A1A1AA;
+  max-width: 920px;
+}
+
+.footer-nav-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 5rem;
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.82rem;
+}
+
+.footer-col-title {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.footer-nav-col a {
+  color: #71717A;
+  text-decoration: none;
+  transition: var(--tr-fast);
+}
+
+.footer-nav-col a:hover {
+  color: #FFFFFF;
+  transform: translateX(3px);
+}
+
+.footer-nav-col span {
+  color: #52525B;
+}
+
+.giant-footer-wordmark {
+  width: 100%;
+  font-size: clamp(3.5rem, 13vw, 13rem);
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 0.85;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15);
+  margin: 3rem 0 4rem 0;
+  user-select: none;
+  transition: -webkit-text-stroke 0.4s ease, color 0.4s ease;
+}
+
+.giant-footer-wordmark:hover {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.03);
+}
+
+/* ==========================================================================
+   7. FLOATING INERTIA BACK-TO-TOP BUTTON
+   ========================================================================== */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 5.6rem;
+  right: 1.9rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #09090B;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 95;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.25s ease, background 0.25s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top-btn:hover {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #FFFFFF;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(255, 255, 255, 0.25);
+}
+
+/* ==========================================================================
+   8. RTL SPECIALIZED OVERRIDES FOR NEW ENTERPRISE COMPONENTS
+   ========================================================================== */
+html[dir="rtl"] .preloader-title {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .editorial-divider-bar {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .bts-title {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .bts-card-meta {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .portfolio-meta-footer {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .footer-col-title {
+  letter-spacing: 0;
+}
+
+html[dir="rtl"] .footer-nav-col a:hover {
+  transform: translateX(-3px);
+}
+
+html[dir="rtl"] .back-to-top-btn {
+  right: auto;
+  left: 1.9rem;
+}
+
+@media (max-width: 992px) {
+  .footer-nav-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer-nav-grid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  .bts-title { font-size: 2rem; }
+  .back-to-top-btn {
+    bottom: 4.8rem;
+    right: 1.3rem;
+    width: 42px;
+    height: 42px;
+  }
+  html[dir="rtl"] .back-to-top-btn {
+    left: 1.3rem;
+    right: auto;
+  }
+}
