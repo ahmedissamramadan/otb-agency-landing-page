@@ -37,7 +37,7 @@
   <!-- Optimized Font Loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Tajawal:wght@500;700;800&display=swap" rel="stylesheet">
 
   <!-- Main High-Performance Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -182,26 +182,36 @@
     <section class="hero" id="home">
       <div class="container hero-spec-container">
         
-        <p class="hero-top-tag" dir="ltr">O F F I C I A L &nbsp; D I G I T A L &nbsp; D N A &nbsp; · &nbsp; 2 0 2 6</p>
+        <!-- Editorial Metadata & Coordinate Bar (Framer / Longeblack luxury aesthetic) -->
+        <div class="editorial-meta-row font-mono" dir="ltr">
+          <span class="editorial-meta-badge">SYS: 2026.DNA</span>
+          <span class="editorial-meta-text">LOC: CAIRO [30.0444° N · 31.2357° E]</span>
+          <span class="editorial-meta-status"><span class="pulse-dot"></span>ENGINE: ACTIVE</span>
+        </div>
 
-        <h1 class="hero-headline-spec" data-i18n="hero_title">
+        <p class="hero-top-tag font-mono" dir="ltr">O F F I C I A L &nbsp; D I G I T A L &nbsp; D N A &nbsp; · &nbsp; 2 0 2 6</p>
+
+        <h1 class="hero-headline-spec reveal-on-scroll" data-i18n="hero_title">
           Putting Your Brand Under <br>
           <span class="gold-italic-accent">The Spotlight.</span>
         </h1>
 
-        <p class="hero-desc-spec" data-i18n="hero_desc">
+        <p class="hero-desc-spec reveal-on-scroll reveal-delay-1" data-i18n="hero_desc">
           Over 7 years of engineering market dominance for Egypt's premier FMCG manufacturers, specialty coffee icons, and high-growth brands. We don't sell routine posts — we build full-funnel commercial engines that turn products into market leaders.
         </p>
 
-        <!-- Featured 3D Monolith Hero Visual (Designs/773995749...) -->
-        <div class="hero-monolith-box" onclick="openLightboxForImage('Designs/773995749_18181423747413165_4138231920701878094_n.jpg', 'Earn The Crown · Rule The City', '3D Brand Monolith · 2026', 'OTB Official Monolith', 'Turning ambitious brands into market leaders through strategy, creativity, and performance-driven marketing.')" role="button" tabindex="0" title="Click to expand 3D Monolith Showcase">
-          <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="OTB Agency 3D Chrome Crown Monolith" class="hero-monolith-img" fetchpriority="high" decoding="async">
-          <div class="hero-monolith-badge">
-            <span>👑 EARN THE CROWN · RULE THE CITY</span>
+        <!-- Featured 3D Monolith Hero Visual with Interactive Specular Light & Tilt -->
+        <div class="hero-monolith-box reveal-on-scroll reveal-delay-2" id="heroMonolithBox" onclick="openLightboxForImage('Designs/773995749_18181423747413165_4138231920701878094_n.jpg', 'Earn The Crown · Rule The City', '3D Brand Monolith · 2026', 'OTB Official Monolith', 'Turning ambitious brands into market leaders through strategy, creativity, and performance-driven marketing.')" role="button" tabindex="0" title="Click to expand 3D Monolith Showcase" aria-label="Interactive 3D Chrome Monolith">
+          <div class="hero-monolith-inner">
+            <div class="hero-monolith-glare"></div>
+            <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="OTB Agency 3D Chrome Crown Monolith" class="hero-monolith-img" fetchpriority="high" decoding="async">
+            <div class="hero-monolith-badge font-mono">
+              <span>👑 EARN THE CROWN · RULE THE CITY</span>
+            </div>
           </div>
         </div>
 
-        <div class="hero-action-spec">
+        <div class="hero-action-spec reveal-on-scroll reveal-delay-3">
           <a href="#showcase" class="btn-hero-work" data-i18n="btn_work">
             <span>Explore 20 Documented Proofs of Work</span>
             <span class="down-arrow-circle">↓</span>
@@ -209,31 +219,31 @@
         </div>
 
         <!-- 4-Item Cumulative Proof of Work Stats Bar -->
-        <div class="stats-spec-row">
+        <div class="stats-spec-row reveal-on-scroll reveal-delay-4">
           
           <div class="stat-spec-item">
-            <div class="stat-spec-val">
+            <div class="stat-spec-val font-mono">
               <span data-counter="7">+7</span>
             </div>
             <span class="stat-spec-lbl" data-i18n="stat_1">Years Market Mastery</span>
           </div>
 
           <div class="stat-spec-item">
-            <div class="stat-spec-val" dir="ltr">
+            <div class="stat-spec-val font-mono" dir="ltr">
               <span data-counter="140">140</span><span class="gold-text">M+</span>
             </div>
             <span class="stat-spec-lbl" data-i18n="stat_views">Annual Verified Views</span>
           </div>
 
           <div class="stat-spec-item">
-            <div class="stat-spec-val" dir="ltr">
+            <div class="stat-spec-val font-mono" dir="ltr">
               <span data-counter="763">763</span><span class="gold-text">K+</span>
             </div>
             <span class="stat-spec-lbl" data-i18n="stat_interactions">Annual Engagements</span>
           </div>
 
           <div class="stat-spec-item">
-            <div class="stat-spec-val font-bold-en" dir="ltr">
+            <div class="stat-spec-val font-mono" dir="ltr">
               30M<span class="gold-text" style="font-size: 1.5rem;">EGP</span>
             </div>
             <span class="stat-spec-lbl" data-i18n="stat_franks">Peak Monthly Scale (Franks)</span>
@@ -249,8 +259,8 @@
          ========================================================================== -->
     <section class="clients-section" id="clients" aria-label="Official Client Portfolio">
       <div class="container">
-        <p class="clients-tag" data-i18n="clients_tag">TRUSTED BY INDUSTRY TITANS & REGIONAL LEADERS</p>
-        <div class="clients-marquee-wrap">
+        <p class="clients-tag font-mono" data-i18n="clients_tag">TRUSTED BY INDUSTRY TITANS & REGIONAL LEADERS</p>
+        <div class="clients-marquee-wrap reveal-on-scroll">
           <div class="clients-marquee-track">
             <span class="client-brand-chip">👑 FRANKS FOOD INDUSTRIES (#2 NATIONWIDE)</span>
             <span class="client-brand-chip">☕ MIX COFFEE & MINIMARKET</span>
@@ -279,18 +289,18 @@
     <section class="craft-section" id="services">
       <div class="container">
         
-        <div class="craft-header-row">
-          <span class="craft-subtag" dir="ltr">S E L E C T E D &nbsp; C R A F T &nbsp; · &nbsp; 5 &nbsp; P I L L A R S</span>
+        <div class="craft-header-row reveal-on-scroll">
+          <span class="craft-subtag font-mono" dir="ltr">S E L E C T E D &nbsp; C R A F T &nbsp; · &nbsp; 5 &nbsp; P I L L A R S</span>
           <h2 class="craft-section-title" data-i18n="craft_title">What We Build For Enterprise Brands.</h2>
         </div>
 
         <div class="craft-cards-stack">
           
           <!-- Craft 01: Visual Storytelling & Growth Partner Artwork -->
-          <article class="craft-card" data-category="video">
+          <article class="craft-card reveal-on-scroll" data-category="video">
             <div class="craft-card-split">
               <div class="craft-card-content">
-                <span class="craft-code" dir="ltr">V I S U A L &nbsp; S T O R Y T E L L I N G &nbsp; — &nbsp; 0 1</span>
+                <span class="craft-code font-mono" dir="ltr">V I S U A L &nbsp; S T O R Y T E L L I N G &nbsp; — &nbsp; 0 1</span>
                 <h3 class="craft-card-title" data-i18n="c1_title">Luxury Visual Storytelling & Production</h3>
                 <p class="craft-card-desc" data-i18n="c1_desc">
                   Cinematic 4K video production for specialty coffee, fine dining, and consumer packaged goods (FMCG). Every shot is engineered with studio lighting, master color grading, and emotional narrative structure.
@@ -325,10 +335,10 @@
           </article>
 
           <!-- Craft 02: Performance Marketing & Numbers Reflect Impact Artwork -->
-          <article class="craft-card" data-category="marketing">
+          <article class="craft-card reveal-on-scroll" data-category="marketing">
             <div class="craft-card-split">
               <div class="craft-card-content">
-                <span class="craft-code" dir="ltr">P E R F O R M A N C E &nbsp; G R O W T H &nbsp; — &nbsp; 0 2</span>
+                <span class="craft-code font-mono" dir="ltr">P E R F O R M A N C E &nbsp; G R O W T H &nbsp; — &nbsp; 0 2</span>
                 <h3 class="craft-card-title" data-i18n="c2_title">High-ROAS Performance Marketing</h3>
                 <p class="craft-card-desc" data-i18n="c2_desc">
                   Precision-targeted ad campaigns on Meta, TikTok, and Google. Full-funnel TOFU-MOFU-BOFU architecture driving direct sales, delivery orders, and high-ticket B2B distributor contracts.
@@ -363,10 +373,10 @@
           </article>
 
           <!-- Craft 03: 3D Branding & Be Original Artwork -->
-          <article class="craft-card" data-category="branding">
+          <article class="craft-card reveal-on-scroll" data-category="branding">
             <div class="craft-card-split">
               <div class="craft-card-content">
-                <span class="craft-code" dir="ltr">3 D &nbsp; B R A N D &nbsp; S Y S T E M S &nbsp; — &nbsp; 0 3</span>
+                <span class="craft-code font-mono" dir="ltr">3 D &nbsp; B R A N D &nbsp; S Y S T E M S &nbsp; — &nbsp; 0 3</span>
                 <h3 class="craft-card-title" data-i18n="c3_title">3D Identity & Visual Architecture</h3>
                 <p class="craft-card-desc" data-i18n="c3_desc">
                   Developing signature isometric 3D visual systems, packaging CGI renders, and comprehensive Brand Books that command immediate market authority and retail shelf presence.
@@ -411,13 +421,13 @@
     <section class="benchmark-section" id="benchmark">
       <div class="container">
         
-        <div class="benchmark-card-split">
+        <div class="benchmark-card-split reveal-on-scroll">
           
           <!-- Left Column: Context & Execution -->
           <div class="benchmark-text-side">
             <div class="benchmark-badge-row">
-              <span class="benchmark-tag">GOLDEN PROOF OF WORK · CASE STUDY</span>
-              <span class="benchmark-rank-badge">🏆 SURGED FROM #25 TO #2 IN EGYPT</span>
+              <span class="benchmark-tag font-mono">GOLDEN PROOF OF WORK · CASE STUDY</span>
+              <span class="benchmark-rank-badge font-mono">🏆 SURGED FROM #25 TO #2 IN EGYPT</span>
             </div>
 
             <h2 class="benchmark-title" data-i18n="bm_title">
@@ -483,7 +493,7 @@
     <section class="showcase-section" id="showcase">
       <div class="container">
         
-        <div class="showcase-header-spec">
+        <div class="showcase-header-spec reveal-on-scroll">
           <div>
             <span class="showcase-subtag-spec" data-i18n="showcase_subtag">Real Client Case Studies & Official Creative Works</span>
             <h2 class="showcase-title-spec" data-i18n="showcase_title">Documented Proof of Work (20 Designs)</h2>
@@ -751,10 +761,10 @@
          ========================================================================== -->
     <section class="calculator-section" id="calculator">
       <div class="container">
-        <div class="calculator-card">
+        <div class="calculator-card reveal-on-scroll">
           <div class="calc-header-row">
             <div>
-              <span class="calc-tag" data-i18n="calc_tag">GROWTH SIMULATOR</span>
+              <span class="calc-tag font-mono" data-i18n="calc_tag">GROWTH SIMULATOR</span>
               <h2 class="calc-title" data-i18n="calc_title">Interactive ROI & Growth Simulator</h2>
               <p class="calc-sub" data-i18n="calc_sub">Configure your budget and industry to preview projected reach, customer leads, and ROAS with OTB.</p>
             </div>
@@ -781,7 +791,7 @@
               <div class="calc-group">
                 <div class="slider-label-row">
                   <label class="calc-label" for="budgetSlider" data-i18n="calc_lbl_budget">Estimated Monthly Marketing Budget:</label>
-                  <span class="slider-val-display" id="budgetDisplay"><bdi>50,000 ج.م / شهرياً</bdi></span>
+                  <span class="slider-val-display font-mono" id="budgetDisplay"><bdi>50,000 ج.م / شهرياً</bdi></span>
                 </div>
                 <input type="range" class="calc-slider" id="budgetSlider" min="20000" max="500000" step="5000" value="50000" aria-label="Monthly Marketing Budget Slider">
                 <div class="slider-hints">
@@ -804,21 +814,21 @@
 
             <div class="calc-results-col">
               <div class="calc-output-card">
-                <span class="calc-res-tag" data-i18n="calc_res_tag">PROJECTION ESTIMATE</span>
+                <span class="calc-res-tag font-mono" data-i18n="calc_res_tag">PROJECTION ESTIMATE</span>
                 
                 <div class="calc-res-item">
                   <span class="res-label" data-i18n="calc_res_views">Projected Target Reach:</span>
-                  <span class="res-number" id="calcReach"><bdi>1,050,000+</bdi></span>
+                  <span class="res-number font-mono" id="calcReach"><bdi>1,050,000+</bdi></span>
                 </div>
 
                 <div class="calc-res-item">
                   <span class="res-label" data-i18n="calc_res_leads">Estimated Qualified Leads:</span>
-                  <span class="res-number" id="calcLeads"><bdi>636 - 1,273 عميل مؤهل</bdi></span>
+                  <span class="res-number font-mono" id="calcLeads"><bdi>636 - 1,273 عميل مؤهل</bdi></span>
                 </div>
 
                 <div class="calc-res-item highlight">
                   <span class="res-label" data-i18n="calc_res_roas">Projected Return (ROAS):</span>
-                  <span class="res-number gold" id="calcRoas"><bdi>4.5x - 6.6x</bdi></span>
+                  <span class="res-number font-mono gold" id="calcRoas"><bdi>4.5x - 6.6x</bdi></span>
                 </div>
 
                 <p class="calc-disclaimer" data-i18n="calc_disclaimer">
@@ -842,10 +852,10 @@
     <section class="manifesto-section" id="manifesto">
       <div class="container">
         
-        <div class="manifesto-dark-card-split">
+        <div class="manifesto-dark-card-split reveal-on-scroll">
           
           <div class="manifesto-content-side">
-            <p class="manifesto-top-tag" dir="ltr">W E &nbsp; A R E &nbsp; O T B &nbsp; · &nbsp; T H E &nbsp; C I T Y &nbsp; K I N G S</p>
+            <p class="manifesto-top-tag font-mono" dir="ltr">W E &nbsp; A R E &nbsp; O T B &nbsp; · &nbsp; T H E &nbsp; C I T Y &nbsp; K I N G S</p>
 
             <h2 class="manifesto-headline" data-i18n="manif_title">
               "Don't Follow the Crowd, We Create the Direction."
@@ -1022,6 +1032,7 @@
   </a>
 
   <!-- Deferred High-Performance Interactive Engine Scripts -->
+  <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="app.js" defer></script>
 </body>

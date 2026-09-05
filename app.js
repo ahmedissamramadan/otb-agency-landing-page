@@ -222,17 +222,22 @@ window.openLightboxForImage = function(src, titleText, catText, metricText, desc
   }
 
   if (overlay) overlay.classList.add('active');
+  if (window.lenis) window.lenis.stop();
 };
 
 window.closeLightbox = function() {
   const overlay = document.getElementById('lightboxOverlay');
   if (overlay) overlay.classList.remove('active');
+  if (window.lenis) window.lenis.start();
 };
 
 /* ==========================================================================
    DOM INITIALIZATION
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
+  initLenisScroll();
+  init3DMonolith();
+  initScrollReveal();
   initCursor();
   initSoundEngine();
   initThreeHero();
@@ -250,6 +255,132 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLanguage(false);
   }
 });
+
+/* ==========================================================================
+   A. LENIS SMOOTH SCROLL ENGINE (Momentum & Inertia Physics)
+   ========================================================================== */
+function initLenisScroll() {
+  if (typeof Lenis === 'undefined') return;
+
+  try {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      smoothTouch: false
+    });
+
+    window.lenis = lenis;
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    // Smooth internal anchor scrolling with sticky header offset
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (!targetId || targetId === '#' || targetId === '#!') return;
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          lenis.scrollTo(targetEl, { offset: -70 });
+        }
+      });
+    });
+  } catch (err) {
+    console.warn('Lenis smooth scroll initialization skipped:', err);
+  }
+}
+
+/* ==========================================================================
+   B. INTERACTIVE 3D MONOLITH (Mouse/Touch Orbit Tilt & Specular Light Reflection)
+   ========================================================================== */
+function init3DMonolith() {
+  const box = document.getElementById('heroMonolithBox');
+  if (!box) return;
+  const inner = box.querySelector('.hero-monolith-inner') || box;
+
+  box.addEventListener('mouseenter', () => {
+    box.style.setProperty('--glare-opacity', '1');
+  });
+
+  box.addEventListener('mouseleave', () => {
+    inner.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    box.style.setProperty('--glare-opacity', '0');
+  });
+
+  box.addEventListener('mousemove', (e) => {
+    const rect = box.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -12; // Max 12 deg tilt
+    const rotateY = ((x - centerX) / centerX) * 12;
+
+    const glareX = (x / rect.width) * 100;
+    const glareY = (y / rect.height) * 100;
+
+    box.style.setProperty('--glare-x', `${glareX.toFixed(1)}%`);
+    box.style.setProperty('--glare-y', `${glareY.toFixed(1)}%`);
+    box.style.setProperty('--glare-opacity', '1');
+
+    inner.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.02, 1.02, 1.02)`;
+  });
+
+  // Touch orbit support for mobile
+  let touchStartX = 0, touchStartY = 0;
+  box.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      box.style.setProperty('--glare-opacity', '0.7');
+    }
+  }, { passive: true });
+
+  box.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 1) {
+      const deltaX = (e.touches[0].clientX - touchStartX) * 0.08;
+      const deltaY = (e.touches[0].clientY - touchStartY) * -0.08;
+      inner.style.transform = `perspective(1200px) rotateX(${Math.max(-10, Math.min(10, deltaY))}deg) rotateY(${Math.max(-10, Math.min(10, deltaX))}deg) scale3d(1.01, 1.01, 1.01)`;
+    }
+  }, { passive: true });
+
+  box.addEventListener('touchend', () => {
+    inner.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    box.style.setProperty('--glare-opacity', '0');
+  });
+}
+
+/* ==========================================================================
+   C. STAGGERED SCROLL REVEAL OBSERVER (Framer Motion feel)
+   ========================================================================== */
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.reveal-on-scroll');
+  if (!elements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
+}
 
 /* ==========================================================================
    1. MAGNETIC CUSTOM CURSOR (Hardware-accelerated)
@@ -608,6 +739,7 @@ function initModal() {
 
   window.openModal = function() {
     if (overlay) overlay.classList.add('active');
+    if (window.lenis) window.lenis.stop();
     setTimeout(() => { if (nameInput) nameInput.focus(); }, 100);
   };
 
@@ -626,6 +758,7 @@ function initModal() {
 
   window.closeModal = function() {
     if (overlay) overlay.classList.remove('active');
+    if (window.lenis) window.lenis.start();
     if (nameError) nameError.style.display = 'none';
     if (phoneError) phoneError.style.display = 'none';
   };
@@ -802,6 +935,7 @@ function initNavbar() {
       drawer.classList.add('active');
       drawer.setAttribute('aria-hidden', 'false');
       mobileBtn.setAttribute('aria-expanded', 'true');
+      if (window.lenis) window.lenis.stop();
     });
   }
 
@@ -810,6 +944,7 @@ function initNavbar() {
       drawer.classList.remove('active');
       drawer.setAttribute('aria-hidden', 'true');
       if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+      if (window.lenis) window.lenis.start();
     }
   };
 
