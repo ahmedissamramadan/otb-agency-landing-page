@@ -1,0 +1,38 @@
+{
+  "name": "OTB Agency · The City Kings",
+  "short_name": "OTB Agency",
+  "description": "Official Digital DNA 2026 — Enterprise Full-Funnel Commercial Growth Firm.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#050505",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/otb_official_logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/images/otb_official_logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "Designs/773995749_18181423747413165_4138231920701878094_n.jpg",
+      "sizes": "800x800",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ],
+  "categories": [
+    "business",
+    "productivity",
+    "marketing"
+  ],
+  "lang": "ar",
+  "dir": "rtl"
+}
