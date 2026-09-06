@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OTB Client Strategic Discovery Engine · The City Kings 👑 | Onboarding Portal</title>
+  <meta name="description" content="Proprietary 9-stage strategic onboarding and client discovery engine for OTB Agency. Unlocking root commercial intelligence and aligning market dominance blueprints.">
+  <meta name="author" content="OTB Agency">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/otb_official_logo.jpg">
+
+  <!-- Typography & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Base Stylesheet -->
+  <link rel="stylesheet" href="style.css?v=3.0.0">
+
+  <style>
+    :root {
+      --bg-dark-base: #08080A;
+      --bg-dark-card: rgba(14, 18, 26, 0.82);
+      --bg-dark-input: rgba(10, 13, 18, 0.95);
+      --gold: #D4A853;
+      --gold-light: #F5E6C8;
+      --gold-glow: rgba(212, 168, 83, 0.28);
+      --border-gold: rgba(212, 168, 83, 0.35);
+      --emerald: #10B981;
+      --crimson: #F43F5E;
+      --cyan: #38BDF8;
+      --text-pure: #FFFFFF;
+      --text-main: #E2E8F0;
+      --text-muted: #94A3B8;
+      --text-dim: #64748B;
+      --font-ui: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-royal: 'Cinzel', serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: var(--bg-dark-base);
+      color: var(--text-main);
+      direction: ltr;
+      text-align: left;
+      min-height: 100vh;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    #webglCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.55;
+    }
+
+    .portal-nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 8, 10, 0.88);
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      border-bottom: 1px solid rgba(212, 168, 83, 0.2);
+      padding: 0.85rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+    }
+
+    .brand-img {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+      object-fit: cover;
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-royal);
+      font-size: 1.15rem;
+      color: var(--text-pure);
+      letter-spacing: 0.04em;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .brand-text span {
+      font-size: 0.72rem;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .progress-bar-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.75rem 2rem;
+      position: sticky;
+      top: 61px;
+      z-index: 990;
+      backdrop-filter: blur(16px);
+    }
+
+    .progress-track {
+      height: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold) 0%, #F5E6C8 100%);
+      width: 11.11%;
+      border-radius: 999px;
+      transition: width 0.35s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 0 10px var(--gold-glow);
+    }
+
+    .progress-telemetry {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+    }
+
+    .portal-main-stage {
+      max-width: 860px;
+      margin: 2.5rem auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .stage-card {
+      background: var(--bg-dark-card);
+      border: 1px solid var(--border-gold);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 168, 83, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      backdrop-filter: blur(20px);
+    }
+
+    .stage-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .stage-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(212, 168, 83, 0.12);
+      border: 1px solid var(--border-gold);
+      color: var(--gold-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .stage-title {
+      font-family: var(--font-royal);
+      font-size: 1.85rem;
+      color: var(--text-pure);
+      margin-bottom: 0.35rem;
+    }
+
+    .stage-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-pure);
+      margin-bottom: 0.45rem;
+    }
+
+    .form-hint {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-top: 0.3rem;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      width: 100%;
+      background: var(--bg-dark-input);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text-pure);
+      padding: 0.85rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: all 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 12px var(--gold-glow);
+      background: rgba(14, 18, 26, 0.98);
+    }
+
+    .form-textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .stage-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .btn-portal-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: linear-gradient(135deg, var(--gold) 0%, #E5C378 100%);
+      color: #000;
+      font-weight: 800;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+      box-shadow: 0 4px 16px var(--gold-glow);
+    }
+
+    .btn-portal-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(212, 168, 83, 0.45);
+      filter: brightness(1.06);
+    }
+
+    .btn-portal-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-pure);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-portal-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--text-muted);
+    }
+
+    /* Dropzone Upload */
+    .dropzone-box {
+      border: 2px dashed var(--border-gold);
+      background: rgba(212, 168, 83, 0.03);
+      border-radius: var(--radius-md);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .dropzone-box:hover {
+      background: rgba(212, 168, 83, 0.08);
+      border-color: var(--gold);
+    }
+
+    .files-list {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .file-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.65rem 1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.88rem;
+    }
+
+    .draft-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--emerald);
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+    }
+
+    /* Review Table */
+    .review-table-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .review-label {
+      font-size: 0.85rem;
+      color: var(--gold);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+      width: 28%;
+    }
+
+    .review-val {
+      font-size: 0.92rem;
+      color: var(--text-pure);
+      width: 58%;
+      line-height: 1.6;
+    }
+
+    .review-edit-btn {
+      color: var(--text-dim);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: var(--font-mono);
+      transition: color 0.15s ease;
+    }
+
+    .review-edit-btn:hover {
+      color: var(--gold);
+    }
+  </style>
+
+  <!-- Bundled Libraries -->
+  <script src="assets/js/lucide.min.js"></script>
+  <script src="assets/js/three.min.js"></script>
+</head>
+<body>
+
+  <!-- WebGL Background Canvas -->
+  <canvas id="webglCanvas"></canvas>
+
+  <!-- Top Navigation -->
+  <header class="portal-nav">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/images/otb_official_logo.jpg" alt="OTB Logo" class="brand-img">
+      <div class="brand-text">
+        <h1>OTB STRATEGIC DISCOVERY <i data-lucide="crown" style="width: 16px; height: 16px; color: var(--gold);"></i></h1>
+        <span>THE CITY KINGS · CLIENT INTAKE PROTOCOL</span>
+      </div>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 1.25rem;">
+      <span class="draft-badge" id="draftStatus">
+        <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); display: inline-block;"></span>
+        Draft auto-saved locally
+      </span>
+      <a href="index.html" class="btn-portal-secondary" style="padding: 0.45rem 1rem; font-size: 0.8rem;">
+        <i data-lucide="arrow-left" style="width: 14px; height: 14px;"></i> Return to Academy
+      </a>
+    </div>
+  </header>
+
+  <!-- Stage Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-telemetry">
+      <span id="stageProgressLabel">STAGE 01 / 09 · BRAND ROOTS & IDENTITY</span>
+      <span id="stagePercentLabel">11% COMPLETED</span>
+    </div>
+  </div>
+
+  <!-- Master Stage Form Container -->
+  <main class="portal-main-stage">
+    
+    <div class="stage-card" id="stageCard">
+      <!-- Stage Content is injected dynamically by JavaScript -->
+    </div>
+
+  </main>
+
+  <script src="shared_ui.js?v=3.0.0"></script>
+  <script>
+    // 9 Stages Definition & Architecture
+    const discoveryStages = [
+      {
+        num: "01",
+        code: "ROOTS",
+        title: "The Roots & Brand Origins",
+        subtitle: "Uncovering the founding narrative, legal entity, and the foundational reason your brand exists in the market.",
+        fields: [
+          { id: "companyName", label: "Commercial Brand Name", type: "text", placeholder: "e.g. Franks Food Industries", required: true },
+          { id: "legalName", label: "Registered Legal Entity & Headquarters", type: "text", placeholder: "e.g. Franks for Modern Food Products, 10th of Ramadan City, Egypt" },
+          { id: "originStory", label: "The Origin Story & Driving Mission", type: "textarea", placeholder: "Why did you start this enterprise? What market gap were you born to solve?", required: true },
+          { id: "foundingYear", label: "Year Established & Active Market Footprint", type: "text", placeholder: "e.g. 2018 · 4 Factories · Distributed nationwide across retail & wholesale" }
+        ]
+      },
+      {
+        num: "02",
+        code: "OFFERING",
+        title: "The Offering & Commercial Model",
+        subtitle: "Detailing your flagship products, unique selling proposition (USP), and revenue mechanics.",
+        fields: [
+          { id: "coreProducts", label: "Core Product or Service Lines", type: "textarea", placeholder: "List your top-selling SKUs or service packages...", required: true },
+          { id: "businessModel", label: "Primary Business Model", type: "select", options: ["B2C Direct-to-Consumer & Retail", "B2B Industrial / Wholesale Distribution", "Hybrid: B2B Enterprise + Direct E-Commerce", "Hospitality / F&B Chain", "Healthcare / Diagnostics & Professional Services"] },
+          { id: "grossMargin", label: "Estimated Average Gross Margin (%)", type: "text", placeholder: "e.g. 28% to 45%" },
+          { id: "usp", label: "Unique Selling Proposition (USP)", type: "textarea", placeholder: "Why should a customer choose you over every alternative in Egypt? What is your unfair advantage?", required: true }
+        ]
+      },
+      {
+        num: "03",
+        code: "AUDIENCE",
+        title: "Target Audience & Customer Personas",
+        subtitle: "Dissecting who purchases from you, their psychological triggers, and their biggest daily frustrations.",
+        fields: [
+          { id: "idealCustomer", label: "Ideal Customer Profile (ICP)", type: "textarea", placeholder: "Who is your absolute best customer? Age, socio-economic tier, buying intent, geography...", required: true },
+          { id: "painPoints", label: "Top 3 Customer Pain Points & Anxieties", type: "textarea", placeholder: "What problems keep them awake at night before finding your product?", required: true },
+          { id: "purchaseTrigger", label: "Primary Purchasing Trigger", type: "text", placeholder: "e.g. Weekend gathering, urgent medical lab test, wholesale store replenishment" }
+        ]
+      },
+      {
+        num: "04",
+        code: "LANDSCAPE",
+        title: "Competitive Landscape & Market Gaps",
+        subtitle: "Mapping out direct category rivals and identifying vulnerability gaps OTB will exploit for your dominance.",
+        fields: [
+          { id: "topCompetitors", label: "Top 3 Direct Competitors", type: "textarea", placeholder: "Name the 3 biggest brands competing for your market share...", required: true },
+          { id: "competitorFlaws", label: "Where Do Your Competitors Fail?", type: "textarea", placeholder: "Customer service? Inconsistent packaging? Terrible social media? Slow delivery?" },
+          { id: "marketOpportunity", label: "The Unclaimed Territory", type: "textarea", placeholder: "What space in the consumer's mind is currently vacant in your sector?" }
+        ]
+      },
+      {
+        num: "05",
+        code: "PERSONA",
+        title: "Brand Persona & Tone of Voice",
+        subtitle: "Selecting the psychological archetype that commands respect and aligning verbal and visual aesthetics.",
+        fields: [
+          { id: "archetype", label: "Preferred Psychological Archetype", type: "select", options: ["The Ruler & Creator (City Kings: Authority, Prestige & Market Leadership)", "The Outlaw (Bold, Disruptive, Non-Conformist)", "The Caregiver (Warm, Trustworthy, Health-Focused)", "The Hero (Driven, Performance-Oriented, Resilient)", "The Everyman (Relatable, Humble, Down-to-Earth)"] },
+          { id: "toneOfVoice", label: "Tone of Voice Direction", type: "text", placeholder: "e.g. Bold, Sophisticated, Direct, Egyptian Colloquial with Executive Polish" },
+          { id: "redLineWords", label: "3 Words or Angles That Must NEVER Describe Your Brand", type: "text", placeholder: "e.g. Cheap, Generic, Corny, Boring" }
+        ]
+      },
+      {
+        num: "06",
+        code: "TARGETS",
+        title: "Success Targets & 90-Day Milestones",
+        subtitle: "Setting immutable commercial benchmarks: revenue targets, blended ROAS thresholds, and CPA goals.",
+        fields: [
+          { id: "targetRevenue", label: "Target Monthly Revenue Milestone (90 Days)", type: "text", placeholder: "e.g. 5,000,000 EGP / month or $100,000 / month", required: true },
+          { id: "targetROAS", label: "Minimum Acceptable Blended ROAS Threshold", type: "text", placeholder: "e.g. 4.5x or 6.0x" },
+          { id: "primaryGoal", label: "Primary 90-Day Commercial North Star", type: "textarea", placeholder: "e.g. Scale nationwide e-commerce, sign 10 industrial wholesale distributor agreements, or open 2 new restaurant branches...", required: true }
+        ]
+      },
+      {
+        num: "07",
+        code: "OPERATIONS",
+        title: "Operations, Budgets & Media Channels",
+        subtitle: "Allocating media spend resources, reviewing asset libraries, and designating your internal liaison.",
+        fields: [
+          { id: "monthlyBudget", label: "Monthly Paid Media Spend Budget", type: "text", placeholder: "e.g. 150,000 EGP / month or $5,000 / month", required: true },
+          { id: "activeChannels", label: "Priority Media Channels", type: "select", options: ["Meta (Facebook & Instagram) Dominance", "TikTok Viral Performance + Meta Ads", "Omnichannel: Meta, TikTok, Google Ads & YouTube", "B2B Enterprise: LinkedIn + Meta + WhatsApp Direct Funnels"] },
+          { id: "pocContact", label: "Designated Decision-Maker (Name, Title, WhatsApp, Email)", type: "text", placeholder: "e.g. Eng. Tarek - Managing Director - +20 10X XXX XXXX - tarek@company.com", required: true }
+        ]
+      },
+      {
+        num: "08",
+        code: "CONTEXT",
+        title: "Context, Pitfalls & Past Lessons",
+        subtitle: "Extracting historical agency lessons, failed campaigns, and defining absolute non-negotiable boundaries.",
+        fields: [
+          { id: "pastExperience", label: "Past Agency or Marketing Experiences (What Failed? What Worked?)", type: "textarea", placeholder: "Be candid: what left a bad taste in your mouth with past agencies?", required: true },
+          { id: "majorFears", label: "Biggest Operational Anxiety or Worst-Case Scenario", type: "textarea", placeholder: "What is your biggest fear when delegating your marketing to OTB?" },
+          { id: "nonNegotiables", label: "Non-Negotiable Brand Red Lines", type: "textarea", placeholder: "Any strict legal, cultural, or religious boundaries we must observe?" }
+        ]
+      },
+      {
+        num: "09",
+        code: "REVIEW",
+        title: "Executive Review, Assets & Submission",
+        subtitle: "Review your strategic answers, upload high-res brand assets, and generate your immutable tracking code.",
+        fields: [] // Rendered custom
+      }
+    ];
+
+    let currentStageIndex = 0;
+    let formData = {};
+    let uploadedFiles = [];
+
+    // Load from LocalStorage
+    function loadDraft() {
+      try {
+        const saved = localStorage.getItem("OTB_DISCOVERY_DRAFT");
+        if (saved) {
+          formData = JSON.parse(saved);
+        }
+      } catch (e) {}
+    }
+
+    function saveDraft() {
+      try {
+        localStorage.setItem("OTB_DISCOVERY_DRAFT", JSON.stringify(formData));
+        const statusEl = document.getElementById("draftStatus");
+        if (statusEl) {
+          statusEl.innerHTML = `<span style="width: 8px; height: 8px; border-radius: 50%; background: var(--emerald); display: inline-block;"></span> Draft auto-saved (${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})})`;
+        }
+      } catch (e) {}
+    }
+
+    // Render Current Stage
+    function renderStage(stageIdx) {
+      currentStageIndex = stageIdx;
+      const stage = discoveryStages[stageIdx];
+      const card = document.getElementById("stageCard");
+
+      // Update Progress Bar
+      const percent = Math.round(((stageIdx + 1) / discoveryStages.length) * 100);
+      document.getElementById("progressFill").style.width = percent + "%";
+      document.getElementById("stageProgressLabel").innerText = `STAGE ${stage.num} / 09 · ${stage.title.toUpperCase()}`;
+      document.getElementById("stagePercentLabel").innerText = `${percent}% COMPLETED`;
+
+      let fieldsHtml = "";
+
+      if (stageIdx === 8) {
+        // Stage 09: Review & Upload Screen
+        fieldsHtml = renderReviewStageHtml();
+      } else {
+        stage.fields.forEach(f => {
+          const val = formData[f.id] || "";
+          if (f.type === "text") {
+            fieldsHtml += `
+              <div class="form-group">
+                <label class="form-label" for="${f.id}">
+                  ${f.label} ${f.required ? '<span style="color: var(--crimson);">*</span>' : ''}
+                </label>
+                <input type="text" id="${f.id}" class="form-input" placeholder="${f.placeholder || ''}" value="${escapeHtml(val)}" oninput="updateField('${f.id}', this.value)">
+                ${f.hint ? `<span class="form-hint">${f.hint}</span>` : ''}
+              </div>
+            `;
+          } else if (f.type === "textarea") {
+            fieldsHtml += `
+              <div class="form-group">
+                <label class="form-label" for="${f.id}">
+                  ${f.label} ${f.required ? '<span style="color: var(--crimson);">*</span>' : ''}
+                </label>
+                <textarea id="${f.id}" class="form-textarea" placeholder="${f.placeholder || ''}" oninput="updateField('${f.id}', this.value)">${escapeHtml(val)}</textarea>
+                ${f.hint ? `<span class="form-hint">${f.hint}</span>` : ''}
+              </div>
+            `;
+          } else if (f.type === "select") {
+            let optsHtml = "";
+            f.options.forEach(opt => {
+              const sel = val === opt ? "selected" : "";
+              optsHtml += `<option value="${escapeHtml(opt)}" ${sel}>${escapeHtml(opt)}</option>`;
+            });
+            fieldsHtml += `
+              <div class="form-group">
+                <label class="form-label" for="${f.id}">
+                  ${f.label} ${f.required ? '<span style="color: var(--crimson);">*</span>' : ''}
+                </label>
+                <select id="${f.id}" class="form-select" onchange="updateField('${f.id}', this.value)">
+                  <option value="">-- Select Option --</option>
+                  ${optsHtml}
+                </select>
+              </div>
+            `;
+          }
+        });
+      }
+
+      card.innerHTML = `
+        <div class="stage-header">
+          <div class="stage-pill">
+            <i data-lucide="layers" style="width: 14px; height: 14px;"></i> STAGE ${stage.num} · ${stage.code}
+          </div>
+          <h2 class="stage-title">${stage.title}</h2>
+          <p class="stage-desc">${stage.subtitle}</p>
+        </div>
+
+        <div class="stage-body">
+          ${fieldsHtml}
+        </div>
+
+        <div class="stage-actions">
+          ${stageIdx > 0 ? `
+            <button class="btn-portal-secondary" onclick="prevStage()">
+              <i data-lucide="arrow-left" style="width: 16px; height: 16px;"></i> Previous Stage
+            </button>
+          ` : `<div></div>`}
+
+          ${stageIdx < 8 ? `
+            <button class="btn-portal-primary" onclick="nextStage()">
+              Next Stage (${discoveryStages[stageIdx + 1].title.split(" ")[0]})
+              <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
+            </button>
+          ` : `
+            <button class="btn-portal-primary" onclick="submitDiscoveryBrief()">
+              <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i> Submit Brief & Generate Code
+            </button>
+          `}
+        </div>
+      `;
+
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setTimeout(refreshLucide, 20);
+    }
+
+    function updateField(fieldId, val) {
+      formData[fieldId] = val;
+      saveDraft();
+    }
+
+    function nextStage() {
+      // Basic validation for required fields
+      const currentFields = discoveryStages[currentStageIndex].fields;
+      let missing = [];
+      currentFields.forEach(f => {
+        if (f.required && (!formData[f.id] || !formData[f.id].trim())) {
+          missing.push(f.label.replace("*", "").trim());
+        }
+      });
+
+      if (missing.length > 0) {
+        alert("Please provide the required field: " + missing[0]);
+        return;
+      }
+
+      if (currentStageIndex < 8) {
+        renderStage(currentStageIndex + 1);
+      }
+    }
+
+    function prevStage() {
+      if (currentStageIndex > 0) {
+        renderStage(currentStageIndex - 1);
+      }
+    }
+
+    function renderReviewStageHtml() {
+      let rowsHtml = "";
+      discoveryStages.slice(0, 8).forEach((st, sIdx) => {
+        st.fields.forEach(f => {
+          const val = formData[f.id] || `<span style="color: var(--text-dim); font-style: italic;">Not Specified</span>`;
+          rowsHtml += `
+            <div class="review-table-row">
+              <div class="review-label">${f.label.replace("*","").trim()}</div>
+              <div class="review-val">${val}</div>
+              <button class="review-edit-btn" onclick="renderStage(${sIdx})">Edit</button>
+            </div>
+          `;
+        });
+      });
+
+      return `
+        <!-- Drag & Drop Upload Vault -->
+        <div style="margin-bottom: 2.5rem;">
+          <h3 style="font-family: var(--font-royal); font-size: 1.25rem; color: var(--text-pure); margin-bottom: 0.5rem;">
+            Upload Brand Identity Assets & Product Catalogs
+          </h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Drag and drop your high-resolution logos (AI, SVG, PNG), brand guidelines, or product catalogs.
+          </p>
+          <div class="dropzone-box" onclick="document.getElementById('fileInputSim').click()">
+            <i data-lucide="upload-cloud" style="width: 36px; height: 36px; color: var(--gold); margin-bottom: 0.5rem;"></i>
+            <h4 style="font-size: 1rem; color: var(--text-pure); margin-bottom: 0.25rem;">Click to browse or drag assets here</h4>
+            <span style="font-size: 0.8rem; color: var(--text-dim);">Supported: PDF, PNG, JPG, AI, SVG, ZIP (Up to 100MB)</span>
+            <input type="file" id="fileInputSim" multiple style="display: none;" onchange="handleFilesUpload(this.files)">
+          </div>
+          <div class="files-list" id="uploadedFilesList"></div>
+        </div>
+
+        <!-- Full Summary Review Table -->
+        <div style="background: rgba(10, 13, 18, 0.95); border: 1px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.75rem;">
+            <h4 style="font-family: var(--font-royal); font-size: 1.15rem; color: var(--gold);">Strategic Brief Summary Checklist</h4>
+            <button class="btn-portal-secondary" style="padding: 0.4rem 0.9rem; font-size: 0.8rem;" onclick="window.print()">
+              <i data-lucide="printer" style="width: 14px; height: 14px;"></i> Print Brief / Export PDF
+            </button>
+          </div>
+          ${rowsHtml}
+        </div>
+      `;
+    }
+
+    function handleFilesUpload(files) {
+      for (let i = 0; i < files.length; i++) {
+        const f = files[i];
+        uploadedFiles.push({
+          name: f.name,
+          size: (f.size / (1024 * 1024)).toFixed(2) + " MB"
+        });
+      }
+      renderUploadedFiles();
+    }
+
+    function renderUploadedFiles() {
+      const container = document.getElementById("uploadedFilesList");
+      if (!container) return;
+      let html = "";
+      uploadedFiles.forEach((f, idx) => {
+        html += `
+          <div class="file-item">
+            <div style="display: flex; align-items: center; gap: 0.6rem;">
+              <i data-lucide="file-check" style="width: 16px; height: 16px; color: var(--emerald);"></i>
+              <span style="font-weight: 600; color: var(--text-pure);">${escapeHtml(f.name)}</span>
+              <span style="font-size: 0.75rem; color: var(--text-dim); font-family: var(--font-mono);">(${f.size})</span>
+            </div>
+            <button style="background: none; border: none; color: var(--crimson); cursor: pointer;" onclick="removeFile(${idx})">
+              <i data-lucide="trash-2" style="width: 14px; height: 14px;"></i>
+            </button>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+      setTimeout(refreshLucide, 20);
+    }
+
+    function removeFile(idx) {
+      uploadedFiles.splice(idx, 1);
+      renderUploadedFiles();
+    }
+
+    function submitDiscoveryBrief() {
+      const brand = formData["companyName"] || "Brand Partner";
+      const randomCode = "OTB-" + Math.random().toString(36).substring(2, 7).toUpperCase() + "-" + Math.random().toString(36).substring(2, 6).toUpperCase();
+      
+      const card = document.getElementById("stageCard");
+      card.innerHTML = `
+        <div style="text-align: center; padding: 3rem 1.5rem;">
+          <div style="display: inline-flex; border: 2px solid var(--gold); border-radius: 50%; padding: 1.25rem; box-shadow: 0 0 30px var(--gold-glow); margin-bottom: 1.5rem;">
+            <i data-lucide="crown" style="width: 54px; height: 54px; color: var(--gold);"></i>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase;">
+            STRATEGIC BRIEF CONFIRMED & LODGED
+          </span>
+          <h2 style="font-family: var(--font-royal); font-size: 2.2rem; color: var(--text-pure); margin: 0.5rem 0 1rem 0;">
+            Welcome to the Throne, ${escapeHtml(brand)} 👑
+          </h2>
+          <p style="font-size: 1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.7;">
+            Your strategic blueprint has been logged into OTB Agency's executive pipeline. Your account manager and strategy director have been notified.
+          </p>
+
+          <div style="background: rgba(10, 13, 18, 0.95); border: 1.5px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.75rem; max-width: 480px; margin: 0 auto 2.5rem auto;">
+            <span style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase; font-family: var(--font-mono);">
+              Your Permanent Onboarding Reference Code:
+            </span>
+            <div style="font-family: var(--font-mono); font-size: 1.8rem; color: var(--gold-light); font-weight: 800; letter-spacing: 3px; margin: 0.5rem 0;" id="finalRefCode">
+              ${randomCode}
+            </div>
+            <button class="btn-portal-secondary" style="padding: 0.4rem 1.2rem; font-size: 0.8rem;" onclick="copyText('${randomCode}')">
+              <i data-lucide="copy" style="width: 14px; height: 14px;"></i> Copy Code
+            </button>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+            <a href="https://wa.me/201008080295?text=${encodeURIComponent('Hello OTB Agency! We just submitted our Strategic Discovery Brief for ' + brand + '. Reference Code: ' + randomCode)}" target="_blank" class="btn-portal-primary" style="background: #25D366; color: #FFF; box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);">
+              <i data-lucide="message-circle" style="width: 18px; height: 18px;"></i> Connect via VIP WhatsApp Concierge
+            </a>
+            <button class="btn-portal-secondary" onclick="window.print()">
+              <i data-lucide="printer" style="width: 18px; height: 18px;"></i> Export Strategic PDF
+            </button>
+            <a href="index.html" class="btn-portal-secondary">
+              <i data-lucide="home" style="width: 18px; height: 18px;"></i> Return to Portal Home
+            </a>
+          </div>
+        </div>
+      `;
+      
+      // Clear draft upon submission
+      localStorage.removeItem("OTB_DISCOVERY_DRAFT");
+      setTimeout(refreshLucide, 20);
+    }
+
+    function escapeHtml(str) {
+      if (!str) return "";
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function refreshLucide() {
+      if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      loadDraft();
+      renderStage(0);
+      setTimeout(refreshLucide, 40);
+    });
+  </script>
+</body>
+</html>
