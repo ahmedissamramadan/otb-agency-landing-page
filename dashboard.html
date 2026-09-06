@@ -110,7 +110,7 @@
           ⚡ عمليات CoreLink
         </button>
         <button class="tab-btn" data-tab="manus">
-          <span data-i18n="tab_manus">📋 بريف واستراتيجية Manus</span>
+          <span data-i18n="tab_manus">📋 منظومة OTB للنمو السيادي (9 ركائز)</span>
           <span class="tab-badge" id="manusBadgeCount">1</span>
         </button>
       </nav>
@@ -435,21 +435,22 @@
       </section>
 
       <!-- ==========================================================================
-           القسم 7: منظومة بريف واستكشاف Manus الاستراتيجية (9 مراحل)
+           القسم 7: منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)
            ========================================================================== -->
       <section class="tab-content" id="tab-manus">
         <div class="section-intro-row">
           <div>
-            <h1 class="section-title" data-i18n="manus_title">منظومة بريف واستكشاف Manus الاستراتيجية (9 مراحل)</h1>
-            <p class="section-desc" data-i18n="manus_desc">النظام المؤسسي المعتمد لتأهيل العملاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام التنفيذية.</p>
+            <h1 class="section-title" data-i18n="manus_title">منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)</h1>
+            <p class="section-desc" data-i18n="manus_desc">النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.</p>
           </div>
           <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
             <select class="select-filter" id="manusLeadSelect" style="font-weight: 700; color: var(--accent-gold); border-color: rgba(212, 175, 55, 0.4);">
               <!-- Lead options populated dynamically -->
             </select>
-            <button class="btn-nav-action" id="btnNewManusBrief">+ بريف جديد ⚡</button>
-            <button class="btn-nav-action primary" id="btnSaveManusBrief">حفظ وتحديث البريف 💾</button>
-            <button class="btn-nav-action" id="btnExportStrategyDoc">تصدير وثيقة الاستراتيجية 📄</button>
+            <button class="btn-nav-action" id="btnNewManusBrief">+ بريف سيادي جديد ⚡</button>
+            <button class="btn-nav-action primary" id="btnSaveManusBrief">حفظ وتحديث الاستراتيجية 💾</button>
+            <button class="btn-nav-action" id="btnOpenClientDossier" style="border-color: rgba(212, 175, 55, 0.6); color: var(--accent-gold-bright); font-weight: 700;">بوابة العميل الرقمية ↗</button>
+            <button class="btn-nav-action" id="btnExportStrategyDoc">تصدير الوثيقة 📄</button>
             <button class="btn-nav-action" id="btnCopyManusWa" style="border-color: rgba(37, 211, 102, 0.4); color: #25D366;">ملخص واتساب 💬</button>
           </div>
         </div>
@@ -470,7 +471,7 @@
 
           <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
             <div>
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_ref">الكود المرجعي الرسمي (Manus Ref):</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_ref">الكود المرجعي الرسمي (Sovereign Ref):</span>
               <span id="manusRefCodeDisplay" class="ref-code-badge" dir="ltr">OTB-FRANKS-2026</span>
             </div>
             <button class="btn-icon-action" id="btnRegenRefCode" title="توليد كود مرجعي جديد" style="border-radius: 6px;">↺</button>
@@ -650,7 +651,7 @@
       <div class="modal-sheet-header">
         <div>
           <h3 class="modal-sheet-title" id="exportDocTitle">📄 وثيقة استراتيجية الهيمنة السوقية (90-Day Strategy Blueprint)</h3>
-          <span style="font-size: 0.8rem; color: var(--accent-gold);" id="exportDocSubtitle">OTB Agency × Manus Strategic Architecture</span>
+          <span style="font-size: 0.8rem; color: var(--accent-gold);" id="exportDocSubtitle">OTB Agency · Sovereign Strategy & Growth Matrix (9 Pillars)</span>
         </div>
         <div style="display: flex; gap: 0.5rem; align-items: center;">
           <button class="btn-nav-action primary" id="btnCopyDocMarkdown" style="padding: 0.4rem 0.9rem; font-size: 0.82rem;">نسخ كـ Markdown 📋</button>

@@ -27,6 +27,7 @@
     SHOWCASE: 'otb_showcase_data',
     ROI: 'otb_roi_config',
     CONTENT: 'otb_content_config',
+    SOVEREIGN_BRIEFS: 'otb_sovereign_briefs',
     MANUS_BRIEFS: 'otb_manus_briefs',
     CONFIG_BACKUP: 'otb_full_config'
   };
@@ -38,10 +39,9 @@
      ========================================================================== */
   const I18N = {
     ar: {
-      // Header & Navigation
-      app_title: 'غرفة العمليات التنفيذية',
-      status_live: 'مباشر وفي وضع التشغيل',
-      brand_subtitle: 'ملوك المدينة · نظام الإدارة المؤسسي 2026',
+      app_title: 'غرفة العمليات الاستراتيجية OTB',
+      app_tagline: 'OTB Executive Command Center · 2026',
+      btn_lang: '🌐 English (LTR)',
       btn_view_site: 'معاينة الواجهة الرسمية ↗',
       btn_sync: 'مزامنة وحفظ التعديلات ⚡',
       btn_logout: 'قفل المنظومة 🔒',
@@ -51,12 +51,12 @@
       tab_roi: '⚙️ محاكي العائد والنمو',
       tab_content: '🌐 الهوية والمحتوى والـ SEO',
       tab_corelink: '⚡ عمليات CoreLink',
-      tab_manus: '📋 بريف واستراتيجية Manus',
-      manus_title: 'منظومة بريف واستكشاف Manus الاستراتيجية (9 مراحل)',
-      manus_desc: 'النظام المؤسسي المعتمد لتأهيل العملاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام التنفيذية.',
+      tab_manus: '📋 منظومة OTB للنمو السيادي (9 ركائز)',
+      manus_title: 'منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)',
+      manus_desc: 'النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.',
       manus_lbl_active_client: 'العميل / العلامة التجارية النشطة:',
       manus_lbl_service: 'مسار الخدمة:',
-      manus_lbl_ref: 'الكود المرجعي الرسمي (Manus Ref):',
+      manus_lbl_ref: 'الكود المرجعي الرسمي (Sovereign Ref):',
       manus_lbl_status: 'حالة الاستكشاف:',
 
       // Security Gate
@@ -214,13 +214,13 @@
       tab_roi: '⚙️ ROI Simulator',
       tab_content: '🌐 Identity & SEO',
       tab_corelink: '⚡ CoreLink Ops',
-      tab_manus: '📋 Manus Brief & Strategy',
-      manus_title: 'Manus Strategic Discovery Pipeline (9 Stages)',
-      manus_desc: 'Official enterprise client discovery pipeline to architect 90-day market dominance strategies and role distribution.',
-      manus_lbl_active_client: 'Active Client / Brand:',
+      tab_manus: '📋 OTB Sovereign Growth Matrix (9 Pillars)',
+      manus_title: 'OTB Sovereign Strategic Discovery & Growth Matrix (9 Pillars)',
+      manus_desc: 'Proprietary enterprise strategic discovery engine to architect 90-day market dominance and tactical operational squads.',
+      manus_lbl_active_client: 'Active Partner / Brand:',
       manus_lbl_service: 'Service Track:',
-      manus_lbl_ref: 'Official Reference Code:',
-      manus_lbl_status: 'Discovery Status:',
+      manus_lbl_ref: 'Official Sovereign Ref Code:',
+      manus_lbl_status: 'Strategy Status:',
 
       // Security Gate
       pin_title: 'OTB Command Center',
@@ -487,7 +487,7 @@
       const storedContent = localStorage.getItem(STORAGE_KEYS.CONTENT);
       if (storedContent) contentConfig = JSON.parse(storedContent);
 
-      const storedManus = localStorage.getItem(STORAGE_KEYS.MANUS_BRIEFS);
+      const storedManus = localStorage.getItem(STORAGE_KEYS.SOVEREIGN_BRIEFS) || localStorage.getItem(STORAGE_KEYS.MANUS_BRIEFS);
       if (storedManus) manusBriefs = JSON.parse(storedManus);
 
       if (!storedLeads || !storedShowcase || !storedRoi || !storedContent || !storedManus) {
@@ -516,7 +516,8 @@
             localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
           }
           if (!storedManus) {
-            manusBriefs = configData.initial_manus_briefs || {};
+            manusBriefs = configData.initial_sovereign_briefs || configData.initial_manus_briefs || {};
+            localStorage.setItem(STORAGE_KEYS.SOVEREIGN_BRIEFS, JSON.stringify(manusBriefs));
             localStorage.setItem(STORAGE_KEYS.MANUS_BRIEFS, JSON.stringify(manusBriefs));
           }
         }
@@ -729,7 +730,7 @@
             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
               <strong style="color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(lead.name)}</strong>
               ${lead.status === 'new' ? `<span class="badge-status new" style="font-size: 0.68rem; padding: 0.15rem 0.45rem;">${currentLang === 'ar' ? 'طلب جديد ⚡' : 'NEW ⚡'}</span>` : ''}
-              ${briefRef ? `<span class="ref-code-badge" style="font-size: 0.68rem; padding: 0.12rem 0.45rem; cursor: pointer;" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة بريف Manus (9 مراحل)' : 'Open Manus Strategic Brief'}">${escapeHtml(briefRef)}</span>` : ''}
+              ${briefRef ? `<span class="ref-code-badge" style="font-size: 0.68rem; padding: 0.12rem 0.45rem; cursor: pointer;" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة مصفوفة النمو السيادي (9 ركائز)' : 'Open Sovereign Growth Matrix'}">${escapeHtml(briefRef)}</span>` : ''}
             </div>
             ${lead.notes ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(lead.notes)}">${escapeHtml(lead.notes)}</div>` : ''}
           </td>
@@ -759,7 +760,7 @@
               <a href="${waUrl}" target="_blank" rel="noopener" class="btn-icon-action whatsapp" title="${currentLang === 'ar' ? 'محادثة واتساب مخصصة فورية' : 'Direct WhatsApp Chat'}">
                 💬
               </a>
-              <button class="btn-icon-action" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة بريف واستراتيجية Manus (9 مراحل)' : 'Open Manus 9-Stage Strategic Discovery'}">
+              <button class="btn-icon-action" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة استراتيجية OTB السيادية (9 ركائز)' : 'Open OTB Sovereign Growth Matrix'}">
                 📋
               </button>
               <button class="btn-icon-action" onclick="window.copyLeadGreeting('${lead.id}')" title="${currentLang === 'ar' ? 'نسخ رسالة الترحيب للحافظة' : 'Copy Greeting to Clipboard'}">
@@ -1483,7 +1484,7 @@
     renderManusTab();
     renderCRM();
     const count = getCompletedStagesCount(brief);
-    showToast(currentLang === 'ar' ? `تم حفظ وتحديث بريف Manus بنجاح (${count} من 9 مراحل مكتملة) 💾` : `Manus brief saved (${count}/9 stages complete) 💾`);
+    showToast(currentLang === 'ar' ? `تم حفظ وتحديث استراتيجية OTB السيادية بنجاح (${count} من 9 ركائز مكتملة) 💾` : `OTB Sovereign Strategy saved (${count}/9 pillars complete) 💾`);
   };
 
   window.openManusBriefForLead = function (leadId) {
@@ -1492,7 +1493,7 @@
     switchTab('manus');
     const brief = getActiveManusBrief();
     renderManusTab();
-    showToast(currentLang === 'ar' ? `تم فتح بريف واستراتيجية Manus للعميل: ${brief.brand_name}` : `Opened Manus brief for: ${brief.brand_name}`);
+    showToast(currentLang === 'ar' ? `تم فتح مصفوفة النمو السيادي للعميل: ${brief.brand_name}` : `Opened Sovereign Strategy for: ${brief.brand_name}`);
   };
 
   window.regenerateActiveManusRefCode = function () {
@@ -1519,7 +1520,7 @@
 
     const docMd = [
       `# وثيقة استراتيجية الهيمنة السوقية وخارطة طريق الـ 90 يوماً`,
-      `**OTB Agency (The City Kings) × Manus Strategic Discovery Blueprint**`,
+      `**OTB Agency (The City Kings) · Sovereign Strategy & Growth Matrix**`,
       `========================================================================`,
       ``,
       `* **العميل / العلامة التجارية:** ${brief.brand_name || lead.name}`,
@@ -1586,7 +1587,7 @@
 
     if (contentBox) contentBox.textContent = docMd;
     if (titleBox) titleBox.textContent = `📄 وثيقة استراتيجية ${brief.brand_name || 'العميل'}`;
-    if (subBox) subBox.textContent = `الكود المرجعي المعتمد: ${brief.ref_code} · OTB × Manus Architecture`;
+    if (subBox) subBox.textContent = `الكود المرجعي المعتمد: ${brief.ref_code} · OTB Sovereign Strategy Matrix`;
     if (modal) modal.classList.add('active');
   };
 
@@ -1605,7 +1606,7 @@
     const serviceName = getServiceTitle(brief.service || lead.service);
 
     const text = [
-      `👑 *خلاصة استراتيجية OTB Agency × Manus الرسمية*`,
+      `👑 *خلاصة استراتيجية OTB Agency السيادية (9 ركائز)*`,
       `━━━━━━━━━━━━━━━━━━━━━`,
       `🏢 *العميل:* ${brief.brand_name || lead.name}`,
       `📋 *الكود المرجعي:* ${brief.ref_code}`,
@@ -1675,6 +1676,17 @@
 
     document.getElementById('btnNewManusBrief')?.addEventListener('click', createNewManusBriefForCurrent);
     document.getElementById('btnSaveManusBrief')?.addEventListener('click', window.saveCurrentManusBrief);
+    document.getElementById('btnOpenClientDossier')?.addEventListener('click', () => {
+      const brief = getActiveManusBrief();
+      if (brief) {
+        captureCurrentStageInputs(brief);
+        saveAllState();
+        const url = `strategy-dossier.html?ref=${encodeURIComponent(brief.ref_code || '')}&id=${encodeURIComponent(brief.lead_id || '')}`;
+        window.open(url, '_blank');
+      } else {
+        window.open('strategy-dossier.html', '_blank');
+      }
+    });
     document.getElementById('btnExportStrategyDoc')?.addEventListener('click', window.exportStrategyDocument);
     document.getElementById('btnCopyManusWa')?.addEventListener('click', window.copyStrategyWhatsAppSummary);
     document.getElementById('btnRegenRefCode')?.addEventListener('click', window.regenerateActiveManusRefCode);
@@ -1734,9 +1746,10 @@
     localStorage.setItem(STORAGE_KEYS.ROI, JSON.stringify(roiConfig));
     localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
     localStorage.setItem(STORAGE_KEYS.MANUS_BRIEFS, JSON.stringify(manusBriefs));
+    localStorage.setItem(STORAGE_KEYS.SOVEREIGN_BRIEFS, JSON.stringify(manusBriefs));
 
     window.dispatchEvent(new CustomEvent('otb_data_updated', {
-      detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig, manus_briefs: manusBriefs }
+      detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig, manus_briefs: manusBriefs, sovereign_briefs: manusBriefs }
     }));
   }
 

@@ -88,7 +88,7 @@ const i18n = {
 
     manif_title: '"Don\'t Follow the Crowd, We Create the Direction."',
     manif_p1: 'We believe great brands are never built inside cookie-cutter templates. Founded in 2019, OTB has spent over 7 years in the trenches of the Egyptian market, transforming ambitious manufacturing plants, specialty coffee roasters, and commercial leaders into dominant market authorities.',
-    manif_p2: 'Governed by our 15-Star Executive Management Board and powered by enterprise infrastructure (CoreLink CRM + Manus), we execute with mathematical precision: Strong Product Quality + Real Distribution + Observed Digital Gap + OTB Full-Funnel Engine = Pure Market Dominance.',
+    manif_p2: 'Governed by our 15-Star Executive Management Board and powered by enterprise infrastructure (CoreLink CRM + Sovereign 9-Pillars Engine), we execute with mathematical precision: Strong Product Quality + Real Distribution + Observed Digital Gap + OTB Full-Funnel Engine = Pure Market Dominance.',
 
     calc_tag: 'GROWTH SIMULATOR',
     calc_title: 'Interactive ROI & Growth Simulator',
@@ -212,7 +212,7 @@ const i18n = {
 
     manif_title: '"لا نتبع الحشود، بل نصنع الاتجاه."',
     manif_p1: 'نؤمن أن العلامات الاستثنائية لا تُبنى أبداً داخل قوالب مكررة. منذ تأسيسنا عام 2019، قضينا أكثر من 7 سنوات نقود صعود كبرى مصانع الأغذية ومحامص القهوة والكيانات التجارية من الظل إلى صدارة السوق.',
-    manif_p2: 'نعمل بحوكمة مؤسسية رصينة ومدعومين ببنية تحتية رقمية متقدمة (CoreLink CRM + Manus)، لنطبق معادلتنا الحاسمة: جودة منتج حقيقية + توزيع فعلي + فجوة رقمية ملحوظة + محرك OTB التسويقي = هيمنة سوقية مطلقة.',
+    manif_p2: 'نعمل بحوكمة مؤسسية رصينة ومدعومين ببنية تحتية رقمية متقدمة (CoreLink CRM + منظومة النمو السيادي 9 ركائز)، لنطبق معادلتنا الحاسمة: جودة منتج حقيقية + توزيع فعلي + فجوة رقمية ملحوظة + محرك OTB التسويقي = هيمنة سوقية مطلقة.',
 
     calc_tag: 'محاكي النمو الاستراتيجي',
     calc_title: 'حاسبة العائد والنمو التفاعلية',
@@ -1176,9 +1176,9 @@ function initModal() {
         existingLeads.unshift(newLead);
         localStorage.setItem('otb_leads', JSON.stringify(existingLeads));
 
-        // Auto-initialize Manus Strategic Brief for this lead
+        // Auto-initialize Sovereign Strategic Brief for this lead
         try {
-          const existingBriefs = JSON.parse(localStorage.getItem('otb_manus_briefs') || '{}');
+          const existingBriefs = JSON.parse(localStorage.getItem('otb_sovereign_briefs') || localStorage.getItem('otb_manus_briefs') || '{}');
           const cleanName = (name || '').replace(/[^a-zA-Z0-9\s]/g, '').trim().toUpperCase().split(/\s+/)[0] || 'BRAND';
           const tag = cleanName.length >= 3 ? cleanName.slice(0, 8) : 'CLIENT' + Math.floor(100 + Math.random() * 900);
           const refCode = `OTB-${tag}-2026`;
@@ -1199,9 +1199,10 @@ function initModal() {
             stage_8_lessons: { past_learnings: '', regulatory: '' },
             stage_9_signoff: { signed_by: '', ref_code: refCode, assigned_squad: 'Squad 01 (Growth Engine)' }
           };
+          localStorage.setItem('otb_sovereign_briefs', JSON.stringify(existingBriefs));
           localStorage.setItem('otb_manus_briefs', JSON.stringify(existingBriefs));
         } catch (bErr) {
-          console.warn('Could not initialize Manus brief:', bErr);
+          console.warn('Could not initialize sovereign brief:', bErr);
         }
       } catch (err) {
         console.warn('Could not save lead locally:', err);
