@@ -109,9 +109,15 @@
         <button class="tab-btn" data-tab="corelink" data-i18n="tab_corelink">
           ⚡ عمليات CoreLink
         </button>
-        <button class="tab-btn" data-tab="manus">
-          <span data-i18n="tab_manus">📋 منظومة OTB للنمو السيادي (9 ركائز)</span>
-          <span class="tab-badge" id="manusBadgeCount">1</span>
+        <button class="tab-btn" data-tab="discovery">
+          <span data-i18n="tab_discovery">📋 استكشاف الشركاء السيادي (9 ركائز)</span>
+          <span class="tab-badge" id="discoveryBadgeCount">1</span>
+        </button>
+        <button class="tab-btn" data-tab="academy">
+          <span data-i18n="tab_academy">👑 أكاديمية النمو والـ AI Squads</span>
+        </button>
+        <button class="tab-btn" data-tab="migration">
+          <span data-i18n="tab_migration">💾 مركز الهجرة والنسخ الاحتياطي</span>
         </button>
       </nav>
     </div>
@@ -437,21 +443,21 @@
       <!-- ==========================================================================
            القسم 7: منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)
            ========================================================================== -->
-      <section class="tab-content" id="tab-manus">
+      <section class="tab-content" id="tab-discovery">
         <div class="section-intro-row">
           <div>
-            <h1 class="section-title" data-i18n="manus_title">منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)</h1>
-            <p class="section-desc" data-i18n="manus_desc">النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.</p>
+            <h1 class="section-title" data-i18n="discovery_title">منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)</h1>
+            <p class="section-desc" data-i18n="discovery_desc">النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.</p>
           </div>
           <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
-            <select class="select-filter" id="manusLeadSelect" style="font-weight: 700; color: var(--accent-gold); border-color: rgba(212, 175, 55, 0.4);">
+            <select class="select-filter" id="discoveryLeadSelect" style="font-weight: 700; color: var(--accent-gold); border-color: rgba(212, 175, 55, 0.4);">
               <!-- Lead options populated dynamically -->
             </select>
-            <button class="btn-nav-action" id="btnNewManusBrief">+ بريف سيادي جديد ⚡</button>
-            <button class="btn-nav-action primary" id="btnSaveManusBrief">حفظ وتحديث الاستراتيجية 💾</button>
+            <button class="btn-nav-action" id="btnNewDiscoveryBrief">+ بريف سيادي جديد ⚡</button>
+            <button class="btn-nav-action primary" id="btnSaveDiscoveryBrief">حفظ وتحديث الاستراتيجية 💾</button>
             <button class="btn-nav-action" id="btnOpenClientDossier" style="border-color: rgba(212, 175, 55, 0.6); color: var(--accent-gold-bright); font-weight: 700;">بوابة العميل الرقمية ↗</button>
             <button class="btn-nav-action" id="btnExportStrategyDoc">تصدير الوثيقة 📄</button>
-            <button class="btn-nav-action" id="btnCopyManusWa" style="border-color: rgba(37, 211, 102, 0.4); color: #25D366;">ملخص واتساب 💬</button>
+            <button class="btn-nav-action" id="btnCopyDiscoveryWa" style="border-color: rgba(37, 211, 102, 0.4); color: #25D366;">ملخص واتساب 💬</button>
           </div>
         </div>
 
@@ -459,47 +465,297 @@
         <div class="luxe-panel" style="padding: 1.2rem 1.6rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-color: rgba(212, 175, 55, 0.25);">
           <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
             <div>
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_active_client">العميل / العلامة التجارية النشطة:</span>
-              <strong id="manusClientNameDisplay" style="font-size: 1.15rem; color: var(--text-primary);">مصانع فرانكس للصناعات الغذائية</strong>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="discovery_lbl_active_client">العميل / العلامة التجارية النشطة:</span>
+              <strong id="discoveryClientNameDisplay" style="font-size: 1.15rem; color: var(--text-primary);">مصانع فرانكس للصناعات الغذائية</strong>
             </div>
             <div style="height: 30px; width: 1px; background: var(--border-subtle);"></div>
             <div>
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_service">مسار الخدمة:</span>
-              <span id="manusServiceBadgeDisplay" class="status-pill-live" style="font-size: 0.8rem;">شراكة نمو شاملة (Full-Funnel)</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="discovery_lbl_service">مسار الخدمة:</span>
+              <span id="discoveryServiceBadgeDisplay" class="status-pill-live" style="font-size: 0.8rem;">شراكة نمو شاملة (Full-Funnel)</span>
             </div>
           </div>
 
           <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
             <div>
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_ref">الكود المرجعي الرسمي (Sovereign Ref):</span>
-              <span id="manusRefCodeDisplay" class="ref-code-badge" dir="ltr">OTB-FRANKS-2026</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="discovery_lbl_ref">الكود المرجعي الرسمي (Sovereign Ref):</span>
+              <span id="discoveryRefCodeDisplay" class="ref-code-badge" dir="ltr">OTB-FRANKS-2026</span>
             </div>
             <button class="btn-icon-action" id="btnRegenRefCode" title="توليد كود مرجعي جديد" style="border-radius: 6px;">↺</button>
             <div style="height: 30px; width: 1px; background: var(--border-subtle);"></div>
             <div>
-              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_status">حالة الاستكشاف:</span>
-              <span id="manusStatusBadgeDisplay" class="badge-status-manus completed">مكتمل 100% (9 من 9)</span>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="discovery_lbl_status">حالة الاستكشاف:</span>
+              <span id="discoveryStatusBadgeDisplay" class="badge-status-discovery completed">مكتمل 100% (9 من 9)</span>
             </div>
           </div>
         </div>
 
         <!-- 9-Stage Progress Steps Navigator -->
-        <div class="manus-steps-ribbon font-mono" id="manusStepsNav">
+        <div class="discovery-steps-ribbon font-mono" id="discoveryStepsNav">
           <!-- Step items 1 to 9 injected dynamically -->
         </div>
 
         <!-- Active Stage Form Container -->
         <div class="luxe-panel" style="padding: 2rem; margin-top: 1.5rem; position: relative;">
-          <div id="manusStagePanels">
+          <div id="discoveryStagePanels">
             <!-- Stage content injected dynamically based on current selected stage -->
           </div>
 
           <!-- Bottom Navigation Controls -->
           <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 1rem;">
-            <button class="btn-nav-action" id="btnPrevManusStage" style="min-width: 130px;">← المرحلة السابقة</button>
-            <span id="manusStageStepIndicator" class="font-mono" style="font-size: 0.88rem; color: var(--accent-gold);">المرحلة 1 من 9</span>
-            <button class="btn-nav-action primary" id="btnNextManusStage" style="min-width: 130px;">المرحلة التالية →</button>
+            <button class="btn-nav-action" id="btnPrevDiscoveryStage" style="min-width: 130px;">← المرحلة السابقة</button>
+            <span id="discoveryStageStepIndicator" class="font-mono" style="font-size: 0.88rem; color: var(--accent-gold);">المرحلة 1 من 9</span>
+            <button class="btn-nav-action primary" id="btnNextDiscoveryStage" style="min-width: 130px;">المرحلة التالية →</button>
           </div>
+        </div>
+      </section>
+
+    
+      <!-- ==========================================================================
+           القسم 8: أكاديمية النمو والسيادة وتشكيلات الـ AI (Growth Academy Hub)
+           ========================================================================== -->
+      <section class="tab-content" id="tab-academy">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="acad_title">أكاديمية النمو وتشكيلات الذكاء الاصطناعي السيادية</h1>
+            <p class="section-desc" data-i18n="acad_desc">إدارة تشكيلات الـ AI التسع، مصفوفات الأوامر الفائقة، الـ 19 منهجاً تدريبياً، استوديو البودكاست، وسجل شهادات الاعتماد.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <a href="https://ahmedissamramadan.github.io/otb-growth-academy/" target="_blank" class="btn-nav-action" style="border-color: rgba(212, 175, 55, 0.6); color: var(--accent-gold-bright); font-weight: 700;">معاينة الأكاديمية الحية ↗</a>
+            <button class="btn-nav-action primary" id="btnSaveAcademyChanges">حفظ تعديلات الأكاديمية 💾</button>
+          </div>
+        </div>
+
+        <!-- Academy Quick Stats -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label">تشكيلات الـ AI السيادية</span>
+              <span class="stat-icon">🤖</span>
+            </div>
+            <div class="stat-value" id="acadTotalSquads">9</div>
+            <div class="stat-meta up">100% أنظمة سيادية خاصة بنا</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label">المناهج التدريبية المعتمدة</span>
+              <span class="stat-icon">📚</span>
+            </div>
+            <div class="stat-value" id="acadTotalCurricula">19</div>
+            <div class="stat-meta up">3 مسارات احترافية (A, B, C)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label">قصص النجاح الموثقة</span>
+              <span class="stat-icon">🏆</span>
+            </div>
+            <div class="stat-value" id="acadTotalTriumphs">8</div>
+            <div class="stat-meta up">30M EGP ذروة مبيعات فرانكس</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-top-row">
+              <span class="stat-label">الشهادات الصادرة والمحققة</span>
+              <span class="stat-icon">👑</span>
+            </div>
+            <div class="stat-value" id="acadTotalCerts">2</div>
+            <div class="stat-meta">اعتماد City Kings المشفر</div>
+          </div>
+        </div>
+
+        <!-- Academy Sub-Navigation Pills -->
+        <div style="display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; flex-wrap: wrap;">
+          <button class="btn-nav-action active" id="acadSubTab-squads" onclick="window.switchAcademySubTab('squads')">تشكيلات الفرق والأوامر (9 Squads)</button>
+          <button class="btn-nav-action" id="acadSubTab-curricula" onclick="window.switchAcademySubTab('curricula')">المناهج التدريبية (19 Masterclasses)</button>
+          <button class="btn-nav-action" id="acadSubTab-audio" onclick="window.switchAcademySubTab('audio')">استوديو البودكاست الصوتي</button>
+          <button class="btn-nav-action" id="acadSubTab-certs" onclick="window.switchAcademySubTab('certs')">سجل الشهادات والاعتمادات</button>
+        </div>
+
+        <!-- Sub-panel 1: Squad Roles & Prompt Matrix -->
+        <div id="acadPanel-squads" class="acad-subpanel">
+          <div class="luxe-panel" style="padding: 1.5rem; margin-bottom: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 0.75rem;">
+              <h3 style="font-size: 1.1rem; color: var(--accent-gold);">اختر التشكيل لتعديل مهامه وأوامره:</h3>
+              <select id="acadSquadSelect" class="select-filter" style="min-width: 280px; font-weight: 700; color: var(--accent-gold);">
+                <!-- Populated dynamically -->
+              </select>
+            </div>
+            <div id="acadSquadDetailsContainer">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-panel 2: Curricula Management -->
+        <div id="acadPanel-curricula" class="acad-subpanel" style="display: none;">
+          <div class="luxe-panel" style="padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+              <h3 style="font-size: 1.1rem; color: var(--accent-gold);">جدول المناهج التدريبية الـ 19</h3>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="curriculaSearchInput" oninput="window.filterCurricula(this.value)" class="form-input-luxe" placeholder="بحث في المناهج..." style="max-width: 250px; padding: 0.4rem 0.8rem;">
+              </div>
+            </div>
+            <div style="overflow-x: auto;">
+              <table class="crm-table font-mono" id="acadCurriculaTable">
+                <thead>
+                  <tr>
+                    <th>الكود</th>
+                    <th>عنوان المنهج التدريبي</th>
+                    <th>المسار (Track)</th>
+                    <th>المدة</th>
+                    <th>الوحدات</th>
+                    <th>الحالة</th>
+                    <th>إجراء</th>
+                  </tr>
+                </thead>
+                <tbody id="acadCurriculaTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-panel 3: Audio Studio Broadcast -->
+        <div id="acadPanel-audio" class="acad-subpanel" style="display: none;">
+          <div class="luxe-panel" style="padding: 1.5rem;">
+            <h3 style="font-size: 1.1rem; color: var(--accent-gold); margin-bottom: 1rem;">إدارة بث استوديو البودكاست الصوتي</h3>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">عنوان الحلقة الرئيسية</label>
+              <input type="text" class="form-input-luxe" id="acadAudioTitle">
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">العنوان الفرعي ومحاور النقاش</label>
+              <input type="text" class="form-input-luxe" id="acadAudioSubtitle">
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group-luxe">
+                <label class="form-label-luxe">مدة التسجيل</label>
+                <input type="text" class="form-input-luxe" id="acadAudioDuration">
+              </div>
+              <div class="form-group-luxe">
+                <label class="form-label-luxe">رابط ملف الصوت</label>
+                <input type="text" class="form-input-luxe" id="acadAudioSrc" dir="ltr">
+              </div>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">النقاط الاستراتيجية المستخلصة (سطر لكل نقطة)</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="acadAudioTakeaways" rows="4"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub-panel 4: Certificates Registry -->
+        <div id="acadPanel-certs" class="acad-subpanel" style="display: none;">
+          <div class="luxe-panel" style="padding: 1.5rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem;">
+              <h3 style="font-size: 1.1rem; color: var(--accent-gold);">سجل الاعتمادات والشهادات المشفرة الصادرة</h3>
+              <button class="btn-nav-action primary" onclick="window.openIssueCertModal()">+ إصدار شهادة اعتماد جديدة 👑</button>
+            </div>
+            <div style="overflow-x: auto;">
+              <table class="crm-table font-mono" id="acadCertsTable">
+                <thead>
+                  <tr>
+                    <th>الكود المرجعي المشفر</th>
+                    <th>اسم الحاصل على الاعتماد</th>
+                    <th>الدور المعتمد</th>
+                    <th>تاريخ الإصدار</th>
+                    <th>حالة التحقق</th>
+                  </tr>
+                </thead>
+                <tbody id="acadCertsTableBody">
+                  <!-- Populated dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           القسم 9: مركز الهجرة والنسخ الاحتياطي (Ecosystem Migration & Backup)
+           ========================================================================== -->
+      <section class="tab-content" id="tab-migration">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="mig_title">مركز الهجرة والنسخ الاحتياطي وإدارة الخوادم</h1>
+            <p class="section-desc" data-i18n="mig_desc">نقل وترحيل بيانات المنظومة بالكامل، إدارة محركات التخزين، وربط لوحة التحكم بالـ Backend الرسمي للشركة.</p>
+          </div>
+          <div>
+            <button class="btn-nav-action" id="btnPingServer">فحص حالة الخادم (Ping) ⚡</button>
+          </div>
+        </div>
+
+        <!-- Migration Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+          
+          <!-- Card 1: Full Backup Export -->
+          <div class="luxe-panel" style="padding: 1.8rem; border-color: rgba(212, 175, 55, 0.4);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.8rem;">📦</span>
+              <div>
+                <h3 style="font-size: 1.15rem; color: var(--text-primary);">تصدير نسخة احتياطية شاملة</h3>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Full JSON Ecosystem Export</span>
+              </div>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+              تصدير كافة إعدادات الشركة، سجلات الـ CRM، دراسات الاستكشاف، سوابق الأعمال، وتشكيلات الأكاديمية في ملف JSON موحد فوري.
+            </p>
+            <button class="btn-nav-action primary" id="btnExportFullBackup" style="width: 100%; justify-content: center;">
+              تحميل النسخة الاحتياطية (JSON) 📥
+            </button>
+          </div>
+
+          <!-- Card 2: Restore from Backup -->
+          <div class="luxe-panel" style="padding: 1.8rem; border-color: rgba(255, 255, 255, 0.15);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.8rem;">🔄</span>
+              <div>
+                <h3 style="font-size: 1.15rem; color: var(--text-primary);">استعادة المنظومة من نسخة احتياطية</h3>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Restore & Hydrate Database</span>
+              </div>
+            </div>
+            <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+              استيراد ملف النسخة الاحتياطية السابقة وإعادة بناء كافة الجداول والبيانات في ثوانٍ معدودة دون فقدان أي بيانات.
+            </p>
+            <input type="file" id="backupFileInput" accept=".json" style="display: none;">
+            <button class="btn-nav-action" onclick="document.getElementById('backupFileInput').click()" style="width: 100%; justify-content: center;">
+              اختيار ملف النسخة الاحتياطية 📂
+            </button>
+          </div>
+
+          <!-- Card 3: Storage Driver & API Connectivity -->
+          <div class="luxe-panel" style="padding: 1.8rem; border-color: rgba(255, 255, 255, 0.15);">
+            <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+              <span style="font-size: 1.8rem;">🔌</span>
+              <div>
+                <h3 style="font-size: 1.15rem; color: var(--text-primary);">إعدادات محرك التخزين والـ Backend</h3>
+                <span style="font-size: 0.78rem; color: var(--text-muted);">Storage Driver & API Gateway</span>
+              </div>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">وضع التخزين الحالي</label>
+              <select id="storageModeSelect" class="form-input-luxe">
+                <option value="local">المتصفح المحلي (Local Storage & Static Seeds)</option>
+                <option value="api">خادم الشركة الرسمي (REST API Endpoint)</option>
+              </select>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">عنوان مسار الـ API (API Base URL)</label>
+              <input type="text" id="apiEndpointInput" class="form-input-luxe" value="/api/v1" dir="ltr">
+            </div>
+            <button class="btn-nav-action" id="btnSaveStorageConfig" style="width: 100%; justify-content: center;">
+              حفظ إعدادات الربط ⚡
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Factory Reset Caution Box -->
+        <div class="luxe-panel" style="padding: 1.5rem; border-color: rgba(239, 68, 68, 0.3); background: rgba(239, 68, 68, 0.05); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h4 style="color: #ef4444; font-size: 1rem; margin-bottom: 0.25rem;">⚠️ إعادة ضبط المصنع السيادية (Factory Reset)</h4>
+            <span style="font-size: 0.82rem; color: var(--text-muted);">سيتم مسح كافة التعديلات المحلية وإعادة تعيين البيانات للملفات التأسيسية الأصلية للوكالة.</span>
+          </div>
+          <button class="btn-nav-action" id="btnFactoryReset" style="border-color: #ef4444; color: #ef4444;">إعادة الضبط للمصنع ↺</button>
         </div>
       </section>
 
@@ -665,6 +921,33 @@
     </div>
   </div>
 
+  
+  <!-- ==========================================================================
+       نافذة إصدار شهادة اعتماد ملكية (Modal: Issue Certificate)
+       ========================================================================== -->
+  <div class="admin-modal-overlay" id="issueCertModal">
+    <div class="admin-modal-sheet" style="max-width: 550px;">
+      <div class="modal-sheet-header">
+        <h3 class="modal-sheet-title">+ إصدار شهادة اعتماد ملكية جديدة</h3>
+        <button class="btn-close-modal" onclick="window.closeIssueCertModal()" aria-label="إغلاق">✕</button>
+      </div>
+      <form id="issueCertForm" onsubmit="window.submitIssueCertForm(event)">
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">اسم المستلم المعتمد *</label>
+          <input type="text" class="form-input-luxe" id="certRecipientName" required placeholder="مثال: Ahmed Issam Ramadan">
+        </div>
+        <div class="form-group-luxe">
+          <label class="form-label-luxe">المسمى الوظيفي / الدور المعتمد *</label>
+          <input type="text" class="form-input-luxe" id="certRoleName" required placeholder="مثال: Head of Autonomous Growth Engineering">
+        </div>
+        <button type="submit" class="btn-nav-action primary" style="width: 100%; justify-content: center; padding: 0.85rem;">
+          إصدار واعتماد الشهادة وتوليد الهاش المشفر 👑
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="assets/js/otb-adapter.js"></script>
   <script src="dashboard.js"></script>
 </body>
 </html>

@@ -1,0 +1,443 @@
+{
+  "version": "2026.1.0",
+  "updated_at": "2026-09-06T16:21:58.859Z",
+  "squad_roles": [
+    {
+      "id": "content",
+      "name": "Direct-Response Copywriter & Narrative Architect",
+      "track": "Commercial Persuasion & Narrative Psychology",
+      "lucide": "pen-tool",
+      "officialRole": "Directing high-converting direct-response ad copy, monthly editorial calendars, short-form video scripts, and brand narrative.",
+      "realChallenge": "3 to 5 hours burned daily struggling with Writer's Block, endless client re-edits, and adapting hooks for different formats.",
+      "aiSuperpower": "Instant generation of multi-angle hooks, 15-second PAS video scripts, and psychographic framing via proprietary algorithmic matrices in 90 seconds.",
+      "tools": [
+        "OTB Neural Copy Engine™",
+        "OTB Direct-Response Prompt Matrix",
+        "OTB Linguistic Nuance Analyzer",
+        "OTB Algorithmic Editorial Suite"
+      ],
+      "realPrompt": "Role: Principal Direct-Response Copywriter at OTB Agency.\nEngine: OTB Neural Copy Engine™ (Direct-Response Protocol v4).\nContext: Client is MIX Coffee & Mart (Specialty coffee in Zagazig & Sharkia).\nTask: Formulate 3 high-converting Meta Ad Copy variations applying OTB's proprietary PAS (Problem-Agitation-Solution) architecture.\nParameters: Hook <8 words, sensory specialty bean focus, sovereign commanding tone, high-urgency CTA routing to VIP WhatsApp concierge.",
+      "goldenRule": "AI is an algorithmic amplifier; your human role at OTB is imbuing cultural wit, sharp competitive intuition, and the unmistakable dignity of City Kings."
+    },
+    {
+      "id": "graphic",
+      "name": "Graphic Designer & Visual Brand Architect",
+      "track": "Visual Identity & 3D Packaging Systems",
+      "lucide": "palette",
+      "officialRole": "Leading visual brand systems, social media assets, high-converting paid ad creatives, and premium packaging mockups.",
+      "realChallenge": "Hours wasted on manual masking, tedious photo cutouts, repetitive resizing for stories and banners, and finding matching assets.",
+      "aiSuperpower": "Instant photorealistic product staging, automated aspect expansions, and thumb-stopping visual hierarchy generation in seconds.",
+      "tools": [
+        "OTB Generative Diffusion Studio™",
+        "OTB Neural Product Staging Engine",
+        "OTB Autonomous Vector Architecture",
+        "OTB 3D Packaging Renderer"
+      ],
+      "realPrompt": "Role: Senior Art Director at OTB Agency.\nEngine: OTB Generative Diffusion Studio™ (Photorealistic Synthesis v6).\nContext: Visual campaign for Dr. Zaghloul Luxury Jewelry.\nTask: Synthesize art direction guidelines for high-end gold rings presented on deep obsidian velvet with cinematic golden rim lighting.\nOutput: Lighting setup, hex tokens (#08080A, #D4AF37), typography pairing (KOOkies / Plus Jakarta Sans).",
+      "goldenRule": "Never design a mere 'pretty graphic'; engineer a thumb-stopping visual weapon that halts feed scroll in under 0.4 seconds."
+    },
+    {
+      "id": "video",
+      "name": "Video Editor & Kinetic Motion Director",
+      "track": "Sensory Culinary & Cinematic Short-Form",
+      "lucide": "video",
+      "officialRole": "Filming, assembling, and editing viral short-form reels, high-production 4K food commercials, dynamic motion graphics, and ad cuts.",
+      "realChallenge": "Scrubbing through hours of raw b-roll, manual caption subtitling, sound effects syncing, and endless pacing re-edits.",
+      "aiSuperpower": "Automated silence excision, algorithmic dynamic gold typography subtitling, audio mastering, and instant kinetic multi-aspect reframing.",
+      "tools": [
+        "OTB Kinetic Video Synthesizer™",
+        "OTB Dynamic Sound Architecture",
+        "OTB Algorithmic Hook Pacer",
+        "OTB 4K Kinetic Visual Upscaler"
+      ],
+      "realPrompt": "Role: Lead Motion Director at OTB Agency.\nEngine: OTB Kinetic Video Synthesizer™ (Short-Form Velocity Protocol).\nContext: 15-second viral culinary reel for Rancho's EG.\nTask: Generate frame-by-frame storyboard (0-3s sensory ASMR hook, 3-9s agitation & sizzle, 9-13s solution & cheese pull, 13-15s CTA with crown lockup).",
+      "goldenRule": "The opening 3 seconds dictate 80% of campaign revenue. Win the hook with sound design, kinetic pacing, and visceral curiosity."
+    },
+    {
+      "id": "media",
+      "name": "Media Buyer & Algorithmic Growth Architect",
+      "track": "Paid Traffic Engineering & ROAS Scaling",
+      "lucide": "trending-up",
+      "officialRole": "Managing multi-million Egyptian pound paid advertising budgets across Meta, TikTok, and Google to maximize blended ROAS and revenue.",
+      "realChallenge": "Manual audience setup, daily metric tracking across disjointed dashboards, and calculating break-even economics in spreadsheets.",
+      "aiSuperpower": "Early ad creative fatigue detection, predictive cohort ROAS modeling, automated scaling protocols, and cross-channel attribution analytics.",
+      "tools": [
+        "OTB Predictive ROAS Matrix™",
+        "OTB Sovereign Attribution Protocol",
+        "OTB Dynamic Ad Fatigue Radar",
+        "OTB Automated Scaling Engine"
+      ],
+      "realPrompt": "Role: Principal Media Buyer at OTB Agency.\nEngine: OTB Predictive ROAS Matrix™ (Algorithmic Scaling v5).\nContext: Scaling a 30M EGP FMCG brand with a 25% gross margin.\nTask: Formulate a 48-hour scaling protocol when a creative achieves 5.2x ROAS, defining automated budget injection rules and stop-loss criteria.",
+      "goldenRule": "Creative is your new algorithmic targeting. Deploy relentless visual variance, and systematically scale winning angles every 48 hours."
+    },
+    {
+      "id": "account",
+      "name": "Account Director & Executive Client Partner",
+      "track": "Enterprise Client Retention & Revenue Moats",
+      "lucide": "users",
+      "officialRole": "Leading client communication, managing SLAs, presenting bi-weekly ROI reports, and maintaining client trust and retention.",
+      "realChallenge": "Spending hours writing meeting minutes, drafting repetitive email updates, and defusing client anxieties over vanity metrics.",
+      "aiSuperpower": "Instant audio call synthesis into structured action matrices, automated bi-weekly ROI dashboards, and real-time SLA sentiment tracking.",
+      "tools": [
+        "OTB Executive ROI Synthesizer™",
+        "OTB Sovereign Meeting Intelligence Hub",
+        "OTB Real-Time SLA Monitor",
+        "OTB Autonomous Client Reporting Portal"
+      ],
+      "realPrompt": "Role: Head of Client Success at OTB Agency.\nEngine: OTB Executive ROI Synthesizer™ (Enterprise Briefing Suite).\nContext: Bi-weekly executive review with the CEO of Franks Food Industries.\nTask: Synthesize an executive briefing translating 140M views and 760K engagements into trade order volume, factory production scale, and retail velocity.",
+      "goldenRule": "Clients don't buy vanity metrics; they partner with OTB for executive certainty, revenue expansion, and an unshakeable commercial moat."
+    },
+    {
+      "id": "strategist",
+      "name": "Brand Strategist & Market Positioning Architect",
+      "track": "Category Monopoly & Customer Journey Funnels",
+      "lucide": "compass",
+      "officialRole": "Architecting market positioning, competitive intelligence audits, customer journey funnels, and 90-day growth blueprints.",
+      "realChallenge": "Compiling manual competitor research, reading hundreds of customer reviews, and synthesizing market data into actionable briefs.",
+      "aiSuperpower": "Deep sentiment synthesis across tens of thousands of market reviews, whitespace moat extraction, and institutional 90-day Category Dominance roadmaps.",
+      "tools": [
+        "OTB Market Intelligence Radar™",
+        "OTB Whitespace Moat Analyzer",
+        "OTB Competitive Matrix Architect",
+        "OTB 90-Day Growth Modeler"
+      ],
+      "realPrompt": "Role: Chief Strategy Officer at OTB Agency.\nEngine: OTB Market Intelligence Radar™ (Category Creation v3).\nContext: Onboarding an industrial manufacturer transitioning from wholesale to direct consumer dominance.\nTask: Formulate a 90-day Category Creation blueprint deploying the Ruler & Creator archetype to establish uncontested market monopoly.",
+      "goldenRule": "Positioning is commercial leverage; correct positioning saves half your ad spend by making the brand the only logical choice."
+    },
+    {
+      "id": "moderator",
+      "name": "Community Moderator & Conversational Sales Specialist",
+      "track": "Omnichannel Lead Qualification & Social Commerce",
+      "lucide": "message-square",
+      "officialRole": "Monitoring incoming comments and direct messages on Facebook, Instagram, and WhatsApp, qualifying leads, and closing sales.",
+      "realChallenge": "Typing the same price and location answers 500 times a day, missing high-intent leads during off-hours, and slow reply times.",
+      "aiSuperpower": "Automated 24/7 high-intent lead qualification, natural conversational closing flows, objection neutralization, and VIP CRM handoff.",
+      "tools": [
+        "OTB Conversational AI Concierge™",
+        "OTB High-Intent Lead Qualifier",
+        "OTB Real-Time Sentiment Sentinel",
+        "OTB Sovereign Sales Pipeline"
+      ],
+      "realPrompt": "Role: Lead Conversion Specialist at OTB Agency.\nEngine: OTB Conversational AI Concierge™ (Lead Qualification Protocol).\nContext: Handling high-volume incoming inquiries for MIX Coffee & Mart.\nTask: Deploy 5 conversational objection-handling flows converting 'What is the price?' into instant foot-traffic and online bag orders.",
+      "goldenRule": "Every incoming direct message is an active cash register. Respond with warmth, speed, and a direct pathway to close."
+    },
+    {
+      "id": "sales",
+      "name": "Business Development & B2B Enterprise Director",
+      "track": "Industrial Retainer Acquisition ($2,500 - $10,000/mo)",
+      "lucide": "briefcase",
+      "officialRole": "Prospecting high-value commercial accounts, conducting outreach to industrial leaders in 10th of Ramadan & 6th of October, and closing retainers.",
+      "realChallenge": "Finding verified decision-maker contacts, personalizing dozens of outreach pitches, and managing follow-up cadences.",
+      "aiSuperpower": "Automated corporate digital gap auditing, bespoke high-status proposal generation, and closing $2,500 - $10,000/month industrial retainers.",
+      "tools": [
+        "OTB Sovereign B2B Intelligence Radar™",
+        "OTB Enterprise Account Scoring Engine",
+        "OTB Autonomous Deal Room Architect",
+        "OTB Executive Outreach Protocol"
+      ],
+      "realPrompt": "Role: VP of Business Development at OTB Agency.\nEngine: OTB Sovereign B2B Intelligence Radar™ (High-Ticket Pitch Protocol).\nContext: Pitching a $2,500/month Dominance Retainer to an industrial factory in 10th of Ramadan.\nTask: Formulate a high-status executive proposal presenting our proven industrial case study (Franks Food) and a quantifiable 90-day ROI expansion roadmap.",
+      "goldenRule": "We don't pitch 'posts and graphic designs'; we engineer a battle-tested commercial growth engine that makes partnering with OTB an undeniable financial triumph."
+    },
+    {
+      "id": "ops",
+      "name": "Executive Operations & AI Systems Architect",
+      "track": "CoreLink OS & Autonomous Agency Orchestration",
+      "lucide": "cpu",
+      "officialRole": "Designing operational SOPs, eliminating inter-departmental bottlenecks, maintaining CoreLink CRM, and embedding autonomous AI workflows.",
+      "realChallenge": "Resolving task dependencies, tracking project deadlines, verifying deliverable quality, and managing team bandwidth.",
+      "aiSuperpower": "Automated quality gate verification, intelligent task routing in CoreLink CRM, real-time workload balance, and autonomous internal agent coordination.",
+      "tools": [
+        "OTB CoreLink™ Enterprise OS",
+        "OTB Sovereign Autonomous Task Router",
+        "OTB Algorithmic SOP Orchestrator",
+        "OTB Executive Workload Heatmap"
+      ],
+      "realPrompt": "Role: Chief Operating Officer at OTB Agency.\nEngine: OTB CoreLink™ Enterprise OS (Workflow Orchestration v4).\nContext: Optimizing creative production velocity across agency squads.\nTask: Deploy a zero-friction sequential gate where strategy briefs must achieve 100% executive sign-off before visual and motion production cycles initiate.",
+      "goldenRule": "Discipline is the engine of sustained dominance. Construct systems so resilient that flawless execution becomes an institutional default."
+    }
+  ],
+  "verified_triumphs": [
+    {
+      "name": "Franks Food Industries",
+      "sector": "FMCG / Industrial Processing",
+      "metric": "30M EGP / Mo Peak",
+      "desc": "Propelled from #25 to #2 in Egypt's market hierarchy. Scaled digital and trade revenues to peak 30M EGP/month with 101K+ Facebook followers and viral TikTok reach.",
+      "lucide": "award",
+      "social": "https://www.facebook.com/franks.eg"
+    },
+    {
+      "name": "Rancho's EG",
+      "sector": "Hospitality & Gourmet Dining",
+      "metric": "+36.8% Retention",
+      "desc": "Elevated repeat guest visits by 36.8% and ticket size by 45% through sensory ASMR reels and high-tempo visual storytelling.",
+      "lucide": "flame",
+      "social": "https://www.facebook.com/ranchos.eg"
+    },
+    {
+      "name": "MIX Coffee Mart",
+      "sector": "Specialty Coffee & Retail",
+      "metric": "140M+ Annual Views",
+      "desc": "Established as the undisputed specialty coffee destination in Sharkia. Tripled home-brewing beans and equipment sales via high-converting UGC funnels.",
+      "lucide": "coffee",
+      "social": "https://www.facebook.com/people/MIX-Coffee-Mart/100063935293290/"
+    },
+    {
+      "name": "Elag Labs",
+      "sector": "Medical & Clinical Diagnostics",
+      "metric": "5-Star Authority",
+      "desc": "Positioned as the leading precision diagnostic authority in Zagazig. Streamlined home-visit test reservations with zero client friction.",
+      "lucide": "activity",
+      "social": "https://www.facebook.com/Elaglabs"
+    },
+    {
+      "name": "Sakr Store",
+      "sector": "Apparel & Streetwear Retail",
+      "metric": "4.8x Blended ROAS",
+      "desc": "Scaled seasonal collection launches across Egypt. Maintained 4.8x Meta ad returns with rapid creative rotation and scarcity angles.",
+      "lucide": "shopping-bag",
+      "social": "https://www.facebook.com/sakrstore.eg"
+    },
+    {
+      "name": "Wilson Crepe",
+      "sector": "Culinary & Franchise",
+      "metric": "3.2x Foot-Traffic",
+      "desc": "Dominated local casual dining with high-octane TikTok trends and viral dessert reels, fueling multi-branch expansion.",
+      "lucide": "sparkles",
+      "social": "https://www.facebook.com/wilsoncrepe"
+    },
+    {
+      "name": "Dr. Zaghloul Jewelry",
+      "sector": "High-Net-Worth Luxury Gold",
+      "metric": "High-Ticket Inquiries",
+      "desc": "Crafted deep noir and specular gold visuals for bespoke bridal collections, attracting verified high-ticket buyers across Sharkia.",
+      "lucide": "gem",
+      "social": "https://www.facebook.com/dr.zaghlouljewelry"
+    },
+    {
+      "name": "Rice Patisserie",
+      "sector": "Artisanal Bakery & Desserts",
+      "metric": "+82% Pre-Orders",
+      "desc": "Ignited holiday pre-orders with cinematic macro-focus baking content and automated seasonal WhatsApp reservation flows.",
+      "lucide": "heart",
+      "social": "https://www.facebook.com/ricepatisserie"
+    }
+  ],
+  "curricula": [
+    {
+      "id": 1,
+      "cat": "strategy",
+      "code": "MOD-01",
+      "title": "The Sovereign Agency OS: SOPs & Autonomous Roles",
+      "dur": "1h 45m",
+      "level": "Foundational",
+      "desc": "How OTB structures 9 specialized squads into a zero-friction autonomous execution machine."
+    },
+    {
+      "id": 2,
+      "cat": "strategy",
+      "code": "MOD-02",
+      "title": "Strategic Positioning & Whitespace Moat Engineering",
+      "dur": "2h 15m",
+      "level": "Advanced",
+      "desc": "Finding untapped competitor gaps and transforming traditional factories into category rulers."
+    },
+    {
+      "id": 3,
+      "cat": "creative",
+      "code": "MOD-03",
+      "title": "Direct-Response Psychology & Thumb-Stopping Hooks",
+      "dur": "1h 30m",
+      "level": "Core",
+      "desc": "The linguistic science of halting social feed scroll under 0.4 seconds using PAS frameworks."
+    },
+    {
+      "id": 4,
+      "cat": "creative",
+      "code": "MOD-04",
+      "title": "Visual Brand Architecture & Thumb-Stopping Creatives",
+      "dur": "2h 00m",
+      "level": "Core",
+      "desc": "Crafting luxury noir palettes, specular lighting, and high-converting paid ad assets."
+    },
+    {
+      "id": 5,
+      "cat": "creative",
+      "code": "MOD-05",
+      "title": "Sensory Culinary & Lifestyle Video Direction",
+      "dur": "2h 30m",
+      "level": "Practical",
+      "desc": "Frame-by-frame ASMR sound engineering, kinetic pacing, and viral short-form retention curves."
+    },
+    {
+      "id": 6,
+      "cat": "media",
+      "code": "MOD-06",
+      "title": "Algorithmic Paid Traffic Engineering",
+      "dur": "3h 00m",
+      "level": "Master",
+      "desc": "Meta and TikTok algorithmic scaling rules, Broad targeting, and multi-million pound budget allocations."
+    },
+    {
+      "id": 7,
+      "cat": "media",
+      "code": "MOD-07",
+      "title": "Predictive ROAS Modeling & Ad Fatigue Management",
+      "dur": "1h 45m",
+      "level": "Advanced",
+      "desc": "Mathematical break-even analysis, creative fatigue indicators, and automated 48-hour scale rules."
+    },
+    {
+      "id": 8,
+      "cat": "retainers",
+      "code": "MOD-08",
+      "title": "The $2,500 - $10,000/Month Retainer Architecture",
+      "dur": "2h 15m",
+      "level": "Executive",
+      "desc": "Structuring high-ticket corporate contracts, SLA protection, and selling revenue machines over posts."
+    },
+    {
+      "id": 9,
+      "cat": "retainers",
+      "code": "MOD-09",
+      "title": "Enterprise Client Retention & Executive Reporting",
+      "dur": "1h 40m",
+      "level": "Core",
+      "desc": "Transforming 140M impressions into trade orders and speaking the bottom-line language of CEOs."
+    },
+    {
+      "id": 10,
+      "cat": "systems",
+      "code": "MOD-10",
+      "title": "Conversational Lead Qualification & Social Funnels",
+      "dur": "1h 50m",
+      "level": "Practical",
+      "desc": "Converting Instagram and Facebook DMs into paying customers via automated high-intent routing."
+    },
+    {
+      "id": 11,
+      "cat": "retainers",
+      "code": "MOD-11",
+      "title": "B2B Industrial Lead Generation: 10th of Ramadan",
+      "dur": "2h 20m",
+      "level": "Strategic",
+      "desc": "Executive outreach playbooks for industrial manufacturers and unbranded B2B factories."
+    },
+    {
+      "id": 12,
+      "cat": "strategy",
+      "code": "MOD-12",
+      "title": "Brand Archetypes & Uncompromising Brand Red Lines",
+      "dur": "1h 35m",
+      "level": "Foundational",
+      "desc": "Defining Ruler & Creator positioning and maintaining visual dignity across all marketing touchpoints."
+    },
+    {
+      "id": 13,
+      "cat": "strategy",
+      "code": "MOD-13",
+      "title": "Crisis Management & Public Sentiment Shielding",
+      "dur": "1h 20m",
+      "level": "Tactical",
+      "desc": "Defusing viral PR incidents, negative review storms, and protecting enterprise brand equity."
+    },
+    {
+      "id": 14,
+      "cat": "systems",
+      "code": "MOD-14",
+      "title": "CoreLink CRM Architecture & Project Telemetry",
+      "dur": "2h 05m",
+      "level": "Technical",
+      "desc": "Building unified operational dashboards to monitor creative handoffs and squad workload in real time."
+    },
+    {
+      "id": 15,
+      "cat": "strategy",
+      "code": "MOD-15",
+      "title": "Unit Economics & Gross Margin Calibration",
+      "dur": "1h 45m",
+      "level": "Advanced",
+      "desc": "Ensuring clients make healthy net profit after factoring ad spend, COGS, packaging, and logistics."
+    },
+    {
+      "id": 16,
+      "cat": "creative",
+      "code": "MOD-16",
+      "title": "UGC Creator Squad Orchestration & Script Direction",
+      "dur": "2h 10m",
+      "level": "Practical",
+      "desc": "Directing authentic creator content, sensory food unboxings, and organic viral hooks."
+    },
+    {
+      "id": 17,
+      "cat": "strategy",
+      "code": "MOD-17",
+      "title": "Multi-Location Retail & Store Foot-Traffic Engines",
+      "dur": "1h 55m",
+      "level": "Core",
+      "desc": "Driving physical foot-traffic to specialty cafés and stores using hyper-local geo-targeted ads."
+    },
+    {
+      "id": 18,
+      "cat": "systems",
+      "code": "MOD-18",
+      "title": "Sovereign AI Prompts & Algorithmic Velocity Protocol",
+      "dur": "2h 30m",
+      "level": "Master",
+      "desc": "Engineering internal neural prompts with strict constraints, tone parameters, and zero hallucinations."
+    },
+    {
+      "id": 19,
+      "cat": "strategy",
+      "code": "MOD-19",
+      "title": "The 90-Day Market Monopoly Roadmap: #25 to #2",
+      "dur": "3h 15m",
+      "level": "Capstone",
+      "desc": "The comprehensive crown jewel playbook behind the nationwide expansion of Franks Food Industries."
+    }
+  ],
+  "prompt_studio": {
+    "pas": {
+      "title": "OTB Neural Copy Engine™ · Direct-Response PAS Architecture",
+      "prompt": "Role: Principal Direct-Response Copywriter at OTB Agency.\nEngine: OTB Neural Copy Engine™ (Direct-Response Protocol v4).\nClient Context: MIX Coffee & Mart (Premier Specialty Coffee in Sharkia & Cairo).\nCampaign Goal: Meta Ads drive to VIP WhatsApp Concierge for wholesale bean bundles.\nFramework: PAS (Problem -> Agitation -> Solution).\n\nConstraints:\n1. Opening hook under 7 words. Visceral, sensory, high-curiosity.\n2. Tone: Bold, sovereign, refined luxury (\"The City Kings\").\n3. Avoid generic fluff (\"Best coffee in town\"). Emphasize single-origin Ethiopian beans and precise 93°C extraction.\n4. Deliver 3 distinct headline angles and 1 high-urgency call to action linking to WhatsApp."
+    },
+    "reel": {
+      "title": "OTB Kinetic Video Synthesizer™ · 15-Second Food Reel Storyboard",
+      "prompt": "Role: Lead Motion Director at OTB Agency.\nEngine: OTB Kinetic Video Synthesizer™ (Short-Form Velocity Protocol).\nClient Context: Rancho's EG (Gourmet Burgers & Smoked Meats).\nDeliverable: Shot-by-shot 15-second kinetic storyboard optimized for 9:16 Reels/TikTok.\n\nFormat Requirements:\n- 00:00 - 00:03 [The Sensory Hook]: Extreme macro ASMR sizzle + bun press. Text overlay in gold typography.\n- 00:03 - 00:08 [The Agitation]: Visual contrast between dry commercial fast-food and juicy slow-smoked beef brisket.\n- 00:08 - 00:12 [The Climax]: Melted cheddar cascade with cinematic slow-motion (120fps).\n- 00:12 - 00:15 [The Sovereign CTA]: OTB crown lockup + location pin + WhatsApp table reserve."
+    },
+    "media": {
+      "title": "OTB Predictive ROAS Matrix™ · 48-Hour Scaling Protocol",
+      "prompt": "Role: Principal Media Buyer and Growth Architect at OTB Agency.\nEngine: OTB Predictive ROAS Matrix™ (Algorithmic Scaling v5).\nClient Context: Scaling an FMCG brand on Meta Ads in Egypt with a 25% gross margin.\nCurrent Data: Daily spend 12,000 EGP, Blended ROAS 4.8x, Hook Rate 34%, Frequency 1.3.\n\nTask:\n1. Provide mathematical scaling rules: budget increase pacing (20% vs 40% vertical scaling).\n2. Creative fatigue triggers: define CPA thresholds and frequency alerts for asset retirement.\n3. Automated rules configuration to safeguard blended profitability."
+    },
+    "pitch": {
+      "title": "OTB Sovereign B2B Intelligence Radar™ · $2,500/Month Retainer Proposal",
+      "prompt": "Role: VP of Business Development at OTB Agency.\nEngine: OTB Sovereign B2B Intelligence Radar™ (High-Ticket Deal Room).\nProspect: CEO of a leading industrial packaging factory in 10th of Ramadan City.\nValue Proposition: 90-day Market Dominance Retainer ($2,500/mo).\n\nRequirements:\n1. Reference OTB's verifiable case study (Franks Food Industries: #25 to #2 in Egypt, peak 30M EGP/mo).\n2. Highlight 3 fatal digital gaps in their current wholesale operations.\n3. Present a clear 90-day execution milestone calendar leading to measurable trade revenue."
+    }
+  },
+  "audio_podcast": {
+    "title": "OTB Growth Academy Audio Masterclass #01",
+    "subtitle": "Autonomous AI Orchestration, Franks Case Mastery & Sovereign Retainers",
+    "duration": "18:42",
+    "audio_src": "assets/audio/otb_podcast_ep01.mp3",
+    "takeaways": [
+      "Deconstructing Franks Food transition from manual chaos to 30M EGP monthly scale.",
+      "Sovereign AI prompting: how to generate enterprise-grade copy without generic hallucinations.",
+      "The 9-stage client qualification framework that filters high-ticket brand partners."
+    ]
+  },
+  "certificates_registry": [
+    {
+      "id": "OTB-SOV-8492-2026",
+      "recipient": "Internal Squad Leader",
+      "role": "Head of Growth Engineering",
+      "issue_date": "2026-09-01",
+      "status": "VERIFIED"
+    },
+    {
+      "id": "OTB-SOV-1934-2026",
+      "recipient": "Autonomous Media Buyer",
+      "role": "Predictive Media Buyer",
+      "issue_date": "2026-09-03",
+      "status": "VERIFIED"
+    }
+  ]
+}

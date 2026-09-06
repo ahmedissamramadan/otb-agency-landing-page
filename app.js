@@ -1178,7 +1178,7 @@ function initModal() {
 
         // Auto-initialize Sovereign Strategic Brief for this lead
         try {
-          const existingBriefs = JSON.parse(localStorage.getItem('otb_sovereign_briefs') || localStorage.getItem('otb_manus_briefs') || '{}');
+          const existingBriefs = JSON.parse(localStorage.getItem('otb_sovereign_briefs') || localStorage.getItem('otb_discovery_briefs') || '{}');
           const cleanName = (name || '').replace(/[^a-zA-Z0-9\s]/g, '').trim().toUpperCase().split(/\s+/)[0] || 'BRAND';
           const tag = cleanName.length >= 3 ? cleanName.slice(0, 8) : 'CLIENT' + Math.floor(100 + Math.random() * 900);
           const refCode = `OTB-${tag}-2026`;
@@ -1200,7 +1200,7 @@ function initModal() {
             stage_9_signoff: { signed_by: '', ref_code: refCode, assigned_squad: 'Squad 01 (Growth Engine)' }
           };
           localStorage.setItem('otb_sovereign_briefs', JSON.stringify(existingBriefs));
-          localStorage.setItem('otb_manus_briefs', JSON.stringify(existingBriefs));
+          localStorage.setItem('otb_discovery_briefs', JSON.stringify(existingBriefs));
         } catch (bErr) {
           console.warn('Could not initialize sovereign brief:', bErr);
         }

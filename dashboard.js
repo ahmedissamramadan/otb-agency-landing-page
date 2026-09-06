@@ -15,9 +15,10 @@
   let showcaseData = [];
   let roiConfig = null;
   let contentConfig = null;
-  let manusBriefs = {};
-  let activeManusBriefId = 'lead_101';
-  let currentManusStage = 1;
+  let discoveryBriefs = {};
+  let academyData = null;
+  let activeDiscoveryId = 'lead_101';
+  let currentDiscoveryStage = 1;
 
   // Constants
   const STORAGE_KEYS = {
@@ -28,7 +29,7 @@
     ROI: 'otb_roi_config',
     CONTENT: 'otb_content_config',
     SOVEREIGN_BRIEFS: 'otb_sovereign_briefs',
-    MANUS_BRIEFS: 'otb_manus_briefs',
+    DISCOVERY_BRIEFS: 'otb_discovery_briefs',
     CONFIG_BACKUP: 'otb_full_config'
   };
 
@@ -51,13 +52,25 @@
       tab_roi: '⚙️ محاكي العائد والنمو',
       tab_content: '🌐 الهوية والمحتوى والـ SEO',
       tab_corelink: '⚡ عمليات CoreLink',
-      tab_manus: '📋 منظومة OTB للنمو السيادي (9 ركائز)',
-      manus_title: 'منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)',
-      manus_desc: 'النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.',
-      manus_lbl_active_client: 'العميل / العلامة التجارية النشطة:',
-      manus_lbl_service: 'مسار الخدمة:',
-      manus_lbl_ref: 'الكود المرجعي الرسمي (Sovereign Ref):',
-      manus_lbl_status: 'حالة الاستكشاف:',
+      tab_discovery: '📋 استكشاف الشركاء السيادي (9 ركائز)',
+      discovery_title: 'استكشاف الشركاء السيادي وخطة النمو (9 ركائز)',
+      discovery_desc: 'النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.',
+      discovery_lbl_active_client: 'العميل / العلامة التجارية النشطة:',
+      discovery_lbl_service: 'مسار الخدمة:',
+      discovery_lbl_ref: 'الكود المرجعي الرسمي (Sovereign Ref):',
+      discovery_lbl_status: 'حالة الاستكشاف:',
+      tab_academy: '👑 أكاديمية النمو والـ AI Squads',
+      acad_title: 'أكاديمية النمو وتشكيلات الذكاء الاصطناعي السيادية',
+      acad_desc: 'إدارة تشكيلات الـ AI التسع، مصفوفات الأوامر الفائقة، الـ 19 منهجاً تدريبياً، استوديو البودكاست، وسجل شهادات الاعتماد.',
+      tab_migration: '💾 مركز الهجرة والنسخ الاحتياطي',
+      mig_title: 'مركز الهجرة والنسخ الاحتياطي وإدارة الخوادم',
+      mig_desc: 'نقل وترحيل بيانات المنظومة بالكامل، إدارة محركات التخزين، وربط لوحة التحكم بالـ Backend الرسمي للشركة.',
+      discovery_title: 'منظومة OTB للنمو والاستكشاف السيادي (9 ركائز)',
+      discovery_desc: 'النظام المؤسسي المستقل لتأهيل الشركاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام الميدانية.',
+      discovery_lbl_active_client: 'العميل / العلامة التجارية النشطة:',
+      discovery_lbl_service: 'مسار الخدمة:',
+      discovery_lbl_ref: 'الكود المرجعي الرسمي (Sovereign Ref):',
+      discovery_lbl_status: 'حالة الاستكشاف:',
 
       // Security Gate
       pin_title: 'غرفة عمليات OTB التنفيذية',
@@ -214,13 +227,25 @@
       tab_roi: '⚙️ ROI Simulator',
       tab_content: '🌐 Identity & SEO',
       tab_corelink: '⚡ CoreLink Ops',
-      tab_manus: '📋 OTB Sovereign Growth Matrix (9 Pillars)',
-      manus_title: 'OTB Sovereign Strategic Discovery & Growth Matrix (9 Pillars)',
-      manus_desc: 'Proprietary enterprise strategic discovery engine to architect 90-day market dominance and tactical operational squads.',
-      manus_lbl_active_client: 'Active Partner / Brand:',
-      manus_lbl_service: 'Service Track:',
-      manus_lbl_ref: 'Official Sovereign Ref Code:',
-      manus_lbl_status: 'Strategy Status:',
+      tab_discovery: '📋 Sovereign Strategic Discovery (9 Pillars)',
+      discovery_title: 'OTB Sovereign Strategic Discovery & Growth Matrix (9 Pillars)',
+      discovery_desc: 'Proprietary enterprise strategic discovery engine to architect 90-day market dominance and tactical operational squads.',
+      discovery_lbl_active_client: 'Active Partner / Brand:',
+      discovery_lbl_service: 'Service Track:',
+      discovery_lbl_ref: 'Official Sovereign Ref Code:',
+      discovery_lbl_status: 'Strategy Status:',
+      tab_academy: '👑 Growth Academy & AI Squads',
+      acad_title: 'Growth Academy & Sovereign AI Squads Hub',
+      acad_desc: 'Administer the 9 AI squads, high-persuasion prompt matrices, 19 masterclass curricula, podcast studio, and issued credentials.',
+      tab_migration: '💾 Migration & Backup Center',
+      mig_title: 'Ecosystem Migration, Backup & Server Gateway',
+      mig_desc: 'Migrate entire ecosystem databases, toggle storage engines, and bind admin console to official corporate backend.',
+      discovery_title: 'OTB Sovereign Strategic Discovery & Growth Matrix (9 Pillars)',
+      discovery_desc: 'Proprietary enterprise strategic discovery engine to architect 90-day market dominance and tactical operational squads.',
+      discovery_lbl_active_client: 'Active Partner / Brand:',
+      discovery_lbl_service: 'Service Track:',
+      discovery_lbl_ref: 'Official Sovereign Ref Code:',
+      discovery_lbl_status: 'Strategy Status:',
 
       // Security Gate
       pin_title: 'OTB Command Center',
@@ -475,6 +500,23 @@
      ========================================================================== */
   async function loadInitialData() {
     try {
+      if (window.OTBData) {
+        await OTBData.init();
+        configData = await OTBData.getConfig();
+        leadsData = await OTBData.getLeads();
+        showcaseData = await OTBData.getShowcase();
+        discoveryBriefs = await OTBData.getDiscoveryBriefs();
+        academyData = await OTBData.getAcademyData();
+        roiConfig = configData.roi_multipliers || {};
+        contentConfig = {
+          motto: configData.system ? configData.system.motto : '',
+          motto_ar: configData.system ? configData.system.motto_ar : '',
+          contact: configData.contact || {},
+          metrics: configData.metrics || {}
+        };
+        return;
+      }
+
       const storedLeads = localStorage.getItem(STORAGE_KEYS.LEADS);
       if (storedLeads) leadsData = JSON.parse(storedLeads);
 
@@ -487,10 +529,10 @@
       const storedContent = localStorage.getItem(STORAGE_KEYS.CONTENT);
       if (storedContent) contentConfig = JSON.parse(storedContent);
 
-      const storedManus = localStorage.getItem(STORAGE_KEYS.SOVEREIGN_BRIEFS) || localStorage.getItem(STORAGE_KEYS.MANUS_BRIEFS);
-      if (storedManus) manusBriefs = JSON.parse(storedManus);
+      const storedDiscovery = localStorage.getItem(STORAGE_KEYS.DISCOVERY_BRIEFS) || localStorage.getItem(STORAGE_KEYS.SOVEREIGN_BRIEFS) || localStorage.getItem('otb_manus_briefs');
+      if (storedDiscovery) discoveryBriefs = JSON.parse(storedDiscovery);
 
-      if (!storedLeads || !storedShowcase || !storedRoi || !storedContent || !storedManus) {
+      if (!storedLeads || !storedShowcase || !storedRoi || !storedContent || !storedDiscovery) {
         const resp = await fetch('data/default_dna_config.json');
         if (resp.ok) {
           configData = await resp.json();
@@ -515,10 +557,10 @@
             };
             localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
           }
-          if (!storedManus) {
-            manusBriefs = configData.initial_sovereign_briefs || configData.initial_manus_briefs || {};
-            localStorage.setItem(STORAGE_KEYS.SOVEREIGN_BRIEFS, JSON.stringify(manusBriefs));
-            localStorage.setItem(STORAGE_KEYS.MANUS_BRIEFS, JSON.stringify(manusBriefs));
+          if (!storedDiscovery) {
+            discoveryBriefs = configData.initial_sovereign_briefs || configData.initial_sovereign_briefs || {};
+            localStorage.setItem(STORAGE_KEYS.SOVEREIGN_BRIEFS, JSON.stringify(discoveryBriefs));
+            localStorage.setItem(STORAGE_KEYS.DISCOVERY_BRIEFS, JSON.stringify(discoveryBriefs));
           }
         }
       }
@@ -602,8 +644,12 @@
 
     if (tabId === 'roi') {
       calcLiveRoi();
-    } else if (tabId === 'manus') {
-      renderManusTab();
+    } else if (tabId === 'discovery') {
+      renderDiscoveryTab();
+    } else if (tabId === 'academy') {
+      renderAcademyTab();
+    } else if (tabId === 'migration') {
+      renderMigrationTab();
     }
   }
 
@@ -617,7 +663,9 @@
     renderRoiSettings();
     renderContentSettings();
     renderCoreLinkTasks();
-    renderManusTab();
+    renderDiscoveryTab();
+    renderAcademyTab();
+    renderMigrationTab();
   }
 
   /* 1. Overview */
@@ -721,7 +769,7 @@
 
       const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(greeting)}`;
 
-      const brief = manusBriefs[lead.id];
+      const brief = discoveryBriefs[lead.id];
       const briefRef = brief ? brief.ref_code : null;
 
       return `
@@ -730,7 +778,7 @@
             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
               <strong style="color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(lead.name)}</strong>
               ${lead.status === 'new' ? `<span class="badge-status new" style="font-size: 0.68rem; padding: 0.15rem 0.45rem;">${currentLang === 'ar' ? 'طلب جديد ⚡' : 'NEW ⚡'}</span>` : ''}
-              ${briefRef ? `<span class="ref-code-badge" style="font-size: 0.68rem; padding: 0.12rem 0.45rem; cursor: pointer;" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة مصفوفة النمو السيادي (9 ركائز)' : 'Open Sovereign Growth Matrix'}">${escapeHtml(briefRef)}</span>` : ''}
+              ${briefRef ? `<span class="ref-code-badge" style="font-size: 0.68rem; padding: 0.12rem 0.45rem; cursor: pointer;" onclick="window.openDiscoveryBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة مصفوفة النمو السيادي (9 ركائز)' : 'Open Sovereign Growth Matrix'}">${escapeHtml(briefRef)}</span>` : ''}
             </div>
             ${lead.notes ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(lead.notes)}">${escapeHtml(lead.notes)}</div>` : ''}
           </td>
@@ -760,7 +808,7 @@
               <a href="${waUrl}" target="_blank" rel="noopener" class="btn-icon-action whatsapp" title="${currentLang === 'ar' ? 'محادثة واتساب مخصصة فورية' : 'Direct WhatsApp Chat'}">
                 💬
               </a>
-              <button class="btn-icon-action" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة استراتيجية OTB السيادية (9 ركائز)' : 'Open OTB Sovereign Growth Matrix'}">
+              <button class="btn-icon-action" onclick="window.openDiscoveryBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة استراتيجية OTB السيادية (9 ركائز)' : 'Open OTB Sovereign Growth Matrix'}">
                 📋
               </button>
               <button class="btn-icon-action" onclick="window.copyLeadGreeting('${lead.id}')" title="${currentLang === 'ar' ? 'نسخ رسالة الترحيب للحافظة' : 'Copy Greeting to Clipboard'}">
@@ -936,9 +984,9 @@
   }
 
   /* ==========================================================================
-     7. MANUS STRATEGIC DISCOVERY PIPELINE (9 STAGES)
+     7. OTB SOVEREIGN STRATEGIC DISCOVERY PIPELINE (9 STAGES)
      ========================================================================== */
-  const MANUS_STAGES_META = [
+  const DISCOVERY_STAGES_META = [
     { id: 1, key: 'stage_1_roots', title_ar: '1. الجذور والرؤية', title_en: '1. Roots & Vision', icon: '🏛️' },
     { id: 2, key: 'stage_2_offer', title_ar: '2. العرض والميزة', title_en: '2. Core Offer & Edge', icon: '💎' },
     { id: 3, key: 'stage_3_audience', title_ar: '3. الجمهور والوجع', title_en: '3. Target Audience', icon: '🎯' },
@@ -950,7 +998,7 @@
     { id: 9, key: 'stage_9_signoff', title_ar: '9. الاعتماد والتنفيذ', title_en: '9. Sign-off & Dispatch', icon: '📜' }
   ];
 
-  function generateManusRefCode(name) {
+  function generateDiscoveryRefCode(name) {
     if (!name) return `OTB-BRAND-${new Date().getFullYear()}`;
     const clean = name.replace(/[^a-zA-Z0-9\s]/g, '').trim().toUpperCase();
     const parts = clean.split(/\s+/).filter(Boolean);
@@ -989,16 +1037,16 @@
     return count;
   }
 
-  function getActiveManusBrief() {
-    if (!activeManusBriefId) {
-      if (leadsData.length > 0) activeManusBriefId = leadsData[0].id;
+  function getActiveDiscoveryBrief() {
+    if (!activeDiscoveryId) {
+      if (leadsData.length > 0) activeDiscoveryId = leadsData[0].id;
       else return null;
     }
-    if (!manusBriefs[activeManusBriefId]) {
-      const lead = leadsData.find(l => l.id === activeManusBriefId) || { name: 'New Client', service: 'all', budget: 50000 };
-      const ref = generateManusRefCode(lead.name);
-      manusBriefs[activeManusBriefId] = {
-        lead_id: activeManusBriefId,
+    if (!discoveryBriefs[activeDiscoveryId]) {
+      const lead = leadsData.find(l => l.id === activeDiscoveryId) || { name: 'New Client', service: 'all', budget: 50000 };
+      const ref = generateDiscoveryRefCode(lead.name);
+      discoveryBriefs[activeDiscoveryId] = {
+        lead_id: activeDiscoveryId,
         ref_code: ref,
         brand_name: lead.name,
         service: lead.service || 'all',
@@ -1015,17 +1063,17 @@
         stage_9_signoff: { signed_by: '', ref_code: ref, assigned_squad: 'Squad 01 (Growth Engine)' }
       };
     }
-    return manusBriefs[activeManusBriefId];
+    return discoveryBriefs[activeDiscoveryId];
   }
 
-  function createNewManusBriefForCurrent() {
-    const lead = leadsData.find(l => l.id === activeManusBriefId);
+  function createNewDiscoveryBriefForCurrent() {
+    const lead = leadsData.find(l => l.id === activeDiscoveryId);
     const brandName = prompt(currentLang === 'ar' ? 'أدخل اسم العلامة التجارية / العميل الجديد:' : 'Enter Brand / Client Name:', lead ? lead.name : 'New Brand');
     if (!brandName) return;
 
-    const ref = generateManusRefCode(brandName);
-    manusBriefs[activeManusBriefId] = {
-      lead_id: activeManusBriefId,
+    const ref = generateDiscoveryRefCode(brandName);
+    discoveryBriefs[activeDiscoveryId] = {
+      lead_id: activeDiscoveryId,
       ref_code: ref,
       brand_name: brandName,
       service: lead ? lead.service : 'all',
@@ -1041,9 +1089,9 @@
       stage_8_lessons: { past_learnings: '', regulatory: '' },
       stage_9_signoff: { signed_by: '', ref_code: ref, assigned_squad: 'Squad 01 (Growth Engine)' }
     };
-    currentManusStage = 1;
+    currentDiscoveryStage = 1;
     saveAllState();
-    renderManusTab();
+    renderDiscoveryTab();
     renderCRM();
     showToast(currentLang === 'ar' ? `تم إنشاء بريف جديد بكود: ${ref}` : `New brief created: ${ref}`);
   }
@@ -1051,54 +1099,54 @@
   function captureCurrentStageInputs(brief) {
     if (!brief) return;
 
-    if (currentManusStage === 1) {
+    if (currentDiscoveryStage === 1) {
       brief.stage_1_roots = {
         story: document.getElementById('m_s1_story')?.value.trim() || '',
         vision: document.getElementById('m_s1_vision')?.value.trim() || '',
         core_mission: document.getElementById('m_s1_mission')?.value.trim() || ''
       };
-    } else if (currentManusStage === 2) {
+    } else if (currentDiscoveryStage === 2) {
       brief.stage_2_offer = {
         products: document.getElementById('m_s2_products')?.value.trim() || '',
         unfair_advantage: document.getElementById('m_s2_advantage')?.value.trim() || '',
         pricing: document.getElementById('m_s2_pricing')?.value.trim() || ''
       };
-    } else if (currentManusStage === 3) {
+    } else if (currentDiscoveryStage === 3) {
       brief.stage_3_audience = {
         demographics: document.getElementById('m_s3_demographics')?.value.trim() || '',
         behavior: document.getElementById('m_s3_behavior')?.value.trim() || '',
         pain_points: document.getElementById('m_s3_pain_points')?.value.trim() || ''
       };
-    } else if (currentManusStage === 4) {
+    } else if (currentDiscoveryStage === 4) {
       brief.stage_4_competition = {
         competitors: document.getElementById('m_s4_competitors')?.value.trim() || '',
         weaknesses: document.getElementById('m_s4_weaknesses')?.value.trim() || '',
         whitespace: document.getElementById('m_s4_whitespace')?.value.trim() || ''
       };
-    } else if (currentManusStage === 5) {
+    } else if (currentDiscoveryStage === 5) {
       brief.stage_5_persona = {
         archetype: document.getElementById('m_s5_archetype')?.value.trim() || '',
         tone: document.getElementById('m_s5_tone')?.value.trim() || '',
         visual_cues: document.getElementById('m_s5_visual')?.value.trim() || ''
       };
-    } else if (currentManusStage === 6) {
+    } else if (currentDiscoveryStage === 6) {
       brief.stage_6_goals = {
         roas_target: document.getElementById('m_s6_roas')?.value.trim() || '',
         revenue_target: document.getElementById('m_s6_revenue')?.value.trim() || '',
         kpis: document.getElementById('m_s6_kpis')?.value.trim() || ''
       };
-    } else if (currentManusStage === 7) {
+    } else if (currentDiscoveryStage === 7) {
       brief.stage_7_operations = {
         monthly_budget: document.getElementById('m_s7_budget')?.value.trim() || '',
         channels: document.getElementById('m_s7_channels')?.value.trim() || '',
         roles: document.getElementById('m_s7_roles')?.value.trim() || ''
       };
-    } else if (currentManusStage === 8) {
+    } else if (currentDiscoveryStage === 8) {
       brief.stage_8_lessons = {
         past_learnings: document.getElementById('m_s8_lessons')?.value.trim() || '',
         regulatory: document.getElementById('m_s8_regulatory')?.value.trim() || ''
       };
-    } else if (currentManusStage === 9) {
+    } else if (currentDiscoveryStage === 9) {
       const code = document.getElementById('m_s9_ref')?.value.trim() || brief.ref_code;
       brief.ref_code = code;
       brief.stage_9_signoff = {
@@ -1113,26 +1161,26 @@
     brief.updated_at = new Date().toISOString();
   }
 
-  function renderManusTab() {
-    const brief = getActiveManusBrief();
+  function renderDiscoveryTab() {
+    const brief = getActiveDiscoveryBrief();
     if (!brief) return;
 
     // 1. Populate Lead Select Dropdown
-    const select = document.getElementById('manusLeadSelect');
+    const select = document.getElementById('discoveryLeadSelect');
     if (select) {
       select.innerHTML = leadsData.map(l => {
-        const hasBrief = !!manusBriefs[l.id];
-        const label = `${l.name} (${hasBrief ? manusBriefs[l.id].ref_code : (l.budget ? l.budget.toLocaleString() + ' ج.م' : 'طلب جديد')})`;
-        return `<option value="${l.id}" ${l.id === activeManusBriefId ? 'selected' : ''}>${escapeHtml(label)}</option>`;
+        const hasBrief = !!discoveryBriefs[l.id];
+        const label = `${l.name} (${hasBrief ? discoveryBriefs[l.id].ref_code : (l.budget ? l.budget.toLocaleString() + ' ج.م' : 'طلب جديد')})`;
+        return `<option value="${l.id}" ${l.id === activeDiscoveryId ? 'selected' : ''}>${escapeHtml(label)}</option>`;
       }).join('');
     }
 
     // 2. Update Top Banner Displays
-    const lead = leadsData.find(l => l.id === activeManusBriefId) || {};
-    const clientDisplay = document.getElementById('manusClientNameDisplay');
-    const serviceDisplay = document.getElementById('manusServiceBadgeDisplay');
-    const refDisplay = document.getElementById('manusRefCodeDisplay');
-    const statusDisplay = document.getElementById('manusStatusBadgeDisplay');
+    const lead = leadsData.find(l => l.id === activeDiscoveryId) || {};
+    const clientDisplay = document.getElementById('discoveryClientNameDisplay');
+    const serviceDisplay = document.getElementById('discoveryServiceBadgeDisplay');
+    const refDisplay = document.getElementById('discoveryRefCodeDisplay');
+    const statusDisplay = document.getElementById('discoveryStatusBadgeDisplay');
 
     if (clientDisplay) clientDisplay.textContent = brief.brand_name || lead.name || 'العميل المستهدف';
     if (serviceDisplay) serviceDisplay.textContent = getServiceTitle(brief.service || lead.service);
@@ -1140,7 +1188,7 @@
 
     const compCount = getCompletedStagesCount(brief);
     if (statusDisplay) {
-      statusDisplay.className = 'badge-status-manus ' + (compCount === 9 ? 'completed' : (compCount > 0 ? 'in_progress' : 'draft'));
+      statusDisplay.className = 'badge-status-discovery ' + (compCount === 9 ? 'completed' : (compCount > 0 ? 'in_progress' : 'draft'));
       if (compCount === 9) {
         statusDisplay.textContent = currentLang === 'ar' ? 'مكتمل 100% (9 من 9) ✓' : 'Completed 100% (9 of 9) ✓';
       } else if (compCount > 0) {
@@ -1151,14 +1199,14 @@
     }
 
     // 3. Render 9-Stage Progress Steps Ribbon
-    const stepsNav = document.getElementById('manusStepsNav');
+    const stepsNav = document.getElementById('discoveryStepsNav');
     if (stepsNav) {
-      stepsNav.innerHTML = MANUS_STAGES_META.map(st => {
-        const isAct = st.id === currentManusStage;
+      stepsNav.innerHTML = DISCOVERY_STAGES_META.map(st => {
+        const isAct = st.id === currentDiscoveryStage;
         const isComp = checkStageCompleted(brief, st.id);
         const title = currentLang === 'ar' ? st.title_ar : st.title_en;
         return `
-          <button class="manus-step-btn ${isAct ? 'active' : ''} ${isComp ? 'completed' : ''}" onclick="window.switchManusStage(${st.id})" type="button">
+          <button class="discovery-step-btn ${isAct ? 'active' : ''} ${isComp ? 'completed' : ''}" onclick="window.switchDiscoveryStage(${st.id})" type="button">
             <span class="step-num">${st.id}</span>
             <span class="step-icon">${st.icon}</span>
             <span class="step-name">${escapeHtml(title)}</span>
@@ -1168,41 +1216,41 @@
     }
 
     // 4. Render Active Stage Form Panel
-    renderActiveManusStagePanel(brief);
+    renderActiveDiscoveryStagePanel(brief);
 
     // 5. Update Bottom Navigation Controls
-    const prevBtn = document.getElementById('btnPrevManusStage');
-    const nextBtn = document.getElementById('btnNextManusStage');
-    const stepIndicator = document.getElementById('manusStageStepIndicator');
+    const prevBtn = document.getElementById('btnPrevDiscoveryStage');
+    const nextBtn = document.getElementById('btnNextDiscoveryStage');
+    const stepIndicator = document.getElementById('discoveryStageStepIndicator');
 
-    if (prevBtn) prevBtn.disabled = currentManusStage === 1;
+    if (prevBtn) prevBtn.disabled = currentDiscoveryStage === 1;
     if (nextBtn) {
-      nextBtn.textContent = currentManusStage === 9
+      nextBtn.textContent = currentDiscoveryStage === 9
         ? (currentLang === 'ar' ? 'إنهاء واعتماد البريف ✓' : 'Finish & Sign-off ✓')
         : (currentLang === 'ar' ? 'المرحلة التالية →' : 'Next Stage →');
     }
     if (stepIndicator) {
-      const meta = MANUS_STAGES_META[currentManusStage - 1];
+      const meta = DISCOVERY_STAGES_META[currentDiscoveryStage - 1];
       const title = currentLang === 'ar' ? meta.title_ar : meta.title_en;
-      stepIndicator.textContent = currentLang === 'ar' ? `المرحلة ${currentManusStage} من 9: ${title}` : `Stage ${currentManusStage} of 9: ${title}`;
+      stepIndicator.textContent = currentLang === 'ar' ? `المرحلة ${currentDiscoveryStage} من 9: ${title}` : `Stage ${currentDiscoveryStage} of 9: ${title}`;
     }
 
     // 6. Update Tab Badge Count
-    const tabBadge = document.getElementById('manusBadgeCount');
+    const tabBadge = document.getElementById('discoveryBadgeCount');
     if (tabBadge) {
-      tabBadge.textContent = Object.keys(manusBriefs).length;
+      tabBadge.textContent = Object.keys(discoveryBriefs).length;
     }
   }
 
-  function renderActiveManusStagePanel(brief) {
-    const container = document.getElementById('manusStagePanels');
+  function renderActiveDiscoveryStagePanel(brief) {
+    const container = document.getElementById('discoveryStagePanels');
     if (!container) return;
 
     let html = '';
 
-    if (currentManusStage === 1) {
+    if (currentDiscoveryStage === 1) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">🏛️</span>
             <div>
@@ -1228,9 +1276,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 2) {
+    } else if (currentDiscoveryStage === 2) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">💎</span>
             <div>
@@ -1256,9 +1304,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 3) {
+    } else if (currentDiscoveryStage === 3) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">🎯</span>
             <div>
@@ -1284,9 +1332,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 4) {
+    } else if (currentDiscoveryStage === 4) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">⚔️</span>
             <div>
@@ -1312,9 +1360,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 5) {
+    } else if (currentDiscoveryStage === 5) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">👑</span>
             <div>
@@ -1340,9 +1388,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 6) {
+    } else if (currentDiscoveryStage === 6) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">📈</span>
             <div>
@@ -1368,9 +1416,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 7) {
+    } else if (currentDiscoveryStage === 7) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">⚡</span>
             <div>
@@ -1396,9 +1444,9 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 8) {
+    } else if (currentDiscoveryStage === 8) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">🛡️</span>
             <div>
@@ -1419,14 +1467,14 @@
           </div>
         </div>
       `;
-    } else if (currentManusStage === 9) {
+    } else if (currentDiscoveryStage === 9) {
       html = `
-        <div class="manus-stage-panel">
+        <div class="discovery-stage-panel">
           <div class="stage-header-title">
             <span class="stage-icon">📜</span>
             <div>
               <h3>${currentLang === 'ar' ? 'المرحلة 9: الاعتماد التنفيذي وإطلاق الكود المرجعي' : 'Stage 9: Executive Sign-Off & Official Dispatch'}</h3>
-              <p>${currentLang === 'ar' ? 'المصادقة النهائية على استراتيجية الـ 90 يوماً، ربط الكود المرجعي الرسمي، وإصدار أمر التنفيذ الفوري.' : 'Finalize executive sign-off, seal the official Manus reference code, and trigger operations.'}</p>
+              <p>${currentLang === 'ar' ? 'المصادقة النهائية على استراتيجية الـ 90 يوماً، ربط الكود المرجعي الرسمي، وإصدار أمر التنفيذ الفوري.' : 'Finalize executive sign-off, seal the official Sovereign reference code, and trigger operations.'}</p>
             </div>
           </div>
 
@@ -1445,7 +1493,7 @@
             <label class="form-label-luxe">${currentLang === 'ar' ? '3. الكود المرجعي الرسمي المعتمد (Official Strategy Code):' : '3. Official Strategy Code:'}</label>
             <div style="display: flex; gap: 0.75rem;">
               <input type="text" class="form-input-luxe font-mono" id="m_s9_ref" value="${escapeHtml(brief.ref_code)}" dir="ltr" style="font-weight: 700; color: var(--accent-gold); letter-spacing: 0.08em;">
-              <button type="button" class="btn-nav-action" onclick="window.regenerateActiveManusRefCode()" title="توليد كود جديد">↺ توليد كود</button>
+              <button type="button" class="btn-nav-action" onclick="window.regenerateActiveDiscoveryRefCode()" title="توليد كود جديد">↺ توليد كود</button>
             </div>
           </div>
 
@@ -1466,50 +1514,50 @@
     container.innerHTML = html;
   }
 
-  window.switchManusStage = function (newStageNum) {
-    const brief = getActiveManusBrief();
+  window.switchDiscoveryStage = function (newStageNum) {
+    const brief = getActiveDiscoveryBrief();
     if (brief) {
       captureCurrentStageInputs(brief);
       saveAllState();
     }
-    currentManusStage = Math.max(1, Math.min(9, newStageNum));
-    renderManusTab();
+    currentDiscoveryStage = Math.max(1, Math.min(9, newStageNum));
+    renderDiscoveryTab();
   };
 
-  window.saveCurrentManusBrief = function () {
-    const brief = getActiveManusBrief();
+  window.saveCurrentDiscoveryBrief = function () {
+    const brief = getActiveDiscoveryBrief();
     if (!brief) return;
     captureCurrentStageInputs(brief);
     saveAllState();
-    renderManusTab();
+    renderDiscoveryTab();
     renderCRM();
     const count = getCompletedStagesCount(brief);
     showToast(currentLang === 'ar' ? `تم حفظ وتحديث استراتيجية OTB السيادية بنجاح (${count} من 9 ركائز مكتملة) 💾` : `OTB Sovereign Strategy saved (${count}/9 pillars complete) 💾`);
   };
 
-  window.openManusBriefForLead = function (leadId) {
-    activeManusBriefId = leadId;
-    currentManusStage = 1;
-    switchTab('manus');
-    const brief = getActiveManusBrief();
-    renderManusTab();
+  window.openDiscoveryBriefForLead = function (leadId) {
+    activeDiscoveryId = leadId;
+    currentDiscoveryStage = 1;
+    switchTab('discovery');
+    const brief = getActiveDiscoveryBrief();
+    renderDiscoveryTab();
     showToast(currentLang === 'ar' ? `تم فتح مصفوفة النمو السيادي للعميل: ${brief.brand_name}` : `Opened Sovereign Strategy for: ${brief.brand_name}`);
   };
 
-  window.regenerateActiveManusRefCode = function () {
-    const brief = getActiveManusBrief();
+  window.regenerateActiveDiscoveryRefCode = function () {
+    const brief = getActiveDiscoveryBrief();
     if (!brief) return;
-    const newCode = generateManusRefCode(brief.brand_name || 'BRAND');
+    const newCode = generateDiscoveryRefCode(brief.brand_name || 'BRAND');
     brief.ref_code = newCode;
     if (brief.stage_9_signoff) brief.stage_9_signoff.ref_code = newCode;
     saveAllState();
-    renderManusTab();
+    renderDiscoveryTab();
     renderCRM();
     showToast(currentLang === 'ar' ? `تم توليد الكود المرجعي الجديد: ${newCode}` : `New Ref Code generated: ${newCode}`);
   };
 
   window.exportStrategyDocument = function () {
-    const brief = getActiveManusBrief();
+    const brief = getActiveDiscoveryBrief();
     if (!brief) return;
     captureCurrentStageInputs(brief);
     saveAllState();
@@ -1597,7 +1645,7 @@
   };
 
   window.copyStrategyWhatsAppSummary = function () {
-    const brief = getActiveManusBrief();
+    const brief = getActiveDiscoveryBrief();
     if (!brief) return;
     captureCurrentStageInputs(brief);
     saveAllState();
@@ -1662,22 +1710,22 @@
 
     document.getElementById('btnResetDna')?.addEventListener('click', resetToDna2026);
 
-    // Manus 9-Stage Pipeline Listeners
-    const manusSelect = document.getElementById('manusLeadSelect');
-    if (manusSelect) {
-      manusSelect.addEventListener('change', (e) => {
-        const brief = getActiveManusBrief();
+    // Sovereign 9-Stage Discovery Pipeline Listeners
+    const discoverySelect = document.getElementById('discoveryLeadSelect');
+    if (discoverySelect) {
+      discoverySelect.addEventListener('change', (e) => {
+        const brief = getActiveDiscoveryBrief();
         if (brief) captureCurrentStageInputs(brief);
-        activeManusBriefId = e.target.value;
-        currentManusStage = 1;
-        renderManusTab();
+        activeDiscoveryId = e.target.value;
+        currentDiscoveryStage = 1;
+        renderDiscoveryTab();
       });
     }
 
-    document.getElementById('btnNewManusBrief')?.addEventListener('click', createNewManusBriefForCurrent);
-    document.getElementById('btnSaveManusBrief')?.addEventListener('click', window.saveCurrentManusBrief);
+    document.getElementById('btnNewDiscoveryBrief')?.addEventListener('click', createNewDiscoveryBriefForCurrent);
+    document.getElementById('btnSaveDiscoveryBrief')?.addEventListener('click', window.saveCurrentDiscoveryBrief);
     document.getElementById('btnOpenClientDossier')?.addEventListener('click', () => {
-      const brief = getActiveManusBrief();
+      const brief = getActiveDiscoveryBrief();
       if (brief) {
         captureCurrentStageInputs(brief);
         saveAllState();
@@ -1688,20 +1736,20 @@
       }
     });
     document.getElementById('btnExportStrategyDoc')?.addEventListener('click', window.exportStrategyDocument);
-    document.getElementById('btnCopyManusWa')?.addEventListener('click', window.copyStrategyWhatsAppSummary);
-    document.getElementById('btnRegenRefCode')?.addEventListener('click', window.regenerateActiveManusRefCode);
+    document.getElementById('btnCopyDiscoveryWa')?.addEventListener('click', window.copyStrategyWhatsAppSummary);
+    document.getElementById('btnRegenRefCode')?.addEventListener('click', window.regenerateActiveDiscoveryRefCode);
 
-    document.getElementById('btnPrevManusStage')?.addEventListener('click', () => {
-      if (currentManusStage > 1) {
-        window.switchManusStage(currentManusStage - 1);
+    document.getElementById('btnPrevDiscoveryStage')?.addEventListener('click', () => {
+      if (currentDiscoveryStage > 1) {
+        window.switchDiscoveryStage(currentDiscoveryStage - 1);
       }
     });
 
-    document.getElementById('btnNextManusStage')?.addEventListener('click', () => {
-      if (currentManusStage < 9) {
-        window.switchManusStage(currentManusStage + 1);
+    document.getElementById('btnNextDiscoveryStage')?.addEventListener('click', () => {
+      if (currentDiscoveryStage < 9) {
+        window.switchDiscoveryStage(currentDiscoveryStage + 1);
       } else {
-        window.saveCurrentManusBrief();
+        window.saveCurrentDiscoveryBrief();
         window.exportStrategyDocument();
       }
     });
@@ -1745,11 +1793,11 @@
     localStorage.setItem(STORAGE_KEYS.SHOWCASE, JSON.stringify(showcaseData));
     localStorage.setItem(STORAGE_KEYS.ROI, JSON.stringify(roiConfig));
     localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
-    localStorage.setItem(STORAGE_KEYS.MANUS_BRIEFS, JSON.stringify(manusBriefs));
-    localStorage.setItem(STORAGE_KEYS.SOVEREIGN_BRIEFS, JSON.stringify(manusBriefs));
+    localStorage.setItem(STORAGE_KEYS.DISCOVERY_BRIEFS, JSON.stringify(discoveryBriefs));
+    localStorage.setItem(STORAGE_KEYS.SOVEREIGN_BRIEFS, JSON.stringify(discoveryBriefs));
 
     window.dispatchEvent(new CustomEvent('otb_data_updated', {
-      detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig, manus_briefs: manusBriefs, sovereign_briefs: manusBriefs }
+      detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig, discovery_briefs: discoveryBriefs, sovereign_briefs: discoveryBriefs }
     }));
   }
 
@@ -2020,7 +2068,7 @@
       showcase: showcaseData,
       roi_config: roiConfig,
       content_config: contentConfig,
-      manus_briefs: manusBriefs
+      discovery_briefs: discoveryBriefs
     };
 
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(fullBackup, null, 2));
@@ -2045,7 +2093,7 @@
         if (imported.showcase) showcaseData = imported.showcase;
         if (imported.roi_config) roiConfig = imported.roi_config;
         if (imported.content_config) contentConfig = imported.content_config;
-        if (imported.manus_briefs) manusBriefs = imported.manus_briefs;
+        if (imported.discovery_briefs) discoveryBriefs = imported.discovery_briefs;
 
         saveAllState();
         renderAll();
@@ -2073,7 +2121,7 @@
             contact: cfg.contact,
             metrics: cfg.metrics
           };
-          manusBriefs = cfg.initial_manus_briefs || {};
+          discoveryBriefs = cfg.initial_sovereign_briefs || {};
           saveAllState();
           renderAll();
           showToast(currentLang === 'ar' ? 'تمت استعادة إعدادات DNA 2026 الأصلية بنجاح ↺' : 'Restored to verified DNA 2026 ↺');
@@ -2116,6 +2164,343 @@
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;')
       .replace(/'/g, '&#039;');
+  }
+
+
+  /* ==========================================================================
+     ACADEMY MANAGEMENT CONTROLLER (AI Squads, Curricula, Audio & Certs)
+     ========================================================================== */
+  let activeAcademySubTab = 'squads';
+
+  window.switchAcademySubTab = function(subTab) {
+    activeAcademySubTab = subTab;
+    const subtabs = ['squads', 'curricula', 'audio', 'certs'];
+    subtabs.forEach(t => {
+      const btn = document.getElementById(`acadSubTab-${t}`);
+      const panel = document.getElementById(`acadPanel-${t}`);
+      if (btn) {
+        if (t === subTab) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+      if (panel) {
+        panel.style.display = t === subTab ? 'block' : 'none';
+      }
+    });
+  };
+
+  async function renderAcademyTab() {
+    if (!academyData && window.OTBData) {
+      academyData = await OTBData.getAcademyData();
+    }
+    if (!academyData) return;
+
+    // Quick stats
+    const squads = academyData.squad_roles || [];
+    const curricula = academyData.curricula || [];
+    const triumphs = academyData.verified_triumphs || [];
+    const certs = academyData.certificates_registry || [];
+
+    const elSquads = document.getElementById('acadTotalSquads');
+    if (elSquads) elSquads.textContent = squads.length;
+    const elCurricula = document.getElementById('acadTotalCurricula');
+    if (elCurricula) elCurricula.textContent = curricula.length;
+    const elTriumphs = document.getElementById('acadTotalTriumphs');
+    if (elTriumphs) elTriumphs.textContent = triumphs.length;
+    const elCerts = document.getElementById('acadTotalCerts');
+    if (elCerts) elCerts.textContent = certs.length;
+
+    populateSquadSelect(squads);
+    renderCurriculaTable(curricula);
+    renderAudioStudio(academyData.audio_podcast);
+    renderCertsTable(certs);
+  }
+
+  function populateSquadSelect(squads) {
+    const select = document.getElementById('acadSquadSelect');
+    if (!select) return;
+    select.innerHTML = squads.map((s, idx) => `
+      <option value="${idx}">${s.num} · ${s.role} (${s.title})</option>
+    `).join('');
+
+    select.onchange = () => renderSquadDetails(select.value);
+    if (squads.length > 0) renderSquadDetails(0);
+  }
+
+  function renderSquadDetails(index) {
+    const container = document.getElementById('acadSquadDetailsContainer');
+    if (!container || !academyData || !academyData.squad_roles) return;
+    const s = academyData.squad_roles[index];
+    if (!s) return;
+
+    container.innerHTML = `
+      <div class="acad-squad-grid" style="margin-top: 1.25rem;">
+        <div>
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">الهدف الاستراتيجي (Strategic Objective)</label>
+            <input type="text" class="form-input-luxe" id="squadEditObjective" value="${escapeHtml(s.objective || '')}">
+          </div>
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">المعضلة التقليدية للوكالات (Agency Dilemma)</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="squadEditDilemma" rows="2">${escapeHtml(s.dilemma || '')}</textarea>
+          </div>
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">قدرات الذكاء الاصطناعي الخارقة (5x Superpowers)</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="squadEditPowers" rows="2">${escapeHtml((s.superpower || []).join(' | '))}</textarea>
+          </div>
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">القاعدة الذهبية الصارمة (Strict Rule)</label>
+            <input type="text" class="form-input-luxe" id="squadEditRule" value="${escapeHtml(s.strictRule || '')}">
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <label class="form-label-luxe" style="margin-bottom: 0;">أمر الذكاء الاصطناعي التنفيذي (Sovereign Prompt Matrix)</label>
+            <button class="btn-nav-action" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" onclick="navigator.clipboard.writeText(document.getElementById('squadEditPrompt').value); showToast('تم نسخ البرومبت بنجاح ✓')">نسخ البرومبت 📋</button>
+          </div>
+          <textarea class="acad-code-terminal form-input-luxe" id="squadEditPrompt" rows="11" style="font-size: 0.8rem; height: 260px;">${escapeHtml(s.prompt || '')}</textarea>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderCurriculaTable(curricula, query = '') {
+    const tbody = document.getElementById('acadCurriculaTableBody');
+    if (!tbody) return;
+
+    let list = curricula || [];
+    if (query) {
+      const q = query.toLowerCase();
+      list = list.filter(c => 
+        (c.title && c.title.toLowerCase().includes(q)) || 
+        (c.code && c.code.toLowerCase().includes(q)) ||
+        (c.track && c.track.toLowerCase().includes(q))
+      );
+    }
+
+    tbody.innerHTML = list.map(c => `
+      <tr>
+        <td class="font-mono" style="color: var(--accent-gold); font-weight: 700;">${escapeHtml(c.code || '')}</td>
+        <td style="color: var(--text-primary); font-weight: 600;">${escapeHtml(c.title || '')}</td>
+        <td><span class="status-pill-live" style="font-size: 0.72rem;">${escapeHtml(c.track || '')}</span></td>
+        <td>${escapeHtml(c.duration || '')}</td>
+        <td>${escapeHtml(c.modules || '')}</td>
+        <td><span class="badge-status-discovery completed">معتمد ✓</span></td>
+        <td>
+          <a href="https://ahmedissamramadan.github.io/otb-growth-academy/#curriculum" target="_blank" class="btn-icon-action" title="معاينة المنهج">↗</a>
+        </td>
+      </tr>
+    `).join('');
+  }
+
+  window.filterCurricula = function(val) {
+    if (academyData && academyData.curricula) {
+      renderCurriculaTable(academyData.curricula, val);
+    }
+  };
+
+  function renderAudioStudio(podcast) {
+    if (!podcast) return;
+    const elTitle = document.getElementById('acadAudioTitle');
+    if (elTitle) elTitle.value = podcast.title || '';
+    const elSub = document.getElementById('acadAudioSubtitle');
+    if (elSub) elSub.value = podcast.subtitle || '';
+    const elDur = document.getElementById('acadAudioDuration');
+    if (elDur) elDur.value = podcast.duration || '';
+    const elSrc = document.getElementById('acadAudioSrc');
+    if (elSrc) elSrc.value = podcast.audio_src || '';
+    const elTake = document.getElementById('acadAudioTakeaways');
+    if (elTake) elTake.value = (podcast.takeaways || []).join('\n');
+  }
+
+  function renderCertsTable(certs) {
+    const tbody = document.getElementById('acadCertsTableBody');
+    if (!tbody) return;
+    tbody.innerHTML = (certs || []).map(cert => `
+      <tr>
+        <td class="font-mono" style="color: var(--accent-gold); font-weight: 700;">${escapeHtml(cert.id || '')}</td>
+        <td style="color: var(--text-primary); font-weight: 600;">${escapeHtml(cert.recipient || '')}</td>
+        <td>${escapeHtml(cert.role || '')}</td>
+        <td>${escapeHtml(cert.issue_date || '')}</td>
+        <td><span class="badge-status-discovery completed">VERIFIED 👑</span></td>
+      </tr>
+    `).join('');
+  }
+
+  window.openIssueCertModal = function() {
+    const modal = document.getElementById('issueCertModal');
+    if (modal) modal.classList.add('active');
+  };
+
+  window.closeIssueCertModal = function() {
+    const modal = document.getElementById('issueCertModal');
+    if (modal) modal.classList.remove('active');
+  };
+
+  window.submitIssueCertForm = async function(e) {
+    e.preventDefault();
+    const recipient = document.getElementById('certRecipientName').value.trim();
+    const role = document.getElementById('certRoleName').value.trim();
+    if (!recipient || !role) return;
+
+    const newId = `OTB-SOV-${Math.floor(1000 + Math.random() * 9000)}-2026`;
+    const newCert = {
+      id: newId,
+      recipient,
+      role,
+      issue_date: new Date().toISOString().split('T')[0],
+      status: 'VERIFIED'
+    };
+
+    if (!academyData.certificates_registry) academyData.certificates_registry = [];
+    academyData.certificates_registry.unshift(newCert);
+
+    if (window.OTBData) {
+      await OTBData.saveAcademyData(academyData);
+    }
+    renderCertsTable(academyData.certificates_registry);
+    closeIssueCertModal();
+    showToast(`تم إصدار شهادة الاعتماد بنجاح للكود: ${newId} 👑`);
+  };
+
+  const btnSaveAcad = document.getElementById('btnSaveAcademyChanges');
+  if (btnSaveAcad) {
+    btnSaveAcad.addEventListener('click', async () => {
+      if (!academyData) return;
+      // capture audio studio changes
+      if (!academyData.audio_podcast) academyData.audio_podcast = {};
+      const elTitle = document.getElementById('acadAudioTitle');
+      if (elTitle) academyData.audio_podcast.title = elTitle.value;
+      const elSub = document.getElementById('acadAudioSubtitle');
+      if (elSub) academyData.audio_podcast.subtitle = elSub.value;
+      const elDur = document.getElementById('acadAudioDuration');
+      if (elDur) academyData.audio_podcast.duration = elDur.value;
+      const elSrc = document.getElementById('acadAudioSrc');
+      if (elSrc) academyData.audio_podcast.audio_src = elSrc.value;
+      const elTake = document.getElementById('acadAudioTakeaways');
+      if (elTake) academyData.audio_podcast.takeaways = elTake.value.split('\n').map(s => s.trim()).filter(Boolean);
+
+      // capture current active squad changes
+      const select = document.getElementById('acadSquadSelect');
+      if (select && academyData.squad_roles && academyData.squad_roles[select.value]) {
+        const s = academyData.squad_roles[select.value];
+        const obj = document.getElementById('squadEditObjective');
+        if (obj) s.objective = obj.value;
+        const dil = document.getElementById('squadEditDilemma');
+        if (dil) s.dilemma = dil.value;
+        const pow = document.getElementById('squadEditPowers');
+        if (pow) s.superpower = pow.value.split('|').map(x => x.trim()).filter(Boolean);
+        const rul = document.getElementById('squadEditRule');
+        if (rul) s.strictRule = rul.value;
+        const prm = document.getElementById('squadEditPrompt');
+        if (prm) s.prompt = prm.value;
+      }
+
+      if (window.OTBData) {
+        await OTBData.saveAcademyData(academyData);
+      }
+      showToast('تم حفظ وتحديث منظومة الأكاديمية بنجاح 💾');
+    });
+  }
+
+  /* ==========================================================================
+     MIGRATION & BACKUP CENTER CONTROLLER
+     ========================================================================== */
+  function renderMigrationTab() {
+    if (!window.OTBData) return;
+    const modeSelect = document.getElementById('storageModeSelect');
+    if (modeSelect) modeSelect.value = OTBData.mode || 'local';
+    const apiInput = document.getElementById('apiEndpointInput');
+    if (apiInput) apiInput.value = OTBData.apiBase || '/api/v1';
+  }
+
+  const btnExportBackup = document.getElementById('btnExportFullBackup');
+  if (btnExportBackup) {
+    btnExportBackup.addEventListener('click', async () => {
+      try {
+        if (!window.OTBData) return;
+        const backup = await OTBData.exportFullBackup();
+        const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(backup, null, 2));
+        const a = document.createElement('a');
+        a.href = dataStr;
+        a.download = `otb_ecosystem_backup_${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        showToast('تم تصدير النسخة الاحتياطية الشاملة بنجاح 📥');
+      } catch (err) {
+        alert('Export failed: ' + err);
+      }
+    });
+  }
+
+  const backupInput = document.getElementById('backupFileInput');
+  if (backupInput) {
+    backupInput.addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async (event) => {
+        try {
+          const parsed = JSON.parse(event.target.result);
+          if (window.OTBData) {
+            await OTBData.importFullBackup(parsed);
+          }
+          await loadInitialData();
+          renderAll();
+          showToast('تم استعادة قاعدة البيانات بالكامل وتحديث كافة التبويبات بنجاح ✓');
+        } catch (err) {
+          alert('Invalid backup file: ' + err);
+        }
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  const btnSaveStorage = document.getElementById('btnSaveStorageConfig');
+  if (btnSaveStorage) {
+    btnSaveStorage.addEventListener('click', () => {
+      const mode = document.getElementById('storageModeSelect').value;
+      const api = document.getElementById('apiEndpointInput').value.trim();
+      if (window.OTBData) {
+        OTBData.setMode(mode, api);
+      }
+      showToast('تم حفظ وتطبيق إعدادات وسيط التخزين والـ API ⚡');
+    });
+  }
+
+  const btnPing = document.getElementById('btnPingServer');
+  if (btnPing) {
+    btnPing.addEventListener('click', async () => {
+      const endpoint = (window.OTBData ? OTBData.apiBase : '/api/v1') + '/health';
+      const t0 = performance.now();
+      try {
+        const res = await fetch(endpoint);
+        const t1 = performance.now();
+        const ms = Math.round(t1 - t0);
+        if (res.ok) {
+          const data = await res.json();
+          alert(`✅ الاتصال بالخادم ناجح!\n\nالاستجابة: ${ms}ms\nالحالة: ${data.status || 'OK'}\nالخادم: ${data.agency || 'OTB Production Node'}`);
+        } else {
+          alert(`⚠️ الخادم استجاب برمز خطأ: ${res.status}`);
+        }
+      } catch (err) {
+        alert(`ℹ️ تعذر الاتصال بمسار API (${endpoint}).\nالمنظومة تعمل في وضع المتصفح المستقل (Local Mode) بكفاءة كاملة.`);
+      }
+    });
+  }
+
+  const btnResetDna = document.getElementById('btnFactoryReset');
+  if (btnResetDna) {
+    btnResetDna.addEventListener('click', async () => {
+      if (confirm('هل ترغب بالتأكيد في استعادة كافة بيانات وإعدادات OTB DNA 2026 الأصلية المعتمدة؟ سيتم مسح التعديلات المحلية.')) {
+        if (window.OTBData) {
+          await OTBData.resetToFactoryDefaults();
+        }
+        await loadInitialData();
+        renderAll();
+        showToast('تمت استعادة إعدادات DNA 2026 الأصلية بنجاح ↺');
+      }
+    });
   }
 
   if (document.readyState === 'loading') {

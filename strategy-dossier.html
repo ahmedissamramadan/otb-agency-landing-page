@@ -1031,7 +1031,7 @@
       }
 
       async function loadData() {
-        const localSovereign = localStorage.getItem('otb_sovereign_briefs') || localStorage.getItem('otb_manus_briefs');
+        const localSovereign = localStorage.getItem('otb_sovereign_briefs') || localStorage.getItem('otb_discovery_briefs');
         if (localSovereign) {
           try {
             briefsData = JSON.parse(localSovereign);
@@ -1045,7 +1045,7 @@
             const resp = await fetch('data/default_dna_config.json');
             if (resp.ok) {
               const cfg = await resp.json();
-              briefsData = cfg.initial_sovereign_briefs || cfg.initial_manus_briefs || {};
+              briefsData = cfg.initial_sovereign_briefs || cfg.initial_sovereign_briefs || {};
             }
           } catch (err) {
             console.warn('Could not fetch default config', err);
