@@ -142,6 +142,21 @@
 </head>
 <body>
 
+  <!-- Analog Film Grain & Luxury Noise Overlay -->
+  <div class="film-grain-overlay" aria-hidden="true"></div>
+
+  <!-- Page Transition Curtain Engine -->
+  <div class="page-transition-curtain" id="pageTransitionCurtain" aria-hidden="true">
+    <div class="curtain-inner">
+      <div class="curtain-crown-wrap">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="#FFFFFF">
+          <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+        </svg>
+      </div>
+      <span class="curtain-telemetry font-mono">TELEPORTING NODE · CORELINK</span>
+    </div>
+  </div>
+
   <!-- ==========================================================================
        CINEMATIC PRELOADER & CURTAIN REVEAL (Longeblack Aesthetic)
        ========================================================================== -->
@@ -212,8 +227,19 @@
       <!-- Right Action Cluster (Audio, Lang Switcher, CTA & Mobile Hamburger) -->
       <div class="nav-actions">
         
-        <!-- Tactile Sound Toggle -->
-        <button class="nav-icon-btn" id="soundToggleBtn" aria-label="Toggle Sound Effects" title="Sound Effects">
+        <!-- Quick Command Palette Trigger (CMD+K) -->
+        <button class="nav-icon-btn cmd-palette-trigger font-mono" id="cmdPaletteBtn" aria-label="Open Command Palette" title="Executive Command Palette (Press ⌘K / K)">
+          <span>⌘K</span>
+        </button>
+
+        <!-- Tactile Sound Toggle with Live Equalizer -->
+        <button class="nav-icon-btn sound-toggle-btn" id="soundToggleBtn" aria-label="Toggle Sound Effects" title="Web Audio Synthesizer">
+          <div class="sound-eq-visualizer" id="soundEqVisualizer" aria-hidden="true">
+            <span class="eq-bar eq-b1"></span>
+            <span class="eq-bar eq-b2"></span>
+            <span class="eq-bar eq-b3"></span>
+            <span class="eq-bar eq-b4"></span>
+          </div>
           <svg class="sound-icon-on" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
           </svg>
@@ -306,6 +332,7 @@
         <div class="hero-monolith-box reveal-on-scroll reveal-delay-2" id="heroMonolithBox" onclick="openLightboxForImage('Designs/773995749_18181423747413165_4138231920701878094_n.jpg', 'Earn The Crown · Rule The City', '3D Brand Monolith · 2026', 'OTB Official Monolith', 'Turning ambitious brands into market leaders through strategy, creativity, and performance-driven marketing.')" role="button" tabindex="0" title="Click to expand 3D Monolith Showcase" aria-label="Interactive 3D Chrome Monolith">
           <div class="hero-monolith-inner">
             <div class="hero-monolith-glare"></div>
+            <div class="hero-monolith-chroma" aria-hidden="true"></div>
             <img src="Designs/773995749_18181423747413165_4138231920701878094_n.jpg" alt="OTB Agency 3D Chrome Crown Monolith" class="hero-monolith-img" fetchpriority="high" decoding="async">
             <div class="hero-monolith-badge font-mono">
               <span>👑 EARN THE CROWN · RULE THE CITY</span>
@@ -1444,9 +1471,18 @@
        ========================================================================== -->
   <div class="modal-overlay" id="lightboxOverlay" role="dialog" aria-modal="true" aria-labelledby="lightboxTitle">
     <div class="lightbox-card">
-      <button class="modal-close" onclick="closeLightbox()" aria-label="Close Showcase Preview">✕</button>
+      <button class="modal-close" id="lightboxCloseBtn" onclick="closeLightbox()" aria-label="Close Showcase Preview">✕</button>
       <div class="lightbox-aspect-container">
         <img src="" alt="Project Showcase" id="lightboxImg" class="lightbox-img" decoding="async">
+      </div>
+      <!-- 4K Commercial Video Reel HUD (Awwwards SOTD Tier) -->
+      <div class="lightbox-video-hud font-mono" id="lightboxVideoHud">
+        <div class="hud-left">
+          <span class="hud-rec-dot"></span>
+          <span class="hud-res-badge">4K DCI · 24 FPS</span>
+          <span class="hud-timecode" id="hudTimecode">00:01:24:18</span>
+        </div>
+        <span class="hud-cam-specs">PRORES 422 HQ · S-LOG3 / ACES</span>
       </div>
       <div class="lightbox-caption">
         <div class="lightbox-top-meta">
@@ -1476,6 +1512,112 @@
   <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
   <script src="app.js" defer></script>
+
+  <!-- ==========================================================================
+       EXECUTIVE COMMAND PALETTE (CMD+K / Quick Teleport)
+       ========================================================================== -->
+  <div class="cmd-palette-overlay" id="cmdPaletteOverlay" role="dialog" aria-modal="true" aria-label="Executive Command Palette">
+    <div class="cmd-palette-modal">
+      <div class="cmd-palette-search-row">
+        <span class="cmd-search-icon">🔍</span>
+        <input type="text" class="cmd-palette-input font-mono" id="cmdPaletteInput" placeholder="Type a command or jump to section... (e.g. 'craft', 'franks', 'roi', 'lang')" autocomplete="off" spellcheck="false">
+        <kbd class="cmd-esc-badge font-mono">ESC</kbd>
+      </div>
+
+      <div class="cmd-palette-results font-mono" id="cmdPaletteResults">
+        <div class="cmd-group-label">QUICK TELEPORT</div>
+        <div class="cmd-item" data-action="navigate" data-target="#services">
+          <span class="cmd-item-icon">🏛️</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Selected Craft (5 Pillars)</span>
+            <span class="cmd-item-desc">Enterprise Full-Funnel Architecture</span>
+          </div>
+          <span class="cmd-item-shortcut">G S</span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#benchmark">
+          <span class="cmd-item-icon">👑</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Franks Benchmark Proof</span>
+            <span class="cmd-item-desc">#25 to #2 National Dominance Case Study</span>
+          </div>
+          <span class="cmd-item-shortcut">G B</span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#showcase">
+          <span class="cmd-item-icon">🎨</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Proof of Work (20 Designs)</span>
+            <span class="cmd-item-desc">Documented Client Deliveries & Annual Audits</span>
+          </div>
+          <span class="cmd-item-shortcut">G P</span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#calculator">
+          <span class="cmd-item-icon">⚙️</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Growth Simulator (EGP Calibrated)</span>
+            <span class="cmd-item-desc">Interactive Reach & ROAS Calculator</span>
+          </div>
+          <span class="cmd-item-shortcut">G C</span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#btsFilmstrip">
+          <span class="cmd-item-icon">🎬</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Studio Production & Sets</span>
+            <span class="cmd-item-desc">4K ProRes Camera Rigs & DaVinci Suites</span>
+          </div>
+          <span class="cmd-item-shortcut">G F</span>
+        </div>
+        <div class="cmd-item" data-action="navigate" data-target="#manifesto">
+          <span class="cmd-item-icon">📜</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Official Manifesto</span>
+            <span class="cmd-item-desc">We Create The Direction</span>
+          </div>
+          <span class="cmd-item-shortcut">G M</span>
+        </div>
+
+        <div class="cmd-group-label">EXECUTIVE ACTIONS</div>
+        <div class="cmd-item" data-action="exec" data-fn="openModal">
+          <span class="cmd-item-icon">💬</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Book Strategic Strategy Session</span>
+            <span class="cmd-item-desc">Schedule Roadmap Formulation</span>
+          </div>
+          <span class="cmd-item-shortcut">B S</span>
+        </div>
+        <div class="cmd-item" data-action="exec" data-fn="toggleLanguage">
+          <span class="cmd-item-icon">🌐</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Toggle Language (العربية / English)</span>
+            <span class="cmd-item-desc">Switch Bilingual Direction & Fonts</span>
+          </div>
+          <span class="cmd-item-shortcut">T L</span>
+        </div>
+        <div class="cmd-item" data-action="exec" data-fn="toggleSound">
+          <span class="cmd-item-icon">🔊</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">Toggle Ambient Audio FX</span>
+            <span class="cmd-item-desc">Synthesized Web Audio Engine</span>
+          </div>
+          <span class="cmd-item-shortcut">T S</span>
+        </div>
+        <div class="cmd-item" data-action="page" data-url="dashboard.html">
+          <span class="cmd-item-icon">🔒</span>
+          <div class="cmd-item-content">
+            <span class="cmd-item-title">CoreLink Executive Command Center</span>
+            <span class="cmd-item-desc">PIN 2026 Secured Operations CRM</span>
+          </div>
+          <span class="cmd-item-shortcut">G D</span>
+        </div>
+      </div>
+      
+      <div class="cmd-palette-footer font-mono">
+        <span>Use <kbd>↑</kbd> <kbd>↓</kbd> to navigate</span>
+        <span><kbd>↵</kbd> to select</span>
+        <span><kbd>ESC</kbd> to dismiss</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Back-to-Top Button -->
   <button class="back-to-top-btn font-mono" id="backToTopBtn" aria-label="Back to Top">↑</button>
 </body>

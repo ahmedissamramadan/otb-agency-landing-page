@@ -290,6 +290,23 @@ window.openLightboxForImage = function(src, titleText, catText, metricText, desc
     waBtn.innerText = currentLang === 'ar' ? 'طلب استراتيجية مماثلة 💬' : 'Request Similar Strategy 💬';
   }
 
+  // 4K Video HUD for cinematic production reels & BTS sets
+  const hud = document.getElementById('lightboxVideoHud');
+  const isVideo = (catText && (catText.includes('Food Styling') || catText.includes('CAM RIG') || catText.includes('Production') || catText.includes('COLOR SUITE') || catText.includes('Cinematography') || catText.includes('Video') || catText.includes('Reels') || catText.includes('Visual Storytelling') || catText.includes('Set')));
+  if (hud) {
+    if (isVideo) {
+      hud.classList.add('active');
+      const timecodeEl = document.getElementById('hudTimecode');
+      if (timecodeEl) {
+        const sec = Math.floor(Math.random() * 50 + 10);
+        const fr = Math.floor(Math.random() * 24);
+        timecodeEl.textContent = `00:01:${sec < 10 ? '0' + sec : sec}:${fr < 10 ? '0' + fr : fr}`;
+      }
+    } else {
+      hud.classList.remove('active');
+    }
+  }
+
   if (overlay) overlay.classList.add('active');
   if (window.lenis) window.lenis.stop();
 };
@@ -305,6 +322,8 @@ window.closeLightbox = function() {
    ========================================================================== */
 document.addEventListener('DOMContentLoaded', () => {
   initPreloader();
+  initPageTransitions();
+  initCommandPalette();
   initLenisScroll();
   init3DMonolith();
   initScrollReveal();
@@ -326,6 +345,135 @@ document.addEventListener('DOMContentLoaded', () => {
     toggleLanguage(false);
   }
 });
+
+
+/* ==========================================================================
+   0.2 CINEMATIC PAGE TRANSITIONS (Highway / Barba Style Curtain)
+   ========================================================================== */
+function initPageTransitions() {
+  const curtain = document.getElementById('pageTransitionCurtain');
+  if (!curtain) return;
+
+  document.querySelectorAll('a[href="dashboard.html"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      curtain.classList.add('active');
+      if (window.lenis) window.lenis.stop();
+      playSound('click');
+      setTimeout(() => {
+        window.location.href = 'dashboard.html';
+      }, 650);
+    });
+  });
+}
+
+/* ==========================================================================
+   0.3 EXECUTIVE COMMAND PALETTE (CMD+K / Quick Teleport)
+   ========================================================================== */
+function initCommandPalette() {
+  const overlay = document.getElementById('cmdPaletteOverlay');
+  const trigger = document.getElementById('cmdPaletteBtn');
+  const input = document.getElementById('cmdPaletteInput');
+  const items = document.querySelectorAll('.cmd-item');
+  if (!overlay || !input) return;
+
+  function openPalette() {
+    overlay.classList.add('active');
+    if (window.lenis) window.lenis.stop();
+    input.value = '';
+    filterCommands('');
+    setTimeout(() => input.focus(), 80);
+    playSound('click');
+  }
+
+  function closePalette() {
+    overlay.classList.remove('active');
+    if (window.lenis) window.lenis.start();
+    input.blur();
+  }
+
+  window.openCommandPalette = openPalette;
+  window.closeCommandPalette = closePalette;
+
+  if (trigger) trigger.addEventListener('click', openPalette);
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closePalette();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    // CMD+K or CTRL+K
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      if (overlay.classList.contains('active')) closePalette();
+      else openPalette();
+      return;
+    }
+
+    // Press 'k' when no input is active
+    const activeEl = document.activeElement;
+    const isTyping = activeEl && (activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA' || activeEl.isContentEditable);
+    if (!isTyping && (e.key === 'k' || e.key === 'K') && !overlay.classList.contains('active')) {
+      e.preventDefault();
+      openPalette();
+      return;
+    }
+
+    if (e.key === 'Escape' && overlay.classList.contains('active')) {
+      e.preventDefault();
+      closePalette();
+    }
+  });
+
+  function filterCommands(query) {
+    const q = query.toLowerCase().trim();
+    items.forEach(item => {
+      const title = item.querySelector('.cmd-item-title').textContent.toLowerCase();
+      const desc = item.querySelector('.cmd-item-desc').textContent.toLowerCase();
+      if (!q || title.includes(q) || desc.includes(q)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  input.addEventListener('input', (e) => {
+    filterCommands(e.target.value);
+  });
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const action = item.getAttribute('data-action');
+      closePalette();
+      playSound('click');
+
+      if (action === 'navigate') {
+        const target = item.getAttribute('data-target');
+        const el = document.querySelector(target);
+        if (el && window.lenis) {
+          window.lenis.scrollTo(el, { offset: -70 });
+        } else if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      } else if (action === 'exec') {
+        const fnName = item.getAttribute('data-fn');
+        if (typeof window[fnName] === 'function') {
+          window[fnName]();
+        }
+      } else if (action === 'page') {
+        const url = item.getAttribute('data-url');
+        const curtain = document.getElementById('pageTransitionCurtain');
+        if (curtain) {
+          curtain.classList.add('active');
+          setTimeout(() => { window.location.href = url; }, 650);
+        } else {
+          window.location.href = url;
+        }
+      }
+    });
+  });
+}
 
 /* ==========================================================================
    0. CINEMATIC PRELOADER & CURTAIN REVEAL ENGINE
@@ -598,6 +746,12 @@ function playSound(type) {
 
     const now = ctx.currentTime;
 
+    const soundBtn = document.getElementById('soundToggleBtn');
+    if (soundBtn && isSoundEnabled) {
+      soundBtn.classList.add('eq-burst');
+      setTimeout(() => soundBtn.classList.remove('eq-burst'), 160);
+    }
+
     if (type === 'hover') {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(420, now);
@@ -620,23 +774,38 @@ function playSound(type) {
   }
 }
 
-function initSoundEngine() {
+function updateSoundUI() {
   const soundBtn = document.getElementById('soundToggleBtn');
   const iconOn = soundBtn ? soundBtn.querySelector('.sound-icon-on') : null;
   const iconOff = soundBtn ? soundBtn.querySelector('.sound-icon-off') : null;
 
   if (soundBtn) {
-    soundBtn.addEventListener('click', () => {
-      isSoundEnabled = !isSoundEnabled;
-      if (iconOn && iconOff) {
-        iconOn.style.display = isSoundEnabled ? 'block' : 'none';
-        iconOff.style.display = isSoundEnabled ? 'none' : 'block';
-      }
-      if (isSoundEnabled) playSound('click');
-    });
+    if (isSoundEnabled) {
+      soundBtn.classList.add('sound-active');
+    } else {
+      soundBtn.classList.remove('sound-active');
+    }
   }
+  if (iconOn && iconOff) {
+    iconOn.style.display = isSoundEnabled ? 'block' : 'none';
+    iconOff.style.display = isSoundEnabled ? 'none' : 'block';
+  }
+}
 
-  const clickables = document.querySelectorAll('button, a, .calc-chip, .portfolio-spec-card, .filter-tab-btn');
+window.toggleSound = function() {
+  isSoundEnabled = !isSoundEnabled;
+  updateSoundUI();
+  if (isSoundEnabled) playSound('click');
+};
+
+function initSoundEngine() {
+  const soundBtn = document.getElementById('soundToggleBtn');
+  if (soundBtn) {
+    soundBtn.addEventListener('click', window.toggleSound);
+  }
+  updateSoundUI();
+
+  const clickables = document.querySelectorAll('button, a, .calc-chip, .portfolio-spec-card, .filter-tab-btn, .cmd-item');
   clickables.forEach(item => {
     item.addEventListener('mouseenter', () => playSound('hover'), { passive: true });
     item.addEventListener('click', () => playSound('click'), { passive: true });
@@ -822,17 +991,38 @@ function initShowcaseFilters() {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+      playSound('click');
 
       const filter = btn.getAttribute('data-filter');
 
       cards.forEach(card => {
         const cat = card.getAttribute('data-cat');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
+        const matches = (filter === 'all' || cat === filter);
+        if (!matches) {
+          card.classList.add('is-filtering-out');
+          card.classList.remove('is-filtering-in');
         }
       });
+
+      setTimeout(() => {
+        let delay = 0;
+        cards.forEach(card => {
+          const cat = card.getAttribute('data-cat');
+          const matches = (filter === 'all' || cat === filter);
+          if (matches) {
+            card.style.display = 'block';
+            card.classList.remove('is-filtering-out');
+            card.style.transitionDelay = delay + 's';
+            delay += 0.025;
+            requestAnimationFrame(() => {
+              card.classList.add('is-filtering-in');
+            });
+          } else {
+            card.style.display = 'none';
+            card.style.transitionDelay = '0s';
+          }
+        });
+      }, 160);
     });
   });
 }
@@ -857,6 +1047,32 @@ function initLightbox() {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         openCard();
+      }
+    });
+  });
+
+  const btsCards = document.querySelectorAll('.bts-card');
+  btsCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    const openBts = () => {
+      const img = card.querySelector('img');
+      const title = card.querySelector('.bts-card-title')?.textContent || 'Studio Production Set';
+      const tag = card.querySelector('.bts-tag-pill')?.textContent || 'Food Styling & Production';
+      const loc = card.querySelector('.bts-card-loc')?.textContent || 'Cairo Stage 01';
+      const src = img ? img.getAttribute('src') : '';
+      window.openLightboxForImage(
+        src,
+        title,
+        `Production Set · ${tag}`,
+        `Live Location · ${loc}`,
+        'High-end commercial cinematography captured on location with cinema camera rigs, specialized probe lenses, and dedicated food styling suites.'
+      );
+    };
+    card.addEventListener('click', openBts);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openBts();
       }
     });
   });

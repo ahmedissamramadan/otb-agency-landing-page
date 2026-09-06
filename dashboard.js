@@ -932,6 +932,21 @@
     document.getElementById('importFileInput')?.addEventListener('change', handleImportFile);
 
     document.getElementById('btnResetDna')?.addEventListener('click', resetToDna2026);
+
+    // Page Transition Curtain back to Official Site
+    const viewSiteLinks = document.querySelectorAll('a[href="index.html"]');
+    viewSiteLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const curtain = document.getElementById('pageTransitionCurtain');
+        if (curtain) {
+          e.preventDefault();
+          curtain.classList.add('active');
+          setTimeout(() => {
+            window.location.href = link.href || 'index.html';
+          }, 650);
+        }
+      });
+    });
   }
 
   function saveAllState() {

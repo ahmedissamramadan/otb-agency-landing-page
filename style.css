@@ -2355,3 +2355,362 @@ html[dir="rtl"] .back-to-top-btn {
     right: auto;
   }
 }
+
+
+/* ==========================================================================
+   PINNACLE AWWWARDS SUITE (100% Perfection Tier)
+   ========================================================================== */
+
+/* 1. Analog Film Grain Overlay */
+.film-grain-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 91;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* 2. Page Transition Curtain */
+.page-transition-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 99998;
+  background: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  pointer-events: none;
+  transition: transform 0.65s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.page-transition-curtain.active {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.curtain-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.curtain-crown-wrap {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #09090B;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  animation: crownPulse 1.8s ease-in-out infinite alternate;
+}
+
+.curtain-telemetry {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: #71717A;
+  text-transform: uppercase;
+}
+
+/* 3. Audio Equalizer Visualizer in Navbar */
+.sound-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.sound-eq-visualizer {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.eq-bar {
+  width: 2px;
+  height: 3px;
+  background: #71717A;
+  border-radius: 1px;
+  transition: height 0.15s ease, background 0.2s ease;
+}
+
+.sound-active .eq-bar {
+  background: #D4AF37;
+  animation: eqBounce 1.2s ease-in-out infinite alternate;
+}
+
+.sound-active .eq-b1 { animation-delay: 0.1s; }
+.sound-active .eq-b2 { animation-delay: 0.35s; }
+.sound-active .eq-b3 { animation-delay: 0.2s; }
+.sound-active .eq-b4 { animation-delay: 0.45s; }
+
+@keyframes eqBounce {
+  0% { height: 3px; }
+  50% { height: 11px; }
+  100% { height: 5px; }
+}
+
+.sound-active.eq-burst .eq-bar {
+  height: 12px !important;
+  background: #FFFFFF !important;
+}
+
+/* 4. Command Palette Trigger & Modal */
+.cmd-palette-trigger {
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: #A1A1AA;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0 10px;
+  border-radius: var(--radius-full);
+}
+
+.cmd-palette-trigger:hover {
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.cmd-palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99990;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 10vh;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.cmd-palette-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.cmd-palette-modal {
+  width: 100%;
+  max-width: 640px;
+  background: #09090B;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transform: translateY(-15px);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-palette-overlay.active .cmd-palette-modal {
+  transform: translateY(0);
+}
+
+.cmd-palette-search-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cmd-search-icon {
+  font-size: 1.1rem;
+  opacity: 0.8;
+}
+
+.cmd-palette-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.cmd-palette-input::placeholder {
+  color: #52525B;
+  font-size: 0.85rem;
+}
+
+.cmd-esc-badge {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: #71717A;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.cmd-palette-results {
+  max-height: 380px;
+  overflow-y: auto;
+  padding: 0.8rem;
+}
+
+.cmd-group-label {
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: #71717A;
+  padding: 0.6rem 0.8rem 0.3rem 0.8rem;
+  font-weight: 700;
+}
+
+.cmd-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.cmd-item:hover, .cmd-item.selected {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
+}
+
+html[dir="rtl"] .cmd-item:hover, html[dir="rtl"] .cmd-item.selected {
+  transform: translateX(-4px);
+}
+
+.cmd-item-icon {
+  font-size: 1.15rem;
+}
+
+.cmd-item-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.cmd-item-title {
+  color: #FFFFFF;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.cmd-item-desc {
+  color: #71717A;
+  font-size: 0.72rem;
+}
+
+.cmd-item-shortcut {
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.cmd-palette-footer {
+  padding: 0.75rem 1.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.68rem;
+  color: #52525B;
+  background: #050505;
+}
+
+.cmd-palette-footer kbd {
+  color: #A1A1AA;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+/* 5. Holographic Specular Lighting on 3D Monolith */
+.hero-monolith-chroma {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(circle at var(--glare-x, 50%) var(--glare-y, 50%), rgba(255, 255, 255, 0.35) 0%, rgba(212, 175, 55, 0.15) 30%, transparent 70%);
+  mix-blend-mode: color-dodge;
+  opacity: var(--glare-opacity, 0);
+  transition: opacity 0.25s ease;
+}
+
+/* 6. 4K Commercial Video Reel HUD in Lightbox */
+.lightbox-video-hud {
+  display: none;
+  background: #000000;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem 1.2rem;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+
+.lightbox-video-hud.active {
+  display: flex;
+}
+
+.hud-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hud-rec-dot {
+  width: 7px;
+  height: 7px;
+  background: #EF4444;
+  border-radius: 50%;
+  animation: pulseDot 1s infinite alternate;
+}
+
+.hud-res-badge {
+  color: #D4AF37;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.hud-timecode {
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.hud-cam-specs {
+  color: #71717A;
+}
+
+/* 7. FLIP Animated Filter Sorting */
+.portfolio-spec-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.portfolio-spec-card.is-filtering-out {
+  transform: scale(0.92) translateY(15px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.portfolio-spec-card.is-filtering-in {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}

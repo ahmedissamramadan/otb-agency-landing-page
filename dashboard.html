@@ -15,6 +15,17 @@
 </head>
 <body>
 
+  <!-- Analog Film Grain Overlay -->
+  <div class="film-grain-overlay" aria-hidden="true"></div>
+
+  <!-- Page Transition Curtain Engine -->
+  <div class="page-transition-curtain" id="pageTransitionCurtain" aria-hidden="true">
+    <div class="curtain-inner" style="text-align:center; color:#fff;">
+      <div style="font-size: 2.2rem; margin-bottom: 0.8rem; animation: crownPulse 1.8s infinite alternate;">👑</div>
+      <div style="font-family: monospace; font-size: 0.72rem; letter-spacing: 3px; color: #71717a;">RETURN TO HOME NODE · OTB</div>
+    </div>
+  </div>
+
   <!-- ==========================================================================
        1. بوابة الأمان التنفيذية (Security PIN Gate)
        ========================================================================== -->
@@ -70,7 +81,7 @@
 
       <div class="nav-actions-group">
         <button class="btn-nav-action" id="btnLangToggle">🌐 English (LTR)</button>
-        <a href="index.html" target="_blank" rel="noopener" class="btn-nav-action" data-i18n="btn_view_site">معاينة الواجهة الرسمية ↗</a>
+        <a href="index.html" class="btn-nav-action" data-i18n="btn_view_site">معاينة الواجهة الرسمية ↗</a>
         <button class="btn-nav-action primary" id="btnSyncAll" data-i18n="btn_sync">مزامنة وحفظ التعديلات ⚡</button>
         <button class="btn-nav-action" id="btnLogout" data-i18n="btn_logout" title="Lock Dashboard">قفل المنظومة 🔒</button>
       </div>
