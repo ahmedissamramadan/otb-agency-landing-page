@@ -15,6 +15,9 @@
   let showcaseData = [];
   let roiConfig = null;
   let contentConfig = null;
+  let manusBriefs = {};
+  let activeManusBriefId = 'lead_101';
+  let currentManusStage = 1;
 
   // Constants
   const STORAGE_KEYS = {
@@ -24,6 +27,7 @@
     SHOWCASE: 'otb_showcase_data',
     ROI: 'otb_roi_config',
     CONTENT: 'otb_content_config',
+    MANUS_BRIEFS: 'otb_manus_briefs',
     CONFIG_BACKUP: 'otb_full_config'
   };
 
@@ -47,6 +51,13 @@
       tab_roi: '⚙️ محاكي العائد والنمو',
       tab_content: '🌐 الهوية والمحتوى والـ SEO',
       tab_corelink: '⚡ عمليات CoreLink',
+      tab_manus: '📋 بريف واستراتيجية Manus',
+      manus_title: 'منظومة بريف واستكشاف Manus الاستراتيجية (9 مراحل)',
+      manus_desc: 'النظام المؤسسي المعتمد لتأهيل العملاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام التنفيذية.',
+      manus_lbl_active_client: 'العميل / العلامة التجارية النشطة:',
+      manus_lbl_service: 'مسار الخدمة:',
+      manus_lbl_ref: 'الكود المرجعي الرسمي (Manus Ref):',
+      manus_lbl_status: 'حالة الاستكشاف:',
 
       // Security Gate
       pin_title: 'غرفة عمليات OTB التنفيذية',
@@ -203,6 +214,13 @@
       tab_roi: '⚙️ ROI Simulator',
       tab_content: '🌐 Identity & SEO',
       tab_corelink: '⚡ CoreLink Ops',
+      tab_manus: '📋 Manus Brief & Strategy',
+      manus_title: 'Manus Strategic Discovery Pipeline (9 Stages)',
+      manus_desc: 'Official enterprise client discovery pipeline to architect 90-day market dominance strategies and role distribution.',
+      manus_lbl_active_client: 'Active Client / Brand:',
+      manus_lbl_service: 'Service Track:',
+      manus_lbl_ref: 'Official Reference Code:',
+      manus_lbl_status: 'Discovery Status:',
 
       // Security Gate
       pin_title: 'OTB Command Center',
@@ -469,7 +487,10 @@
       const storedContent = localStorage.getItem(STORAGE_KEYS.CONTENT);
       if (storedContent) contentConfig = JSON.parse(storedContent);
 
-      if (!storedLeads || !storedShowcase || !storedRoi || !storedContent) {
+      const storedManus = localStorage.getItem(STORAGE_KEYS.MANUS_BRIEFS);
+      if (storedManus) manusBriefs = JSON.parse(storedManus);
+
+      if (!storedLeads || !storedShowcase || !storedRoi || !storedContent || !storedManus) {
         const resp = await fetch('data/default_dna_config.json');
         if (resp.ok) {
           configData = await resp.json();
@@ -493,6 +514,10 @@
               metrics: configData.metrics
             };
             localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
+          }
+          if (!storedManus) {
+            manusBriefs = configData.initial_manus_briefs || {};
+            localStorage.setItem(STORAGE_KEYS.MANUS_BRIEFS, JSON.stringify(manusBriefs));
           }
         }
       }
@@ -576,6 +601,8 @@
 
     if (tabId === 'roi') {
       calcLiveRoi();
+    } else if (tabId === 'manus') {
+      renderManusTab();
     }
   }
 
@@ -589,6 +616,7 @@
     renderRoiSettings();
     renderContentSettings();
     renderCoreLinkTasks();
+    renderManusTab();
   }
 
   /* 1. Overview */
@@ -692,12 +720,16 @@
 
       const waUrl = `https://wa.me/${waPhone}?text=${encodeURIComponent(greeting)}`;
 
+      const brief = manusBriefs[lead.id];
+      const briefRef = brief ? brief.ref_code : null;
+
       return `
         <tr>
           <td>
             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
               <strong style="color: var(--text-primary); font-size: 0.95rem;">${escapeHtml(lead.name)}</strong>
               ${lead.status === 'new' ? `<span class="badge-status new" style="font-size: 0.68rem; padding: 0.15rem 0.45rem;">${currentLang === 'ar' ? 'طلب جديد ⚡' : 'NEW ⚡'}</span>` : ''}
+              ${briefRef ? `<span class="ref-code-badge" style="font-size: 0.68rem; padding: 0.12rem 0.45rem; cursor: pointer;" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة بريف Manus (9 مراحل)' : 'Open Manus Strategic Brief'}">${escapeHtml(briefRef)}</span>` : ''}
             </div>
             ${lead.notes ? `<div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.2rem; max-width: 280px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${escapeHtml(lead.notes)}">${escapeHtml(lead.notes)}</div>` : ''}
           </td>
@@ -727,8 +759,11 @@
               <a href="${waUrl}" target="_blank" rel="noopener" class="btn-icon-action whatsapp" title="${currentLang === 'ar' ? 'محادثة واتساب مخصصة فورية' : 'Direct WhatsApp Chat'}">
                 💬
               </a>
-              <button class="btn-icon-action" onclick="window.copyLeadGreeting('${lead.id}')" title="${currentLang === 'ar' ? 'نسخ رسالة الترحيب للحافظة' : 'Copy Greeting to Clipboard'}">
+              <button class="btn-icon-action" onclick="window.openManusBriefForLead('${lead.id}')" title="${currentLang === 'ar' ? 'فتح وإدارة بريف واستراتيجية Manus (9 مراحل)' : 'Open Manus 9-Stage Strategic Discovery'}">
                 📋
+              </button>
+              <button class="btn-icon-action" onclick="window.copyLeadGreeting('${lead.id}')" title="${currentLang === 'ar' ? 'نسخ رسالة الترحيب للحافظة' : 'Copy Greeting to Clipboard'}">
+                📝
               </button>
               <button class="btn-icon-action danger" onclick="window.deleteLead('${lead.id}')" title="${currentLang === 'ar' ? 'حذف هذا السجل' : 'Delete Lead'}">
                 🗑️
@@ -900,6 +935,699 @@
   }
 
   /* ==========================================================================
+     7. MANUS STRATEGIC DISCOVERY PIPELINE (9 STAGES)
+     ========================================================================== */
+  const MANUS_STAGES_META = [
+    { id: 1, key: 'stage_1_roots', title_ar: '1. الجذور والرؤية', title_en: '1. Roots & Vision', icon: '🏛️' },
+    { id: 2, key: 'stage_2_offer', title_ar: '2. العرض والميزة', title_en: '2. Core Offer & Edge', icon: '💎' },
+    { id: 3, key: 'stage_3_audience', title_ar: '3. الجمهور والوجع', title_en: '3. Target Audience', icon: '🎯' },
+    { id: 4, key: 'stage_4_competition', title_ar: '4. المنافسة والفجوة', title_en: '4. Market Whitespace', icon: '⚔️' },
+    { id: 5, key: 'stage_5_persona', title_ar: '5. الهوية والبيرسونا', title_en: '5. Brand Persona', icon: '👑' },
+    { id: 6, key: 'stage_6_goals', title_ar: '6. الأهداف والـ ROAS', title_en: '6. 90-Day Goals & ROAS', icon: '📈' },
+    { id: 7, key: 'stage_7_operations', title_ar: '7. التشغيل والميزانية', title_en: '7. Budget & Squad Matrix', icon: '⚡' },
+    { id: 8, key: 'stage_8_lessons', title_ar: '8. الدروس والقيود', title_en: '8. Past Learnings & Rules', icon: '🛡️' },
+    { id: 9, key: 'stage_9_signoff', title_ar: '9. الاعتماد والتنفيذ', title_en: '9. Sign-off & Dispatch', icon: '📜' }
+  ];
+
+  function generateManusRefCode(name) {
+    if (!name) return `OTB-BRAND-${new Date().getFullYear()}`;
+    const clean = name.replace(/[^a-zA-Z0-9\s]/g, '').trim().toUpperCase();
+    const parts = clean.split(/\s+/).filter(Boolean);
+    let tag = 'GROWTH';
+    if (parts.length > 0 && parts[0].length >= 3) {
+      tag = parts[0].slice(0, 8);
+    } else if (name.includes('فرانكس') || name.toLowerCase().includes('franks')) {
+      tag = 'FRANKS';
+    } else if (name.includes('كوفي') || name.toLowerCase().includes('coffee')) {
+      tag = 'COFFEE';
+    } else if (name.includes('ويلسون') || name.toLowerCase().includes('wilson')) {
+      tag = 'WILSON';
+    } else if (name.includes('علاج') || name.toLowerCase().includes('elag')) {
+      tag = 'ELAG';
+    } else {
+      tag = 'CLIENT' + Math.floor(100 + Math.random() * 900);
+    }
+    return `OTB-${tag}-2026`;
+  }
+
+  function checkStageCompleted(brief, stageNum) {
+    if (!brief) return false;
+    const objKey = Object.keys(brief).find(k => k.startsWith(`stage_${stageNum}_`));
+    if (!objKey || !brief[objKey]) return false;
+    const stageObj = brief[objKey];
+    const vals = Object.values(stageObj);
+    return vals.length > 0 && vals.some(v => typeof v === 'string' && v.trim().length > 3);
+  }
+
+  function getCompletedStagesCount(brief) {
+    if (!brief) return 0;
+    let count = 0;
+    for (let i = 1; i <= 9; i++) {
+      if (checkStageCompleted(brief, i)) count++;
+    }
+    return count;
+  }
+
+  function getActiveManusBrief() {
+    if (!activeManusBriefId) {
+      if (leadsData.length > 0) activeManusBriefId = leadsData[0].id;
+      else return null;
+    }
+    if (!manusBriefs[activeManusBriefId]) {
+      const lead = leadsData.find(l => l.id === activeManusBriefId) || { name: 'New Client', service: 'all', budget: 50000 };
+      const ref = generateManusRefCode(lead.name);
+      manusBriefs[activeManusBriefId] = {
+        lead_id: activeManusBriefId,
+        ref_code: ref,
+        brand_name: lead.name,
+        service: lead.service || 'all',
+        status: 'draft',
+        updated_at: new Date().toISOString(),
+        stage_1_roots: { story: '', vision: '', core_mission: '' },
+        stage_2_offer: { products: '', unfair_advantage: '', pricing: '' },
+        stage_3_audience: { demographics: '', behavior: '', pain_points: '' },
+        stage_4_competition: { competitors: '', weaknesses: '', whitespace: '' },
+        stage_5_persona: { archetype: 'The Ruler / السيادة والجودة', tone: 'واثقة، راقية، ومباشرة', visual_cues: '' },
+        stage_6_goals: { roas_target: '4.5x+', revenue_target: '+10,000,000 ج.م', kpis: '' },
+        stage_7_operations: { monthly_budget: lead.budget ? `${lead.budget.toLocaleString()} ج.م` : '50,000 ج.م', channels: 'Meta Ads (60%) · TikTok Ads (40%)', roles: '' },
+        stage_8_lessons: { past_learnings: '', regulatory: '' },
+        stage_9_signoff: { signed_by: '', ref_code: ref, assigned_squad: 'Squad 01 (Growth Engine)' }
+      };
+    }
+    return manusBriefs[activeManusBriefId];
+  }
+
+  function createNewManusBriefForCurrent() {
+    const lead = leadsData.find(l => l.id === activeManusBriefId);
+    const brandName = prompt(currentLang === 'ar' ? 'أدخل اسم العلامة التجارية / العميل الجديد:' : 'Enter Brand / Client Name:', lead ? lead.name : 'New Brand');
+    if (!brandName) return;
+
+    const ref = generateManusRefCode(brandName);
+    manusBriefs[activeManusBriefId] = {
+      lead_id: activeManusBriefId,
+      ref_code: ref,
+      brand_name: brandName,
+      service: lead ? lead.service : 'all',
+      status: 'draft',
+      updated_at: new Date().toISOString(),
+      stage_1_roots: { story: '', vision: '', core_mission: '' },
+      stage_2_offer: { products: '', unfair_advantage: '', pricing: '' },
+      stage_3_audience: { demographics: '', behavior: '', pain_points: '' },
+      stage_4_competition: { competitors: '', weaknesses: '', whitespace: '' },
+      stage_5_persona: { archetype: 'The Ruler / السيادة والجودة', tone: 'واثقة، راقية، ومباشرة', visual_cues: '' },
+      stage_6_goals: { roas_target: '4.5x+', revenue_target: '+10,000,000 ج.م', kpis: '' },
+      stage_7_operations: { monthly_budget: lead && lead.budget ? `${lead.budget.toLocaleString()} ج.م` : '50,000 ج.م', channels: 'Meta Ads (60%) · TikTok Ads (40%)', roles: '' },
+      stage_8_lessons: { past_learnings: '', regulatory: '' },
+      stage_9_signoff: { signed_by: '', ref_code: ref, assigned_squad: 'Squad 01 (Growth Engine)' }
+    };
+    currentManusStage = 1;
+    saveAllState();
+    renderManusTab();
+    renderCRM();
+    showToast(currentLang === 'ar' ? `تم إنشاء بريف جديد بكود: ${ref}` : `New brief created: ${ref}`);
+  }
+
+  function captureCurrentStageInputs(brief) {
+    if (!brief) return;
+
+    if (currentManusStage === 1) {
+      brief.stage_1_roots = {
+        story: document.getElementById('m_s1_story')?.value.trim() || '',
+        vision: document.getElementById('m_s1_vision')?.value.trim() || '',
+        core_mission: document.getElementById('m_s1_mission')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 2) {
+      brief.stage_2_offer = {
+        products: document.getElementById('m_s2_products')?.value.trim() || '',
+        unfair_advantage: document.getElementById('m_s2_advantage')?.value.trim() || '',
+        pricing: document.getElementById('m_s2_pricing')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 3) {
+      brief.stage_3_audience = {
+        demographics: document.getElementById('m_s3_demographics')?.value.trim() || '',
+        behavior: document.getElementById('m_s3_behavior')?.value.trim() || '',
+        pain_points: document.getElementById('m_s3_pain_points')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 4) {
+      brief.stage_4_competition = {
+        competitors: document.getElementById('m_s4_competitors')?.value.trim() || '',
+        weaknesses: document.getElementById('m_s4_weaknesses')?.value.trim() || '',
+        whitespace: document.getElementById('m_s4_whitespace')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 5) {
+      brief.stage_5_persona = {
+        archetype: document.getElementById('m_s5_archetype')?.value.trim() || '',
+        tone: document.getElementById('m_s5_tone')?.value.trim() || '',
+        visual_cues: document.getElementById('m_s5_visual')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 6) {
+      brief.stage_6_goals = {
+        roas_target: document.getElementById('m_s6_roas')?.value.trim() || '',
+        revenue_target: document.getElementById('m_s6_revenue')?.value.trim() || '',
+        kpis: document.getElementById('m_s6_kpis')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 7) {
+      brief.stage_7_operations = {
+        monthly_budget: document.getElementById('m_s7_budget')?.value.trim() || '',
+        channels: document.getElementById('m_s7_channels')?.value.trim() || '',
+        roles: document.getElementById('m_s7_roles')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 8) {
+      brief.stage_8_lessons = {
+        past_learnings: document.getElementById('m_s8_lessons')?.value.trim() || '',
+        regulatory: document.getElementById('m_s8_regulatory')?.value.trim() || ''
+      };
+    } else if (currentManusStage === 9) {
+      const code = document.getElementById('m_s9_ref')?.value.trim() || brief.ref_code;
+      brief.ref_code = code;
+      brief.stage_9_signoff = {
+        signed_by: document.getElementById('m_s9_signed')?.value.trim() || '',
+        ref_code: code,
+        assigned_squad: document.getElementById('m_s9_squad')?.value.trim() || 'Squad 01 (Growth Engine)'
+      };
+    }
+
+    const compCount = getCompletedStagesCount(brief);
+    brief.status = compCount === 9 ? 'completed' : (compCount > 0 ? 'in_progress' : 'draft');
+    brief.updated_at = new Date().toISOString();
+  }
+
+  function renderManusTab() {
+    const brief = getActiveManusBrief();
+    if (!brief) return;
+
+    // 1. Populate Lead Select Dropdown
+    const select = document.getElementById('manusLeadSelect');
+    if (select) {
+      select.innerHTML = leadsData.map(l => {
+        const hasBrief = !!manusBriefs[l.id];
+        const label = `${l.name} (${hasBrief ? manusBriefs[l.id].ref_code : (l.budget ? l.budget.toLocaleString() + ' ج.م' : 'طلب جديد')})`;
+        return `<option value="${l.id}" ${l.id === activeManusBriefId ? 'selected' : ''}>${escapeHtml(label)}</option>`;
+      }).join('');
+    }
+
+    // 2. Update Top Banner Displays
+    const lead = leadsData.find(l => l.id === activeManusBriefId) || {};
+    const clientDisplay = document.getElementById('manusClientNameDisplay');
+    const serviceDisplay = document.getElementById('manusServiceBadgeDisplay');
+    const refDisplay = document.getElementById('manusRefCodeDisplay');
+    const statusDisplay = document.getElementById('manusStatusBadgeDisplay');
+
+    if (clientDisplay) clientDisplay.textContent = brief.brand_name || lead.name || 'العميل المستهدف';
+    if (serviceDisplay) serviceDisplay.textContent = getServiceTitle(brief.service || lead.service);
+    if (refDisplay) refDisplay.textContent = brief.ref_code || 'OTB-REF-2026';
+
+    const compCount = getCompletedStagesCount(brief);
+    if (statusDisplay) {
+      statusDisplay.className = 'badge-status-manus ' + (compCount === 9 ? 'completed' : (compCount > 0 ? 'in_progress' : 'draft'));
+      if (compCount === 9) {
+        statusDisplay.textContent = currentLang === 'ar' ? 'مكتمل 100% (9 من 9) ✓' : 'Completed 100% (9 of 9) ✓';
+      } else if (compCount > 0) {
+        statusDisplay.textContent = currentLang === 'ar' ? `قيد الصياغة (${compCount} من 9)` : `In Progress (${compCount} of 9)`;
+      } else {
+        statusDisplay.textContent = currentLang === 'ar' ? 'مسودة جديدة (0 من 9)' : 'New Draft (0 of 9)';
+      }
+    }
+
+    // 3. Render 9-Stage Progress Steps Ribbon
+    const stepsNav = document.getElementById('manusStepsNav');
+    if (stepsNav) {
+      stepsNav.innerHTML = MANUS_STAGES_META.map(st => {
+        const isAct = st.id === currentManusStage;
+        const isComp = checkStageCompleted(brief, st.id);
+        const title = currentLang === 'ar' ? st.title_ar : st.title_en;
+        return `
+          <button class="manus-step-btn ${isAct ? 'active' : ''} ${isComp ? 'completed' : ''}" onclick="window.switchManusStage(${st.id})" type="button">
+            <span class="step-num">${st.id}</span>
+            <span class="step-icon">${st.icon}</span>
+            <span class="step-name">${escapeHtml(title)}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    // 4. Render Active Stage Form Panel
+    renderActiveManusStagePanel(brief);
+
+    // 5. Update Bottom Navigation Controls
+    const prevBtn = document.getElementById('btnPrevManusStage');
+    const nextBtn = document.getElementById('btnNextManusStage');
+    const stepIndicator = document.getElementById('manusStageStepIndicator');
+
+    if (prevBtn) prevBtn.disabled = currentManusStage === 1;
+    if (nextBtn) {
+      nextBtn.textContent = currentManusStage === 9
+        ? (currentLang === 'ar' ? 'إنهاء واعتماد البريف ✓' : 'Finish & Sign-off ✓')
+        : (currentLang === 'ar' ? 'المرحلة التالية →' : 'Next Stage →');
+    }
+    if (stepIndicator) {
+      const meta = MANUS_STAGES_META[currentManusStage - 1];
+      const title = currentLang === 'ar' ? meta.title_ar : meta.title_en;
+      stepIndicator.textContent = currentLang === 'ar' ? `المرحلة ${currentManusStage} من 9: ${title}` : `Stage ${currentManusStage} of 9: ${title}`;
+    }
+
+    // 6. Update Tab Badge Count
+    const tabBadge = document.getElementById('manusBadgeCount');
+    if (tabBadge) {
+      tabBadge.textContent = Object.keys(manusBriefs).length;
+    }
+  }
+
+  function renderActiveManusStagePanel(brief) {
+    const container = document.getElementById('manusStagePanels');
+    if (!container) return;
+
+    let html = '';
+
+    if (currentManusStage === 1) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">🏛️</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 1: الجذور والرؤية التأسيسية' : 'Stage 1: Founding Roots & Vision'}</h3>
+              <p>${currentLang === 'ar' ? 'توثيق قصة التأسيس، الرؤية الاستراتيجية طويلة المدى، والرسالة الجوهرية والوعد الحاسم للعلامة التجارية.' : 'Document the origin story, long-term strategic vision, and core brand promise.'}</p>
+            </div>
+          </div>
+
+          <div class="form-group-luxe" style="margin-bottom: 1.25rem;">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '1. قصة التأسيس والخلفية التاريخية (Founding Story):' : '1. Origin & Founding Story:'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s1_story" rows="3" placeholder="${currentLang === 'ar' ? 'لماذا بدأت هذه الشركة؟ ما الفجوة أو الشغف الذي انطلقت منه؟' : 'Why did this brand start?'}">${escapeHtml(brief.stage_1_roots?.story || '')}</textarea>
+          </div>
+
+          <div class="stage-grid-2col">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. الرؤية المستقبلية (3 - 5 سنوات):' : '2. Long-Term Vision (3-5 Years):'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s1_vision" rows="3" placeholder="${currentLang === 'ar' ? 'إلى أين تتجه العلامة؟ التوسع الإقليمي، ريادة السوق...' : 'Where is the brand heading?'}">${escapeHtml(brief.stage_1_roots?.vision || '')}</textarea>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '3. الرسالة والوعد الجوهري (Core Mission):' : '3. Core Mission & Promise:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s1_mission" rows="3" placeholder="${currentLang === 'ar' ? 'ما الوعد القاطع الذي تقدمه العلامة لجمهورها وتلتزم به دائماً؟' : 'What is the unbreakable customer promise?'}">${escapeHtml(brief.stage_1_roots?.core_mission || '')}</textarea>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 2) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">💎</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 2: هيكل العرض والميزة التنافسية غير العادلة' : 'Stage 2: Core Offer & Unfair Advantage'}</h3>
+              <p>${currentLang === 'ar' ? 'تحديد المنتجات الرئيسية ذات هوامش الربح الأكبر، ونقاط التفوق النوعية التي تصنع خندقاً تنافسياً منيعاً (Moat).' : 'Identify hero SKUs, profit drivers, and proprietary unfair advantages.'}</p>
+            </div>
+          </div>
+
+          <div class="form-group-luxe" style="margin-bottom: 1.25rem;">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '1. قائمة المنتجات الرئيسية والـ Hero SKUs:' : '1. Core Products & Hero SKUs:'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s2_products" rows="3" placeholder="${currentLang === 'ar' ? 'المنتجات الأعلى مبيعاً أو الأكثر ربحية التي سنركز عليها الإعلانات...' : 'List hero SKUs and highest margin offerings...'}">${escapeHtml(brief.stage_2_offer?.products || '')}</textarea>
+          </div>
+
+          <div class="stage-grid-2col">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. الميزة التنافسية غير العادلة (Unfair Advantage):' : '2. Proprietary Unfair Advantage:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s2_advantage" rows="3" placeholder="${currentLang === 'ar' ? 'ما الذي تملكه الشركة ولا يستطيع أي منافس تقليده بسهولة؟ (سرعة، خطوط إنتاج، براءة اختراع، تكلفة)' : 'What makes your brand impossible to replicate?'}">${escapeHtml(brief.stage_2_offer?.unfair_advantage || '')}</textarea>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '3. هيكل وهوامش التسعير (Pricing & Margins):' : '3. Pricing Model & Margin Structure:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s2_pricing" rows="3" placeholder="${currentLang === 'ar' ? 'شريحة الأسعار، هوامش الربح التقديرية، وسياسة الخصومات والعروض...' : 'Pricing tiers, gross margins, and promotional elasticity...'}">${escapeHtml(brief.stage_2_offer?.pricing || '')}</textarea>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 3) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">🎯</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 3: الجمهور المستهدف والوجع الشرائي' : 'Stage 3: Target Audience & Core Pain'}</h3>
+              <p>${currentLang === 'ar' ? 'تحليل عميق للشريحة الجماهيرية ذات الجاهزية الشرائية العالية، ونقاط الألم الصريحة والخفية.' : 'Analyze highest spending audience personas, geographics, and purchasing friction points.'}</p>
+            </div>
+          </div>
+
+          <div class="form-group-luxe" style="margin-bottom: 1.25rem;">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '1. الخصائص الديموغرافية والجغرافية (Demographics & Geo):' : '1. Demographics & Geotargeting:'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s3_demographics" rows="3" placeholder="${currentLang === 'ar' ? 'الفئات العمرية، الجنس، النطاق الجغرافي (محافظات، مناطق صناعية، أحياء فاخرة)، ومستوى الدخل...' : 'Age brackets, gender, locations, income tiers...'}">${escapeHtml(brief.stage_3_audience?.demographics || '')}</textarea>
+          </div>
+
+          <div class="stage-grid-2col">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. السلوك الشرائي ومحفزات القرار (Buying Behavior):' : '2. Purchasing Behavior & Triggers:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s3_behavior" rows="3" placeholder="${currentLang === 'ar' ? 'كيف ومتى يشترون؟ ما الذي يدفعهم لاختيار البراند فوراً؟' : 'When and how do they purchase?'}">${escapeHtml(brief.stage_3_audience?.behavior || '')}</textarea>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '3. نقاط الألم والمشكلات السابقة (Core Pain Points):' : '3. Core Frustrations & Pain Points:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s3_pain_points" rows="3" placeholder="${currentLang === 'ar' ? 'ما المشكلات والإحباطات التي واجهوها مع منتجات المنافسين؟' : 'What frustrates them with alternative offerings?'}">${escapeHtml(brief.stage_3_audience?.pain_points || '')}</textarea>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 4) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">⚔️</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 4: خريطة المنافسين والفجوة السوقية البيضاء' : 'Stage 4: Competitor Landscape & Market Whitespace'}</h3>
+              <p>${currentLang === 'ar' ? 'تشريح الخصوم في السوق المحلي، رصد أخطائهم وضعف حضورهم، واقتناص المنطقة البيضاء الشاغرة.' : 'Dissect market rivals, map their vulnerabilities, and claim unoccupied high-yield territory.'}</p>
+            </div>
+          </div>
+
+          <div class="form-group-luxe" style="margin-bottom: 1.25rem;">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '1. المنافسون المباشرون والبدائل في السوق (Key Competitors):' : '1. Key Direct & Indirect Competitors:'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s4_competitors" rows="3" placeholder="${currentLang === 'ar' ? 'من هم المنافسون الكبار حالياً والماركات المستوردة والمحلية؟' : 'List key competitors in the market...'}">${escapeHtml(brief.stage_4_competition?.competitors || '')}</textarea>
+          </div>
+
+          <div class="stage-grid-2col">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. نقاط ضعف المنافسين المرصودة (Observed Weaknesses):' : '2. Competitor Vulnerabilities:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s4_weaknesses" rows="3" placeholder="${currentLang === 'ar' ? 'أين يقصر المنافسون؟ (خدمة، بطء، جودة، تسعير مبالغ فيه، محتوى قديم)' : 'Where do competitors fall short?'}">${escapeHtml(brief.stage_4_competition?.weaknesses || '')}</textarea>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '3. الفجوة السوقية البيضاء الشاغرة (Market Whitespace):' : '3. Strategic Market Whitespace:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s4_whitespace" rows="3" placeholder="${currentLang === 'ar' ? 'المساحة التي سنحتلها بالكامل ولا يوجد من يخدمها بالشكل اللائق...' : 'The untapped niche our campaign will dominate...'}">${escapeHtml(brief.stage_4_competition?.whitespace || '')}</textarea>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 5) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">👑</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 5: شخصية البراند والنبرة والتوجيه الإخراجي' : 'Stage 5: Brand Archetype, Tone & Direction'}</h3>
+              <p>${currentLang === 'ar' ? 'تثبيت النموذج الرمزي للعلامة التجارية، هندسة نبرة الصوت في السكربتات، وتحديد لغة الإخراج البصري والـ ASMR.' : 'Define brand persona archetype, scripting voice, and cinematic macro visuals.'}</p>
+            </div>
+          </div>
+
+          <div class="stage-grid-2col" style="margin-bottom: 1.25rem;">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '1. النموذج الأصلي للبراند (Brand Archetype):' : '1. Brand Archetype:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s5_archetype" value="${escapeHtml(brief.stage_5_persona?.archetype || 'The Ruler / الحاكم والسيادة والجودة')}" placeholder="The Ruler, The Outlaw, The Hero...">
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. نبرة الصوت والمخاطبة (Tone of Voice):' : '2. Tone of Voice & Copywriting Tone:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s5_tone" value="${escapeHtml(brief.stage_5_persona?.tone || '')}" placeholder="${currentLang === 'ar' ? 'مثال: واثقة، فخمة، جريئة، معاصرة ومباشرة' : 'Confident, authoritative, punchy'}">
+            </div>
+          </div>
+
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '3. التوجيهات الإخراجية والبصرية (Cinematic 4K, Lighting, ASMR Visuals):' : '3. Directorial & Visual Cues (Cinematic 4K, Lighting, Sound):'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s5_visual" rows="3" placeholder="${currentLang === 'ar' ? 'تفاصيل التصوير: زوايا الماكرو السينمائية، الإضاءة الدافئة، مؤثرات الـ ASMR، وحركة الكاميرا السلسة...' : 'Lighting, camera movement, macro food shots, ASMR sound...'}">${escapeHtml(brief.stage_5_persona?.visual_cues || '')}</textarea>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 6) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">📈</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 6: مستهدفات الـ 90 يوماً والعائد الإعلاني' : 'Stage 6: 90-Day Goals, Target ROAS & KPIs'}</h3>
+              <p>${currentLang === 'ar' ? 'وضع الأهداف الكمية والمالية غير القابلة للمساومة: مضاعف الـ ROAS، الإيرادات المستهدفة، ومؤشرات الأداء.' : 'Establish firm quantitative financial targets, ROAS expectations, and key milestones.'}</p>
+            </div>
+          </div>
+
+          <div class="stage-grid-2col" style="margin-bottom: 1.25rem;">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '1. مضاعف العائد الإعلاني المستهدف (Target ROAS):' : '1. Target ROAS Multiplier:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s6_roas" value="${escapeHtml(brief.stage_6_goals?.roas_target || '')}" placeholder="مثال: 4.8x ROAS أو 5.2x">
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. مستهدف الإيرادات الإجمالية خلال 90 يوماً:' : '2. 90-Day Revenue Benchmark:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s6_revenue" value="${escapeHtml(brief.stage_6_goals?.revenue_target || '')}" placeholder="مثال: +30,000,000 ج.م">
+            </div>
+          </div>
+
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '3. مؤشرات الأداء الحاكمة والمحطات الرئيسية (Milestones & KPIs):' : '3. Milestones & Quantitative KPIs:'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s6_kpis" rows="3" placeholder="${currentLang === 'ar' ? 'عدد المشاهدات، حجم الوصول، معدل التحويل، التوسع في منافذ التوزيع والتجزئة...' : 'Impressions, reach, conversion rate, distribution accounts...'}">${escapeHtml(brief.stage_6_goals?.kpis || '')}</textarea>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 7) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">⚡</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 7: الميزانية ومصفوفة السرب التنفيذي' : 'Stage 7: Budget, Channel Mix & Squad Matrix'}</h3>
+              <p>${currentLang === 'ar' ? 'توزيع الموازنة الإعلانية الشهرية على المنصات الأكثر فاعلية، وتعيين أعضاء السرب التنفيذي المكلفين.' : 'Allocate media spend, define channel percentage split, and assign execution squad roles.'}</p>
+            </div>
+          </div>
+
+          <div class="stage-grid-2col" style="margin-bottom: 1.25rem;">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '1. ميزانية الإنفاق الإعلاني الشهرية المخصصة:' : '1. Monthly Ad Spend Allocation:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s7_budget" value="${escapeHtml(brief.stage_7_operations?.monthly_budget || '')}" placeholder="مثال: 150,000 ج.م شهرياً">
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. مزيج القنوات الإعلانية ونسب التوزيع:' : '2. Channel Mix & Allocation (%):'}</label>
+              <input type="text" class="form-input-luxe" id="m_s7_channels" value="${escapeHtml(brief.stage_7_operations?.channels || '')}" placeholder="Meta Ads 60% · TikTok Ads 30% · Influencers 10%">
+            </div>
+          </div>
+
+          <div class="form-group-luxe">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '3. مصفوفة وتوزيع مهام السرب التنفيذي (Assigned Squad Roles):' : '3. Assigned Execution Squad Matrix:'}</label>
+            <textarea class="form-input-luxe form-textarea-luxe" id="m_s7_roles" rows="3" placeholder="${currentLang === 'ar' ? 'مخرج إعلانات 4K، ميديا باير تنفيذي متفرغ، مصمم هوية، كاتب محتوى وسيناريوهات...' : 'Creative director, dedicated media buyer, video editor, strategist...'}">${escapeHtml(brief.stage_7_operations?.roles || '')}</textarea>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 8) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">🛡️</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 8: دروس التجارب السابقة والمحددات التنظيمية' : 'Stage 8: Past Learnings & Regulatory Guardrails'}</h3>
+              <p>${currentLang === 'ar' ? 'استخلاص الدروس من محاولات التسويق السابقة لمنع تكرار الأخطاء، وحصر المحددات والتراخيص القانونية.' : 'Document failures and lessons from past campaigns; lock regulatory compliance rules.'}</p>
+            </div>
+          </div>
+
+          <div class="stage-grid-2col">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '1. الدروس المستخلصة من الحملات السابقة (Past Failures & Lessons):' : '1. Past Failures & Campaign Lessons:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s8_lessons" rows="4" placeholder="${currentLang === 'ar' ? 'ما الذي لم ينجح في الماضي؟ ما الأخطاء التي لن نكررها في هذه الحملة؟' : 'What did not work previously?'}">${escapeHtml(brief.stage_8_lessons?.past_learnings || '')}</textarea>
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. المحددات التنظيمية والرقابية وتراخيص المنتج (Compliance):' : '2. Regulatory & Legal Constraints:'}</label>
+              <textarea class="form-input-luxe form-textarea-luxe" id="m_s8_regulatory" rows="4" placeholder="${currentLang === 'ar' ? 'اشتراطات سلامة الغذاء، التراخيص الطبية، المحاذير الإعلانية، التنويهات الإلزامية...' : 'Food safety licenses, medical compliance, advertising disclaimer rules...'}">${escapeHtml(brief.stage_8_lessons?.regulatory || '')}</textarea>
+            </div>
+          </div>
+        </div>
+      `;
+    } else if (currentManusStage === 9) {
+      html = `
+        <div class="manus-stage-panel">
+          <div class="stage-header-title">
+            <span class="stage-icon">📜</span>
+            <div>
+              <h3>${currentLang === 'ar' ? 'المرحلة 9: الاعتماد التنفيذي وإطلاق الكود المرجعي' : 'Stage 9: Executive Sign-Off & Official Dispatch'}</h3>
+              <p>${currentLang === 'ar' ? 'المصادقة النهائية على استراتيجية الـ 90 يوماً، ربط الكود المرجعي الرسمي، وإصدار أمر التنفيذ الفوري.' : 'Finalize executive sign-off, seal the official Manus reference code, and trigger operations.'}</p>
+            </div>
+          </div>
+
+          <div class="stage-grid-2col" style="margin-bottom: 1.5rem;">
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '1. سلطة الاعتماد والمصادقة (Signed-off By):' : '1. Sign-off Authority & Decision Makers:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s9_signed" value="${escapeHtml(brief.stage_9_signoff?.signed_by || '')}" placeholder="مثال: مجلس إدارة فرانكس وإدارة OTB Agency التنفيذية">
+            </div>
+            <div class="form-group-luxe">
+              <label class="form-label-luxe">${currentLang === 'ar' ? '2. السرب التنفيذي المسؤول (Assigned Execution Squad):' : '2. Assigned Execution Squad:'}</label>
+              <input type="text" class="form-input-luxe" id="m_s9_squad" value="${escapeHtml(brief.stage_9_signoff?.assigned_squad || 'Squad 01 (Growth Engine)')}">
+            </div>
+          </div>
+
+          <div class="form-group-luxe" style="margin-bottom: 2rem;">
+            <label class="form-label-luxe">${currentLang === 'ar' ? '3. الكود المرجعي الرسمي المعتمد (Official Strategy Code):' : '3. Official Strategy Code:'}</label>
+            <div style="display: flex; gap: 0.75rem;">
+              <input type="text" class="form-input-luxe font-mono" id="m_s9_ref" value="${escapeHtml(brief.ref_code)}" dir="ltr" style="font-weight: 700; color: var(--accent-gold); letter-spacing: 0.08em;">
+              <button type="button" class="btn-nav-action" onclick="window.regenerateActiveManusRefCode()" title="توليد كود جديد">↺ توليد كود</button>
+            </div>
+          </div>
+
+          <div class="luxe-panel" style="padding: 1.5rem; background: rgba(212, 175, 55, 0.05); border-color: rgba(212, 175, 55, 0.3); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <strong style="color: var(--text-primary); font-size: 1rem; display: block;">${currentLang === 'ar' ? 'جاهزية إطلاق الوثيقة الاستراتيجية المعتمدة' : 'Ready for Strategy Dispatch'}</strong>
+              <span style="font-size: 0.82rem; color: var(--text-muted);">${currentLang === 'ar' ? 'يمكنك الآن تصدير الوثيقة الكاملة كـ Markdown أو طباعتها PDF أو إرسال ملخص فوري للعميل عبر واتساب.' : 'Export full strategy markdown, print PDF, or send executive WhatsApp briefing.'}</span>
+            </div>
+            <div style="display: flex; gap: 0.75rem;">
+              <button type="button" class="btn-nav-action" onclick="window.copyStrategyWhatsAppSummary()" style="color: #25D366; border-color: rgba(37, 211, 102, 0.4);">ملخص واتساب 💬</button>
+              <button type="button" class="btn-nav-action primary" onclick="window.exportStrategyDocument()">تصدير الوثيقة الكاملة 📄</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    container.innerHTML = html;
+  }
+
+  window.switchManusStage = function (newStageNum) {
+    const brief = getActiveManusBrief();
+    if (brief) {
+      captureCurrentStageInputs(brief);
+      saveAllState();
+    }
+    currentManusStage = Math.max(1, Math.min(9, newStageNum));
+    renderManusTab();
+  };
+
+  window.saveCurrentManusBrief = function () {
+    const brief = getActiveManusBrief();
+    if (!brief) return;
+    captureCurrentStageInputs(brief);
+    saveAllState();
+    renderManusTab();
+    renderCRM();
+    const count = getCompletedStagesCount(brief);
+    showToast(currentLang === 'ar' ? `تم حفظ وتحديث بريف Manus بنجاح (${count} من 9 مراحل مكتملة) 💾` : `Manus brief saved (${count}/9 stages complete) 💾`);
+  };
+
+  window.openManusBriefForLead = function (leadId) {
+    activeManusBriefId = leadId;
+    currentManusStage = 1;
+    switchTab('manus');
+    const brief = getActiveManusBrief();
+    renderManusTab();
+    showToast(currentLang === 'ar' ? `تم فتح بريف واستراتيجية Manus للعميل: ${brief.brand_name}` : `Opened Manus brief for: ${brief.brand_name}`);
+  };
+
+  window.regenerateActiveManusRefCode = function () {
+    const brief = getActiveManusBrief();
+    if (!brief) return;
+    const newCode = generateManusRefCode(brief.brand_name || 'BRAND');
+    brief.ref_code = newCode;
+    if (brief.stage_9_signoff) brief.stage_9_signoff.ref_code = newCode;
+    saveAllState();
+    renderManusTab();
+    renderCRM();
+    showToast(currentLang === 'ar' ? `تم توليد الكود المرجعي الجديد: ${newCode}` : `New Ref Code generated: ${newCode}`);
+  };
+
+  window.exportStrategyDocument = function () {
+    const brief = getActiveManusBrief();
+    if (!brief) return;
+    captureCurrentStageInputs(brief);
+    saveAllState();
+
+    const lead = leadsData.find(l => l.id === brief.lead_id) || {};
+    const compCount = getCompletedStagesCount(brief);
+    const serviceName = getServiceTitle(brief.service || lead.service);
+
+    const docMd = [
+      `# وثيقة استراتيجية الهيمنة السوقية وخارطة طريق الـ 90 يوماً`,
+      `**OTB Agency (The City Kings) × Manus Strategic Discovery Blueprint**`,
+      `========================================================================`,
+      ``,
+      `* **العميل / العلامة التجارية:** ${brief.brand_name || lead.name}`,
+      `* **الكود المرجعي الرسمي:** \`${brief.ref_code}\``,
+      `* **مسار الخدمة والنمو:** ${serviceName}`,
+      `* **معدل اكتمال الاستكشاف:** ${compCount} من 9 مراحل (${Math.round((compCount / 9) * 100)}%)`,
+      `* **تاريخ الاعتماد والتحديث:** ${new Date(brief.updated_at || Date.now()).toLocaleDateString('ar-EG', { dateStyle: 'full' })}`,
+      `* **السرب التنفيذي المسؤول:** ${brief.stage_9_signoff?.assigned_squad || 'Squad 01 (Growth Engine)'}`,
+      ``,
+      `------------------------------------------------------------------------`,
+      `### 🏛️ المرحلة 1: الجذور والرؤية التأسيسية (Founding Roots & Vision)`,
+      `- **قصة التأسيس والخلفية:** ${brief.stage_1_roots?.story || 'لم تُحدد بعد'}`,
+      `- **الرؤية المستقبلية للتوسع:** ${brief.stage_1_roots?.vision || 'لم تُحدد بعد'}`,
+      `- **الرسالة الجوهرية للعلامة:** ${brief.stage_1_roots?.core_mission || 'لم تُحدد بعد'}`,
+      ``,
+      `### 💎 المرحلة 2: هيكل العرض والميزة التنافسية غير العادلة (Core Offer & Unfair Advantage)`,
+      `- **المنتجات الرئيسية وHero SKUs:** ${brief.stage_2_offer?.products || 'لم تُحدد بعد'}`,
+      `- **الميزة التنافسية غير العادلة:** ${brief.stage_2_offer?.unfair_advantage || 'لم تُحدد بعد'}`,
+      `- **هيكل التسعير وهوامش الربح:** ${brief.stage_2_offer?.pricing || 'لم تُحدد بعد'}`,
+      ``,
+      `### 🎯 المرحلة 3: الجمهور المستهدف والوجع الشرائي (Audience Demographics & Core Pain)`,
+      `- **الخصائص الديموغرافية والجغرافية:** ${brief.stage_3_audience?.demographics || 'لم تُحدد بعد'}`,
+      `- **السلوك وعادات الشراء:** ${brief.stage_3_audience?.behavior || 'لم تُحدد بعد'}`,
+      `- **نقاط الألم والتحديات الكبرى:** ${brief.stage_3_audience?.pain_points || 'لم تُحدد بعد'}`,
+      ``,
+      `### ⚔️ المرحلة 4: خريطة المنافسين والفجوة السوقية البيضاء (Competitor Landscape & Whitespace)`,
+      `- **أبرز المنافسين والبدائل:** ${brief.stage_4_competition?.competitors || 'لم تُحدد بعد'}`,
+      `- **نقاط الضعف والثغرات المرصودة:** ${brief.stage_4_competition?.weaknesses || 'لم تُحدد بعد'}`,
+      `- **الفجوة السوقية الشاغرة المستهدفة:** ${brief.stage_4_competition?.whitespace || 'لم تُحدد بعد'}`,
+      ``,
+      `### 👑 المرحلة 5: شخصية البراند والنبرة والتوجيه الإخراجي (Brand Archetype & Persona)`,
+      `- **النموذج الأصلي (Archetype):** ${brief.stage_5_persona?.archetype || 'The Ruler / السيادة والجودة'}`,
+      `- **نبرة الصوت والخطاب الإعلاني:** ${brief.stage_5_persona?.tone || 'لم تُحدد بعد'}`,
+      `- **التوجيهات الإخراجية والبصرية (4K/ASMR):** ${brief.stage_5_persona?.visual_cues || 'لم تُحدد بعد'}`,
+      ``,
+      `### 📈 المرحلة 6: مستهدفات الـ 90 يوماً والعائد الإعلاني (90-Day Goals, ROAS & KPIs)`,
+      `- **العائد الإعلاني المستهدف (Target ROAS):** ${brief.stage_6_goals?.roas_target || '4.0x+'}`,
+      `- **مستهدف الإيرادات خلال 90 يوماً:** ${brief.stage_6_goals?.revenue_target || 'لم يُحدد بعد'}`,
+      `- **مؤشرات النجاح الحاكمة (KPIs):** ${brief.stage_6_goals?.kpis || 'لم تُحدد بعد'}`,
+      ``,
+      `### ⚡ المرحلة 7: الميزانية ومصفوفة السرب التنفيذي (Budget, Channels & Squad Roles)`,
+      `- **ميزانية الإنفاق الإعلاني الشهرية:** ${brief.stage_7_operations?.monthly_budget || (lead.budget ? `${lead.budget.toLocaleString()} ج.م` : 'لم تُحدد')}`,
+      `- **مزيج القنوات الإعلانية:** ${brief.stage_7_operations?.channels || 'Meta Ads + TikTok Ads + Full-Funnel'}`,
+      `- **توزيع مهام السرب التنفيذي:** ${brief.stage_7_operations?.roles || 'لم تُحدد بعد'}`,
+      ``,
+      `### 🛡️ المرحلة 8: دروس التجارب السابقة والمحددات التنظيمية (Learnings & Regulatory Guardrails)`,
+      `- **الدروس المستخلصة السابقة:** ${brief.stage_8_lessons?.past_learnings || 'لا توجد سوابق سلبية'}`,
+      `- **المحددات الرقابية والتراخيص:** ${brief.stage_8_lessons?.regulatory || 'مطابق للمعايير والتراخيص المعتمدة'}`,
+      ``,
+      `### 📜 المرحلة 9: الاعتماد التنفيذي وإطلاق الكود المرجعي (Executive Sign-Off & Official Dispatch)`,
+      `- **سلطة الاعتماد:** ${brief.stage_9_signoff?.signed_by || 'مجلس إدارة العميل وإدارة OTB Agency التنفيذية'}`,
+      `- **الكود المرجعي المعتمد:** ${brief.ref_code}`,
+      `- **السرب التنفيذي الميداني:** ${brief.stage_9_signoff?.assigned_squad || 'Squad 01 (Growth Engine)'}`,
+      ``,
+      `========================================================================`,
+      `وثيقة معتمدة رسمياً — غرفة عمليات OTB Agency (The City Kings)`,
+      `القاهرة ومناطق العاشر من رمضان والسادس من أكتوبر الصناعية`
+    ].join('\n');
+
+    const modal = document.getElementById('strategyExportModal');
+    const contentBox = document.getElementById('exportDocumentContent');
+    const titleBox = document.getElementById('exportDocTitle');
+    const subBox = document.getElementById('exportDocSubtitle');
+
+    if (contentBox) contentBox.textContent = docMd;
+    if (titleBox) titleBox.textContent = `📄 وثيقة استراتيجية ${brief.brand_name || 'العميل'}`;
+    if (subBox) subBox.textContent = `الكود المرجعي المعتمد: ${brief.ref_code} · OTB × Manus Architecture`;
+    if (modal) modal.classList.add('active');
+  };
+
+  window.closeStrategyExportModal = function () {
+    const modal = document.getElementById('strategyExportModal');
+    if (modal) modal.classList.remove('active');
+  };
+
+  window.copyStrategyWhatsAppSummary = function () {
+    const brief = getActiveManusBrief();
+    if (!brief) return;
+    captureCurrentStageInputs(brief);
+    saveAllState();
+
+    const lead = leadsData.find(l => l.id === brief.lead_id) || {};
+    const serviceName = getServiceTitle(brief.service || lead.service);
+
+    const text = [
+      `👑 *خلاصة استراتيجية OTB Agency × Manus الرسمية*`,
+      `━━━━━━━━━━━━━━━━━━━━━`,
+      `🏢 *العميل:* ${brief.brand_name || lead.name}`,
+      `📋 *الكود المرجعي:* ${brief.ref_code}`,
+      `🚀 *المسار:* ${serviceName}`,
+      `📈 *المستهدف (90 يوم):* ${brief.stage_6_goals?.revenue_target || '+30M ج.م'} (عائد ${brief.stage_6_goals?.roas_target || '4.8x ROAS'})`,
+      `⚡ *الميزانية الشهرية:* ${brief.stage_7_operations?.monthly_budget || (lead.budget ? `${lead.budget.toLocaleString()} ج.م` : '150,000 ج.م')}`,
+      `🎯 *القنوات:* ${brief.stage_7_operations?.channels || 'Meta Ads + TikTok Ads'}`,
+      `🛡️ *السرب المكلف:* ${brief.stage_9_signoff?.assigned_squad || 'Squad 01 (FMCG Dominance)'}`,
+      `━━━━━━━━━━━━━━━━━━━━━`,
+      `✅ *الوثيقة الاستراتيجية معتمدة ومسجلة في غرفة العمليات OTB Executive Command Center.*`
+    ].join('\n');
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(currentLang === 'ar' ? 'تم نسخ ملخص الاستراتيجية للواتساب بنجاح 📋' : 'WhatsApp summary copied 📋');
+      }).catch(() => fallbackCopyText(text));
+    } else {
+      fallbackCopyText(text);
+    }
+  };
+
+  /* ==========================================================================
      GLOBAL ACTIONS & EVENT LISTENERS
      ========================================================================== */
   function setupEventListeners() {
@@ -933,6 +1661,57 @@
 
     document.getElementById('btnResetDna')?.addEventListener('click', resetToDna2026);
 
+    // Manus 9-Stage Pipeline Listeners
+    const manusSelect = document.getElementById('manusLeadSelect');
+    if (manusSelect) {
+      manusSelect.addEventListener('change', (e) => {
+        const brief = getActiveManusBrief();
+        if (brief) captureCurrentStageInputs(brief);
+        activeManusBriefId = e.target.value;
+        currentManusStage = 1;
+        renderManusTab();
+      });
+    }
+
+    document.getElementById('btnNewManusBrief')?.addEventListener('click', createNewManusBriefForCurrent);
+    document.getElementById('btnSaveManusBrief')?.addEventListener('click', window.saveCurrentManusBrief);
+    document.getElementById('btnExportStrategyDoc')?.addEventListener('click', window.exportStrategyDocument);
+    document.getElementById('btnCopyManusWa')?.addEventListener('click', window.copyStrategyWhatsAppSummary);
+    document.getElementById('btnRegenRefCode')?.addEventListener('click', window.regenerateActiveManusRefCode);
+
+    document.getElementById('btnPrevManusStage')?.addEventListener('click', () => {
+      if (currentManusStage > 1) {
+        window.switchManusStage(currentManusStage - 1);
+      }
+    });
+
+    document.getElementById('btnNextManusStage')?.addEventListener('click', () => {
+      if (currentManusStage < 9) {
+        window.switchManusStage(currentManusStage + 1);
+      } else {
+        window.saveCurrentManusBrief();
+        window.exportStrategyDocument();
+      }
+    });
+
+    document.getElementById('btnCopyDocMarkdown')?.addEventListener('click', () => {
+      const contentBox = document.getElementById('exportDocumentContent');
+      if (contentBox) {
+        const text = contentBox.textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            showToast(currentLang === 'ar' ? 'تم نسخ نص الوثيقة (Markdown) إلى الحافظة بنجاح 📋' : 'Markdown copied to clipboard 📋');
+          }).catch(() => fallbackCopyText(text));
+        } else {
+          fallbackCopyText(text);
+        }
+      }
+    });
+
+    document.getElementById('btnPrintDoc')?.addEventListener('click', () => {
+      window.print();
+    });
+
     // Page Transition Curtain back to Official Site
     const viewSiteLinks = document.querySelectorAll('a[href="index.html"]');
     viewSiteLinks.forEach(link => {
@@ -954,9 +1733,10 @@
     localStorage.setItem(STORAGE_KEYS.SHOWCASE, JSON.stringify(showcaseData));
     localStorage.setItem(STORAGE_KEYS.ROI, JSON.stringify(roiConfig));
     localStorage.setItem(STORAGE_KEYS.CONTENT, JSON.stringify(contentConfig));
+    localStorage.setItem(STORAGE_KEYS.MANUS_BRIEFS, JSON.stringify(manusBriefs));
 
     window.dispatchEvent(new CustomEvent('otb_data_updated', {
-      detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig }
+      detail: { leads: leadsData, showcase: showcaseData, roi: roiConfig, content: contentConfig, manus_briefs: manusBriefs }
     }));
   }
 
@@ -1226,7 +2006,8 @@
       leads: leadsData,
       showcase: showcaseData,
       roi_config: roiConfig,
-      content_config: contentConfig
+      content_config: contentConfig,
+      manus_briefs: manusBriefs
     };
 
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(fullBackup, null, 2));
@@ -1251,6 +2032,7 @@
         if (imported.showcase) showcaseData = imported.showcase;
         if (imported.roi_config) roiConfig = imported.roi_config;
         if (imported.content_config) contentConfig = imported.content_config;
+        if (imported.manus_briefs) manusBriefs = imported.manus_briefs;
 
         saveAllState();
         renderAll();
@@ -1278,6 +2060,7 @@
             contact: cfg.contact,
             metrics: cfg.metrics
           };
+          manusBriefs = cfg.initial_manus_briefs || {};
           saveAllState();
           renderAll();
           showToast(currentLang === 'ar' ? 'تمت استعادة إعدادات DNA 2026 الأصلية بنجاح ↺' : 'Restored to verified DNA 2026 ↺');

@@ -109,6 +109,10 @@
         <button class="tab-btn" data-tab="corelink" data-i18n="tab_corelink">
           ⚡ عمليات CoreLink
         </button>
+        <button class="tab-btn" data-tab="manus">
+          <span data-i18n="tab_manus">📋 بريف واستراتيجية Manus</span>
+          <span class="tab-badge" id="manusBadgeCount">1</span>
+        </button>
       </nav>
     </div>
 
@@ -430,6 +434,74 @@
         </div>
       </section>
 
+      <!-- ==========================================================================
+           القسم 7: منظومة بريف واستكشاف Manus الاستراتيجية (9 مراحل)
+           ========================================================================== -->
+      <section class="tab-content" id="tab-manus">
+        <div class="section-intro-row">
+          <div>
+            <h1 class="section-title" data-i18n="manus_title">منظومة بريف واستكشاف Manus الاستراتيجية (9 مراحل)</h1>
+            <p class="section-desc" data-i18n="manus_desc">النظام المؤسسي المعتمد لتأهيل العملاء وصياغة استراتيجيات الهيمنة السوقية والـ 90 يوماً وتوزيع المهام التنفيذية.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center;">
+            <select class="select-filter" id="manusLeadSelect" style="font-weight: 700; color: var(--accent-gold); border-color: rgba(212, 175, 55, 0.4);">
+              <!-- Lead options populated dynamically -->
+            </select>
+            <button class="btn-nav-action" id="btnNewManusBrief">+ بريف جديد ⚡</button>
+            <button class="btn-nav-action primary" id="btnSaveManusBrief">حفظ وتحديث البريف 💾</button>
+            <button class="btn-nav-action" id="btnExportStrategyDoc">تصدير وثيقة الاستراتيجية 📄</button>
+            <button class="btn-nav-action" id="btnCopyManusWa" style="border-color: rgba(37, 211, 102, 0.4); color: #25D366;">ملخص واتساب 💬</button>
+          </div>
+        </div>
+
+        <!-- Reference & Status Bar -->
+        <div class="luxe-panel" style="padding: 1.2rem 1.6rem; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-color: rgba(212, 175, 55, 0.25);">
+          <div style="display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_active_client">العميل / العلامة التجارية النشطة:</span>
+              <strong id="manusClientNameDisplay" style="font-size: 1.15rem; color: var(--text-primary);">مصانع فرانكس للصناعات الغذائية</strong>
+            </div>
+            <div style="height: 30px; width: 1px; background: var(--border-subtle);"></div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_service">مسار الخدمة:</span>
+              <span id="manusServiceBadgeDisplay" class="status-pill-live" style="font-size: 0.8rem;">شراكة نمو شاملة (Full-Funnel)</span>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_ref">الكود المرجعي الرسمي (Manus Ref):</span>
+              <span id="manusRefCodeDisplay" class="ref-code-badge" dir="ltr">OTB-FRANKS-2026</span>
+            </div>
+            <button class="btn-icon-action" id="btnRegenRefCode" title="توليد كود مرجعي جديد" style="border-radius: 6px;">↺</button>
+            <div style="height: 30px; width: 1px; background: var(--border-subtle);"></div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;" data-i18n="manus_lbl_status">حالة الاستكشاف:</span>
+              <span id="manusStatusBadgeDisplay" class="badge-status-manus completed">مكتمل 100% (9 من 9)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9-Stage Progress Steps Navigator -->
+        <div class="manus-steps-ribbon font-mono" id="manusStepsNav">
+          <!-- Step items 1 to 9 injected dynamically -->
+        </div>
+
+        <!-- Active Stage Form Container -->
+        <div class="luxe-panel" style="padding: 2rem; margin-top: 1.5rem; position: relative;">
+          <div id="manusStagePanels">
+            <!-- Stage content injected dynamically based on current selected stage -->
+          </div>
+
+          <!-- Bottom Navigation Controls -->
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; gap: 1rem;">
+            <button class="btn-nav-action" id="btnPrevManusStage" style="min-width: 130px;">← المرحلة السابقة</button>
+            <span id="manusStageStepIndicator" class="font-mono" style="font-size: 0.88rem; color: var(--accent-gold);">المرحلة 1 من 9</span>
+            <button class="btn-nav-action primary" id="btnNextManusStage" style="min-width: 130px;">المرحلة التالية →</button>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
@@ -567,6 +639,28 @@
           إدراج سابقة الأعمال فوراً في المعرض ✓
         </button>
       </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       نافذة تصدير وثيقة الاستراتيجية (Modal: Strategy Blueprint Export)
+       ========================================================================== -->
+  <div class="admin-modal-overlay" id="strategyExportModal">
+    <div class="admin-modal-sheet" style="max-width: 920px; max-height: 90vh;">
+      <div class="modal-sheet-header">
+        <div>
+          <h3 class="modal-sheet-title" id="exportDocTitle">📄 وثيقة استراتيجية الهيمنة السوقية (90-Day Strategy Blueprint)</h3>
+          <span style="font-size: 0.8rem; color: var(--accent-gold);" id="exportDocSubtitle">OTB Agency × Manus Strategic Architecture</span>
+        </div>
+        <div style="display: flex; gap: 0.5rem; align-items: center;">
+          <button class="btn-nav-action primary" id="btnCopyDocMarkdown" style="padding: 0.4rem 0.9rem; font-size: 0.82rem;">نسخ كـ Markdown 📋</button>
+          <button class="btn-nav-action" id="btnPrintDoc" style="padding: 0.4rem 0.9rem; font-size: 0.82rem;">طباعة / PDF 🖨️</button>
+          <button class="btn-close-modal" onclick="window.closeStrategyExportModal()" aria-label="إغلاق">✕</button>
+        </div>
+      </div>
+      <div class="export-document-body font-mono" id="exportDocumentContent" style="padding: 1.5rem; background: rgba(0,0,0,0.6); border: 1px solid var(--border-subtle); border-radius: 8px; max-height: 65vh; overflow-y: auto; color: var(--text-secondary); line-height: 1.7; font-size: 0.88rem; white-space: pre-wrap;" dir="rtl">
+        <!-- Generated Markdown / Strategy text -->
+      </div>
     </div>
   </div>
 

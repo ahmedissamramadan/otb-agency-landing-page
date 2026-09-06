@@ -1175,6 +1175,34 @@ function initModal() {
         };
         existingLeads.unshift(newLead);
         localStorage.setItem('otb_leads', JSON.stringify(existingLeads));
+
+        // Auto-initialize Manus Strategic Brief for this lead
+        try {
+          const existingBriefs = JSON.parse(localStorage.getItem('otb_manus_briefs') || '{}');
+          const cleanName = (name || '').replace(/[^a-zA-Z0-9\s]/g, '').trim().toUpperCase().split(/\s+/)[0] || 'BRAND';
+          const tag = cleanName.length >= 3 ? cleanName.slice(0, 8) : 'CLIENT' + Math.floor(100 + Math.random() * 900);
+          const refCode = `OTB-${tag}-2026`;
+          existingBriefs[newLead.id] = {
+            lead_id: newLead.id,
+            ref_code: refCode,
+            brand_name: name,
+            service: service,
+            status: 'draft',
+            updated_at: new Date().toISOString(),
+            stage_1_roots: { story: '', vision: '', core_mission: '' },
+            stage_2_offer: { products: '', unfair_advantage: '', pricing: '' },
+            stage_3_audience: { demographics: '', behavior: '', pain_points: '' },
+            stage_4_competition: { competitors: '', weaknesses: '', whitespace: '' },
+            stage_5_persona: { archetype: 'The Ruler / السيادة والجودة', tone: 'واثقة، راقية ومباشرة', visual_cues: '' },
+            stage_6_goals: { roas_target: '4.5x+', revenue_target: '+10,000,000 ج.م', kpis: '' },
+            stage_7_operations: { monthly_budget: `${budgetVal.toLocaleString()} ج.م`, channels: 'Meta Ads (60%) · TikTok Ads (40%)', roles: '' },
+            stage_8_lessons: { past_learnings: '', regulatory: '' },
+            stage_9_signoff: { signed_by: '', ref_code: refCode, assigned_squad: 'Squad 01 (Growth Engine)' }
+          };
+          localStorage.setItem('otb_manus_briefs', JSON.stringify(existingBriefs));
+        } catch (bErr) {
+          console.warn('Could not initialize Manus brief:', bErr);
+        }
       } catch (err) {
         console.warn('Could not save lead locally:', err);
       }
