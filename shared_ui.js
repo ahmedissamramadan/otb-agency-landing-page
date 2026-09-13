@@ -1,5 +1,5 @@
 // ==========================================================================
-// OTB TEAM AI HUB — VERCEL BEST PRACTICES JAVASCRIPT ENGINE
+// OTB TEAM AI HUB - VERCEL BEST PRACTICES JAVASCRIPT ENGINE
 // Rule implementations: client-passive-event-listeners, js-index-maps, js-cache-storage, js-early-exit
 // ==========================================================================
 

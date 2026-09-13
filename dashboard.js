@@ -1,5 +1,5 @@
 /* ==========================================================================
-   OTB Agency — Executive Command Center & CMS Engine (Digital DNA 2026)
+   OTB Agency - Executive Command Center & CMS Engine (Digital DNA 2026)
    Autonomous, High-Performance, Zero-Dependency Architecture
    ========================================================================== */
 
@@ -77,7 +77,7 @@
       app_subtitle: 'منظومة الإدارة المتكاملة · OTB Agency 2026',
       pin_clear: 'مسح',
       pin_backspace: '⌫ حذف',
-      pin_error_hint: 'رمز المرور غير صحيح (الرمز الافتراضي: 2026)',
+      pin_error_hint: 'رمز المرور غير صحيح، يرجى مراجعة الإدارة التنفيذية',
 
       // Tab 1: Overview
       ov_title: 'نبض العمليات والمؤشرات الاستراتيجية',
@@ -252,7 +252,7 @@
       app_subtitle: 'Full-Stack Management System · OTB Agency 2026',
       pin_clear: 'Clear',
       pin_backspace: '⌫ Delete',
-      pin_error_hint: 'Invalid passcode (Default PIN: 2026)',
+      pin_error_hint: 'Invalid passcode, authorization required',
 
       // Tab 1: Overview
       ov_title: 'Operational Pulse & Strategic Metrics',
@@ -955,15 +955,15 @@
     if (!container) return;
 
     const tasks = currentLang === 'ar' ? [
-      { id: 't1', title: 'إطلاق مواد وتصميمات حملة رمضان لمصانع فرانكس', assignee: 'مسار الإنتاج المرئي', status: 'جاهز للإطلاق', priority: 'عاجلة جداً' },
-      { id: 't2', title: 'انطلاق حملة استقطاب مصانع العاشر من رمضان وأكتوبر (Mission 01)', assignee: 'محرك النمو وتطوير الأعمال', status: 'قيد التنفيذ', priority: 'قصوى' },
-      { id: 't3', title: 'إخراج وتجهيز البورتفوليو المطبوع المعتمد (آية وروان)', assignee: 'استوديو التصميم الإبداعي', status: 'مرحلة الإخراج الفني', priority: 'متوسطة' },
-      { id: 't4', title: 'مواءمة الهوية البصرية لأكاديمية OTB Growth كودياً', assignee: 'فريق التطوير والواجهات', status: 'مجدول للتنفيذ', priority: 'متوسطة' }
+      { id: 't1', title: 'إطلاق مواد وتصميمات الحملة الربع سنوية المعتمدة', assignee: 'مسار الإنتاج المرئي', status: 'جاهز للإطلاق', priority: 'عاجلة جداً' },
+      { id: 't2', title: 'تطوير وتوسيع خطط النمو واستقطاب العلامات التجارية', assignee: 'محرك النمو وتطوير الأعمال', status: 'قيد التنفيذ', priority: 'قصوى' },
+      { id: 't3', title: 'إخراج وتجهيز البورتفوليو والملف التعريفي المعتمد', assignee: 'استوديو التصميم الإبداعي', status: 'مرحلة الإخراج الفني', priority: 'متوسطة' },
+      { id: 't4', title: 'مواءمة الهوية البصرية ومنظومة الواجهات كودياً', assignee: 'فريق التطوير والواجهات', status: 'مجدول للتنفيذ', priority: 'متوسطة' }
     ] : [
-      { id: 't1', title: 'Deploy Franks Ramadan Campaign Assets', assignee: 'Production Track', status: 'Ready', priority: 'High' },
-      { id: 't2', title: 'Launch Mission 01 Outreach (10th of Ramadan)', assignee: 'Growth Engine', status: 'In Progress', priority: 'High' },
-      { id: 't3', title: 'Deliver Printable Portfolio (Aya & Rawan)', assignee: 'Creative Studio', status: 'Design Phase', priority: 'Medium' },
-      { id: 't4', title: 'Sync OTB Growth Academy Visual Identity', assignee: 'Dev & UI', status: 'Planned', priority: 'Medium' }
+      { id: 't1', title: 'Deploy Approved Quarterly Campaign Assets', assignee: 'Production Track', status: 'Ready', priority: 'High' },
+      { id: 't2', title: 'Develop Enterprise Growth & Brand Acquisition Funnels', assignee: 'Growth Engine', status: 'In Progress', priority: 'High' },
+      { id: 't3', title: 'Finalize Official Brand Showcase & Media Kit', assignee: 'Creative Studio', status: 'Design Phase', priority: 'Medium' },
+      { id: 't4', title: 'Sync Design System & Modern UI Architecture', assignee: 'Dev & UI', status: 'Planned', priority: 'Medium' }
     ];
 
     container.innerHTML = tasks.map(t => {
@@ -1624,7 +1624,7 @@
       `- **السرب التنفيذي الميداني:** ${brief.stage_9_signoff?.assigned_squad || 'Squad 01 (Growth Engine)'}`,
       ``,
       `========================================================================`,
-      `وثيقة معتمدة رسمياً — غرفة عمليات OTB Agency (The City Kings)`,
+      `وثيقة معتمدة رسمياً - غرفة عمليات OTB Agency (The City Kings)`,
       `القاهرة ومناطق العاشر من رمضان والسادس من أكتوبر الصناعية`
     ].join('\n');
 
@@ -2062,7 +2062,7 @@
       system: {
         version: '2.6.0',
         exported_at: new Date().toISOString(),
-        agency: 'OTB Agency — The City Kings'
+        agency: 'OTB Agency - The City Kings'
       },
       leads: leadsData,
       showcase: showcaseData,

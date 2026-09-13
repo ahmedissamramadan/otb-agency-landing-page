@@ -1,4 +1,4 @@
-# OTB Agency — Enterprise Deployment & Migration Guide (Digital DNA 2026)
+# OTB Agency - Enterprise Deployment & Migration Guide (Digital DNA 2026)
 
 ## 1. Executive Architectural Overview
 

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * OTB Agency — Production Enterprise HTTP & REST Server
+ * OTB Agency - Production Enterprise HTTP & REST Server
  * ============================================================================
  * Zero-dependency, high-performance Node.js runtime supporting:
  * - Static file serving with MIME negotiation & security headers
@@ -17,6 +17,14 @@ const path = require('path');
 const PORT = process.env.PORT || 8088;
 const HOST = process.env.HOST || '0.0.0.0';
 const DATA_DIR = path.join(__dirname, 'data');
+const ADMIN_PIN = process.env.ADMIN_PIN || '';
+
+function isAuthenticated(req) {
+  if (!ADMIN_PIN) return true;
+  const header = req.headers['authorization'] || req.headers['x-admin-pin'] || '';
+  const token = header.replace(/^Bearer\s+/i, '').trim();
+  return token === ADMIN_PIN;
+}
 
 // MIME Registry
 const MIME_TYPES = {
@@ -148,6 +156,9 @@ const server = http.createServer(async (req, res) => {
         const config = readJson('default_dna_config.json', {});
         return jsonResponse(res, 200, config);
       } else if (req.method === 'POST') {
+        if (!isAuthenticated(req)) {
+          return jsonResponse(res, 401, { error: 'Unauthorized: Administrative authentication required' });
+        }
         try {
           const body = await parseBody(req);
           writeJson('default_dna_config.json', body);
@@ -162,6 +173,9 @@ const server = http.createServer(async (req, res) => {
     if (route === '/leads') {
       const config = readJson('default_dna_config.json', {});
       if (req.method === 'GET') {
+        if (!isAuthenticated(req)) {
+          return jsonResponse(res, 401, { error: 'Unauthorized: Administrative authentication required' });
+        }
         return jsonResponse(res, 200, config.initial_leads || []);
       } else if (req.method === 'POST') {
         try {
@@ -187,6 +201,9 @@ const server = http.createServer(async (req, res) => {
     if (route === '/discovery') {
       const config = readJson('default_dna_config.json', {});
       if (req.method === 'GET') {
+        if (!isAuthenticated(req)) {
+          return jsonResponse(res, 401, { error: 'Unauthorized: Administrative authentication required' });
+        }
         return jsonResponse(res, 200, config.initial_sovereign_briefs || {});
       } else if (req.method === 'POST') {
         try {
@@ -207,6 +224,9 @@ const server = http.createServer(async (req, res) => {
         const academy = readJson('academy_data.json', {});
         return jsonResponse(res, 200, academy);
       } else if (req.method === 'POST') {
+        if (!isAuthenticated(req)) {
+          return jsonResponse(res, 401, { error: 'Unauthorized: Administrative authentication required' });
+        }
         try {
           const body = await parseBody(req);
           writeJson('academy_data.json', body);
@@ -219,6 +239,9 @@ const server = http.createServer(async (req, res) => {
 
     // 6. Full Ecosystem Backup & Restore Endpoint
     if (route === '/backup' && req.method === 'GET') {
+      if (!isAuthenticated(req)) {
+        return jsonResponse(res, 401, { error: 'Unauthorized: Administrative authentication required' });
+      }
       const config = readJson('default_dna_config.json', {});
       const academy = readJson('academy_data.json', {});
       const backup = {
@@ -238,6 +261,9 @@ const server = http.createServer(async (req, res) => {
     }
 
     if (route === '/restore' && req.method === 'POST') {
+      if (!isAuthenticated(req)) {
+        return jsonResponse(res, 401, { error: 'Unauthorized: Administrative authentication required' });
+      }
       try {
         const backup = await parseBody(req);
         if (backup.config) writeJson('default_dna_config.json', backup.config);

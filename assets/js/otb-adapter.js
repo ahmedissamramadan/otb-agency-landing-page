@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * OTB Agency — Enterprise Sovereign Data Adapter (Repository Pattern)
+ * OTB Agency - Enterprise Sovereign Data Adapter (Repository Pattern)
  * ============================================================================
  * Pluggable data layer providing unified asynchronous CRUD operations across:
  * - Agency Configuration & Telemetry

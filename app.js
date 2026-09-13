@@ -1,5 +1,5 @@
 /* ==========================================================================
-   OTB Agency — High-Performance Interactive Engine (Digital DNA 2026)
+   OTB Agency - High-Performance Interactive Engine (Digital DNA 2026)
    Optimized for 120fps smooth performance, 0% idle GPU, and instant responsiveness
    ========================================================================== */
 
@@ -21,7 +21,7 @@ const i18n = {
     nav_cta: 'Book Strategy',
 
     hero_title: 'Putting Your Brand Under <br><span class="gold-italic-accent">The Spotlight.</span>',
-    hero_desc: 'Over 7 years of engineering market dominance for Egypt\'s premier FMCG manufacturers, specialty coffee icons, and high-growth brands. We don\'t sell routine posts — we build full-funnel commercial engines that turn products into market leaders.',
+    hero_desc: 'Over 7 years of engineering market dominance for Egypt\'s premier FMCG manufacturers, specialty coffee icons, and high-growth brands. We don\'t sell routine posts - we build full-funnel commercial engines that turn products into market leaders.',
     btn_work: 'Explore 20 Documented Proofs of Work',
 
     stat_1: 'Years Market Mastery',

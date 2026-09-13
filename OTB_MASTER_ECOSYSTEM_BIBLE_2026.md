@@ -1,4 +1,4 @@
-# OTB AGENCY — SOVEREIGN DIGITAL ECOSYSTEM & TECHNICAL BIBLE 2026
+# OTB AGENCY - SOVEREIGN DIGITAL ECOSYSTEM & TECHNICAL BIBLE 2026
 **وثيقة المعمارية المؤسسية والتوثيق الشامل للمنظومة الرقمية الموحدة لوكالة OTB**
 
 ---
@@ -74,7 +74,7 @@
 
 ### ٣.٣ البوابة الثالثة: أكاديمية OTB للنمو (OTB Growth Academy)
 - **الرابط الحي المباشر**: `https://ahmedissamramadan.github.io/otb-growth-academy/`
-- **المستودع المحلي**: `/Users/ahmedissamramadan/.gemini/antigravity/scratch/projects/otb-growth-academy`
+- **المستودع**: `otb-growth-academy`
 - **الاستقلالية والسيادة الكاملة**:
   - تم تطهير الأكاديمية بنسبة 100% من أي علامات تجارية تابعة لجهات خارجية أو أدوات سحابية طرف ثالث.
   - لغة المنصة: إنجليزية دولية بالكامل (`en-US`) تلائم بيئات العمل التقنية الرفيعة.
@@ -100,7 +100,7 @@
 
 ### ٣.٤ البوابة الرابعة: مركز القيادة الإداري الشامل (Unified Admin Command Center)
 - **الرابط المباشر**: `https://ahmedissamramadan.github.io/otb-agency-landing-page/dashboard.html`
-- **رمز الدخول الآمن (Passcode)**: `2026`
+- **حماية الدخول**: محمي بمتغير البيئة (`ADMIN_PIN`) عبر طبقة تحقق إدارية.
 - **الملفات الرئيسية**: `dashboard.html`, `dashboard.css`, `dashboard.js`, `assets/js/otb-adapter.js`
 - **الوحدات الإدارية التشغيلية (Modules)**:
   1. **لوحة المؤشرات والتحليلات (Executive Overview)**:
@@ -191,9 +191,9 @@
 | :--- | :--- | :--- | :--- |
 | **موقع الوكالة الرسمي** | [otb-agency-landing-page](https://ahmedissamramadan.github.io/otb-agency-landing-page/) | استعراض خدمات الوكالة ودراسات الحالة وإبهار العملاء | متاح للعامة |
 | **محرك الاستكشاف والتدقيق** | [Discovery Engine](https://ahmedissamramadan.github.io/otb-agency-landing-page/discovery.html) | تدقيق جاهزية العميل وفرز الميزانيات وحساب الملاءمة | متاح لعملاء الاستشارة |
-| **مركز القيادة الإداري** | [Executive Command Center](https://ahmedissamramadan.github.io/otb-agency-landing-page/dashboard.html) | إدارة الـ CRM ومتابعة التدقيق والمحتوى والترحيل | محمي برمز PIN: `2026` |
+| **مركز القيادة الإداري** | [Executive Command Center](https://ahmedissamramadan.github.io/otb-agency-landing-page/dashboard.html) | إدارة الـ CRM ومتابعة التدقيق والمحتوى والترحيل | محمي برمز مرور إداري |
 | **أكاديمية النمو السيادية** | [OTB Growth Academy](https://ahmedissamramadan.github.io/otb-growth-academy/) | تدريب وتمكين فرق العمل والذكاء الاصطناعي الداخلي | فرق العمل والشركاء |
-| **دليل النشر والترحيل** | [Deployment Guide](file:///Users/ahmedissamramadan/.gemini/antigravity/scratch/projects/otb-agency-landing-page/DEPLOYMENT_AND_MIGRATION_GUIDE.md) | دليل مهندسي النظم لنقل المنظومة لسيرفرات الشركة | الفريق التقني |
+| **دليل النشر والترحيل** | [Deployment Guide](./DEPLOYMENT_AND_MIGRATION_GUIDE.md) | دليل مهندسي النظم لنقل المنظومة لسيرفرات الشركة | الفريق التقني |
 
 ---
 
@@ -203,4 +203,4 @@
 
 **حرر بتاريخ**: سبتمبر 2026  
 **إشراف وتنفيذ**: أحمد عصام رمضان (Ahmed Issam Ramadan)  
-**وكالة OTB — نمو رقمي بمعايير استثنائية**
+**وكالة OTB - نمو رقمي بمعايير استثنائية**

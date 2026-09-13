@@ -1,5 +1,5 @@
 # ============================================================================
-# OTB Agency — Production Containerfile (Node.js Alpine)
+# OTB Agency - Production Containerfile (Node.js Alpine)
 # ============================================================================
 FROM node:22-alpine AS runtime
 
