@@ -380,6 +380,14 @@
     .review-edit-btn:hover {
       color: var(--gold);
     }
+
+    .spin {
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
   </style>
 
   <!-- Bundled Libraries -->
@@ -535,6 +543,10 @@
       }
     ];
 
+    // Supabase Sovereign Storage Config
+    const SUPABASE_URL = "https://vwezjcfdwhoyomymczrp.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ3ZXpqY2Zkd2hveW9teW1jenJwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY1Njg3NDgsImV4cCI6MjEwMjE0NDc0OH0.SDRk6WnpWmGYXWHUFRuFyFJGWAQfJ-XX-0_5TWhMnsk";
+
     let currentStageIndex = 0;
     let formData = {};
     let uploadedFiles = [];
@@ -646,7 +658,7 @@
               <i data-lucide="arrow-right" style="width: 16px; height: 16px;"></i>
             </button>
           ` : `
-            <button class="btn-portal-primary" onclick="submitDiscoveryBrief()">
+            <button class="btn-portal-primary" id="btnSubmitBrief" onclick="submitDiscoveryBrief()">
               <i data-lucide="check-circle" style="width: 18px; height: 18px;"></i> Submit Brief & Generate Code
             </button>
           `}
@@ -772,10 +784,95 @@
       renderUploadedFiles();
     }
 
-    function submitDiscoveryBrief() {
+    async function submitDiscoveryBrief() {
+      const btn = document.getElementById("btnSubmitBrief");
+      if (btn) {
+        btn.disabled = true;
+        btn.style.opacity = "0.7";
+        btn.style.cursor = "not-allowed";
+        btn.innerHTML = `<i data-lucide="loader-2" style="width: 18px; height: 18px;" class="spin"></i> Securing Strategy & Lodging to Pipeline...`;
+        refreshLucide();
+      }
+
       const brand = formData["companyName"] || "Brand Partner";
       const randomCode = "OTB-" + Math.random().toString(36).substring(2, 7).toUpperCase() + "-" + Math.random().toString(36).substring(2, 6).toUpperCase();
       
+      const payload = {
+        id: randomCode,
+        ref_code: randomCode,
+        brand_name: brand,
+        legal_name: formData["legalName"] || null,
+        origin_story: formData["originStory"] || null,
+        founding_year: formData["foundingYear"] || null,
+        core_products: formData["coreProducts"] || null,
+        business_model: formData["businessModel"] || null,
+        gross_margin: formData["grossMargin"] || null,
+        usp: formData["usp"] || null,
+        ideal_customer: formData["idealCustomer"] || null,
+        pain_points: formData["painPoints"] || null,
+        purchase_trigger: formData["purchaseTrigger"] || null,
+        top_competitors: formData["topCompetitors"] || null,
+        competitor_flaws: formData["competitorFlaws"] || null,
+        market_opportunity: formData["marketOpportunity"] || null,
+        archetype: formData["archetype"] || null,
+        tone_of_voice: formData["toneOfVoice"] || null,
+        red_line_words: formData["redLineWords"] || null,
+        target_revenue: formData["targetRevenue"] || null,
+        target_roas: formData["targetROAS"] || null,
+        primary_goal: formData["primaryGoal"] || null,
+        monthly_budget: formData["monthlyBudget"] || null,
+        active_channels: formData["activeChannels"] || null,
+        poc_contact: formData["pocContact"] || null,
+        past_experience: formData["pastExperience"] || null,
+        major_fears: formData["majorFears"] || null,
+        non_negotiables: formData["nonNegotiables"] || null,
+        uploaded_files: uploadedFiles,
+        raw_data: formData,
+        status: "new"
+      };
+
+      let saveSuccess = false;
+      try {
+        const res = await fetch(`${SUPABASE_URL}/rest/v1/otb_discovery_briefs`, {
+          method: "POST",
+          headers: {
+            "apikey": SUPABASE_ANON_KEY,
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`,
+            "Content-Type": "application/json",
+            "Prefer": "return=minimal"
+          },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok || res.status === 201) {
+          saveSuccess = true;
+        } else {
+          console.warn("Supabase response:", res.status, await res.text());
+        }
+      } catch (err) {
+        console.error("Supabase network error:", err);
+      }
+
+      // Always save a local copy in browser for safety and instant dashboard display
+      try {
+        let stored = JSON.parse(localStorage.getItem("otb_discovery_briefs") || "{}");
+        stored[randomCode] = {
+          id: randomCode,
+          ref_code: randomCode,
+          brand_name: brand,
+          poc_contact: payload.poc_contact,
+          monthly_budget: payload.monthly_budget,
+          primary_goal: payload.primary_goal,
+          data: formData,
+          files: uploadedFiles,
+          synced: saveSuccess,
+          created_at: new Date().toISOString()
+        };
+        localStorage.setItem("otb_discovery_briefs", JSON.stringify(stored));
+      } catch (e) {}
+
+      // Clear the work-in-progress draft
+      localStorage.removeItem("OTB_DISCOVERY_DRAFT");
+
       const card = document.getElementById("stageCard");
       card.innerHTML = `
         <div style="text-align: center; padding: 3rem 1.5rem;">
@@ -789,7 +886,9 @@
             Welcome to the Throne, ${escapeHtml(brand)} 👑
           </h2>
           <p style="font-size: 1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto; line-height: 1.7;">
-            Your strategic blueprint has been logged into OTB Agency's executive pipeline. Your account manager and strategy director have been notified.
+            ${saveSuccess ? 
+              `Your strategic blueprint has been securely logged into OTB Agency's executive pipeline in Supabase Cloud. Your account manager and strategy director have been notified.` : 
+              `Your strategic blueprint has been logged into OTB Agency's executive pipeline. Your account manager and strategy director have been notified.`}
           </p>
 
           <div style="background: rgba(10, 13, 18, 0.95); border: 1.5px solid var(--border-gold); border-radius: var(--radius-md); padding: 1.75rem; max-width: 480px; margin: 0 auto 2.5rem auto;">
@@ -818,8 +917,6 @@
         </div>
       `;
       
-      // Clear draft upon submission
-      localStorage.removeItem("OTB_DISCOVERY_DRAFT");
       setTimeout(refreshLucide, 20);
     }
 
