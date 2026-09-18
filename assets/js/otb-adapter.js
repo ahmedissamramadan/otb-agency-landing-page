@@ -37,6 +37,10 @@
   };
 
   const DEFAULT_API_BASE = '/api/v1';
+  const SUPABASE_CONFIG = {
+    URL: 'https://bljybgfyuhriyxuglgsc.supabase.co',
+    KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJsanliZ2Z5dWhyaXl4dWdsZ3NjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzkxNDYyMDUsImV4cCI6MjA5NDcyMjIwNX0.yIBp_ELiRUYjSbx5LQ157tHbyXN6hHwAzQ6932ZT7u4'
+  };
 
   class OTBStorageAdapter {
     constructor() {
@@ -202,6 +206,43 @@
     /* 3. Sovereign Discovery Engine (9-Stage Qualification) */
     async getDiscoveryBriefs() {
       await this.init();
+
+      // 1. Try OTB Agency Supabase Cloud Sync
+      try {
+        const supaRes = await fetch(`${SUPABASE_CONFIG.URL}/rest/v1/otb_discovery_briefs?select=*&order=created_at.desc`, {
+          headers: {
+            'apikey': SUPABASE_CONFIG.KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.KEY}`
+          }
+        });
+        if (supaRes.ok) {
+          const rows = await supaRes.json();
+          if (rows && rows.length > 0) {
+            const briefsMap = {};
+            rows.forEach(r => {
+              briefsMap[r.id] = {
+                id: r.id,
+                ref_code: r.ref_code,
+                brand_name: r.brand_name,
+                poc_contact: r.poc_contact,
+                monthly_budget: r.monthly_budget,
+                primary_goal: r.primary_goal,
+                data: r.raw_data || {},
+                files: r.uploaded_files || [],
+                status: r.status,
+                created_at: r.created_at
+              };
+            });
+            if (typeof localStorage !== 'undefined') {
+              localStorage.setItem(STORAGE_KEYS.DISCOVERY, JSON.stringify(briefsMap));
+            }
+            return briefsMap;
+          }
+        }
+      } catch (err) {
+        console.warn('[OTBAdapter] OTB Supabase discovery fetch fallback:', err);
+      }
+
       if (this.mode === 'api') {
         try {
           const res = await fetch(`${this.apiBase}/discovery`);
@@ -236,6 +277,32 @@
       briefs[id] = briefData;
       if (typeof localStorage !== 'undefined') {
         localStorage.setItem(STORAGE_KEYS.DISCOVERY, JSON.stringify(briefs));
+      }
+
+      // Sync to OTB Agency Supabase
+      try {
+        await fetch(`${SUPABASE_CONFIG.URL}/rest/v1/otb_discovery_briefs`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_CONFIG.KEY,
+            'Authorization': `Bearer ${SUPABASE_CONFIG.KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates'
+          },
+          body: JSON.stringify({
+            id: id,
+            ref_code: briefData.ref_code || id,
+            brand_name: briefData.brand_name || briefData.name || 'Brand Partner',
+            poc_contact: briefData.poc_contact || null,
+            monthly_budget: briefData.monthly_budget || null,
+            primary_goal: briefData.primary_goal || null,
+            raw_data: briefData.data || briefData,
+            uploaded_files: briefData.files || [],
+            status: briefData.status || 'new'
+          })
+        });
+      } catch (err) {
+        console.warn('[OTBAdapter] Supabase saveDiscoveryBrief error:', err);
       }
 
       if (this.mode === 'api') {
